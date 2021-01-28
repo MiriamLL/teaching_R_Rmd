@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 1</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <link href="Clase1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Clase1_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clase 1
+## Intro a R
+### Miriam Lerma
+### Febrero 2021
+
+---
+
+
+## 1. Intro
+
+La clase es de 2 horas.
+
+Hoy: 
+
+- ~40 minutos de teoría  
+(historia de R, que es RStudio y algunos conceptos básicos para orientarse en RStudio)
+
+--
+
+- ~15 minutos de practica  
+Van a abrir R, ubicar las partes y correr algunas variables.
+
+--
+
+- 10 minutos de receso, siesta, café u otros.
+También pueden ser para resolver dudas.
+--
+
+- ~30 minutos de teoría.  
+(paquetes, directorios y como cargar mis datos)
+
+--
+
+- ~20 minutos de practica.  
+Van a cargar archivos que están en el drive.
+
+--
+
+Si da tiempo:  
+Porque usar Rmarkdown?
+
+---
+
+## Quienes son ustedes? (...por hoy)
+
+.pull-left[
+Ademas de muy madrugadores
+
+&lt;img src="https://images.unsplash.com/photo-1601315447719-cf782668d24e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDJ8fHJvb3N0ZXJ8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="200" /&gt;
+]
+--
+
+.pull-right[
+- Principiantes en R (de otra manera esto es un repaso)
+
+- Saben que existe R pero no lo conocen bien
+
+- Aun así, necesitan usarlo en un futuro cercano
+]
+
+---
+
+## Como quiero que salgan....
+
+.pull-left[
+Sintiendose como the matrix  
+&lt;img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aGFja2VyfGVufDB8fDB8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" width="300" height="250" /&gt;
+]
+
+--
+.pull-right[
+Pero por ahora:
+
+- Sepan R
+
+- Puedan cargar datos
+]
+
+---
+
+# Créditos
+
+-Todo el material basado en el libro:  
+[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+
+-Y el libro de:  
+[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+
+-Y materiales de RLadies   
+[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[RdesdeCero](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[Primeros pasos en R](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
+
+
+Imagenes adicionales
+[Unsplash](https://unsplash.com/)
+
+---
+class: center, middle
+
+# Empecemos!
+
+---
+
+## 1.1 Que es R?
+
+&lt;img src="https://www.r-project.org/logo/Rlogo.svg" width="50" height="50" /&gt;
+
+- R es un lenguaje de programación con enfoque en análisis estadístico.
+
+---
+
+## 1.1 Que es R?
+### Ventajas
+
+- Es gratis, en cambio otros programas como SPSS hay que **"pagarlos"** ... Lo mismo para ArCGIS.
+
+--
+
+- Funcionalidad adicional gracias a los paquetes.
+
+--
+
+- Visualización de datos es más flexible.
+
+--
+
+En ciencia, es reproducible.
+
+- Siempre se guarda los pasos que hiciste, en los programas regularmente usados, se pican botones y hay que recordar la secuencia. 
+R nos puede ahorrar tiempo y esfuerzo.
+
+--
+
+- Esto ademas lo hace verificable.
+
+---
+
+## 1.2. Porque R? 
+
+### Desventajas
+
+- Tiene una curva de aprendizaje
+- Es como aprender un nuevo idioma
+
+&lt;img src="https://pbs.twimg.com/media/EK8s79kUEAU3cAT?format=jpg&amp;name=small" height="300" /&gt;
+
+---
+
+## 1.3. Usar R
+
+### R vs RStudio.
+
+**R** es un lenguaje de programación y 
+**RStudio** es un ambiente desarrollado integrado (IDE en ingles).
+
+.pull-left[
+R es el motor.  
+&lt;img src="https://images.unsplash.com/photo-1578586524259-489a03948798?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=751&amp;q=80" height="200" /&gt;
+]
+
+.pull-right[
+RStudio es el volante.  
+&lt;img src="https://images.unsplash.com/photo-1605445622210-2dd2586bccea?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJpdmluZyUyMHdoZWVsfGVufDB8fDB8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="200" /&gt;
+]
+
+---
+
+## 1.3. Ubicarse en RStudio
+### Partes
+
+.pull-left[
+&lt;img src="https://songeo.github.io/introduccion-r-bookdown/figures/console-descr.png" height="350" /&gt;
+]
+
+.pull-right[
+**Editor de codigo** es principalmente para armar nuestro script, correr secciones del mismo y modificarlo.
+
+**Workspace: Environment** aqui aparece la lista de objetos que creamos.
+
+**Consola** es donde vemos el procesamiento y/o resultados de nuestros analisis.
+
+**Visualizador/Salida** tiene varias opciones que vamos a ir viendo.
+]
+
+---
+
+## 1.4 Usar R
+### Ejercicios a la par
+
+Cuando abran RStudio les va a a parecer algo así
+&lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/rstudio-console.svg" height="300" /&gt;
+
+Para que les aparezca el editor de código:
+
+En la parte superior pueden buscar:  
+File &gt; New File &gt; Rscript
+
+---
+
+## 1.4 Usar R
+### Ejercicios a la par
+
+- Escriban en la consola (inferior izquierda)
+
+```r
+3*4
+```
+
+- Escriban en el editor de código (superior izquierda)
+
+```r
+3*4
+```
+
+--
+
+Ahora denle ctrl + enter
+
+--
+
+- Escriban ya sea en la consola o en el editor de código (no olviden darle enter)
+
+```r
+ResultadoDeMiMultiplicacion&lt;-3*4
+```
+
+Que paso en su 'environment'?
+
+
+---
+
+## 1.4 Usar R
+### Clases de datos
+
+Los datos pueden ser:
+- Numéricos
+
+```r
+class(1.4)
+```
+
+```
+[1] "numeric"
+```
+
+- Caracteres
+
+```r
+class("Miriam")
+```
+
+```
+[1] "character"
+```
+
+---
+
+## 1.4 Usar R
+### Clases de datos
+
+Que pasa si escribo con comillas un numero?
+
+```r
+class("1")
+```
+
+```
+[1] "character"
+```
+
+- Lógicos
+
+```r
+3 == 4
+```
+
+```
+## [1] FALSE
+```
+
+
+```r
+3 &lt; 5
+```
+
+```
+## [1] TRUE
+```
+
+Hay muchas otras clases de datos que vamos a ver cuando sean relevantes.
+Factores cuando estemos haciendo análisis estadísticos por ejemplo.
+
+---
+
+## 1.4 Usar R
+### Mi primer data frame
+
+Asignar nombres
+
+```r
+&lt;-
+```
+Este símbolo es super importante y lo vamos a usar mucho, lo ideal es que lo ubiquen en su teclado.  
+
+
+```r
+NumeroAlumnos&lt;-c("Alvaro","Gabriela","Carolina","Angel","Denisse","Juan","Lisset",
+                 "Majo","Irma","Pamela","Paulina")
+class(NumeroAlumnos)
+```
+
+```
+## [1] "character"
+```
+
+
+```r
+NumeroAlumnos&lt;-as.data.frame(NumeroAlumnos)
+class(NumeroAlumnos)
+```
+
+```
+## [1] "data.frame"
+```
+
+Vean su **environment** pueden darle doble clic y verlo en forma de tabla.
+
+---
+
+## 1.4 Usar R
+### Mi primer data frame
+
+Asignar filas o revisar filas.
+
+```r
+$
+```
+
+Pero y si quiero agregar el apellido en otra columna?
+
+```r
+NumeroAlumnos$Apellido&lt;-c("Guillermo","Aguilar","Torres","Daniel","Lizarraga","Serrano","Hernandez",NA,"Martinez","Lozano","Reyes")
+```
+
+Todo junto
+
+```r
+(NumeroAlumnos)
+```
+
+```
+   NumeroAlumnos  Apellido
+1         Alvaro Guillermo
+2       Gabriela   Aguilar
+3       Carolina    Torres
+4          Angel    Daniel
+5        Denisse Lizarraga
+6           Juan   Serrano
+7         Lisset Hernandez
+8           Majo      &lt;NA&gt;
+9           Irma  Martinez
+10        Pamela    Lozano
+11       Paulina     Reyes
+```
+
+
+---
+
+## 1.4 Usar R
+### Editor de código
+
+Para crear notas en el **editor de código** ponemos el **#** (numeral, hashtag, gatito)
+
+```r
+#Acuerdate que no apuntaste el apellido de Majo y tienes NAs
+```
+R sabe que ignorar el comentario cuando tiene #, pero los comentarios nos sirven a nosotros.
+
+Es importante ponerle el numeral, si quieren pueden probar que pasa si se lo quitan. 
+
+Una **buena practica** es escribir lo que queríamos hacer, ya sea para que alguien mas sepa que quisimos hacer o para acordarnos que queríamos hacer nosotros.
+
+Van a guardar el script de hoy y lo abren en una semana y me dicen si se acuerdan exactamente de que querían hacer.
+
+---
+
+## 1.4 Usar R
+### Errores
+
+&lt;img src="https://images.unsplash.com/photo-1579099715178-d89708832bce?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80" height="300" /&gt;
+
+Esta es la parte que menos nos gusta...
+
+--
+No se tomen los errores de manera personal, es como R se comunica con ustedes y son muuuuuuuy comunes. Ademas tomemoslo como algo bueno que nos informe si nos equivocamos y ademas asi es como aprendemos.
+
+---
+
+## 1.4 Usar RStudio
+### Tipos de errores
+
+- Si sale error, en practica no corre lo que le pidieron.
+
+```r
+3 = 4
+```
+Error in 3 = 4 : lado izquierdo de la asignación inválida (do_set)
+
+
+Otros mensajes que salen en rojo y son comunes son:
+- Warnings, nos advierten pero si corre lo que le pusimos.
+- Messages, es para darnos mas información de lo que hicimos.
+
+---
+
+## 1.4 Usar R
+### Errores más comunes
+
+Quiten el # y traten de correr estos códigos.
+
+
+```r
+#c("Miriam","Bety","Angel","Denise""Pamela")
+```
+
+--
+
+- Falta una coma
+
+--
+
+
+```r
+#c("Alvaro","Gabriela","Juan",,"Lisset")
+```
+
+--
+
+- Sobra una coma
+
+--
+
+
+```r
+#c("Majo","Irma","Paulina"
+```
+
+--
+
+- Falta un paréntesis
+
+--
+
+
+```r
+#c("Majo","Irma,"Paulina")
+```
+
+--
+
+- Falta una comilla
+
+---
+
+## 1.4 Usar R
+### Errores
+
+Muchos errores nos los marca con una tachita en un circulito rojo en el **editor de código**.
+
+--
+
+Pero que tal este?
+
+```r
+#NumeroAlumno
+```
+--
+
+- Esta mal escrito
+
+--
+
+- Es importante que nombremos los objetos con nombres que nos hagan sentido.  
+
+- R no acepta que los nombres comiencen con un numero (Eg."1NumeroAlumnos").  
+- Pero si pueden terminar con un numero (Eg."NumeroAlumnos1").  
+
+- Yo uso mayúsculas para nombrar mis objetos.  
+Hay quienes usan _ (Ej. "Numero_Alumnos").  
+Hay quienes usan . (Ej. "Numero.de.alumnos").  
+
+- Para ayudar a nuestra memoria, hay que ser consistentes.  
+
+
+---
+
+## 1.4. R Studio
+### Buscar ayuda
+
+&lt;img src="https://images.unsplash.com/photo-1526958097901-5e6d742d3371?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" height="300" /&gt;
+
+---
+
+## 1.4. R Studio
+### Buscar ayuda
+
+
+```r
+mean(1,3,6,9,12)
+```
+
+```
+## [1] 1
+```
+Porque me da 1? no me parece correcto. 
+
+Pregúntale a R
+
+```r
+?mean
+```
+Las instrucciones aparecerán en la esquina inferior derecha, en la pestaña **Help**.
+
+Hay que poner la c de ***concatenar***
+
+```r
+mean(c(1,3,6,9,12))
+```
+
+```
+[1] 6.2
+```
+Ya tiene más sentido.
+
+---
+
+## 1.4. R Studio
+### Buscar ayuda
+
+Parte de la fortalezas de R y porque es tán usado es que hay muchos sitios para pedir ayuda.
+
+Lo primero que hay que hacer es tener paciencia y revisar que no hayamos escrito algo mal.
+
+Si no funciona, otra opción es literalmente copiar el error que nos aparece y escribirlo en google.
+
+Fuentes confiables son: 
+- stackoverflow.  
+Seguro lo vamos a usar en algún momento durante la clase.
+
+- twitter  
+Hashtag: #rstatsES (en español) o #rstats (en inglés).
+
+---
+
+class: center, middle
+
+# Seguro ya pasaron mas de 40 minutos....
+
+&lt;img src="https://images.unsplash.com/photo-1499377193864-82682aefed04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1361&amp;q=80" height="300" /&gt;
+
+---
+
+# 1.5 Ejercicios
+### Algunas operaciones
+
+Tengo tres gatos y cada uno come 2 latas de comida, cuantas latas tengo que comprar?
+
+```r
+Gatitos&lt;-3
+Latas&lt;-2
+Gatitos*Latas
+```
+
+--
+
+Tengo 4 perros y ya se cuantos gatos, cuantas mascotas tengo en total?
+
+```r
+Perritos&lt;-4
+Mascotas&lt;-Perritos+Gatitos
+Mascotas
+```
+
+---
+# 1.5 Ejercicios
+### Clase de objetos
+
+Ejemplo
+
+```r
+NombresPerritos&lt;-c("Lala","Lele","Lili","Lolo")
+```
+
+Checar clase de los objetos
+
+```r
+class(Perritos)
+class(NombresPerritos)
+```
+
+Como se llaman los gatitos?
+Crea tu propio objeto, rellenando el espacio entre las comillas.
+
+```r
+NombresGatitos&lt;-c(" "," "," ")
+```
+
+---
+
+# 1.5 Ejercicios
+### Mis operaciones
+
+Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son 3) se comen 0.5 Kg al día y quiero ir al super cada 15 días por lo de la pandemia?
+
+--
+
+
+```r
+#Perritos&lt;-
+#Croquetas&lt;-
+#Dias&lt;-
+```
+
+--
+
+
+```r
+#(Perritos*Croquetas)*Dias
+```
+Hasta le podríamos agregar el precio de las croquetas para calcular cuanto nos salen nuestros lomitos.
+
+&lt;img src="https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" height="50" /&gt;
+
+---
+
+class: center, middle
+
+# Pausa de 10 minutos....
+
+&lt;img src="https://images.unsplash.com/photo-1503481766315-7a586b20f66d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1335&amp;q=80" height="300" /&gt;
+
+
+---
+
+
+class:middle, center
+
+# 2. Cargar mis datos
+
+
+---
+
+# 2. Cargar mis datos
+
+- Paquetes
+- Directorios
+- Cargar mis datos
+- Explorar mis datos
+
+---
+
+## 2.1. Paquetes
+
+- Son colecciones de funciones que realizan operaciones.  
+- Se instalan una única vez pero deben cargarse cada vez que se utilizan.  
+Para instalar hay que escribir: install.packages("").  
+Para cargar hay que escribir: library("").  
+
+--
+
+Ahora mismo abran la consola, escriban el siguiente código y denle enter
+
+```r
+install.packages("tidyverse")
+```
+Nota: nos da un warning, solo para **advertirnos** o **informarnos** de que contiene el paquete. No es un mensaje de error.
+
+
+```r
+install.packages("here")
+```
+
+
+```r
+install.packages("cowsay")
+```
+
+Otra opción es ir al **workspace**
+Packages&gt;Install&gt;Escribir el nombre.
+
+Tarda un poquito en cargarse...
+
+---
+
+## 2.1. Paquetes
+
+
+```r
+say(what = "Ya sabes cargar paquetes!", by = "cat")
+```
+--
+No sale nada?
+--
+
+
+```r
+library("cowsay")
+say(what = "Ya sabes cargar paquetes!", by = "cat")
+```
+
+```
+
+ -------------- 
+Ya sabes cargar paquetes! 
+ --------------
+    \
+      \
+        \
+            |\___/|
+          ==) ^Y^ (==
+            \  ^  /
+             )=*=(
+            /     \
+            |     |
+           /| | | |\
+           \| | |_|/\
+      jgs  //_// ___/
+               \_)
+  
+```
+
+---
+
+## 2.2. Directorios
+
+Donde están los archivos en tu computadora.  
+
+Manualmente: Esquina inferior derecha: **Salida** &gt; Files &gt; More &gt; Set working directory
+
+&lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/rstudio-console.svg" height="300" /&gt;
+
+Pero recuerden que no queremos hacer esto cada vez que entramos a R, queremos que sea automático y rápido.
+
+---
+
+## 2.2. Directorios
+### Donde están tus datos?
+
+#### Opción 1
+
+```r
+getwd()
+```
+
+
+```r
+setwd()
+```
+
+Se tiene que copiar y pegar completo y cada quien va a tener diferentes carpetas en sus computadoras.
+
+---
+
+## 2.2. Directorios
+### Donde están tus datos?
+
+#### Opción 2: Recomendada
+
+```r
+library(here)
+```
+
+
+```r
+here()
+```
+
+Ventajas:
+- Usa la carpeta donde tenemos guardado el script para encontrar el archivo que necesitamos.
+- Se puede compartir con colaboradores.
+- Se adapta si mueves la carpeta de lugar.
+
+---
+
+
+# 2.3. Cargar datos
+### Formato CSV
+
+Cargar el paquete tidyverse
+
+```r
+library("tidyverse")
+```
+
+```
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+```
+
+```
+## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.0.5     v dplyr   1.0.3
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1
+```
+
+```
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato CSV
+
+Manualmente: esquina inferior derecha&gt;Files&gt;  
+Doble clic en el archivo de **Pingus_1.csv**  
+
+Esta separado por comas, entonces:
+
+read_csv se usa cuando los valores estan separados por comas
+
+```r
+Pingus_csv&lt;-read_csv(here("Pingus_1.csv"))
+```
+
+
+```r
+head(Pingus_csv)
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato CSV
+Doble clic en el archivo de **Pingus_2.csv**  
+Esta separado por punto y coma.  
+read_csv2 se usa para cuando estan separados con punto y coma.
+
+
+```r
+Pingus_csv2&lt;-read_csv(here("Pingus_2.csv"))
+```
+
+```r
+head(Pingus_csv2)
+```
+
+--
+
+Funciono?
+
+
+Ah! tengo que usar read_csv2 para ";"
+
+```r
+Pingus_csv2&lt;-read_csv2(here("Pingus_2.csv"))
+```
+
+
+```r
+head(Pingus_csv2)
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato tab
+
+Doble clic en el archivo de **Pingus_3.txt**.  
+Esta separado por espacios.  
+read_tsv se usa para documentos que tengan tab (espacio) separated values.  
+
+
+```r
+Pingus_txt&lt;-read_tsv(here("Pingus_3.txt"))
+```
+
+
+```r
+head(Pingus_txt)
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato Excel
+
+Hay que cargar la libreria readxl
+
+```r
+library("readxl")
+```
+
+read_excel se usa para cargar archivos de excel.
+
+```r
+Pingus_excel&lt;- read_excel(here("Pingus_4.xlsx"))
+```
+
+
+```r
+head(Pingus_excel)
+```
+
+Hay otros tipos de formatos pero no los vamos a ver hoy, ni creo que los vayamos a necesitar durante el curso.
+
+
+---
+
+# 2.3. Cargar datos
+### Desde Internet
+
+Fuentes de datos en internet para practicar y que vamos a usar durante el curso:  
+- [TidyTuesday](https://github.com/rfordatascience/tidytuesday)  
+- [DatosDeMiercoles](https://github.com/cienciadedatos/datos-de-miercoles)  
+
+
+Base de datos de plasticos. Datos liberados el 26 de enero de 2021.
+
+```r
+plastics &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
+```
+
+Datos de plásticos
+
+```r
+head(plastics,5)
+```
+
+```
+## # A tibble: 5 x 14
+##   country  year parent_company empty  hdpe  ldpe     o   pet    pp    ps   pvc
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Argent~  2019 Grand Total        0   215    55   607  1376   281   116    18
+## 2 Argent~  2019 Unbranded          0   155    50   532   848   122   114    17
+## 3 Argent~  2019 The Coca-Cola~     0     0     0     0   222    35     0     0
+## 4 Argent~  2019 Secco              0     0     0     0    39     4     0     0
+## 5 Argent~  2019 Doble Cola         0     0     0     0    38     0     0     0
+## # ... with 3 more variables: grand_total &lt;dbl&gt;, num_events &lt;dbl&gt;,
+## #   volunteers &lt;dbl&gt;
+```
+
+---
+
+# 2.3. Cargar datos
+### Paquetes que contienen datos
+
+
+```r
+#install.packages("remotes")
+#remotes::install_github("cienciadedatos/datos")
+```
+
+
+```r
+library(datos)
+Pingus&lt;-pinguinos
+```
+
+
+```r
+head(Pingus)
+```
+
+```
+## # A tibble: 6 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
+## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+# 2.4. Inspeccionar data frames
+
+---
+
+# 2.4. Inspeccionar data frames
+
+Para ver mis primeras y ultimas filas
+
+```r
+head(Pingus)
+tail(Pingus)
+```
+
+---
+
+# 2.4. Inspeccionar data frames
+### Filas
+
+Las filas se pone entre corchetes en la **PRIMERA** posición.
+
+```r
+head(Pingus[1,])
+```
+
+```
+## # A tibble: 1 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+Muéstrame las primeras 3 filas
+
+```r
+(Pingus[1:3,])
+```
+
+```
+## # A tibble: 3 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+
+---
+
+# 2.4. Inspeccionar data frames
+### Columnas
+
+Usando $ y el nombre de la columna .  
+
+```r
+head(Pingus$especie)
+```
+
+```
+## [1] Adelia Adelia Adelia Adelia Adelia Adelia
+## Levels: Adelia Barbijo Papúa
+```
+
+Las filas se pone entre corchetes en la **SEGUNDA** posición.
+
+```r
+head(Pingus[,1])
+```
+
+```
+## # A tibble: 6 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia 
+## 2 Adelia 
+## 3 Adelia 
+## 4 Adelia 
+## 5 Adelia 
+## 6 Adelia
+```
+
+---
+
+# 2.4. Inspeccionar data frames
+### Columnas
+
+Valores únicos en esa columna
+
+```r
+unique(Pingus$especie)
+```
+
+```
+## [1] Adelia  Papúa   Barbijo
+## Levels: Adelia Barbijo Papúa
+```
+
+---
+# 2.4. Inspeccionar data frames
+### Columnas y filas
+
+Muéstrame un dato especifico [FILA, COLUMNA]
+
+```r
+(Pingus[1,1])
+```
+
+```
+## # A tibble: 1 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia
+```
+
+
+```r
+(Pingus[3,2])
+```
+
+```
+## # A tibble: 1 x 1
+##   isla     
+##   &lt;fct&gt;    
+## 1 Torgersen
+```
+
+---
+
+# 2.5 Ejercicios
+### Tu Turno
+
+Carga los datos de pinguinos  
+- Usando read_csv
+- Usando read_csv2
+- Usando read_tsv
+- Usando read_excel
+
+---
+
+# 2.5 Ejercicios
+## Exploremos los datos
+### A la par
+Cuidado con los NAs, na.rm me sirve para ignorarlos
+
+```r
+range(Pingus$masa_corporal_g,na.rm=TRUE)
+```
+
+Cuanto pesan los pinguinos en kilos.  
+Guardarlo en un objeto.  
+
+```r
+PromedioPesoPingus&lt;-mean(Pingus$masa_corporal_g,na.rm=TRUE)
+PromedioPesoPingus/1000
+```
+
+```
+## [1] 4.201754
+```
+
+---
+
+# 2.5 Ejercicios
+### Su turno
+
+--
+
+- Calcular el promedio del largo del pico?  
+
+--
+
+- Que islas se muestrearon?  
+
+--
+
+**Respuestas**
+
+--
+
+- Calcular el promedio del largo del pico
+
+```r
+mean(Pingus$largo_pico_mm,na.rm=TRUE)
+```
+
+```
+## [1] 43.92193
+```
+
+--
+- Que islas se muestrearon  
+
+```r
+unique(Pingus$isla)
+```
+
+```
+## [1] Torgersen Biscoe    Dream    
+## Levels: Biscoe Dream Torgersen
+```
+
+
+---
+
+## Recapitulando
+
+- 1.1. Que es R?
+- 1.2. Porque R?
+- 1.3. Partes de RStudio
+- 1.4. Usar R
+- 1.5. Clases de objetos
+
+- 2.1. Instalar y cargar paquetes
+- 2.2. Directorios
+- 2.3 Cargar csv y excel
+- 2.4. Mirar dentro de los data.frames
+
+---
+
+class: center, middle
+
+# Ya esta tarde, no?
+
+&lt;img src="https://images.unsplash.com/photo-1579619597328-142326e07210?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1349&amp;q=80" height="300" /&gt;
+
+---
+
+# 3. RMarkdown
+
+Rmarkdown es como muy conveniente porque podemos crear htmls o documentos word, e incluso presentaciones, de hecho esta es una presentación en Rmd.
+
+--
+
+## 3.1. Ejemplo rápido.
+
+File &gt; NewFile &gt; RMarkdown
+
+- Agregar nombre
+- Cambiar output a 'word_document'
+- Darle al botón knit
+
+--
+
+## 3.2. Aprender RMarkdown
+
+En espaniol:
+[RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+
+En ingles:
+[RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&amp;t=6552s)
+
+
+---
+
+## Recapitulando
+
+- 1.1 Que es R?
+- 1.2 Porque R?
+- 1.3 Partes de RStudio
+- 1.4 Usar R
+- 1.5 Clases de objetos
+
+- 2.1 Instalar y cargar paquetes
+- 2.2 Directorios
+- 2.3 Cargar csv y excel
+- 2.4 Mirar dentro de los data.frames
+
+- 3.1 R Markdown
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
