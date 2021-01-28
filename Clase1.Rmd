@@ -173,14 +173,14 @@ knitr::include_graphics("https://pbs.twimg.com/media/EK8s79kUEAU3cAT?format=jpg&
 
 .pull-left[
 R es el motor.  
-```{r echo=FALSE, out.height=200}
+```{r echo=FALSE, out.height=150}
 knitr::include_graphics("https://images.unsplash.com/photo-1578586524259-489a03948798?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80")
 ```
 ]
 
 .pull-right[
 RStudio es el volante.  
-```{r echo=FALSE, out.height=200}
+```{r echo=FALSE, out.height=150}
 knitr::include_graphics("https://images.unsplash.com/photo-1605445622210-2dd2586bccea?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJpdmluZyUyMHdoZWVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
 ```
 ]
@@ -189,12 +189,6 @@ knitr::include_graphics("https://images.unsplash.com/photo-1605445622210-2dd2586
 
 ## 1.3. Ubicarse en RStudio
 ### Partes
-
-.pull-left[
-```{r echo=FALSE, out.height=350}
-knitr::include_graphics("https://songeo.github.io/introduccion-r-bookdown/figures/console-descr.png")
-```
-]
 
 .pull-right[
 **Editor de codigo** es principalmente para armar nuestro script, correr secciones del mismo y modificarlo.
@@ -205,6 +199,14 @@ knitr::include_graphics("https://songeo.github.io/introduccion-r-bookdown/figure
 
 **Visualizador/Salida** tiene varias opciones que vamos a ir viendo.
 ]
+
+.pull-left[
+```{r echo=FALSE, out.height=250}
+knitr::include_graphics("https://songeo.github.io/introduccion-r-bookdown/figures/console-descr.png")
+```
+]
+
+
 
 ---
 
@@ -376,7 +378,7 @@ No se tomen los errores de manera personal, es como R se comunica con ustedes y 
 Error in 3 = 4 : lado izquierdo de la asignación inválida (do_set)
 
 
-Otros mensajes que salen en rojo y son comunes son:
+Otros mensajes que salen en rojo y son comunes (y no son errores) son:
 - Warnings, nos advierten pero si corre lo que le pusimos.
 - Messages, es para darnos mas información de lo que hicimos.
 
@@ -444,7 +446,7 @@ Pero que tal este?
 
 --
 
-- Es importante que nombremos los objetos con nombres que nos hagan sentido.  
+Es importante que nombremos los objetos con nombres que nos hagan sentido.  
 
 - R no acepta que los nombres comiencen con un numero (Eg."1NumeroAlumnos").  
 - Pero si pueden terminar con un numero (Eg."NumeroAlumnos1").  
@@ -577,9 +579,9 @@ Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son
 ```{r}
 #(Perritos*Croquetas)*Dias
 ```
-Hasta le podríamos agregar el precio de las croquetas para calcular cuanto nos salen nuestros lomitos.
+Hasta le podríamos agregar el precio de las croquetas, si quisieramos.
 
-```{r echo=FALSE, out.height=50}
+```{r echo=FALSE, out.height=100}
 knitr::include_graphics('https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
 ```
 
@@ -724,10 +726,8 @@ library("tidyverse")
 
 Manualmente: esquina inferior derecha>Files>  
 Doble clic en el archivo de **Pingus_1.csv**  
-
 Esta separado por comas, entonces:
-
-read_csv se usa cuando los valores estan separados por comas
+read_csv se usa cuando los valores estan separados por **comas**.
 ```{r, eval=FALSE}
 Pingus_csv<-read_csv(here("Pingus_1.csv"))
 ```
@@ -742,7 +742,7 @@ head(Pingus_csv)
 ### Formato CSV
 Doble clic en el archivo de **Pingus_2.csv**  
 Esta separado por punto y coma.  
-read_csv2 se usa para cuando estan separados con punto y coma.
+read_csv2 se usa para cuando estan separados con **punto y coma**.
 
 ```{r, eval=FALSE}
 Pingus_csv2<-read_csv(here("Pingus_2.csv"))
@@ -852,8 +852,11 @@ head(Pingus)
 # 2.4. Inspeccionar data frames
 
 Para ver mis primeras y ultimas filas
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 head(Pingus)
+```
+
+```{r, eval=TRUE}
 tail(Pingus)
 ```
 
@@ -883,7 +886,7 @@ Usando $ y el nombre de la columna .
 head(Pingus$especie)
 ```
 
-Las filas se pone entre corchetes en la **SEGUNDA** posición.
+Las columnas se pone entre corchetes en la **SEGUNDA** posición.
 ```{r}
 head(Pingus[,1])
 ```

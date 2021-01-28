@@ -170,22 +170,18 @@ R nos puede ahorrar tiempo y esfuerzo.
 
 .pull-left[
 R es el motor.  
-&lt;img src="https://images.unsplash.com/photo-1578586524259-489a03948798?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=751&amp;q=80" height="200" /&gt;
+&lt;img src="https://images.unsplash.com/photo-1578586524259-489a03948798?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=751&amp;q=80" height="150" /&gt;
 ]
 
 .pull-right[
 RStudio es el volante.  
-&lt;img src="https://images.unsplash.com/photo-1605445622210-2dd2586bccea?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJpdmluZyUyMHdoZWVsfGVufDB8fDB8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="200" /&gt;
+&lt;img src="https://images.unsplash.com/photo-1605445622210-2dd2586bccea?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJpdmluZyUyMHdoZWVsfGVufDB8fDB8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="150" /&gt;
 ]
 
 ---
 
 ## 1.3. Ubicarse en RStudio
 ### Partes
-
-.pull-left[
-&lt;img src="https://songeo.github.io/introduccion-r-bookdown/figures/console-descr.png" height="350" /&gt;
-]
 
 .pull-right[
 **Editor de codigo** es principalmente para armar nuestro script, correr secciones del mismo y modificarlo.
@@ -196,6 +192,12 @@ RStudio es el volante.
 
 **Visualizador/Salida** tiene varias opciones que vamos a ir viendo.
 ]
+
+.pull-left[
+&lt;img src="https://songeo.github.io/introduccion-r-bookdown/figures/console-descr.png" height="250" /&gt;
+]
+
+
 
 ---
 
@@ -422,7 +424,7 @@ No se tomen los errores de manera personal, es como R se comunica con ustedes y 
 Error in 3 = 4 : lado izquierdo de la asignación inválida (do_set)
 
 
-Otros mensajes que salen en rojo y son comunes son:
+Otros mensajes que salen en rojo y son comunes (y no son errores) son:
 - Warnings, nos advierten pero si corre lo que le pusimos.
 - Messages, es para darnos mas información de lo que hicimos.
 
@@ -495,7 +497,7 @@ Pero que tal este?
 
 --
 
-- Es importante que nombremos los objetos con nombres que nos hagan sentido.  
+Es importante que nombremos los objetos con nombres que nos hagan sentido.  
 
 - R no acepta que los nombres comiencen con un numero (Eg."1NumeroAlumnos").  
 - Pero si pueden terminar con un numero (Eg."NumeroAlumnos1").  
@@ -642,9 +644,9 @@ Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son
 ```r
 #(Perritos*Croquetas)*Dias
 ```
-Hasta le podríamos agregar el precio de las croquetas para calcular cuanto nos salen nuestros lomitos.
+Hasta le podríamos agregar el precio de las croquetas, si quisieramos.
 
-&lt;img src="https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" height="50" /&gt;
+&lt;img src="https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" height="100" /&gt;
 
 ---
 
@@ -831,10 +833,8 @@ library("tidyverse")
 
 Manualmente: esquina inferior derecha&gt;Files&gt;  
 Doble clic en el archivo de **Pingus_1.csv**  
-
 Esta separado por comas, entonces:
-
-read_csv se usa cuando los valores estan separados por comas
+read_csv se usa cuando los valores estan separados por **comas**.
 
 ```r
 Pingus_csv&lt;-read_csv(here("Pingus_1.csv"))
@@ -851,7 +851,7 @@ head(Pingus_csv)
 ### Formato CSV
 Doble clic en el archivo de **Pingus_2.csv**  
 Esta separado por punto y coma.  
-read_csv2 se usa para cuando estan separados con punto y coma.
+read_csv2 se usa para cuando estan separados con **punto y coma**.
 
 
 ```r
@@ -1004,7 +1004,37 @@ Para ver mis primeras y ultimas filas
 
 ```r
 head(Pingus)
+```
+
+```
+## # A tibble: 6 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
+## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+
+```r
 tail(Pingus)
+```
+
+```
+## # A tibble: 6 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Barbijo Dream          45.7         17              195            3650 hemb~
+## 2 Barbijo Dream          55.8         19.8            207            4000 macho
+## 3 Barbijo Dream          43.5         18.1            202            3400 hemb~
+## 4 Barbijo Dream          49.6         18.2            193            3775 macho
+## 5 Barbijo Dream          50.8         19              210            4100 macho
+## 6 Barbijo Dream          50.2         18.7            198            3775 hemb~
+## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
 ---
@@ -1059,7 +1089,7 @@ head(Pingus$especie)
 ## Levels: Adelia Barbijo Papúa
 ```
 
-Las filas se pone entre corchetes en la **SEGUNDA** posición.
+Las columnas se pone entre corchetes en la **SEGUNDA** posición.
 
 ```r
 head(Pingus[,1])
