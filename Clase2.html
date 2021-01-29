@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <link href="Clase2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Clase2_files/remark-css-0.0.1/middlebury-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clase 2
+## Graficos
+### Miriam Lerma
+### Febrero 2021
+
+---
+
+
+# 1. Intro
+
+La clase es de 2 horas.
+
+Hoy: 
+
+- ~40 minutos de teoría  
+(porque hacer graficos, que es ggplot y conceptos básicos para crear graficos)
+
+--
+
+- ~15 minutos de practica  
+Van a abrir R, crear un grafico basico y no guarden su script o no cierren R.
+
+--
+
+- 10 minutos de receso, siesta, café u otros.
+También pueden ser para resolver dudas.
+
+--
+
+- ~30 minutos de teoría.  
+(cambiar la estetica de mis graficos)
+
+--
+
+- ~20 minutos de practica.  
+Van a cambiar la estetica de su grafico.
+
+--
+
+Si da tiempo:  
+Un poco de inspiracion y la infinidad de opciones de graficos.
+
+---
+
+# Quienes son ustedes? (...por hoy)
+
+.pull-left[
+Ademas de muy madrugadores
+
+&lt;img src="https://images.unsplash.com/photo-1601315447719-cf782668d24e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDJ8fHJvb3N0ZXJ8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="200" /&gt;
+]
+--
+
+.pull-right[
+- Conocimientos basicos de R (saben abrirlo, cargar paquetes y datos)
+
+- Quieren hacer graficos con sus datos usando R
+]
+
+---
+
+class: center, middle
+
+# Como quiero que salgan.
+
+.pull-left[
+Haciendo graficos maravillosos que quieran presumir  
+&lt;img src="https://images.unsplash.com/photo-1496740019327-63371ac821e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=802&amp;q=80" height="250" /&gt;
+]
+
+--
+.pull-right[
+Pero por ahora:
+
+- Sepan como graficar sus datos
+
+]
+
+---
+
+# Créditos
+
+-Todo el material basado en el libro:  
+[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+
+-Y el libro de:  
+[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+
+-Y materiales de RLadies   
+[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[Primeros pasos en R por Riva Quuiroga](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
+
+
+Imagenes adicionales
+[Unsplash](https://unsplash.com/)
+
+---
+class: center, middle
+
+# Empecemos
+
+---
+
+# 1.1. Teoria
+
+El objetivo de un grafico es comunicar
+
+En ciencia, un grafico simple a veces es mejor porque la idea es brindar informacion.
+
+--
+
+Hay muchos paquetes para hacer graficos ademas de ggplot2
+pero ggplot es uno de los mas versatiles
+... y del que encuentras mas ayuda e inspiracion.
+
+---
+
+# 1.2. Como funciona?
+
+- A statistical graphic is a mapping data variables to aesthethic attributes of geometric objects
+
+Para objetivos practicos, un grafico se puede dividir en tres componentes esenciales:  
+- Datos (data): conjunto de datos compuesto por varables que mapeamos.  
+- Geometria (geom): objeto geometrico en cuestion. Puntos, lineas, barras?  
+- Estetica (aes): atributos esteticos del objeto geometrico, posicion color, forma, tamanio.
+
+ggplot funciona por capas, si han usado SIG (sistema de informacion geografica) estaran mas familiarizados.
+
+
+---
+
+# 1.3. Practica a la par
+## Instalar y cargar
+
+
+```r
+install.packages("ggplot2")
+```
+
+Otros paquetes que nos seran utiles hoy
+
+```r
+library(datos)
+library(tidyverse)
+library(ggplot2)
+```
+
+---
+
+# 1.3. Practica 
+### Instalar y cargar
+
+Cargar datos de prueba
+
+```r
+Prueba&lt;-datos::clima
+```
+
+---
+
+# 1.3. Practica 
+### Agregar datos
+
+
+```r
+ggplot(data=Prueba)
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+Paso algo?
+
+---
+
+# 1.3. Practica
+### Agregar ejes
+
+Abran su tabla, que columnas tenemos.  
+Darle informacion de los ejes.  
+Noten que sus ejes tienen que ser columnas en su tabla.  
+
+```r
+ggplot(data=Prueba, mapping=aes(x=humedad,y=visibilidad))
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+Ok, tenemos los ejes.
+
+---
+
+# 1.3. Practica
+### Agregar geometria
+
+
+```r
+ggplot(data=Prueba, mapping=aes(x=humedad,y=visibilidad))+
+  geom_point()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+  
+Nota: te salio un warning?
+Que dice el warning?
+
+
+---
+
+# 1.4. Tipos de graficos
+
+Hoy: 
+- Puntos
+- Lineas
+- Barras
+- Boxplots
+- Trajectorias 
+- Mapas
+
+... pero hay muchos mas.
+
+---
+
+# 1.4. Tipos de graficos
+### Grafico de puntos, diagramas de dispersion, o scatterplot
+
+Datos inventados de camarones, tamanio y densidad del cultivo.
+
+```r
+Especies&lt;-c('Lito','Lito','Lito','Lito','Lito')
+Camarones&lt;-as.data.frame(Especies)
+Camarones$Tamanio&lt;-c(1.5,1.6,1.8,1.9,2.1)
+Camarones$Densidad&lt;-c(100,200,300,400,500)
+```
+
+---
+
+# 1.4. Tipos de graficos
+### Grafico de puntos
+Diagramas de dispersion, o scatterplot
+
+Grafico de datos inventados de camarones, tamanio y densidad del cultivo.
+
+```r
+ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
+* geom_point()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+
+
+
+---
+
+# 1.4. Tipos de graficos
+### Grafico de lineas
+
+Datos inventados de tipo de algas, en meses (tiempo) y densidad (cantidad)
+
+```r
+Algas&lt;-c('B','E','B','B','B','B','E','B','E','B')
+MareaRoja&lt;-as.data.frame(Algas)
+MareaRoja$Tiempo&lt;-c(1,2,3,4,5,6,7,8,9,10)
+MareaRoja$Cantidad&lt;-c(100,200,300,200,200,300,400,500,700,200)
+```
+
+---
+
+# 1.4. Tipos de graficos
+### Grafico de lineas
+
+Grafico de datos inventados de tipo de bacterias, meses (tiempo) y densidad (cantidad)
+
+```r
+ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
+* geom_line()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+
+---
+
+# 1.4. Tipos de graficos
+### Grafico de barras
+
+Datos Inventados de microbiota vaginal en mujeres de diferente edad, y densidad (cantidad)
+
+```r
+Microbiota&lt;-c('B','E','B','B','B','B','E','B','E','B')
+Microbiota&lt;-as.data.frame(Microbiota)
+Microbiota$Edad&lt;-c(20,25,30,35,40,45,50,55,60,65)
+Microbiota$Cantidad&lt;-c(100,200,300,200,200,300,400,500,700,200)
+```
+
+---
+
+# 1.4. Tipos de graficos
+### Grafico de barras
+
+Grafico de Datos Inventados
+
+```r
+ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
+* geom_bar()
+```
+Error: stat_count() can only have an x or y aesthetic.
+
+---
+
+
+# 1.4. Tipos de graficos
+### Grafico de barras
+
+Grafico de datos inventados de microbiota por edad y cantidades
+
+```r
+ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
+* geom_bar(stat='identity')
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+
+
+---
+
+# 1.4. Tipos de graficos
+### 1.6. Boxplot
+
+Datos inventados de salinidad en Bahia de Santa Maria diferencias en las estaciones muestreadas
+
+```r
+Salinidad&lt;-c(38,39,38,37,36,40,38,36,35,38)
+Mes&lt;-c(1,2,3,4,5,6,7,8,9,10)
+Estacion&lt;-c(1,1,1,1,1,2,2,2,2,2)
+BSM&lt;-as.data.frame(Salinidad)
+BSM$Mes&lt;-Mes
+BSM$Estacion&lt;-as.factor(Estacion)
+```
+
+---
+
+# 1.4. Tipos de graficos
+### 1.6. Boxplot
+
+Grafico de datos inventados de salinidad en Bahia de Santa Maria diferencias en las estaciones muestreadas.
+
+```r
+ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
+* geom_boxplot()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+
+
+---
+
+# 1.4. Tipos de graficos
+### Trayectorias
+
+Datos inventados de un bobo cafe que tenemos datos de latitud y longitud.
+
+```r
+Latitud&lt;-c(8,9,10,9,8,6,5,9,8,7,6,5) #eje x
+Longitud&lt;-c(5,6,7,6,5,4,3,4,5,6,7,5) #eje y
+Bobos&lt;-as.data.frame(Longitud)
+Bobos$Latitud&lt;-Latitud
+```
+
+---
+
+# 1.4. Tipos de graficos
+### Trayectorias
+
+Graficos de datos inventados de un bobo cafe que tenemos datos de latitud y longitud.
+
+```r
+ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
+* geom_path()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+
+---
+
+# 1.4. Tipos de graficos
+### Mapas
+
+
+```r
+library(rnaturalearth)
+library(rnaturalearthdata)
+```
+
+
+```r
+world &lt;- ne_countries(scale = "medium", returnclass = "sf") # en clase sf
+```
+
+---
+
+# 1.4. Tipos de graficos
+### Mapas
+
+Coordenadas de Sinaloa approx. 20 grados Norte, 110 grados Oeste (Noroeste)
+
+```r
+ggplot()+
+*   geom_sf(data = world) +
+*   coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE)
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+---
+
+class: center, middle
+
+# Su turno!
+
+![](https://images.unsplash.com/photo-1459550190311-6b6947cc215e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=667&amp;q=80)&lt;!-- --&gt;
+
+
+---
+
+
+# 1.5. Ejercicios
+
+10 minutos
+
+Crea un grafico de puntos con los datos de Piguinos
+
+1. Carga los datos
+
+```r
+library(datos)
+Pingus&lt;-datos::pinguinos
+```
+
+2. Rellena los espacios (*****) para graficar la relacion entre el largo del pico y el largo de la aleta.
+
+```r
+#ggplot(data=***, mapping=aes(x=***,y=***))+
+#  geom_***()
+```
+
+---
+
+class: center, middle
+
+# Pausa de 10 minutos
+
+&lt;img src="https://images.unsplash.com/photo-1503481766315-7a586b20f66d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1335&amp;q=80" height="300" /&gt;
+
+---
+
+# 1.5. Ejercicios
+
+## Respuesta
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
+  geom_point()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+
+
+---
+
+# 2. Estetica
+
+---
+
+#2.1. Esteticas 
+### Colores de los simbolos
+
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, 
+*                               color=especie))+
+  geom_point()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+
+
+---
+
+#2.1. Esteticas 
+### Temas
+
+Agrege al grafico **theme_bw()**
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()+
+* theme_bw()
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+
+
+---
+
+#2.1. Esteticas 
+###  Fondos
+
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()+
+  theme_bw()+
+* theme(panel.background = element_rect(fill = 'darkblue'))
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
+
+
+```r
+?theme
+```
+
+---
+
+#2.1. Esteticas 
+### Modificar ejes
+
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()+
+  theme_bw()+
+* xlab('Largo Pico')+ylab('Largo Aleta')
+```
+
+```
+## Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
+
+
+---
+
+#2.1. Esteticas 
+### Tamanio de letras
+
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()+
+  theme_bw()+
+* theme(axis.title = element_text(size=20))
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+
+---
+
+#2.1. Esteticas 
+### Etiquetas
+
+
+```r
+ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()+
+  theme_bw()+
+* theme(legend.position = "top")
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-34-1.png)&lt;!-- --&gt;
+
+---
+
+# 3.1 Ayuda
+## Cheat sheet
+
+Help&gt;CheatSheets&gt;Data Visualization with ggplot
+
+---
+
+# 3.2. Errores comunes
+### Orden
+
+No tener los datos ordenados
+&lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/visualization-stat-bar.svg" height="300" /&gt;
+De libro R4DS
+
+---
+
+# 3.2. Errores comunes
+### Sintaxis
+
+No poner el **+**
+
+```r
+#ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))
+#  geom_point()
+```
+
+--
+
+Poner el **+** en el lugar incorrecto
+
+```r
+#ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))
+# +geom_point()
+```
+
+--
+
+No cerrar parentesis
+
+
+```r
+#ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)+
+# geom_point()
+```
+
+---
+
+# 3.3. Ejercicios
+
+Pero primero sepan que pueden guardar su grafico como objeto.
+
+```r
+MiGrafico&lt;-ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()
+```
+
+Pueden agregar esteticas a su grafico base con el signo de +
+
+```r
+MiGrafico+
+  theme_bw()+
+  theme(legend.position = "top")
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
+
+
+---
+
+# 3.3. Ejercicios
+
+Tambien sepan que no necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
+
+```r
+MiGrafico&lt;-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+  geom_point()
+MiGrafico
+```
+
+![](Clase2_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
+
+---
+
+### Su turno
+
+a) Intenten crear un grafico solos y los asistire si tienen dudas  
+
+b) Les dare instrucciones
+
+Creen un grafico de puntos con los datos de diamantes
+
+```r
+Diamantes&lt;-datos::diamantes
+```
+
+Grafiquen el *precio* por el *quilate* y cambien el color de lo puntos de acuerdo al *corte* y cambien el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
+
+```r
+#ggplot(data=***,mapping=aes(x=***, y=***, color=****))+
+#  geom_****()+
+#  theme_bw()+
+#  xlab("**")+ylab("***")
+```
+
+
+
+---
+
+
+class: center, middle
+
+# Estoy para dudas
+
+&lt;img src="https://images.unsplash.com/photo-1499377193864-82682aefed04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1361&amp;q=80" height="300" /&gt;
+
+---
+
+# 4. Otras posibilidades
+
+---
+# 4.1. Animaciones
+
+Los graficos se pueden animar.
+
+
+```r
+library(gganimate)
+```
+
+&lt;img src="https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/r-tutorial/images/transition_time.gif" height="200" /&gt;
+
+--
+
+# 4.2. Inspiracion
+
+[Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)
+
+Twitter:#tidytuesday #DatosDeMiercoles, #30díasdegráficos
+
+---
+
+# Recapitulando
+
+1.1 Teoria.  
+1.2 Graficos con ggplot.  
+1.3. Practica.  
+1.4. Tipos de grafico.  
+
+2.1. Temas.  
+2.2. Nombres en los ejes.  
+2.3. Colores.  
+2.4. Tamanio letras.  
+
+3.1 Ayuda.  
+3.2 Errores comunes.  
+
+4.1 Animaciones.  
+4.2 Inspiracion.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
