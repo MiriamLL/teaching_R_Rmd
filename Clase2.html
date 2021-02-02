@@ -18,11 +18,11 @@ class: center, middle, inverse, title-slide
 
 ---
 
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
 
 # 1. Intro
-
-
-&lt;i class="fas fa-code-branch"&gt;&lt;/i&gt;
 
 La clase es de 2 horas.
 
@@ -31,27 +31,18 @@ Hoy:
 - ~40 minutos de teoría  
 (porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos)
 
---
-
 - ~15 minutos de práctica  
 Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.
-
---
 
 - 10 minutos de receso, siesta, café u otros.
 También pueden ser para resolver dudas.
 
---
-
 - ~30 minutos de teoría.  
 (cambiar la estética de mis gráficos)
-
---
 
 - ~20 minutos de práctica.  
 Van a cambiar la estética de su gráfico.
 
---
 
 Si da tiempo:  
 Un poco de inspiración y la infinidad de opciones de gráficos.
@@ -72,6 +63,10 @@ background-image: url(https://images.unsplash.com/photo-1496740019327-63371ac821
 background-size: cover
 
 # Como quiero que salgan
+
+Pero por ahora:
+
+- Creen sus primeros gráficos
 
 ---
 
@@ -227,7 +222,7 @@ ggplot(data=Prueba)
 
 --
 
-![](Clase2_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -242,7 +237,7 @@ ggplot(data=Prueba,
        mapping=aes(x=humedad,y=visibilidad))
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 Noten que sus ejes tienen que ser columnas en su tabla.
 
@@ -258,7 +253,7 @@ ggplot(data=Prueba,
 *      geom_point()
 ```
   
-![](Clase2_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 
 Nota: te salio un warning?
 Que dice el warning?
@@ -307,7 +302,7 @@ ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
 * geom_point()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -336,7 +331,7 @@ ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
 * geom_line()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -380,7 +375,7 @@ ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
 * geom_bar(stat='identity')
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
 
 
 
@@ -412,7 +407,7 @@ ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
 * geom_boxplot()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -441,7 +436,7 @@ ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
 * geom_path()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -472,7 +467,7 @@ ggplot()+
 *   coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE)
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -489,7 +484,7 @@ background-size: cover
 
 
 
-🕛 10 minutos 🕣
+🕔 10 minutos 🕛
 
 Crea un gráfico de puntos con los datos de Pingüinos 🐦
 
@@ -530,7 +525,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
   geom_point()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-42-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-41-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -553,7 +548,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm,
   geom_point()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-44-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-43-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -568,7 +563,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme_bw()
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-46-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-45-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -584,7 +579,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme(panel.background = element_rect(fill = 'darkblue'))
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-48-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-47-1.png)&lt;!-- --&gt;
 
 
 ```r
@@ -604,7 +599,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * xlab('Largo Pico')+ylab('Largo Aleta')
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-51-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-50-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -620,7 +615,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme(axis.title = element_text(size=20))
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-53-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-52-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -635,7 +630,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme(legend.position = "top")
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-55-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-54-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -719,7 +714,7 @@ MiGrafico&lt;-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie
 MiGrafico
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-63-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-62-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -733,7 +728,9 @@ a) Intenten crear un gráfico solos y los asistiré si tienen dudas
 
 b) Les daré instrucciones
 
---
+---
+
+### Su turno
 
 Creen un gráfico de puntos con los datos de diamantes
 
@@ -772,7 +769,7 @@ ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
 ```
 
 Gráfico  
-![](Clase2_files/figure-html/unnamed-chunk-67-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-66-1.png)&lt;!-- --&gt;
 
 ---
 
