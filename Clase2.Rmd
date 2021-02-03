@@ -218,7 +218,7 @@ Prueba<-datos::clima
 ---
 
 # 1.3. Practica 
-## Agregar datos
+### Agregar datos
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Prueba)
@@ -226,8 +226,12 @@ ggplot(data=Prueba)
 
 --
 
-```{r, fig.height=3, echo=FALSE, include=TRUE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data=Prueba)
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-11-1.png')
 ```
 
 ---
@@ -235,20 +239,20 @@ ggplot(data=Prueba)
 # 1.3. Practica
 ### Agregar ejes
 
-
-
 ```{r, echo=TRUE, eval=FALSE}
+ggplot(data=Prueba,mapping=aes(x=humedad,y=visibilidad))
+```
+
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data=Prueba, 
        mapping=aes(x=humedad,y=visibilidad))
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE}
-ggplot(data=Prueba, 
-       mapping=aes(x=humedad,y=visibilidad))
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-13-1.png')
 ```
 
 Noten que sus ejes tienen que ser columnas en su tabla.
-
 ---
 
 # 1.3. Practica
@@ -260,10 +264,14 @@ ggplot(data=Prueba,
        geom_point() #<<
 ```
   
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Prueba, 
        mapping=aes(x=humedad,y=visibilidad))+
        geom_point() #<<
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-15-1.png')
 ```
 
 Nota: te salio un warning?
@@ -313,11 +321,14 @@ ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
   geom_point() #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
   geom_point() #<<
 ```
 
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-19-1.png')
+```
 
 ---
 
@@ -343,9 +354,13 @@ ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
   geom_line() #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
   geom_line() #<<
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-22-1.png')
 ```
 
 ---
@@ -368,8 +383,7 @@ Microbiota$Cantidad<-c(100,200,300,200,200,300,400,500,700,200)
 
 Gráfico de datos inventados
 ```{r, fig.height=3, echo=TRUE,eval=FALSE}
-ggplot(data=Microbiota,
-       mapping=aes(x=Edad, y=Cantidad))+
+ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
   geom_bar() #<<
 ```
 Error: stat_count() can only have an x or y aesthetic.
@@ -387,11 +401,14 @@ ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
   geom_bar(stat='identity') #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
   geom_bar(stat='identity') #<<
 ```
 
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-26-1.png')
+```
 
 
 ---
@@ -420,9 +437,13 @@ ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
   geom_boxplot() #<<
 ```
 
-```{r, fig.height =3, echo=FALSE, include=TRUE}
+```{r, fig.height =3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
   geom_boxplot()
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-29-1.png')
 ```
 
 
@@ -450,9 +471,13 @@ ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
   geom_path() #<<
 ```
 
-```{r, fig.height=4, echo=FALSE, include=TRUE}
+```{r, fig.height=4, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
   geom_path()
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-31-1.png')
 ```
 
 ---
@@ -481,10 +506,14 @@ ggplot()+
     coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE) #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot()+
     geom_sf(data = world) + #<<
     coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE)
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-36-1.png')
 ```
 
 ---
@@ -542,11 +571,14 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
   geom_point()
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
   geom_point()
 ```
 
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-41-1.png')
+```
 
 ---
 
@@ -567,12 +599,15 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm,
   geom_point()
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, 
                                 color=especie))+
   geom_point()
 ```
 
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-43-1.png')
+```
 
 ---
 
@@ -585,12 +620,15 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme_bw() #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()
 ```
 
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-50-1.png')
+```
 
 ---
 
@@ -604,15 +642,15 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme(panel.background = element_rect(fill = 'darkblue'))#<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   theme(panel.background = element_rect(fill = 'darkblue'))
 ```
 
-```{r, eval=FALSE}
-?theme
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-47-1.png')
 ```
 
 ---
@@ -627,11 +665,15 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   xlab('Largo Pico')+ylab('Largo Aleta')#<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   xlab('Largo Pico')+ylab('Largo Aleta')
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-50-1.png')
 ```
 
 
@@ -647,11 +689,15 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme(axis.title = element_text(size=20)) #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   theme(axis.title = element_text(size=20))
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-52-1.png')
 ```
 
 ---
@@ -666,11 +712,15 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme(legend.position = "top") #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   theme(legend.position = "top")
+```
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-54-1.png')
 ```
 
 ---
@@ -746,7 +796,8 @@ MiGrafico+ #<<
 
 También sepan que no necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
 ```{r, echo=TRUE, eval=FALSE}
-MiGrafico<-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
+MiGrafico<-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, 
+                              color=especie))+
   geom_point()
 MiGrafico
 ```
@@ -806,11 +857,15 @@ ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
 ```
 
 Gráfico  
-```{r, fig.height=3, echo=FALSE, include=TRUE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
 ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
   geom_point()+
   theme_bw()+
   xlab("Precio en pesos")+ylab("kt")
+```
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png')
 ```
 
 ---
