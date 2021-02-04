@@ -11,6 +11,9 @@ output:
       highlightLines: true
       countIncrementalSlides: true
 ---
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
 
 ## 1. Intro
 
@@ -21,26 +24,21 @@ Hoy:
 - ~40 minutos de teoría  
 (historia de R, que es RStudio y algunos conceptos básicos para orientarse en RStudio)
 
---
 
 - ~15 minutos de practica  
 Van a abrir R, ubicar las partes y correr algunas variables.
 
---
 
 - 10 minutos de receso, siesta, café u otros.
 También pueden ser para resolver dudas.
---
 
 - ~30 minutos de teoría.  
 (paquetes, directorios y como cargar mis datos)
 
---
 
 - ~20 minutos de practica.  
 Van a cargar archivos que están en el drive.
 
---
 
 Si da tiempo:  
 Porque usar Rmarkdown?
@@ -68,25 +66,19 @@ knitr::include_graphics("https://images.unsplash.com/photo-1601315447719-cf78266
 ]
 
 ---
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aGFja2VyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-size: cover
 
 ## Como quiero que salgan....
 
-.pull-left[
-Sintiéndose como the matrix  
-```{r, echo=FALSE, out.height=250, out.width= 300}
-knitr::include_graphics("https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aGFja2VyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
-
-```
-]
-
 --
-.pull-right[
+
 Pero por ahora:
 
 - Sepan R
 
 - Puedan cargar datos
-]
 
 ---
 
