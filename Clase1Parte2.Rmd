@@ -37,10 +37,6 @@ Rmarkdowm
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1606818855637-f637cdb124b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
-background-size: cover
-
 ## Quienes son ustedes? (...por hoy)
 
 Ademas de muy madrugadores
@@ -76,7 +72,7 @@ Imágenes adicionales
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-image: url(https://images.unsplash.com/photo-1606818855637-f637cdb124b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
 # Empecemos!
@@ -96,7 +92,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 ```
 Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
 
- queremos pasar el primer paso que es importar nuestros datos. 
+Hoy queremos pasar el primer paso que es importar nuestros datos. 
 
 ---
 
