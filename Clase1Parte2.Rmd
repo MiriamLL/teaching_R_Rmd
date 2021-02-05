@@ -1,0 +1,710 @@
+---
+title: "Clase 1"
+subtitle: "Intro a R - Parte II"
+author: "Miriam Lerma"
+date: "Febrero 2021"
+output:
+  xaringan::moon_reader:
+    css: ["default","chocolate-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+## 1. Intro
+
+La clase es de 2 horas.
+
+- Teoría.  
+Paquetes, Directorios, Cargar datos.
+
+- Practica.  
+Cargar datos desde csv, txt, excel y desde una url (internet).
+Inspeccionar data.frames.
+
+```{r, echo=FALSE}
+library(emo)
+```
+
+- Necesito:
+Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
+`r emo::ji("clock")`
+
+Si da tiempo:
+Rmarkdowm
+- Porque .Rmd ?
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1606818855637-f637cdb124b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
+
+## Quienes son ustedes? (...por hoy)
+
+Ademas de muy madrugadores
+
+- Saben abrir e identificar partes de R Studio
+
+- Quieren cargar sus datos a RStudio y poder inspeccionarlos.
+
+## Como quiero que salgan....
+
+- Puedan cargar datos y verlos en su computadora.
+
+---
+
+# Créditos
+
+-El material esta basado en el libro:  
+[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+
+-El libro de:  
+[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+
+-Y materiales de RLadies   
+[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[Primeros pasos en R por Riva Quiroga](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
+
+
+Imágenes adicionales
+[Unsplash](https://unsplash.com/)
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-size: cover
+
+# Empecemos!
+
+.right[
+Foto de [Unsplash](https://unsplash.com)
+]
+
+
+---
+
+## 2. Importar datos
+Un proyecto típico de ciencia de datos se ve así:
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg')
+```
+Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
+
+ queremos pasar el primer paso que es importar nuestros datos. 
+
+---
+
+## 2.1. Paquetes
+
+- Son colecciones de funciones que realizan operaciones.  
+- Se instalan una única vez pero deben cargarse cada vez que se utilizan.  
+Para instalar hay que escribir: install.packages("").  
+Para cargar hay que escribir: library("").  
+
+--
+
+Ahora mismo abran la consola, escriban el siguiente código y denle enter
+```{r, eval=FALSE}
+install.packages("cowsay")
+```
+
+```{r, eval=FALSE}
+install.packages("here")
+```
+
+`r emo::ji("clock")` Tarda un poquito en cargarse...
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+Nota: nos da un warning, solo para **advertirnos** o **informarnos** de que contiene el paquete. No es un mensaje de error.
+
+Otra opción es ir al **workspace**
+Packages>Install>Escribir el nombre.
+
+---
+
+## 2.1. Paquetes
+
+```{r, eval=FALSE}
+say(what = "Ya sabes cargar paquetes!", by = "cat")
+```
+--
+No sale nada?
+--
+
+```{r, comment=""}
+library("cowsay")
+say(what = "Ya sabes cargar paquetes!", by = "cat")
+```
+
+---
+
+
+## 2.2. Directorios
+
+Donde están los archivos en tu computadora.  
+
+Manualmente: Esquina inferior derecha: **Salida** > Files > More > Set working directory
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/rstudio-console.svg')
+```
+
+Pero recuerden que no queremos hacer esto cada vez que entramos a R, queremos que sea automático y rápido.
+
+---
+
+## 2.2. Directorios
+### Donde están tus datos?
+
+Opción 1
+```{r, eval=FALSE}
+getwd()
+```
+
+```{r, eval=FALSE}
+setwd()
+```
+
+Se tiene que copiar y pegar completo y cada quien va a tener diferentes carpetas en sus computadoras.
+
+---
+
+## 2.2. Directorios
+### Donde están tus datos?
+
+```{r, eval=FALSE}
+library(here)
+```
+
+```{r, eval=FALSE}
+here()
+```
+
+Ventajas:
+- Usa la carpeta donde tenemos guardado el script para encontrar el archivo que necesitamos.
+- Se puede compartir con colaboradores.
+- Se adapta si mueves la carpeta de lugar.
+
+---
+
+
+# 2.3. Cargar datos
+### Formato CSV
+
+Cargar el paquete tidyverse
+```{r, message="FALSE", warning='FALSE'}
+library("tidyverse")
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato CSV
+
+Manualmente: esquina inferior derecha>Files>  
+Doble clic en el archivo de **Pingus_1.csv**  
+Esta separado por comas, entonces:
+read_csv se usa cuando los valores están separados por **comas**.
+```{r, eval=FALSE}
+Pingus_csv<-read_csv(here("Pingus_1.csv"))
+```
+
+```{r, eval=FALSE}
+head(Pingus_csv)
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato CSV
+Doble clic en el archivo de **Pingus_2.csv**  
+Esta separado por punto y coma.  
+read_csv2 se usa para cuando están separados con **punto y coma**.
+
+```{r, eval=FALSE}
+Pingus_csv2<-read_csv(here("Pingus_2.csv"))
+```
+
+```{r, eval=FALSE}
+head(Pingus_csv2)
+```
+
+--
+
+Funciono?
+
+
+Ah! tengo que usar read_csv2 para ";"
+```{r, eval=FALSE}
+Pingus_csv2<-read_csv2(here("Pingus_2.csv"))
+```
+
+```{r, eval=FALSE}
+head(Pingus_csv2)
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato tab
+
+Doble clic en el archivo de **Pingus_3.txt**.  
+Esta separado por espacios.  
+read_tsv se usa para documentos que tengan tab (espacio) separated values.  
+
+```{r, eval=FALSE}
+Pingus_txt<-read_tsv(here("Pingus_3.txt"))
+```
+
+```{r, eval=FALSE}
+head(Pingus_txt)
+```
+
+---
+
+# 2.3. Cargar datos
+### Formato Excel
+
+Hay que cargar la librería readxl
+```{r, eval=FALSE}
+library("readxl")
+```
+
+read_excel se usa para cargar archivos de excel.
+```{r, eval=FALSE}
+Pingus_excel<- read_excel(here("Pingus_4.xlsx"))
+```
+
+```{r, eval=FALSE}
+head(Pingus_excel)
+```
+
+Hay otros tipos de formatos pero no los vamos a ver hoy, ni creo que los vayamos a necesitar durante el curso.
+
+
+---
+
+# 2.3. Cargar datos
+### Desde Internet
+
+Fuentes de datos en Internet para practicar y que vamos a usar durante el curso:  
+- [TidyTuesday](https://github.com/rfordatascience/tidytuesday)  
+- [DatosDeMiercoles](https://github.com/cienciadedatos/datos-de-miercoles)  
+
+
+Base de datos de plásticos. Datos liberados el 26 de enero de 2021.
+```{r, message=FALSE, warning=FALSE}
+plastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
+```
+
+Datos de plásticos
+```{r}
+head(plastics,5)
+```
+
+---
+
+# 2.3. Cargar datos
+### Paquetes que contienen datos
+
+```{r}
+#install.packages("remotes")
+#remotes::install_github("cienciadedatos/datos")
+```
+
+```{r}
+library(datos)
+Pingus<-pinguinos
+```
+
+```{r}
+head(Pingus)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://unsplash.com/photos/g59r724bayQ)
+background-size: cover
+
+
+# 2.4. Ejercicios
+### Tu Turno
+
+Carga los datos de pinguinos  
+- Usando read_csv
+- Usando read_csv2
+- Usando read_tsv
+- Usando read_excel
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-size: cover
+
+# 3. Inspeccionar data frames
+
+.right[
+Foto de [Unsplash](https://unsplash.com)
+]
+
+---
+
+
+## 3. Inspeccionar data frames
+
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg')
+```
+Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
+
+Hay muchas maneras de ver y ordenar tus datos.
+
+---
+
+## 3. Inspeccionar data frames
+
+Por hoy practicaremos como:
+- Ver mis primeras y ultimas filas  
+- Ver filas especificas
+- Ver columnas especificas
+- Filtrar columnas y filas
+
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
+```
+  
+  Source: frases333
+---
+
+# 3.1. Inspeccionar
+### head() y tail()
+
+Para ver mis primeras y ultimas filas
+```{r, eval=TRUE}
+head(Pingus)
+```
+
+```{r, eval=TRUE}
+tail(Pingus)
+```
+
+---
+
+# 3.1. Filas
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
+```
+  
+  Source: frases333
+
+---
+# 3.1. Filas
+### Corchetes
+
+Las filas se pone entre corchetes en la **PRIMERA** posición.
+```{r}
+(Pingus[1,])
+```
+
+Muéstrame las primeras 3 filas. 
+El signo de **:** es como decir "de aqui hasta acá".
+```{r}
+(Pingus[1:3,])
+```
+
+---
+
+# 3.1. Filas
+### Pipe
+
+Otra manera de ver filas, usando paquetes dentro de **tidyverse**
+
+Es usando un **Pipe** (strg+alt+M)
+```{r, eval=FALSE}
+%>% 
+```
+"Encadena" funciones, y es mas fácil de leer cuando el código se va alargando. 
+
+Aquí le puedo decir muéstrame las primeras 6 filas.
+```{r}
+Pingus %>% 
+  head(6)
+```
+
+---
+
+# 3.2. Columnas
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
+```
+Source: frases333
+
+---
+
+# 3.2. Columnas
+### head()
+
+Usando $ y el nombre de la columna .  
+```{r}
+head(Pingus$especie)
+```
+
+Las columnas se pone entre corchetes en la **SEGUNDA** posición.
+```{r}
+head(Pingus[,1])
+```
+
+---
+
+# 3.1. Inspeccionar
+### select()
+
+Con la función **select()**, podemos elegir:
+
+- Que columnas quiero ver.
+```{r}
+Pingus %>% 
+  select(especie) %>% #<<
+  head()
+```
+
+---
+# 3.1. Inspeccionar
+### select(-)
+
+- Que columnas no quiero ver. 
+El signo **-** es como decir "menos ese"
+```{r}
+Pingus %>% 
+  select(-sexo) %>% #<<
+  head()
+```
+
+El signo de admiración **!** es como decir "diferente a".
+```{r}
+Pingus %>% 
+  select(!sexo) %>% #<<
+  head()
+```
+
+---
+
+# 3.1. Inspeccionar
+### select(:)
+
+- Seleccionar columnas que están en medio de varias columnas.  
+El signo de **:** es como decir "de aqui hasta acá".
+```{r}
+Pingus %>% 
+  select(largo_pico_mm:masa_corporal_g) %>% #<<
+  head()
+```
+
+---
+
+# 3.1. Inspeccionar
+### unique() o distinct()
+
+Valores únicos en esa columna.
+```{r}
+unique(Pingus$especie)
+```
+
+Usando paquetes de la librería **tidyverse**.
+```{r}
+pinguinos %>% 
+  distinct(especie) #<<
+```
+
+---
+
+# 3.1. Inspeccionar
+### Columnas y filas
+
+Muéstrame un dato especifico [FILA, COLUMNA]
+```{r}
+(Pingus[1,1])
+```
+
+```{r}
+(Pingus[3,2])
+```
+
+---
+
+# 3.2. Filtrar
+### Operadores
+Podemos filtrar columnas de acuerdo a valores que nos interesen.
+
+Pero para esto hay que conocer algunos operadores lógicos:
+
+- El símbolo **==** es para decir 'igual a'  
+- El símbolo **!=** es para decir 'distinto a'  
+- El símbolo **>** es para decir 'mayor que'
+- El símbolo **<** es para decir 'menor que'
+- El símbolo **>=** es para decir 'mayor o igual que'
+- El símbolo **<=** es para decir 'menor o igual que'
+- El símbolo **&** es para decir 'y'
+- El símbolo **|** es para decir 'o'
+
+---
+# 3.2. Filtrar
+### filter(==)
+
+```{r, eval=FALSE}
+Pingus %>%
+  filter(sexo == 'hembra')
+```
+Nota: las variables son sin comillas y las categorías en comillas.
+
+--
+
+Vayan a su environment... y revisen... se cambio mi tabla?
+
+--
+
+No. Hay que crear un nuevo objeto.
+```{r}
+PingusHembras<-Pingus %>%
+  filter(sexo == 'hembra')
+```
+Miren su environment.
+
+---
+
+# 3.4. Filtrar
+### filter(<=)
+
+```{r}
+Pingus %>%
+  filter(largo_pico_mm <= 39.1) #<<
+```
+
+---
+
+# 3.4. Filtrar
+### filter(>=)
+```{r}
+Pingus %>%
+  filter(largo_pico_mm >= 39.1)#<<
+```
+
+---
+
+# 3.4. Filtrar
+### filter(&)
+
+```{r}
+Pingus %>%
+  filter(isla == 'Biscoe' & especie =='Adelia')#<<
+```
+
+
+---
+class: title-slide, bottom
+
+# 3.5. Ejercicios
+- Crea un objeto con solo dos columnas, las de sexo y anio.
+```{r}
+#_____ <-Pingus %>%
+#  select(____,_____)
+```
+
+- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
+```{r}
+#______ <-Pingus %>%
+#  distinct(_____)
+```
+
+- Crea un objeto con solo machos.
+```{r}
+#______ <-Pingus %>%
+#  filter(_____ == '______')
+```
+
+- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
+```{r}
+#______ <-Pingus %>%
+#  filter(_____ == '______')%>%
+#  filter(______ >= ______)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1579619597328-142326e07210?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80)
+background-size: cover
+
+# Ya esta tarde, no?
+
+.right[
+Foto de [Unsplash](https://unsplash.com)
+]
+
+---
+
+class: inverse
+
+## Recapitulando
+
+- Instalar y cargar paquetes
+- Directorios
+- Importar datos
+- Mirar dentro de los data.frames
+- Filtrar datos
+
+---
+
+class: inverse
+
+## Glosario
+
+- **Editor de código** donde armamos nuestro script, corremos secciones y lo modificamos.  
+- **Consola** donde vemos el procesamiento y resultados de los análisis.  
+- **Workspace** y **environment** donde aparece la lista de objetos que creamos.  
+- **Vectores** son conjunto de valores del mismo tipo.  
+- **Clase** de los objetos puede ser caracteres, numérica, lógicos y muchos otros.  
+- **Dataframe** matriz de datos con filas y columnas.  
+- **Objetos** lo que nos aparece en nuestro environment cuando hacemos una asignación.  
+- **Directorio**, para cuestiones practicas, es la dirección donde están los archivos en tu computadora.
+- **Paquetes** son colecciones de funciones que realizan operaciones.  
+- **Funciones** es un argumento que realiza una tarea especifica.
+
+---
+
+# 4. RMarkdown
+
+Rmarkdown es muy conveniente porque podemos crear htmls o documentos word, e incluso presentaciones, de hecho esta es una presentación en Rmd.
+
+--
+
+## 4.1. Ejemplo rápido.
+
+File > NewFile > RMarkdown
+
+- Agregar nombre
+- Cambiar output a 'word_document'
+- Darle al botón knit
+
+--
+
+## 4.2. Aprender RMarkdown
+
+En español:
+[RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+
+En ingles:
+[RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)
+
