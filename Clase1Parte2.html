@@ -4,6 +4,7 @@
     <title>Clase 1</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
+    <script src="Clase1Parte2_files/header-attrs-2.6/header-attrs.js"></script>
     <link href="Clase1Parte2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="Clase1Parte2_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
   </head>
@@ -34,12 +35,25 @@ Inspeccionar data.frames.
 
 - Necesito:
 Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
-🕰
+🕤
 
 Si da tiempo:
 Rmarkdowm
 - Porque .Rmd ?
 
+---
+
+# Clase pasada
+
+- Asignación  
+[Discución en stackoverflow](https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-assignment-operators-in-r)  
+[R inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)  
+[Leer más](https://www.roelpeters.be/the-difference-between-arrow-and-equals-assignment-in-r/)   
+
+&lt;img src="https://www.roelpeters.be/wp-content/uploads/2020/05/APL_KEYBOARD_ARROW_ASSIGNMENT-768x470.jpg" height="300" /&gt;
+
+- Proyectos  
+[Trabajar por proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
 ---
 
 ## Quienes son ustedes? (...por hoy)
@@ -106,6 +120,7 @@ Hoy queremos pasar el primer paso que es importar nuestros datos.
 Para instalar hay que escribir: install.packages("").  
 Para cargar hay que escribir: library("").  
 
+Si han bajado apps a su cel, install.packages() es descargar la app y se hace una sola vez y library() es abrirla.
 --
 
 Ahora mismo abran la consola, escriban el siguiente código y denle enter
@@ -119,7 +134,7 @@ install.packages("cowsay")
 install.packages("here")
 ```
 
-🕗 Tarda un poquito en cargarse...
+🕠 Tarda un poquito en cargarse...
 
 ```r
 install.packages("tidyverse")
@@ -139,6 +154,7 @@ say(what = "Ya sabes cargar paquetes!", by = "cat")
 ```
 --
 No sale nada?
+
 --
 
 
@@ -387,8 +403,8 @@ head(plastics,5)
 
 
 ```r
-#install.packages("remotes")
-#remotes::install_github("cienciadedatos/datos")
+install.packages("remotes")
+remotes::install_github("cienciadedatos/datos")
 ```
 
 
@@ -414,6 +430,24 @@ head(Pingus)
 ## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
 ## # ... with 1 more variable: anio &lt;int&gt;
 ```
+
+---
+
+
+# 2.3. Unir documentos
+
+Se pueden unir muchos documentos (En este ejemplo .xlsx)
+Pero **ojo** el numero de columnas y nombres de las columnas debe ser lo mismo.
+
+
+```r
+MainFolder&lt;-here()
+FilesTracking &lt;- list.files(MainFolder,pattern="*.xlsx",full.names=TRUE)
+ListTracking &lt;- lapply(FilesTracking,read_excel)
+ListTracking #Te muestra todos los documentos de la carpeta
+AllTracks &lt;- do.call("rbind",ListTracking)
+```
+
 
 ---
 
@@ -1012,6 +1046,7 @@ En español:
 
 En ingles:
 [RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&amp;t=6552s)
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
