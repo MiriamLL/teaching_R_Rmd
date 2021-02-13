@@ -11,7 +11,7 @@ https://miriamll.github.io/Curso_CIAD/Clase1Parte2
 
 
 Clase 2: Visualizacion de datos.  
-https://miriamll.github.io/Curso_CIAD/Clase2_parte1
+https://miriamll.github.io/Curso_CIAD/Clase2Parte1
 
 
 Clase 3: Ordenar datos.
