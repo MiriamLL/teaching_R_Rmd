@@ -20,7 +20,7 @@ Clase 3: Ordenar datos.
 Clase 4: Inspeccionar datos y obtener resultados preliminares.
 
 
-Clase 5: Estructurar en Rmd. 
+Clase 5: Escribir mis metodos y analisis estadisticos en Rmd. 
 
 
 Clase 6: Trabajar con otros. 
