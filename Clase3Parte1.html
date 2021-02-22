@@ -28,9 +28,9 @@ La clase es de 2 horas.
 Teoria: Operaciones sencillas.  
 Practica: Ejercicios con operaciones.  
 
-- Parte II:
-Teoria: Datos ordenados.
-Practica: Ejercicios con funciones de tidyverse.
+- Parte II:  
+Teoria: Datos ordenados.  
+Practica: Ejercicios con funciones de tidyverse.  
 
 
 
@@ -49,7 +49,7 @@ Practica: Ejercicios con funciones de tidyverse.
 
 
 - Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado 🕙.
+Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado 🕤.
 
 ---
 
@@ -639,7 +639,7 @@ MiMejorAcomodo&lt;-c('Miriam','Mujer')
 ```
 
 Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
-Si no el proceso de ordenarlos puede ser tardado 🕞.
+Si no el proceso de ordenarlos puede ser tardado 🕒.
 
 ---
 
@@ -878,6 +878,10 @@ Pingus %&gt;%
 ## 10          42           20.2            190
 ## # ... with 334 more rows
 ```
+
+---
+
+## 5.6. select(:)
 
 Como seleccionando como inicia.
 
@@ -1158,6 +1162,11 @@ pinguinos %&gt;%
 ## 3 Barbijo
 ```
 
+---
+
+## 5.12. unique() o distinct()
+Valores únicos en esa columna.
+
 
 ```r
 Pingus %&gt;% 
@@ -1189,25 +1198,8 @@ Pingus %&gt;%
 Otra opcion:
 
 ```r
-(PingusSinNA &lt;- Pingus %&gt;% 
-  filter(!is.na(largo_pico_mm)))
-```
-
-```
-## # A tibble: 342 x 9
-##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
-##  2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-##  3 Adelia  Torg~          40.3         18              195            3250 hemb~
-##  4 Adelia  Torg~          36.7         19.3            193            3450 hemb~
-##  5 Adelia  Torg~          39.3         20.6            190            3650 macho
-##  6 Adelia  Torg~          38.9         17.8            181            3625 hemb~
-##  7 Adelia  Torg~          39.2         19.6            195            4675 macho
-##  8 Adelia  Torg~          34.1         18.1            193            3475 &lt;NA&gt; 
-##  9 Adelia  Torg~          42           20.2            190            4250 &lt;NA&gt; 
-## 10 Adelia  Torg~          37.8         17.1            186            3300 &lt;NA&gt; 
-## # ... with 332 more rows, and 2 more variables: anio &lt;int&gt;, kilos &lt;dbl&gt;
+PingusSinNA &lt;- Pingus %&gt;% 
+  filter(!is.na(largo_pico_mm))
 ```
 Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
@@ -1296,7 +1288,7 @@ Pingus&lt;-Pingus %&gt;%
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-image: url(https://images.unsplash.com/photo-1533630160910-65f5a1718c65?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
 background-size: cover
 
 

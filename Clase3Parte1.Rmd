@@ -20,9 +20,9 @@ La clase es de 2 horas.
 Teoria: Operaciones sencillas.  
 Practica: Ejercicios con operaciones.  
 
-- Parte II:
-Teoria: Datos ordenados.
-Practica: Ejercicios con funciones de tidyverse.
+- Parte II:  
+Teoria: Datos ordenados.  
+Practica: Ejercicios con funciones de tidyverse.  
 
 ```{r, echo=FALSE}
 library(emo)
@@ -637,6 +637,10 @@ Pingus %>%
   select(ends_with("mm"))
 ```
 
+---
+
+## 5.6. select(:)
+
 Como seleccionando como inicia.
 ```{r}
 Pingus %>% 
@@ -796,6 +800,11 @@ pinguinos %>%
   distinct(especie) #<<
 ```
 
+---
+
+## 5.12. unique() o distinct()
+Valores únicos en esa columna.
+
 ```{r}
 Pingus %>% 
   distinct(isla)
@@ -815,8 +824,8 @@ Pingus %>%
 
 Otra opcion:
 ```{r}
-(PingusSinNA <- Pingus %>% 
-  filter(!is.na(largo_pico_mm)))
+PingusSinNA <- Pingus %>% 
+  filter(!is.na(largo_pico_mm))
 ```
 Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
@@ -895,7 +904,7 @@ Pingus<-Pingus %>%
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-image: url(https://images.unsplash.com/photo-1533630160910-65f5a1718c65?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
 background-size: cover
 
 
