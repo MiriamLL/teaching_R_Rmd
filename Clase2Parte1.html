@@ -509,9 +509,9 @@ background-size: cover
 
 
 
-🕜
+🕚
 
-Crea un gráfico de puntos con los datos de Diamantes 💎
+Crea un gráfico de puntos con los datos de Diamantes 💠
 
 - Carga los datos
 
@@ -951,7 +951,7 @@ No se asusten pero lo anterior es solo para que tengan un dataframe que tenga la
 ---
 
 # 5.1. Mapa y Scatterpie
-#### Mapa con puntos en diferentes tamanios.
+#### Paquetes
 
 Si no tienen estos paquetes hay que instalarlos.
 
@@ -960,6 +960,11 @@ library(ggplot2)
 library(scatterpie)
 ```
 
+---
+
+# 5.1. Mapa y Scatterpie
+#### Mapa con puntos en diferentes tamanios.
+
 2- Grafiquen los 'scatterpie'
 
 ```r
@@ -967,9 +972,7 @@ ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region), data=d,
 cols=LETTERS[1:4]) + coord_equal()
 ```
 
-![](Clase2Parte1_files/figure-html/unnamed-chunk-88-1.png)&lt;!-- --&gt;
-
-
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-88-1.png" height="350" /&gt;
 
 ---
 
@@ -980,8 +983,10 @@ cols=LETTERS[1:4]) + coord_equal()
 
 ```r
 d$radius &lt;- 6 * abs(rnorm(n))
-p &lt;- ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius), data=d,
-                                cols=LETTERS[1:4], color=NA) + coord_equal()
+p &lt;- ggplot() + geom_scatterpie(aes(x=long, y=lat, 
+                                    group=region, r=radius), 
+                                data=d,cols=LETTERS[1:4], color=NA) +
+  coord_equal()
 ```
 
 
@@ -996,7 +1001,8 @@ p &lt;- ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius), d
 p + geom_scatterpie_legend(d$radius, x=-140, y=-70)
 ```
 
-![](Clase2Parte1_files/figure-html/unnamed-chunk-90-1.png)&lt;!-- --&gt;
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-90-1.png" height="350" /&gt;
+
 
 ---
 
@@ -1015,7 +1021,18 @@ p + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius),
     geom_scatterpie_legend(d$radius, x=-160, y=-55)
 ```
 
-![](Clase2Parte1_files/figure-html/unnamed-chunk-91-1.png)&lt;!-- --&gt;
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-91-1.png" height="350" /&gt;
+
+---
+
+# 5.1. Mapa y Scatterpie
+
+
+Para leer más:
+
+[Básicos para mapas](https://www.r-spatial.org//r/2018/10/25/ggplot2-sf-2.html)
+
+[Otro ejemplo de mapa con scatterpies](https://www.r-bloggers.com/2018/01/plot-pie-charts-of-racial-composition-in-largest-metro-areas-on-a-map-in-r/amp/)
 
 ---
 
@@ -1052,7 +1069,7 @@ ggplot(data) +
   geom_errorbar(aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3)
 ```
 
-&lt;img src="https://www.r-graph-gallery.com/4-barplot-with-error-bar_files/figure-html/thecode-1.png" height="350" /&gt;
+&lt;img src="https://www.r-graph-gallery.com/4-barplot-with-error-bar_files/figure-html/thecode-1.png" height="250" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

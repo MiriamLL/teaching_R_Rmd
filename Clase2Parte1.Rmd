@@ -1012,7 +1012,7 @@ No se asusten pero lo anterior es solo para que tengan un dataframe que tenga la
 ---
 
 # 5.1. Mapa y Scatterpie
-#### Mapa con puntos en diferentes tamanios.
+#### Paquetes
 
 Si no tienen estos paquetes hay que instalarlos.
 ```{r}
@@ -1020,13 +1020,20 @@ library(ggplot2)
 library(scatterpie)
 ```
 
+---
+
+# 5.1. Mapa y Scatterpie
+#### Mapa con puntos en diferentes tamanios.
+
 2- Grafiquen los 'scatterpie'
-```{r}
+```{r, eval=FALSE}
 ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region), data=d,
 cols=LETTERS[1:4]) + coord_equal()
 ```
 
-
+```{r, echo=FALSE, out.height=350}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-88-1.png')
+```
 
 ---
 
@@ -1034,10 +1041,12 @@ cols=LETTERS[1:4]) + coord_equal()
 #### Mapa con puntos en diferentes tamanios.
 
 3- Modificar el tamanio de los 'pies'
-```{r}
+```{r, eval=FALSE}
 d$radius <- 6 * abs(rnorm(n))
-p <- ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius), data=d,
-                                cols=LETTERS[1:4], color=NA) + coord_equal()
+p <- ggplot() + geom_scatterpie(aes(x=long, y=lat, 
+                                    group=region, r=radius), 
+                                data=d,cols=LETTERS[1:4], color=NA) +
+  coord_equal()
 ```
 
 
@@ -1047,9 +1056,14 @@ p <- ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius), data
 #### Mapa con puntos en diferentes tamanios.
 
 4- Esto agrega como una leyenda como referencia del tamanio del pie.
-```{r}
+```{r, eval=FALSE}
 p + geom_scatterpie_legend(d$radius, x=-140, y=-70)
 ```
+
+```{r, echo=FALSE, out.height=350}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-90-1.png')
+```
+
 
 ---
 
@@ -1057,7 +1071,7 @@ p + geom_scatterpie_legend(d$radius, x=-140, y=-70)
 #### Mapa con puntos en diferentes tamanios.
 
 5- Agregar el mapa de fondo
-```{r}
+```{r, eval=FALSE}
 world <- map_data('world')
 p <- ggplot(world, aes(long, lat)) +
     geom_map(map=world, aes(map_id=region), fill=NA, color="black") +
@@ -1066,6 +1080,21 @@ p + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius),
                     data=d, cols=LETTERS[1:4], color=NA, alpha=.8) +
     geom_scatterpie_legend(d$radius, x=-160, y=-55)
 ```
+
+```{r, echo=FALSE, out.height=350}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-91-1.png')
+```
+
+---
+
+# 5.1. Mapa y Scatterpie
+
+
+Para leer más:
+
+[Básicos para mapas](https://www.r-spatial.org//r/2018/10/25/ggplot2-sf-2.html)
+
+[Otro ejemplo de mapa con scatterpies](https://www.r-bloggers.com/2018/01/plot-pie-charts-of-racial-composition-in-largest-metro-areas-on-a-map-in-r/amp/)
 
 ---
 
@@ -1099,6 +1128,6 @@ ggplot(data) +
   geom_errorbar(aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3)
 ```
 
-```{r, echo=FALSE, out.height=350}
+```{r, echo=FALSE, out.height=250}
 knitr::include_graphics('https://www.r-graph-gallery.com/4-barplot-with-error-bar_files/figure-html/thecode-1.png')
 ```
