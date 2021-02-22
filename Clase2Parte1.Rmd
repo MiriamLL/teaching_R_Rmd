@@ -980,3 +980,125 @@ background-size: cover
 5. Inspiración.  
 
 
+---
+
+# 5. Materiales extra
+
+---
+
+# 5.1. Mapa y Scatterpie
+### Mapa con puntos en diferentes tamanios.
+
+Ejemplo de: [mapa con scatterpies](https://cran.r-project.org/web/packages/scatterpie/vignettes/scatterpie.html)
+
+1- Crear datos
+```{r}
+set.seed(123)
+long <- rnorm(50, sd=100)
+lat <- rnorm(50, sd=50)
+d <- data.frame(long=long, lat=lat)
+d <- with(d, d[abs(long) < 150 & abs(lat) < 70,])
+n <- nrow(d)
+d$region <- factor(1:n)
+d$A <- abs(rnorm(n, sd=1))
+d$B <- abs(rnorm(n, sd=2))
+d$C <- abs(rnorm(n, sd=3))
+d$D <- abs(rnorm(n, sd=4))
+d[1, 4:7] <- d[1, 4:7] * 3
+head(d)
+```
+No se asusten pero lo anterior es solo para que tengan un dataframe que tenga las mismas caracteristicas.
+
+---
+
+# 5.1. Mapa y Scatterpie
+#### Mapa con puntos en diferentes tamanios.
+
+Si no tienen estos paquetes hay que instalarlos.
+```{r}
+library(ggplot2)
+library(scatterpie)
+```
+
+2- Grafiquen los 'scatterpie'
+```{r}
+ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region), data=d,
+cols=LETTERS[1:4]) + coord_equal()
+```
+
+
+
+---
+
+# 5.1. Mapa y Scatterpie
+#### Mapa con puntos en diferentes tamanios.
+
+3- Modificar el tamanio de los 'pies'
+```{r}
+d$radius <- 6 * abs(rnorm(n))
+p <- ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius), data=d,
+                                cols=LETTERS[1:4], color=NA) + coord_equal()
+```
+
+
+---
+
+# 5.1. Mapa y Scatterpie
+#### Mapa con puntos en diferentes tamanios.
+
+4- Esto agrega como una leyenda como referencia del tamanio del pie.
+```{r}
+p + geom_scatterpie_legend(d$radius, x=-140, y=-70)
+```
+
+---
+
+# 5.1. Mapa y Scatterpie
+#### Mapa con puntos en diferentes tamanios.
+
+5- Agregar el mapa de fondo
+```{r}
+world <- map_data('world')
+p <- ggplot(world, aes(long, lat)) +
+    geom_map(map=world, aes(map_id=region), fill=NA, color="black") +
+    coord_quickmap()
+p + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius),
+                    data=d, cols=LETTERS[1:4], color=NA, alpha=.8) +
+    geom_scatterpie_legend(d$radius, x=-160, y=-55)
+```
+
+---
+
+# 5.2. Grafico de barras con desviacion estandar.
+
+Creditos: [RGraphGallery](https://www.r-graph-gallery.com/4-barplot-with-error-bar.html)
+
+1- Cargar paqueteria
+```{r}
+library(ggplot2)
+```
+
+2- Crear un data frame inventado.
+```{r}
+data <- data.frame(
+  name=letters[1:5],
+  value=sample(seq(4,15),5),
+  sd=c(1,0.2,3,2,4))
+```
+
+---
+
+# 5.2. Grafico de barras con desviacion estandar.
+
+3- Graficar
+```{r, eval=FALSE}
+ggplot(data) +
+  geom_bar( aes(x=name, y=value), 
+            stat="identity", 
+            fill="skyblue", alpha=0.7) +
+  geom_errorbar(aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3)
+```
+
+```{r, echo=FALSE, out.height=350}
+knitr::include_graphics('https://www.r-graph-gallery.com/4-barplot-with-error-bar_files/figure-html/thecode-1.png')
+```
