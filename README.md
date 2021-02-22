@@ -15,10 +15,10 @@ https://miriamll.github.io/Curso_CIAD/Clase2Parte1
 
 
 Clase 3: Operaciones basicas e inspeccionar mis data frames.
-
+https://miriamll.github.io/Curso_CIAD/Clase3Parte1
 
 Clase 4: Ordenar datos.
-
+https://miriamll.github.io/Curso_CIAD/Clase3Parte2
 
 Clase 5: Inspeccionar datos y obtener resultados preliminares.
 
