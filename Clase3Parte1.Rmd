@@ -1,0 +1,907 @@
+---
+title: "Clase 3"
+subtitle: "Operaciones en R"
+author: "Miriam Lerma"
+date: "Febrero 2021"
+output:
+  xaringan::moon_reader:
+    css: ["default","chocolate-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+# Intro
+
+La clase es de 2 horas.
+
+- Parte I:  
+Teoria: Operaciones sencillas.  
+Practica: Ejercicios con operaciones.  
+
+- Parte II:
+Teoria: Datos ordenados.
+Practica: Ejercicios con funciones de tidyverse.
+
+```{r, echo=FALSE}
+library(emo)
+```
+
+---
+
+# Ustedes
+
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos)
+
+- Quieren hacer algunas operaciones matematicas usando R.
+
+- Quieren tener un dataframe que les sirva para hacer analisis y graficos.
+
+
+
+
+
+- Necesito:
+Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado `r emo::ji("clock")`.
+
+---
+
+## Créditos
+
+-Todo el material basado en el libro:  
+[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+
+-Y materiales de RLadies   
+[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+
+-Presentaciones de tidyverse:  
+[María Paula Caldas](https://mpaulacaldas.github.io/rrrtidyverse/)`r emo::ji("star")`  
+[RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&t=3605s)
+
+
+-Imágenes adicionales
+[Unsplash](https://unsplash.com/)
+[Allison Horst](https://github.com/allisonhorst/palmerpenguins)
+
+---
+
+# 1. Clase anterior
+
+## Datos pinguinos.
+Los datos de pinguinos solo estan en github, aun no en CRAN
+
+```{r, include=TRUE, eval=FALSE}
+install.packages(remotes)
+remotes::install_github("cienciadedatos/datos")
+```
+
+Les va a aparecer:  
+Downloading GitHub repo cienciadedatos/datos@HEAD  
+Enter one or more numbers, or an empty line to skip updates:  
+Pueden darle 1 si quieren, pero tarda un poquito.  
+
+---
+
+# 1. Clase anterior
+
+## Datos pinguinos. 
+`r emo::ji("penguin")`
+
+Cargen sus datos, que los vamos a usar mas adelante.
+```{r}
+library(datos)
+Pingus<-datos::pinguinos
+```
+Otra opcion es usar read_csv desde su computador.
+
+---
+
+# 1.2. CRAN
+
+[CRAN](https://cran.r-project.org/) es un acrónimo de **C**omprehensive **R** **A**rchive **N**etwork.
+
+- CRAN tiene hasta Noviembre de 2020, 16mil paquetes.  
+- Cualquiera puede crear su paquete y someterlo a CRAN.  
+- Cada paquete pasa por varias pruebas, y si pasa todas las pruebas queda disponible en el Archive.  
+
+```{r echo=FALSE, out.height=250}
+knitr::include_graphics('https://images.unsplash.com/photo-1554900773-4dd76725f876?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YXJjaGl2ZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
+background-size: cover
+
+# PARTE I: Operaciones
+
+---
+
+# 2. Operaciones
+## 2.1. Operaciones basicas
+Sumas
+```{r}
+15+6
+```
+
+Restas
+```{r}
+4-6
+```
+
+---
+
+# 2. Operaciones
+## 2.1. Operaciones basicas
+
+Divisiones
+```{r}
+1700/8
+```
+
+Multiplicaciones
+```{r}
+20*20
+```
+
+---
+
+# 2.1. Operaciones
+## Usando objetos
+```{r}
+Personas<-5+6
+Pizzas<-5*12
+```
+
+Cuantos pedazos le toca a cada quien?
+```{r}
+Personas/Pizzas
+```
+
+---
+
+# 2.2. Funciones
+## Comunes
+
+Media
+```{r}
+Temperatura<-c(34,45,67,20)
+mean(Temperatura)
+```
+
+Mediana
+```{r}
+median(Temperatura)
+```
+
+Desviacion estandar
+```{r}
+sd(Temperatura)
+```
+
+---
+
+# 2.2. Funciones
+## Comunes
+
+Rangos
+```{r}
+range(Temperatura)
+```
+
+Minimo
+```{r}
+min(Temperatura)
+```
+
+Maximo
+```{r}
+max(Temperatura)
+```
+
+---
+
+# 2.4. Buscar ayuda
+
+```{r}
+mean(1,3,6,9,12)
+```
+Porque me da 1? no me parece correcto. 
+
+Pregúntale a R
+```{r, eval=FALSE}
+?mean
+```
+Las instrucciones aparecerán en la esquina inferior derecha, en la pestaña **Help**.
+
+Hay que poner la c de ***concatenar***
+```{r, comment=""}
+mean(c(1,3,6,9,12))
+```
+Ya tiene más sentido.
+
+---
+
+## 2.4. Buscar ayuda
+
+Parte de la fortalezas de R y porque es tan usado es que hay muchos sitios para pedir ayuda.
+
+Lo primero que hay que hacer es tener paciencia y revisar que no hayamos escrito algo mal.
+
+Si no funciona, otra opción es literalmente copiar el error que nos aparece y escribirlo en google.
+
+Fuentes confiables son: 
+- stackoverflow.  
+Seguro lo vamos a usar en algún momento durante la clase.
+
+- twitter  
+Hashtag: #rstatsES (en español) o #rstats (en inglés).
+
+---
+
+# 2.5. Ejercicios
+### Perritos
+
+Tengo tres gatos y cada uno come 2 latas de comida, cuantas latas tengo que comprar?
+```{r, eval=FALSE}
+Gatitos<-3
+Latas<-2
+Gatitos*Latas
+```
+
+--
+
+Tengo 4 perros y ya se cuantos gatos, cuantas mascotas tengo en total?
+```{r, eval=FALSE}
+Perritos<-4
+Mascotas<-Perritos+Gatitos
+Mascotas
+```
+
+---
+
+# 2.5 Ejercicios
+### Croquetas
+
+Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son 3) se comen 0.5 Kg al día y quiero ir al super cada 15 días por lo de la pandemia?
+
+```{r, eval=FALSE}
+#Perritos<-
+#Croquetas<-
+#Dias<-
+```
+
+```{r}
+#(Perritos*Croquetas)*Dias
+```
+Hasta le podríamos agregar el precio de las croquetas, si quisiéramos.
+
+```{r echo=FALSE, out.height=100}
+knitr::include_graphics('https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
+```
+
+---
+
+# 2.3. Datos pinguinos.
+`r emo::ji("penguin")`
+Si ya cargaron los datos de pinguinos, omitan este paso.
+```{r}
+library(datos)
+Pingus<-pinguinos
+```
+
+---
+
+# 2.3. Datos pinguinos. 
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png')
+```
+
+Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembras y machos.  De 2007 a 2009.  
+
+---
+
+# 2.3. Datos pinguinos. 
+
+Son datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
+```{r echo=FALSE, out.height=250}
+knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/culmen_depth.png')
+```
+
+---
+
+# 2.3. Datos pinguinos. 
+
+Como calculo el rango de la masa corporal de los pinguinos?  
+***Cuidado con los NAs!, na.rm me sirve para ignorarlos***
+```{r, eval=FALSE}
+range(Pingus$masa_corporal_g,
+      na.rm=TRUE) #<<
+```
+
+Cuanto pesan en promedio los pinguinos en kilos?  
+Guardarlo en un objeto y transformar de kilos a gramos.
+```{r}
+PromedioPesoPingus<-mean(Pingus$masa_corporal_g,na.rm=TRUE)
+PromedioPesoPingus/1000
+```
+
+---
+
+# 2.6. Ejercicios
+### Pinguinos
+
+- Como calculo el promedio del largo del pico de los pinguinos?  
+```{r, eval=FALSE}
+m**n(Pingus$largo_pico_mm,na.rm=TRUE)
+```
+
+- Como obtengo el **rango** de valores del largo del pico de los pinguinos?  
+```{r, eval=FALSE}
+r***e(Pingus$*****,na.rm=TRUE)
+```
+
+- Como obtengo el valor **minimo** del largo del pico de los pinguinos?  
+```{r, eval=FALSE}
+m**(Pingus$*****,na.rm=TRUE)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80)
+background-size: cover
+
+# Inspeccionar data frames
+
+---
+
+# 3.1. Inspeccionar data frames
+
+- Ver mis primeras y ultimas filas  
+- Ver filas especificas
+- Ver columnas especificas
+- Extraer especificos de acuerdo a su columna y fila
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
+```
+  
+Source: frases333
+
+---
+
+# 3.2. head() y tail()
+
+Para ver mis primeras y ultimas filas
+```{r, eval=TRUE}
+head(Pingus)
+```
+
+```{r, eval=TRUE}
+tail(Pingus)
+```
+
+---
+
+# 3.3. Filas
+### Corchetes
+
+Las filas se pone entre corchetes en la **PRIMERA** posición.
+```{r}
+(Pingus[1,])
+```
+
+Muéstrame las primeras 3 filas. 
+El signo de **:** es como decir "de aqui hasta acá".
+```{r}
+(Pingus[1:3,])
+```
+
+---
+
+# 3.5. Columnas
+### head()
+
+Las columnas se pone entre corchetes en la **SEGUNDA** posición.
+```{r}
+head(Pingus[,1])
+```
+
+Usando $ y el nombre de la columna.  
+```{r}
+head(Pingus$especie)
+```
+
+---
+
+# 3.1. Inspeccionar
+### Columnas y filas
+
+Muéstrame un dato especifico [FILA, COLUMNA]
+```{r}
+(Pingus[1,1])
+```
+
+```{r}
+(Pingus[3,2])
+```
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1341&q=80)
+background-size: cover
+
+# PARTE II: Orden
+
+---
+
+# 4. Datos ordenados
+
+### 4.1. Ordenar datos
+
+Segun fuentes no oficiales:  
+El 80% del tiempo del analisis de datos se utiliza en el proceso de limpieza y preparacion de los datos.
+Y se realiza la operacion varias veces.  
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg')
+```
+
+---
+
+# 4.1. Datos ordenados
+
+Los datos ordenados (Tidy): es una estructuracion de los conjuntos de datos para facilitar el analisis. 
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/tidy-1.svg")
+```
+
+- Cada variable debe estar columna
+- Cada observacion es una fila
+- Cada tipo de unidad de observacion forma una tabla 
+
+---
+
+# 4.3. Errores comunes
+
+Se recomienda que al almacenar datos:
+- Diferentes tipos de variables se almacenen en columnas separadas.
+
+```{r}
+MiPrimerAcomodo<-'Miriam (Mujer)'
+MiMejorAcomodo<-c('Miriam','Mujer')
+```
+
+Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
+Si no el proceso de ordenarlos puede ser tardado `r emo::ji("clock")`.
+
+---
+
+# 5. Ordenar
+
+Hay muchas maneras de ordenar y manipular tus datos.  
+En ingles le dicen 'data wrangling' que significa como rodeo.
+
+Hay muchas maneras de hacer las mismas operaciones. Hoy usaremos el paquete **tidyverse**.
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+```{r echo=FALSE, out.height=340}
+knitr::include_graphics("https://www.khstats.com/img/dplyr_image.jpg")
+```
+
+---
+
+# 5. Ordenar
+
+### Porque usar datos ordenados?  
+- Muchos comandos se basan en la suposicion de que tus datos estan ordenados.  
+- El formato es el esperado para analisis estadisticos.  
+- Tener datos ordenados ayudan a realizar los graficos.  
+- Podemos compartirlos y la otra persona podria entender nuestra tabla mas rapido que en una tabla desordenada.  
+
+---
+
+# 5.1. Tidyverse 
+
+Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
+
+```{r echo=FALSE, out.height=450}
+knitr::include_graphics('https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png')
+```
+
+---
+
+## 5.2. Pipe
+
+Vamos a usar mucho el **pipe** un argumento que se usa para encadenar funciones.
+
+En su teclado: strg+alt+M
+```{r, eval=FALSE}
+%>% 
+```
+
+---
+
+## 5.3. Manipular
+
+El paquete dplyr nos da una serie de herramientas para *manipular* datos
+
+Las principales funciones, o *verbos* de dplyr, son:
+
+- `count()` para contar
+- `select()`, para seleccionar columnas
+- `filter()`, para filtrar filas
+- `mutate()`, para crear o modificar columnas
+- `summarise()`, para resumir información de las columnas
+
+Hoy veremos algunas, la proxima clase veremos otras.
+
+---
+
+## 5.4. count()
+
+Cuandos datos tengo?
+```{r, eval=FALSE}
+Pingus %>% 
+  count()
+```
+
+Cuantos datos tengo por especie?
+```{r, eval=FALSE}
+Pingus %>% 
+  count(especie)
+```
+
+---
+
+## 5.4. count()
+
+Cuantos datos tengo por isla y por especie?
+```{r}
+Pingus %>% 
+  count(isla,especie)
+```
+
+El argumento arrange() nos ayuda ordenarlos 
+```{r, eval=FALSE}
+Pingus %>%
+  count(anio) %>% 
+  arrange((n))
+```
+
+---
+
+## 5.5. select()
+
+Con la función **select()**, podemos elegir:
+
+- Que columnas quiero ver.
+```{r}
+Pingus %>% 
+  select(especie) %>% #<<
+  head()
+```
+
+---
+
+## 5.5. select(-)
+
+- Que columnas no quiero ver.  
+El signo **-** es como decir "menos ese"
+```{r}
+Pingus %>% 
+  select(-sexo) %>% #<<
+  head()
+```
+
+---
+
+## 5.5. select(-)
+
+- El signo de admiración **!** es como decir "diferente a".
+```{r}
+Pingus %>% 
+  select(!sexo) %>% #<<
+  head()
+```
+
+---
+
+## 5.6. select(:)
+
+- Seleccionar columnas que están en medio de varias columnas.  
+El signo de **:** es como decir "de aqui hasta acá".
+```{r}
+Pingus %>% 
+  select(largo_pico_mm:masa_corporal_g) %>% #<<
+  head()
+```
+
+---
+
+## 5.6. select(:)
+
+Tambien se pueden usar cadenas de caracteres (strings)
+Tanto usando como termina el nombre de la columna.
+```{r}
+Pingus %>% 
+  select(ends_with("mm"))
+```
+
+Como seleccionando como inicia.
+```{r}
+Pingus %>% 
+  select(starts_with("masa"))
+```
+
+---
+
+## 5.7. filter()
+Podemos filtrar columnas de acuerdo a valores que nos interesen.
+
+Pero para esto hay que conocer algunos operadores lógicos:
+
+- El símbolo **==** es para decir 'igual a'  
+- El símbolo **!=** es para decir 'distinto a'  
+- El símbolo **>** es para decir 'mayor que'
+- El símbolo **<** es para decir 'menor que'
+- El símbolo **>=** es para decir 'mayor o igual que'
+- El símbolo **<=** es para decir 'menor o igual que'
+- El símbolo **&** es para decir 'y'
+- El símbolo **|** es para decir 'o'
+
+---
+
+## 5.7. filter(==)
+
+```{r, eval=FALSE}
+Pingus %>%
+  filter(sexo == 'hembra')
+```
+Nota: las variables son sin comillas y las categorías en comillas.
+
+--
+
+Vayan a su environment... y revisen... se cambio mi tabla?
+
+--
+
+No. Hay que crear un nuevo objeto.
+```{r}
+PingusHembras<-Pingus %>%
+  filter(sexo == 'hembra')
+```
+Miren su environment.
+
+---
+
+## 5.7. filter(<=)
+
+```{r}
+Pingus %>%
+  filter(largo_pico_mm <= 39.1) #<<
+```
+
+---
+
+## 5.7. filter(>=)
+
+```{r}
+Pingus %>%
+  filter(largo_pico_mm >= 39.1)#<<
+```
+
+---
+
+## 5.7. filter(&)
+
+```{r}
+Pingus %>%
+  filter(isla == 'Biscoe' & especie =='Adelia')#<<
+```
+
+---
+
+## 5.8. mutate()
+
+Es para crear o modificar columnas.  
+Podemos crear una columna a partir de los valores de otra.
+```{r}
+Pingus<-Pingus %>% 
+  mutate(kilos = masa_corporal_g / 1000)#<<
+```
+
+
+---
+
+## 5.9. lubridate
+
+Facilita el trabajo con fechas y horas, ya que te permite decirle a R que una cadena de caracteres, es tiempo y horas.
+```{r, message=FALSE}
+library(lubridate)
+```
+
+```{r, eval = FALSE}
+ymd_hms("2010-12-13 15:30:30")
+```
+
+Ademas, te permite **extraer** componentes de fechas y horas.
+```{r}
+ymd_hms("2010-12-13 15:30:30") %>% month()
+```
+
+---
+
+## 5.9. ymd_hms
+
+Datos de hora inventados, solo nos interesa ver la hora, los minutos y los segundos.
+```{r}
+DatosPorHora<-c("2010-12-13 13:30:30","2010-12-13 14:30:30","2010-12-13 15:30:30","2010-12-13 16:30:30","2010-12-13 17:30:30","2010-12-13 18:30:30","2010-12-13 19:30:30","2010-12-13 20:30:30")
+Horas<-data.frame(DatosPorHora=DatosPorHora)
+```
+
+Usando **mutate** podemos separar esa informacion y extraer la que nos interesa.
+```{r, eval = FALSE}
+Horas %>% 
+  mutate(
+    hora = hour(DatosPorHora),
+    minuto = minute(DatosPorHora),
+    segundo = second(DatosPorHora)
+  )
+```
+
+---
+
+## 5.10. group_by() y summarise()
+
+summarise() para resumir información de las columnas
+
+```{r}
+Pingus %>% 
+  group_by(anio) %>%
+  summarise(PromedioLargoPico=mean(largo_pico_mm))
+```
+
+---
+
+## 5.11. top_n()
+
+Obserservaciones maximas que le pidamos de una variable. 
+```{r}
+Pingus %>% 
+  top_n(2,largo_pico_mm)
+```
+
+---
+
+## 5.12. unique() o distinct()
+Valores únicos en esa columna.
+
+Hay varias maneras de ver este tipo de informacion:
+```{r}
+unique(Pingus$especie)
+```
+
+```{r}
+pinguinos %>% 
+  distinct(especie) #<<
+```
+
+```{r}
+Pingus %>% 
+  distinct(isla)
+```
+
+---
+
+## 5.13. drop_na 
+
+Hay que tener cuidado con las nas para varias operaciones.
+
+Para filtrar nas en pipe:
+```{r, eval=FALSE}
+Pingus %>% 
+  drop_na(largo_pico_mm)
+```
+
+Otra opcion:
+```{r}
+(PingusSinNA <- Pingus %>% 
+  filter(!is.na(largo_pico_mm)))
+```
+Miren que ahora tenemos menos observaciones en pingus sin NAs.
+
+---
+
+# 5.14. Ejercicios asistidos
+```{r}
+library(datos)
+Pingus<-pinguinos
+```
+
+Cuantos pinguinos muestreamos?
+```{r, eval=FALSE}
+pinguinos %>% 
+  count()
+```
+
+Que islas se muestrearon?
+```{r, eval=FALSE}
+Pingus %>% 
+  distinct(isla)
+```
+
+Cual es nuestro tamanio de muestra por sexo e isla?
+```{r, eval=FALSE}
+Pingus %>% 
+  group_by(sexo, isla) %>% 
+  count()
+```
+
+---
+
+# 5.14.  Ejercicios asistidos
+Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
+```{r, eval=FALSE}
+Pingus %>% 
+  group_by(especie,sexo) %>% 
+  drop_na(masa_corporal_g)%>% 
+  summarise(mean = mean(masa_corporal_g), n = n())
+```
+
+Cambia el peso de los pinguinos a kilos.
+```{r, eval=FALSE}
+Pingus<-Pingus %>% 
+  mutate(kilos = masa_corporal_g / 1000)
+```
+
+---
+
+# 5.14. Ejercicios solos
+- Crea un objeto con solo dos columnas, las de sexo y anio.
+```{r}
+#_____ <-Pingus %>%
+#  select(____,_____)
+```
+
+- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
+```{r}
+#______ <-Pingus %>%
+#  distinct(_____)
+```
+
+- Crea un objeto con solo machos.
+```{r}
+#______ <-Pingus %>%
+#  filter(_____ == '______')
+```
+
+- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
+```{r}
+#______ <-Pingus %>%
+#  filter(_____ == '______')%>%
+#  filter(______ >= ______)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
+
+
+# Recapitulando
+
+1.1. Operaciones matematicas simples.  
+1.2. Funciones basicas (mean, median, sd, range).  
+1.3. Funciones tidyverse (count, select, filter, mutate, summarise, unique, drop_na).  
+

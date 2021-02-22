@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 3</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <script src="Clase3Parte1_files/header-attrs-2.6/header-attrs.js"></script>
+    <link href="Clase3Parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Clase3Parte1_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clase 3
+## Operaciones en R
+### Miriam Lerma
+### Febrero 2021
+
+---
+
+
+# Intro
+
+La clase es de 2 horas.
+
+- Parte I:  
+Teoria: Operaciones sencillas.  
+Practica: Ejercicios con operaciones.  
+
+- Parte II:
+Teoria: Datos ordenados.
+Practica: Ejercicios con funciones de tidyverse.
+
+
+
+---
+
+# Ustedes
+
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos)
+
+- Quieren hacer algunas operaciones matematicas usando R.
+
+- Quieren tener un dataframe que les sirva para hacer analisis y graficos.
+
+
+
+
+
+- Necesito:
+Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado 🕙.
+
+---
+
+## Créditos
+
+-Todo el material basado en el libro:  
+[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+
+-Y materiales de RLadies   
+[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+
+-Presentaciones de tidyverse:  
+[María Paula Caldas](https://mpaulacaldas.github.io/rrrtidyverse/)⭐  
+[RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&amp;t=3605s)
+
+
+-Imágenes adicionales
+[Unsplash](https://unsplash.com/)
+[Allison Horst](https://github.com/allisonhorst/palmerpenguins)
+
+---
+
+# 1. Clase anterior
+
+## Datos pinguinos.
+Los datos de pinguinos solo estan en github, aun no en CRAN
+
+
+```r
+install.packages(remotes)
+remotes::install_github("cienciadedatos/datos")
+```
+
+Les va a aparecer:  
+Downloading GitHub repo cienciadedatos/datos@HEAD  
+Enter one or more numbers, or an empty line to skip updates:  
+Pueden darle 1 si quieren, pero tarda un poquito.  
+
+---
+
+# 1. Clase anterior
+
+## Datos pinguinos. 
+🐧
+
+Cargen sus datos, que los vamos a usar mas adelante.
+
+```r
+library(datos)
+Pingus&lt;-datos::pinguinos
+```
+Otra opcion es usar read_csv desde su computador.
+
+---
+
+# 1.2. CRAN
+
+[CRAN](https://cran.r-project.org/) es un acrónimo de **C**omprehensive **R** **A**rchive **N**etwork.
+
+- CRAN tiene hasta Noviembre de 2020, 16mil paquetes.  
+- Cualquiera puede crear su paquete y someterlo a CRAN.  
+- Cada paquete pasa por varias pruebas, y si pasa todas las pruebas queda disponible en el Archive.  
+
+&lt;img src="https://images.unsplash.com/photo-1554900773-4dd76725f876?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YXJjaGl2ZXxlbnwwfHwwfA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="250" /&gt;
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80)
+background-size: cover
+
+# PARTE I: Operaciones
+
+---
+
+# 2. Operaciones
+## 2.1. Operaciones basicas
+Sumas
+
+```r
+15+6
+```
+
+```
+## [1] 21
+```
+
+Restas
+
+```r
+4-6
+```
+
+```
+## [1] -2
+```
+
+---
+
+# 2. Operaciones
+## 2.1. Operaciones basicas
+
+Divisiones
+
+```r
+1700/8
+```
+
+```
+## [1] 212.5
+```
+
+Multiplicaciones
+
+```r
+20*20
+```
+
+```
+## [1] 400
+```
+
+---
+
+# 2.1. Operaciones
+## Usando objetos
+
+```r
+Personas&lt;-5+6
+Pizzas&lt;-5*12
+```
+
+Cuantos pedazos le toca a cada quien?
+
+```r
+Personas/Pizzas
+```
+
+```
+## [1] 0.1833333
+```
+
+---
+
+# 2.2. Funciones
+## Comunes
+
+Media
+
+```r
+Temperatura&lt;-c(34,45,67,20)
+mean(Temperatura)
+```
+
+```
+## [1] 41.5
+```
+
+Mediana
+
+```r
+median(Temperatura)
+```
+
+```
+## [1] 39.5
+```
+
+Desviacion estandar
+
+```r
+sd(Temperatura)
+```
+
+```
+## [1] 19.84103
+```
+
+---
+
+# 2.2. Funciones
+## Comunes
+
+Rangos
+
+```r
+range(Temperatura)
+```
+
+```
+## [1] 20 67
+```
+
+Minimo
+
+```r
+min(Temperatura)
+```
+
+```
+## [1] 20
+```
+
+Maximo
+
+```r
+max(Temperatura)
+```
+
+```
+## [1] 67
+```
+
+---
+
+# 2.4. Buscar ayuda
+
+
+```r
+mean(1,3,6,9,12)
+```
+
+```
+## [1] 1
+```
+Porque me da 1? no me parece correcto. 
+
+Pregúntale a R
+
+```r
+?mean
+```
+Las instrucciones aparecerán en la esquina inferior derecha, en la pestaña **Help**.
+
+Hay que poner la c de ***concatenar***
+
+```r
+mean(c(1,3,6,9,12))
+```
+
+```
+[1] 6.2
+```
+Ya tiene más sentido.
+
+---
+
+## 2.4. Buscar ayuda
+
+Parte de la fortalezas de R y porque es tan usado es que hay muchos sitios para pedir ayuda.
+
+Lo primero que hay que hacer es tener paciencia y revisar que no hayamos escrito algo mal.
+
+Si no funciona, otra opción es literalmente copiar el error que nos aparece y escribirlo en google.
+
+Fuentes confiables son: 
+- stackoverflow.  
+Seguro lo vamos a usar en algún momento durante la clase.
+
+- twitter  
+Hashtag: #rstatsES (en español) o #rstats (en inglés).
+
+---
+
+# 2.5. Ejercicios
+### Perritos
+
+Tengo tres gatos y cada uno come 2 latas de comida, cuantas latas tengo que comprar?
+
+```r
+Gatitos&lt;-3
+Latas&lt;-2
+Gatitos*Latas
+```
+
+--
+
+Tengo 4 perros y ya se cuantos gatos, cuantas mascotas tengo en total?
+
+```r
+Perritos&lt;-4
+Mascotas&lt;-Perritos+Gatitos
+Mascotas
+```
+
+---
+
+# 2.5 Ejercicios
+### Croquetas
+
+Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son 3) se comen 0.5 Kg al día y quiero ir al super cada 15 días por lo de la pandemia?
+
+
+```r
+#Perritos&lt;-
+#Croquetas&lt;-
+#Dias&lt;-
+```
+
+
+```r
+#(Perritos*Croquetas)*Dias
+```
+Hasta le podríamos agregar el precio de las croquetas, si quisiéramos.
+
+&lt;img src="https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" height="100" /&gt;
+
+---
+
+# 2.3. Datos pinguinos.
+🐧
+Si ya cargaron los datos de pinguinos, omitan este paso.
+
+```r
+library(datos)
+Pingus&lt;-pinguinos
+```
+
+---
+
+# 2.3. Datos pinguinos. 
+
+&lt;img src="https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png" height="350" /&gt;
+
+Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembras y machos.  De 2007 a 2009.  
+
+---
+
+# 2.3. Datos pinguinos. 
+
+Son datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
+&lt;img src="https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/culmen_depth.png" height="250" /&gt;
+
+---
+
+# 2.3. Datos pinguinos. 
+
+Como calculo el rango de la masa corporal de los pinguinos?  
+***Cuidado con los NAs!, na.rm me sirve para ignorarlos***
+
+```r
+range(Pingus$masa_corporal_g,
+*     na.rm=TRUE)
+```
+
+Cuanto pesan en promedio los pinguinos en kilos?  
+Guardarlo en un objeto y transformar de kilos a gramos.
+
+```r
+PromedioPesoPingus&lt;-mean(Pingus$masa_corporal_g,na.rm=TRUE)
+PromedioPesoPingus/1000
+```
+
+```
+## [1] 4.201754
+```
+
+---
+
+# 2.6. Ejercicios
+### Pinguinos
+
+- Como calculo el promedio del largo del pico de los pinguinos?  
+
+```r
+m**n(Pingus$largo_pico_mm,na.rm=TRUE)
+```
+
+- Como obtengo el **rango** de valores del largo del pico de los pinguinos?  
+
+```r
+r***e(Pingus$*****,na.rm=TRUE)
+```
+
+- Como obtengo el valor **minimo** del largo del pico de los pinguinos?  
+
+```r
+m**(Pingus$*****,na.rm=TRUE)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1353&amp;q=80)
+background-size: cover
+
+# Inspeccionar data frames
+
+---
+
+# 3.1. Inspeccionar data frames
+
+- Ver mis primeras y ultimas filas  
+- Ver filas especificas
+- Ver columnas especificas
+- Extraer especificos de acuerdo a su columna y fila
+
+&lt;img src="https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png" height="300" /&gt;
+  
+Source: frases333
+
+---
+
+# 3.2. head() y tail()
+
+Para ver mis primeras y ultimas filas
+
+```r
+head(Pingus)
+```
+
+```
+## # A tibble: 6 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
+## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+
+```r
+tail(Pingus)
+```
+
+```
+## # A tibble: 6 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Barbijo Dream          45.7         17              195            3650 hemb~
+## 2 Barbijo Dream          55.8         19.8            207            4000 macho
+## 3 Barbijo Dream          43.5         18.1            202            3400 hemb~
+## 4 Barbijo Dream          49.6         18.2            193            3775 macho
+## 5 Barbijo Dream          50.8         19              210            4100 macho
+## 6 Barbijo Dream          50.2         18.7            198            3775 hemb~
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+# 3.3. Filas
+### Corchetes
+
+Las filas se pone entre corchetes en la **PRIMERA** posición.
+
+```r
+(Pingus[1,])
+```
+
+```
+## # A tibble: 1 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+Muéstrame las primeras 3 filas. 
+El signo de **:** es como decir "de aqui hasta acá".
+
+```r
+(Pingus[1:3,])
+```
+
+```
+## # A tibble: 3 x 8
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## # ... with 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+# 3.5. Columnas
+### head()
+
+Las columnas se pone entre corchetes en la **SEGUNDA** posición.
+
+```r
+head(Pingus[,1])
+```
+
+```
+## # A tibble: 6 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia 
+## 2 Adelia 
+## 3 Adelia 
+## 4 Adelia 
+## 5 Adelia 
+## 6 Adelia
+```
+
+Usando $ y el nombre de la columna.  
+
+```r
+head(Pingus$especie)
+```
+
+```
+## [1] Adelia Adelia Adelia Adelia Adelia Adelia
+## Levels: Adelia Barbijo Papúa
+```
+
+---
+
+# 3.1. Inspeccionar
+### Columnas y filas
+
+Muéstrame un dato especifico [FILA, COLUMNA]
+
+```r
+(Pingus[1,1])
+```
+
+```
+## # A tibble: 1 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia
+```
+
+
+```r
+(Pingus[3,2])
+```
+
+```
+## # A tibble: 1 x 1
+##   isla     
+##   &lt;fct&gt;    
+## 1 Torgersen
+```
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1341&amp;q=80)
+background-size: cover
+
+# PARTE II: Orden
+
+---
+
+# 4. Datos ordenados
+
+### 4.1. Ordenar datos
+
+Segun fuentes no oficiales:  
+El 80% del tiempo del analisis de datos se utiliza en el proceso de limpieza y preparacion de los datos.
+Y se realiza la operacion varias veces.  
+
+&lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg" height="300" /&gt;
+
+---
+
+# 4.1. Datos ordenados
+
+Los datos ordenados (Tidy): es una estructuracion de los conjuntos de datos para facilitar el analisis. 
+
+&lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/tidy-1.svg" height="350" /&gt;
+
+- Cada variable debe estar columna
+- Cada observacion es una fila
+- Cada tipo de unidad de observacion forma una tabla 
+
+---
+
+# 4.3. Errores comunes
+
+Se recomienda que al almacenar datos:
+- Diferentes tipos de variables se almacenen en columnas separadas.
+
+
+```r
+MiPrimerAcomodo&lt;-'Miriam (Mujer)'
+MiMejorAcomodo&lt;-c('Miriam','Mujer')
+```
+
+Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
+Si no el proceso de ordenarlos puede ser tardado 🕞.
+
+---
+
+# 5. Ordenar
+
+Hay muchas maneras de ordenar y manipular tus datos.  
+En ingles le dicen 'data wrangling' que significa como rodeo.
+
+Hay muchas maneras de hacer las mismas operaciones. Hoy usaremos el paquete **tidyverse**.
+
+```r
+library(tidyverse)
+```
+
+&lt;img src="https://www.khstats.com/img/dplyr_image.jpg" height="340" /&gt;
+
+---
+
+# 5. Ordenar
+
+### Porque usar datos ordenados?  
+- Muchos comandos se basan en la suposicion de que tus datos estan ordenados.  
+- El formato es el esperado para analisis estadisticos.  
+- Tener datos ordenados ayudan a realizar los graficos.  
+- Podemos compartirlos y la otra persona podria entender nuestra tabla mas rapido que en una tabla desordenada.  
+
+---
+
+# 5.1. Tidyverse 
+
+Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
+
+&lt;img src="https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png" height="450" /&gt;
+
+---
+
+## 5.2. Pipe
+
+Vamos a usar mucho el **pipe** un argumento que se usa para encadenar funciones.
+
+En su teclado: strg+alt+M
+
+```r
+%&gt;% 
+```
+
+---
+
+## 5.3. Manipular
+
+El paquete dplyr nos da una serie de herramientas para *manipular* datos
+
+Las principales funciones, o *verbos* de dplyr, son:
+
+- `count()` para contar
+- `select()`, para seleccionar columnas
+- `filter()`, para filtrar filas
+- `mutate()`, para crear o modificar columnas
+- `summarise()`, para resumir información de las columnas
+
+Hoy veremos algunas, la proxima clase veremos otras.
+
+---
+
+## 5.4. count()
+
+Cuandos datos tengo?
+
+```r
+Pingus %&gt;% 
+  count()
+```
+
+Cuantos datos tengo por especie?
+
+```r
+Pingus %&gt;% 
+  count(especie)
+```
+
+---
+
+## 5.4. count()
+
+Cuantos datos tengo por isla y por especie?
+
+```r
+Pingus %&gt;% 
+  count(isla,especie)
+```
+
+```
+## # A tibble: 5 x 3
+##   isla      especie     n
+##   &lt;fct&gt;     &lt;fct&gt;   &lt;int&gt;
+## 1 Biscoe    Adelia     44
+## 2 Biscoe    Papúa     124
+## 3 Dream     Adelia     56
+## 4 Dream     Barbijo    68
+## 5 Torgersen Adelia     52
+```
+
+El argumento arrange() nos ayuda ordenarlos 
+
+```r
+Pingus %&gt;%
+  count(anio) %&gt;% 
+  arrange((n))
+```
+
+---
+
+## 5.5. select()
+
+Con la función **select()**, podemos elegir:
+
+- Que columnas quiero ver.
+
+```r
+Pingus %&gt;% 
+* select(especie) %&gt;%
+  head()
+```
+
+```
+## # A tibble: 6 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia 
+## 2 Adelia 
+## 3 Adelia 
+## 4 Adelia 
+## 5 Adelia 
+## 6 Adelia
+```
+
+---
+
+## 5.5. select(-)
+
+- Que columnas no quiero ver.  
+El signo **-** es como decir "menos ese"
+
+```r
+Pingus %&gt;% 
+* select(-sexo) %&gt;%
+  head()
+```
+
+```
+## # A tibble: 6 x 7
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750  2007
+## 2 Adelia  Torge~          39.5         17.4            186            3800  2007
+## 3 Adelia  Torge~          40.3         18              195            3250  2007
+## 4 Adelia  Torge~          NA           NA               NA              NA  2007
+## 5 Adelia  Torge~          36.7         19.3            193            3450  2007
+## 6 Adelia  Torge~          39.3         20.6            190            3650  2007
+```
+
+---
+
+## 5.5. select(-)
+
+- El signo de admiración **!** es como decir "diferente a".
+
+```r
+Pingus %&gt;% 
+* select(!sexo) %&gt;%
+  head()
+```
+
+```
+## # A tibble: 6 x 7
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750  2007
+## 2 Adelia  Torge~          39.5         17.4            186            3800  2007
+## 3 Adelia  Torge~          40.3         18              195            3250  2007
+## 4 Adelia  Torge~          NA           NA               NA              NA  2007
+## 5 Adelia  Torge~          36.7         19.3            193            3450  2007
+## 6 Adelia  Torge~          39.3         20.6            190            3650  2007
+```
+
+---
+
+## 5.6. select(:)
+
+- Seleccionar columnas que están en medio de varias columnas.  
+El signo de **:** es como decir "de aqui hasta acá".
+
+```r
+Pingus %&gt;% 
+* select(largo_pico_mm:masa_corporal_g) %&gt;%
+  head()
+```
+
+```
+## # A tibble: 6 x 4
+##   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g
+##           &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt;
+## 1          39.1         18.7            181            3750
+## 2          39.5         17.4            186            3800
+## 3          40.3         18              195            3250
+## 4          NA           NA               NA              NA
+## 5          36.7         19.3            193            3450
+## 6          39.3         20.6            190            3650
+```
+
+---
+
+## 5.6. select(:)
+
+Tambien se pueden usar cadenas de caracteres (strings)
+Tanto usando como termina el nombre de la columna.
+
+```r
+Pingus %&gt;% 
+  select(ends_with("mm"))
+```
+
+```
+## # A tibble: 344 x 3
+##    largo_pico_mm alto_pico_mm largo_aleta_mm
+##            &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;
+##  1          39.1         18.7            181
+##  2          39.5         17.4            186
+##  3          40.3         18              195
+##  4          NA           NA               NA
+##  5          36.7         19.3            193
+##  6          39.3         20.6            190
+##  7          38.9         17.8            181
+##  8          39.2         19.6            195
+##  9          34.1         18.1            193
+## 10          42           20.2            190
+## # ... with 334 more rows
+```
+
+Como seleccionando como inicia.
+
+```r
+Pingus %&gt;% 
+  select(starts_with("masa"))
+```
+
+```
+## # A tibble: 344 x 1
+##    masa_corporal_g
+##              &lt;int&gt;
+##  1            3750
+##  2            3800
+##  3            3250
+##  4              NA
+##  5            3450
+##  6            3650
+##  7            3625
+##  8            4675
+##  9            3475
+## 10            4250
+## # ... with 334 more rows
+```
+
+---
+
+## 5.7. filter()
+Podemos filtrar columnas de acuerdo a valores que nos interesen.
+
+Pero para esto hay que conocer algunos operadores lógicos:
+
+- El símbolo **==** es para decir 'igual a'  
+- El símbolo **!=** es para decir 'distinto a'  
+- El símbolo **&gt;** es para decir 'mayor que'
+- El símbolo **&lt;** es para decir 'menor que'
+- El símbolo **&gt;=** es para decir 'mayor o igual que'
+- El símbolo **&lt;=** es para decir 'menor o igual que'
+- El símbolo **&amp;** es para decir 'y'
+- El símbolo **|** es para decir 'o'
+
+---
+
+## 5.7. filter(==)
+
+
+```r
+Pingus %&gt;%
+  filter(sexo == 'hembra')
+```
+Nota: las variables son sin comillas y las categorías en comillas.
+
+--
+
+Vayan a su environment... y revisen... se cambio mi tabla?
+
+--
+
+No. Hay que crear un nuevo objeto.
+
+```r
+PingusHembras&lt;-Pingus %&gt;%
+  filter(sexo == 'hembra')
+```
+Miren su environment.
+
+---
+
+## 5.7. filter(&lt;=)
+
+
+```r
+Pingus %&gt;%
+* filter(largo_pico_mm &lt;= 39.1)
+```
+
+```
+## # A tibble: 83 x 8
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
+##  2 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+##  3 Adelia  Torg~          38.9         17.8            181            3625 hemb~
+##  4 Adelia  Torg~          34.1         18.1            193            3475 &lt;NA&gt; 
+##  5 Adelia  Torg~          37.8         17.1            186            3300 &lt;NA&gt; 
+##  6 Adelia  Torg~          37.8         17.3            180            3700 &lt;NA&gt; 
+##  7 Adelia  Torg~          38.6         21.2            191            3800 macho
+##  8 Adelia  Torg~          34.6         21.1            198            4400 macho
+##  9 Adelia  Torg~          36.6         17.8            185            3700 hemb~
+## 10 Adelia  Torg~          38.7         19              195            3450 hemb~
+## # ... with 73 more rows, and 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+## 5.7. filter(&gt;=)
+
+
+```r
+Pingus %&gt;%
+* filter(largo_pico_mm &gt;= 39.1)
+```
+
+```
+## # A tibble: 260 x 8
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
+##  2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+##  3 Adelia  Torg~          40.3         18              195            3250 hemb~
+##  4 Adelia  Torg~          39.3         20.6            190            3650 macho
+##  5 Adelia  Torg~          39.2         19.6            195            4675 macho
+##  6 Adelia  Torg~          42           20.2            190            4250 &lt;NA&gt; 
+##  7 Adelia  Torg~          41.1         17.6            182            3200 hemb~
+##  8 Adelia  Torg~          42.5         20.7            197            4500 macho
+##  9 Adelia  Torg~          46           21.5            194            4200 macho
+## 10 Adelia  Bisc~          40.6         18.6            183            3550 macho
+## # ... with 250 more rows, and 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+## 5.7. filter(&amp;)
+
+
+```r
+Pingus %&gt;%
+* filter(isla == 'Biscoe' &amp; especie =='Adelia')
+```
+
+```
+## # A tibble: 44 x 8
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Bisc~          37.8         18.3            174            3400 hemb~
+##  2 Adelia  Bisc~          37.7         18.7            180            3600 macho
+##  3 Adelia  Bisc~          35.9         19.2            189            3800 hemb~
+##  4 Adelia  Bisc~          38.2         18.1            185            3950 macho
+##  5 Adelia  Bisc~          38.8         17.2            180            3800 macho
+##  6 Adelia  Bisc~          35.3         18.9            187            3800 hemb~
+##  7 Adelia  Bisc~          40.6         18.6            183            3550 macho
+##  8 Adelia  Bisc~          40.5         17.9            187            3200 hemb~
+##  9 Adelia  Bisc~          37.9         18.6            172            3150 hemb~
+## 10 Adelia  Bisc~          40.5         18.9            180            3950 macho
+## # ... with 34 more rows, and 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+## 5.8. mutate()
+
+Es para crear o modificar columnas.  
+Podemos crear una columna a partir de los valores de otra.
+
+```r
+Pingus&lt;-Pingus %&gt;% 
+* mutate(kilos = masa_corporal_g / 1000)
+```
+
+
+---
+
+## 5.9. lubridate
+
+Facilita el trabajo con fechas y horas, ya que te permite decirle a R que una cadena de caracteres, es tiempo y horas.
+
+```r
+library(lubridate)
+```
+
+
+```r
+ymd_hms("2010-12-13 15:30:30")
+```
+
+Ademas, te permite **extraer** componentes de fechas y horas.
+
+```r
+ymd_hms("2010-12-13 15:30:30") %&gt;% month()
+```
+
+```
+## [1] 12
+```
+
+---
+
+## 5.9. ymd_hms
+
+Datos de hora inventados, solo nos interesa ver la hora, los minutos y los segundos.
+
+```r
+DatosPorHora&lt;-c("2010-12-13 13:30:30","2010-12-13 14:30:30","2010-12-13 15:30:30","2010-12-13 16:30:30","2010-12-13 17:30:30","2010-12-13 18:30:30","2010-12-13 19:30:30","2010-12-13 20:30:30")
+Horas&lt;-data.frame(DatosPorHora=DatosPorHora)
+```
+
+Usando **mutate** podemos separar esa informacion y extraer la que nos interesa.
+
+```r
+Horas %&gt;% 
+  mutate(
+    hora = hour(DatosPorHora),
+    minuto = minute(DatosPorHora),
+    segundo = second(DatosPorHora)
+  )
+```
+
+---
+
+## 5.10. group_by() y summarise()
+
+summarise() para resumir información de las columnas
+
+
+```r
+Pingus %&gt;% 
+  group_by(anio) %&gt;%
+  summarise(PromedioLargoPico=mean(largo_pico_mm))
+```
+
+```
+## # A tibble: 3 x 2
+##    anio PromedioLargoPico
+## * &lt;int&gt;             &lt;dbl&gt;
+## 1  2007              NA  
+## 2  2008              43.5
+## 3  2009              NA
+```
+
+---
+
+## 5.11. top_n()
+
+Obserservaciones maximas que le pidamos de una variable. 
+
+```r
+Pingus %&gt;% 
+  top_n(2,largo_pico_mm)
+```
+
+```
+## # A tibble: 2 x 9
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Papúa   Bisc~          59.6         17              230            6050 macho
+## 2 Barbijo Dream          58           17.8            181            3700 hemb~
+## # ... with 2 more variables: anio &lt;int&gt;, kilos &lt;dbl&gt;
+```
+
+---
+
+## 5.12. unique() o distinct()
+Valores únicos en esa columna.
+
+Hay varias maneras de ver este tipo de informacion:
+
+```r
+unique(Pingus$especie)
+```
+
+```
+## [1] Adelia  Papúa   Barbijo
+## Levels: Adelia Barbijo Papúa
+```
+
+
+```r
+pinguinos %&gt;% 
+* distinct(especie)
+```
+
+```
+## # A tibble: 3 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia 
+## 2 Papúa  
+## 3 Barbijo
+```
+
+
+```r
+Pingus %&gt;% 
+  distinct(isla)
+```
+
+```
+## # A tibble: 3 x 1
+##   isla     
+##   &lt;fct&gt;    
+## 1 Torgersen
+## 2 Biscoe   
+## 3 Dream
+```
+
+---
+
+## 5.13. drop_na 
+
+Hay que tener cuidado con las nas para varias operaciones.
+
+Para filtrar nas en pipe:
+
+```r
+Pingus %&gt;% 
+  drop_na(largo_pico_mm)
+```
+
+Otra opcion:
+
+```r
+(PingusSinNA &lt;- Pingus %&gt;% 
+  filter(!is.na(largo_pico_mm)))
+```
+
+```
+## # A tibble: 342 x 9
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
+##  2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+##  3 Adelia  Torg~          40.3         18              195            3250 hemb~
+##  4 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+##  5 Adelia  Torg~          39.3         20.6            190            3650 macho
+##  6 Adelia  Torg~          38.9         17.8            181            3625 hemb~
+##  7 Adelia  Torg~          39.2         19.6            195            4675 macho
+##  8 Adelia  Torg~          34.1         18.1            193            3475 &lt;NA&gt; 
+##  9 Adelia  Torg~          42           20.2            190            4250 &lt;NA&gt; 
+## 10 Adelia  Torg~          37.8         17.1            186            3300 &lt;NA&gt; 
+## # ... with 332 more rows, and 2 more variables: anio &lt;int&gt;, kilos &lt;dbl&gt;
+```
+Miren que ahora tenemos menos observaciones en pingus sin NAs.
+
+---
+
+# 5.14. Ejercicios asistidos
+
+```r
+library(datos)
+Pingus&lt;-pinguinos
+```
+
+Cuantos pinguinos muestreamos?
+
+```r
+pinguinos %&gt;% 
+  count()
+```
+
+Que islas se muestrearon?
+
+```r
+Pingus %&gt;% 
+  distinct(isla)
+```
+
+Cual es nuestro tamanio de muestra por sexo e isla?
+
+```r
+Pingus %&gt;% 
+  group_by(sexo, isla) %&gt;% 
+  count()
+```
+
+---
+
+# 5.14.  Ejercicios asistidos
+Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
+
+```r
+Pingus %&gt;% 
+  group_by(especie,sexo) %&gt;% 
+  drop_na(masa_corporal_g)%&gt;% 
+  summarise(mean = mean(masa_corporal_g), n = n())
+```
+
+Cambia el peso de los pinguinos a kilos.
+
+```r
+Pingus&lt;-Pingus %&gt;% 
+  mutate(kilos = masa_corporal_g / 1000)
+```
+
+---
+
+# 5.14. Ejercicios solos
+- Crea un objeto con solo dos columnas, las de sexo y anio.
+
+```r
+#_____ &lt;-Pingus %&gt;%
+#  select(____,_____)
+```
+
+- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
+
+```r
+#______ &lt;-Pingus %&gt;%
+#  distinct(_____)
+```
+
+- Crea un objeto con solo machos.
+
+```r
+#______ &lt;-Pingus %&gt;%
+#  filter(_____ == '______')
+```
+
+- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
+
+```r
+#______ &lt;-Pingus %&gt;%
+#  filter(_____ == '______')%&gt;%
+#  filter(______ &gt;= ______)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
+
+
+# Recapitulando
+
+1.1. Operaciones matematicas simples.  
+1.2. Funciones basicas (mean, median, sd, range).  
+1.3. Funciones tidyverse (count, select, filter, mutate, summarise, unique, drop_na).  
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
