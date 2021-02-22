@@ -14,13 +14,17 @@ Clase 2: Visualizacion de datos.
 https://miriamll.github.io/Curso_CIAD/Clase2Parte1
 
 
-Clase 3: Ordenar datos.
+Clase 3: Operaciones basicas e inspeccionar mis data frames.
 
 
-Clase 4: Inspeccionar datos y obtener resultados preliminares.
+Clase 4: Ordenar datos.
 
 
-Clase 5: Escribir mis metodos y analisis estadisticos en Rmd. 
+Clase 5: Inspeccionar datos y obtener resultados preliminares.
 
 
 Clase 6: Trabajar con otros. 
+
+
+Clase 7: Escribir mis metodos y analisis estadisticos en Rmd. 
+
