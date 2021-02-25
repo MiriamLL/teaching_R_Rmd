@@ -16,10 +16,7 @@ https://miriamll.github.io/Curso_CIAD/Clase2Parte1
 Clase 3: Operaciones basicas e inspeccionar mis data frames.  
 https://miriamll.github.io/Curso_CIAD/Clase3Parte1
 
-Clase 4: Ordenar datos.  
-https://miriamll.github.io/Curso_CIAD/Clase3Parte2
-
-Clase 5: Unir tablas.  
+Clase 5: Funciones y Unir tablas.  
 https://miriamll.github.io/Curso_CIAD/Clase3Parte2
 
 Clase 6: Trabajar por proyecto, recapitulando todo lo que hicimos clases pasadas.
