@@ -20,11 +20,20 @@ https://miriamll.github.io/Curso_CIAD/Clase3Parte1
 Clase 4: Ordenar datos.  
 https://miriamll.github.io/Curso_CIAD/Clase3Parte2
 
-Clase 5: Inspeccionar datos y obtener resultados preliminares.
+Clase 5: Trabajar por proyecto y que es Rmd.
 
 
-Clase 6: Trabajar con otros. 
+Clase 6: Sumergirnos en Rmd y compartir archivos. 
 
 
 Clase 7: Escribir mis metodos y analisis estadisticos en Rmd. 
+
+
+Clase 8: Escribir mis resultados y compartir mi Rmd. 
+
+
+Clase 9: Presentaciones basicas en Rmd (usando xaringan).
+
+
+Clase 10: Intro a git y github.
 
