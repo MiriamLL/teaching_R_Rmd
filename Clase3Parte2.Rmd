@@ -16,12 +16,15 @@ output:
 
 La clase es de 2 horas.
 
-Teoria:  
+Primera parte:  
+- Funciones del tidyverse.  
 - Funciones para unir y manipular data frames.
+- Ejercicios.
 
-Practica: 
+Segunda parte:  
 - Unir data frames.  
 - Exportar tus datos.  
+- Ejercicios.
 
 
 ```{r, echo=FALSE}
@@ -67,7 +70,7 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
-# Unir y exportar
+# Ordenar, unir y exportar
 
 ---
 
@@ -77,7 +80,7 @@ background-size: cover
 Cargen sus datos, que los vamos a usar mas adelante.
 ```{r}
 library(datos)
-Pingus<-datos::pinguinos
+Pingus<-pinguinos
 ```
 Otra opcion es usar read_csv desde su computador.
 
@@ -87,7 +90,307 @@ library(tidyverse)
 
 ---
 
-# 6.1. left_join()
+## 1.1. Tidyverse 
+
+Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
+
+```{r echo=FALSE, out.height=450}
+knitr::include_graphics('https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png')
+```
+
+---
+
+## 1.2. Pipe
+
+Vamos a usar mucho el **pipe** un argumento que se usa para encadenar funciones.
+
+En su teclado: strg+alt+M
+```{r, eval=FALSE}
+%>% 
+```
+
+---
+
+## 1.3. Funciones
+
+El paquete dplyr nos da una serie de herramientas para *manipular* datos
+
+Las principales funciones, o *verbos* de dplyr, son:
+
+- `count()` para contar
+- `select()`, para seleccionar columnas
+- `filter()`, para filtrar filas
+- `mutate()`, para crear o modificar columnas
+- `summarise()`, para resumir información de las columnas
+
+Hoy veremos algunas, la proxima clase veremos otras.
+
+---
+
+## 1.4. filter()
+Podemos filtrar columnas de acuerdo a valores que nos interesen.
+
+Pero para esto hay que conocer algunos operadores lógicos:
+
+- El símbolo **==** es para decir 'igual a'  
+- El símbolo **!=** es para decir 'distinto a'  
+- El símbolo **>** es para decir 'mayor que'
+- El símbolo **<** es para decir 'menor que'
+- El símbolo **>=** es para decir 'mayor o igual que'
+- El símbolo **<=** es para decir 'menor o igual que'
+- El símbolo **&** es para decir 'y'
+- El símbolo **|** es para decir 'o'
+
+---
+
+## 1.5. filter(==)
+
+```{r, eval=FALSE}
+Pingus %>%
+  filter(sexo == 'hembra')
+```
+Nota: las variables son sin comillas y las categorías en comillas.
+
+--
+
+Vayan a su environment... y revisen... se cambio mi tabla?
+
+--
+
+No. Hay que crear un nuevo objeto.
+```{r}
+PingusHembras<-Pingus %>%
+  filter(sexo == 'hembra')
+```
+Miren su environment.
+
+---
+
+## 1.6. filter(<=)
+
+```{r}
+Pingus %>%
+  filter(largo_pico_mm <= 39.1) #<<
+```
+
+---
+
+## 1.6. filter(>=)
+
+```{r}
+Pingus %>%
+  filter(largo_pico_mm >= 39.1)#<<
+```
+
+---
+
+## 1.6. filter(&)
+
+```{r}
+Pingus %>%
+  filter(isla == 'Biscoe' & especie =='Adelia')#<<
+```
+
+---
+
+## 1.7. mutate()
+
+Es para crear o modificar columnas.  
+Podemos crear una columna a partir de los valores de otra.
+```{r}
+Pingus<-Pingus %>% 
+  mutate(kilos = masa_corporal_g / 1000)#<<
+```
+
+
+---
+
+## 1.8. lubridate
+
+Facilita el trabajo con fechas y horas, ya que te permite decirle a R que una cadena de caracteres, es tiempo y horas.
+```{r, message=FALSE}
+library(lubridate)
+```
+
+```{r, eval = FALSE}
+ymd_hms("2010-12-13 15:30:30")
+```
+
+Ademas, te permite **extraer** componentes de fechas y horas.
+```{r}
+ymd_hms("2010-12-13 15:30:30") %>% month()
+```
+
+---
+
+## 1.9. ymd_hms
+
+Datos de hora inventados, solo nos interesa ver la hora, los minutos y los segundos.
+```{r}
+DatosPorHora<-c("2010-12-13 13:30:30","2010-12-13 14:30:30","2010-12-13 15:30:30","2010-12-13 16:30:30","2010-12-13 17:30:30","2010-12-13 18:30:30","2010-12-13 19:30:30","2010-12-13 20:30:30")
+Horas<-data.frame(DatosPorHora=DatosPorHora)
+```
+
+Usando **mutate** podemos separar esa informacion y extraer la que nos interesa.
+```{r, eval = FALSE}
+Horas %>% 
+  mutate(
+    hora = hour(DatosPorHora),
+    minuto = minute(DatosPorHora),
+    segundo = second(DatosPorHora)
+  )
+```
+
+---
+
+## 1.10. group_by() y summarise()
+
+summarise() para resumir información de las columnas
+
+```{r}
+Pingus %>% 
+  group_by(anio) %>%
+  summarise(PromedioLargoPico=mean(largo_pico_mm))
+```
+
+---
+
+## 1.11. top_n()
+
+Obserservaciones maximas que le pidamos de una variable. 
+```{r}
+Pingus %>% 
+  top_n(2,largo_pico_mm)
+```
+
+---
+
+## 1.12. unique() o distinct()
+Valores únicos en esa columna.
+
+Hay varias maneras de ver este tipo de informacion:
+```{r}
+unique(Pingus$especie)
+```
+
+```{r}
+pinguinos %>% 
+  distinct(especie) #<<
+```
+
+---
+
+## 1.12. unique() o distinct()
+Valores únicos en esa columna.
+
+```{r}
+Pingus %>% 
+  distinct(isla)
+```
+
+---
+
+## 1.13. drop_na 
+
+Hay que tener cuidado con las nas para varias operaciones.
+
+Para filtrar nas en pipe:
+```{r, eval=FALSE}
+Pingus %>% 
+  drop_na(largo_pico_mm)
+```
+
+Otra opcion:
+```{r}
+PingusSinNA <- Pingus %>% 
+  filter(!is.na(largo_pico_mm))
+```
+Miren que ahora tenemos menos observaciones en pingus sin NAs.
+
+---
+
+# 1.14. Ejercicios asistidos
+```{r}
+library(datos)
+Pingus<-pinguinos
+```
+
+Cuantos pinguinos muestreamos?
+```{r, eval=FALSE}
+pinguinos %>% 
+  count()
+```
+
+Que islas se muestrearon?
+```{r, eval=FALSE}
+Pingus %>% 
+  distinct(isla)
+```
+
+Cual es nuestro tamanio de muestra por sexo e isla?
+```{r, eval=FALSE}
+Pingus %>% 
+  group_by(sexo, isla) %>% 
+  count()
+```
+
+---
+
+# 1.15.  Ejercicios asistidos
+Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
+```{r, eval=FALSE}
+Pingus %>% 
+  group_by(especie,sexo) %>% 
+  drop_na(masa_corporal_g)%>% 
+  summarise(mean = mean(masa_corporal_g), n = n())
+```
+
+Cambia el peso de los pinguinos a kilos.
+```{r, eval=FALSE}
+Pingus<-Pingus %>% 
+  mutate(kilos = masa_corporal_g / 1000)
+```
+
+---
+
+# 5.15. Ejercicios solos
+- Crea un objeto con solo dos columnas, las de sexo y anio.
+```{r}
+#_____ <-Pingus %>%
+#  select(____,_____)
+```
+
+- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
+```{r}
+#______ <-Pingus %>%
+#  distinct(_____)
+```
+
+- Crea un objeto con solo machos.
+```{r}
+#______ <-Pingus %>%
+#  filter(_____ == '______')
+```
+
+- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
+```{r}
+#______ <-Pingus %>%
+#  filter(_____ == '______')%>%
+#  filter(______ >= ______)
+```
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
+
+# Ordenar, unir y exportar
+
+---
+
+# 2.1. left_join()
 
 Datos inventados.
 ```{r}
@@ -99,7 +402,7 @@ Pesticidas<-c(10,20,35,1,6,3,8,2,3,1)
 
 ---
 
-# 6.1. left_join()
+# 2.1. left_join()
 
 Muchas veces tengo datos de laboratorio por un lado...
 ```{r}
@@ -116,7 +419,7 @@ head(Libreta)
 
 ---
 
-# 6.1. left_join()
+# 2.1. left_join()
 
 - left_join() me permite unirlos.
 ```{r}
@@ -127,7 +430,7 @@ DatosJuntos
 
 ---
 
-# 6.2. pivot_longer
+# 2.2. pivot_longer
 A veces los datos se toman de manera *"no ordenada"* en el sentido de que las observaciones estan en cada columna y no en cada fila.
 
 Esto es normal, particularmente en campo o en el laboratorio y tenemos una libreta con espacio limitado.
@@ -140,7 +443,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 
 ---
 
-# 6.2. pivot_longer
+# 2.2. pivot_longer
 
 Datos inventados de 5 especies y sus riquezas.
 ```{r}
@@ -162,7 +465,7 @@ head(EspecieAnio)
 
 ---
 
-# 6.2. pivot_longer
+# 2.2. pivot_longer
 
 Este argumento me permite reorganizarlas.
 ```{r}
@@ -175,7 +478,7 @@ Especies_largo
 
 ---
 
-# 6.3. pivot_wider
+# 2.3. pivot_wider
 
 Pero si por alguna razon quiero tenerlos separados, puedo tambien extraerlos a lo ancho.
 
@@ -185,7 +488,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 
 ---
 
-# 6.3. pivot_wider
+# 2.3. pivot_wider
 
 Datos inventados.
 ```{r}
@@ -197,7 +500,7 @@ Especies_ancho
 
 ---
 
-# 6.4. Unite
+# 2.4. Unite
 
 Para unir informacion de dos columnas en una columna.
 ```{r}
@@ -209,7 +512,7 @@ Para unir informacion de dos columnas en una columna.
 
 ---
 
-# 6.5. Separate
+# 2.5. Separate
 
 Separar valores de una columna en dos columnas.
 ```{r, eval=FALSE}
@@ -231,7 +534,7 @@ Ojo: borra las columnas originales, si no queremos que las borre debemos agregar
 
 ---
 
-# 6.6. Rename
+# 2.6. Rename
 Cambiar el nombre de la columna.  
 El nuevo nombre se pone primero y luego se pone el nombre anterior.
 ```{r}
@@ -240,7 +543,8 @@ Pingus %>%
 ```
 
 ---
-# 6.6. Rename
+
+# 2.6. Rename
 Cambiar el nombre de varias columnas.  
 El nuevo nombre se pone primero y luego se pone el nombre anterior.
 
@@ -252,7 +556,7 @@ Pingus %>%
 
 ---
 
-# 6.7. Relocate
+# 2.7. Relocate
 
 Mover columnas al inicio del data frame.
 ```{r}
@@ -262,7 +566,7 @@ Pingus %>%
 
 ---
 
-# 6.8 ggplot()
+# 2.8 ggplot()
 
 Podemos encadenar funciones y crear graficos.
 
@@ -284,7 +588,7 @@ background-size: cover
 
 ---
 
-## 6.9 Ejercicios
+## 2.9 Ejercicios
 ### Paquetes
 
 ```{r}
@@ -298,7 +602,7 @@ Pingus<-datos::pinguinos
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### pivot_wider()
 
 ```{r, warning=FALSE}
@@ -310,7 +614,7 @@ PingusAncho
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### pivot_longer()
 
 ```{r}
@@ -322,7 +626,7 @@ PingusLargo <- PingusAncho %>%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### unite()
 
 ```{r}
@@ -334,7 +638,7 @@ PingusEspecieSexo<-Pingus %>%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### separate()
 
 ```{r}
@@ -346,7 +650,7 @@ PingusSeparate<-PingusEspecieSexo %>%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### relocate()
 
 ```{r}
@@ -356,7 +660,7 @@ PingusRelocate<-Pingus %>%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### left_join()
 
 Datos inventados.
@@ -385,7 +689,7 @@ DatosJuntos<-left_join(Libreta, Laboratorio,
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### ggplot()
   
 Datos inventados de 5 especies y sus riquezas.
@@ -398,8 +702,7 @@ Anio2012<-c(6,2,3,7,8)
 
 Un nuevo data frame.
 ```{r}
-EspecieAnio<-data.frame(Especie=Especies,
-                        Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
+EspecieAnio<-data.frame(Especie=Especies,                        Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
 ```
 
 ```{r}
@@ -408,7 +711,7 @@ head(EspecieAnio)
 
 ---
 
-# 6.9. pivot_longer
+# 2.9. pivot_longer
 
 Este argumento me permite reorganizarlas.
 ```{r}
@@ -421,7 +724,7 @@ EspeciesLargo
 
 ---
 
-# 6.9. pivot_longer
+# 2.9. pivot_longer
 Importante el acomodo para poder realizar el grafico.
 
 ```{r}
@@ -432,7 +735,7 @@ ggplot(EspeciesLargo, aes(x=Especie,y=Riqueza, color=Anio, fill=Anio))+
 
 ---
 
-# 7. Exportar tu data.frame
+# 3. Exportar tu data.frame
 
 Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su contra parte para exportarlos.
 - write_csv()  
@@ -442,7 +745,7 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 
 ---
 
-# 7. Exportar tu data.frame
+# 3. Exportar tu data.frame
 ## Ahora tu
 
 1- Define la carpeta.  
@@ -461,7 +764,7 @@ write_csv(
 
 ---
 
-# 8. Continuar aprendiendo
+# 4. Continuar aprendiendo
 
 [CheatSheet](https://dplyr.tidyverse.org/)
 
@@ -477,6 +780,7 @@ background-size: cover
 
 # Recapitulando
 
+1.0. Funciones de tidyverse (filter, mutate, summarise, unique, drop_na)
 1.1. Unir data frames.  
 1.2. Renombrar columnas.  
 1.2. Exportar data frames.  

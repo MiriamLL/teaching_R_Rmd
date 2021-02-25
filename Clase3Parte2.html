@@ -24,12 +24,15 @@ class: center, middle, inverse, title-slide
 
 La clase es de 2 horas.
 
-Teoria:  
+Primera parte:  
+- Funciones del tidyverse.  
 - Funciones para unir y manipular data frames.
+- Ejercicios.
 
-Practica: 
+Segunda parte:  
 - Unir data frames.  
 - Exportar tus datos.  
+- Ejercicios.
 
 
 
@@ -47,7 +50,7 @@ Practica:
 
 - Necesito:
 Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado
-🕧.
+🕛.
 
 ---
 
@@ -73,7 +76,7 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
 background-size: cover
 
-# Unir y exportar
+# Ordenar, unir y exportar
 
 ---
 
@@ -84,7 +87,7 @@ Cargen sus datos, que los vamos a usar mas adelante.
 
 ```r
 library(datos)
-Pingus&lt;-datos::pinguinos
+Pingus&lt;-pinguinos
 ```
 Otra opcion es usar read_csv desde su computador.
 
@@ -112,7 +115,430 @@ library(tidyverse)
 
 ---
 
-# 6.1. left_join()
+## 1.1. Tidyverse 
+
+Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
+
+&lt;img src="https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png" height="450" /&gt;
+
+---
+
+## 1.2. Pipe
+
+Vamos a usar mucho el **pipe** un argumento que se usa para encadenar funciones.
+
+En su teclado: strg+alt+M
+
+```r
+%&gt;% 
+```
+
+---
+
+## 1.3. Funciones
+
+El paquete dplyr nos da una serie de herramientas para *manipular* datos
+
+Las principales funciones, o *verbos* de dplyr, son:
+
+- `count()` para contar
+- `select()`, para seleccionar columnas
+- `filter()`, para filtrar filas
+- `mutate()`, para crear o modificar columnas
+- `summarise()`, para resumir información de las columnas
+
+Hoy veremos algunas, la proxima clase veremos otras.
+
+---
+
+## 1.4. filter()
+Podemos filtrar columnas de acuerdo a valores que nos interesen.
+
+Pero para esto hay que conocer algunos operadores lógicos:
+
+- El símbolo **==** es para decir 'igual a'  
+- El símbolo **!=** es para decir 'distinto a'  
+- El símbolo **&gt;** es para decir 'mayor que'
+- El símbolo **&lt;** es para decir 'menor que'
+- El símbolo **&gt;=** es para decir 'mayor o igual que'
+- El símbolo **&lt;=** es para decir 'menor o igual que'
+- El símbolo **&amp;** es para decir 'y'
+- El símbolo **|** es para decir 'o'
+
+---
+
+## 1.5. filter(==)
+
+
+```r
+Pingus %&gt;%
+  filter(sexo == 'hembra')
+```
+Nota: las variables son sin comillas y las categorías en comillas.
+
+--
+
+Vayan a su environment... y revisen... se cambio mi tabla?
+
+--
+
+No. Hay que crear un nuevo objeto.
+
+```r
+PingusHembras&lt;-Pingus %&gt;%
+  filter(sexo == 'hembra')
+```
+Miren su environment.
+
+---
+
+## 1.6. filter(&lt;=)
+
+
+```r
+Pingus %&gt;%
+* filter(largo_pico_mm &lt;= 39.1)
+```
+
+```
+## # A tibble: 83 x 8
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
+##  2 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+##  3 Adelia  Torg~          38.9         17.8            181            3625 hemb~
+##  4 Adelia  Torg~          34.1         18.1            193            3475 &lt;NA&gt; 
+##  5 Adelia  Torg~          37.8         17.1            186            3300 &lt;NA&gt; 
+##  6 Adelia  Torg~          37.8         17.3            180            3700 &lt;NA&gt; 
+##  7 Adelia  Torg~          38.6         21.2            191            3800 macho
+##  8 Adelia  Torg~          34.6         21.1            198            4400 macho
+##  9 Adelia  Torg~          36.6         17.8            185            3700 hemb~
+## 10 Adelia  Torg~          38.7         19              195            3450 hemb~
+## # ... with 73 more rows, and 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+## 1.6. filter(&gt;=)
+
+
+```r
+Pingus %&gt;%
+* filter(largo_pico_mm &gt;= 39.1)
+```
+
+```
+## # A tibble: 260 x 8
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
+##  2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+##  3 Adelia  Torg~          40.3         18              195            3250 hemb~
+##  4 Adelia  Torg~          39.3         20.6            190            3650 macho
+##  5 Adelia  Torg~          39.2         19.6            195            4675 macho
+##  6 Adelia  Torg~          42           20.2            190            4250 &lt;NA&gt; 
+##  7 Adelia  Torg~          41.1         17.6            182            3200 hemb~
+##  8 Adelia  Torg~          42.5         20.7            197            4500 macho
+##  9 Adelia  Torg~          46           21.5            194            4200 macho
+## 10 Adelia  Bisc~          40.6         18.6            183            3550 macho
+## # ... with 250 more rows, and 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+## 1.6. filter(&amp;)
+
+
+```r
+Pingus %&gt;%
+* filter(isla == 'Biscoe' &amp; especie =='Adelia')
+```
+
+```
+## # A tibble: 44 x 8
+##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+##  1 Adelia  Bisc~          37.8         18.3            174            3400 hemb~
+##  2 Adelia  Bisc~          37.7         18.7            180            3600 macho
+##  3 Adelia  Bisc~          35.9         19.2            189            3800 hemb~
+##  4 Adelia  Bisc~          38.2         18.1            185            3950 macho
+##  5 Adelia  Bisc~          38.8         17.2            180            3800 macho
+##  6 Adelia  Bisc~          35.3         18.9            187            3800 hemb~
+##  7 Adelia  Bisc~          40.6         18.6            183            3550 macho
+##  8 Adelia  Bisc~          40.5         17.9            187            3200 hemb~
+##  9 Adelia  Bisc~          37.9         18.6            172            3150 hemb~
+## 10 Adelia  Bisc~          40.5         18.9            180            3950 macho
+## # ... with 34 more rows, and 1 more variable: anio &lt;int&gt;
+```
+
+---
+
+## 1.7. mutate()
+
+Es para crear o modificar columnas.  
+Podemos crear una columna a partir de los valores de otra.
+
+```r
+Pingus&lt;-Pingus %&gt;% 
+* mutate(kilos = masa_corporal_g / 1000)
+```
+
+
+---
+
+## 1.8. lubridate
+
+Facilita el trabajo con fechas y horas, ya que te permite decirle a R que una cadena de caracteres, es tiempo y horas.
+
+```r
+library(lubridate)
+```
+
+
+```r
+ymd_hms("2010-12-13 15:30:30")
+```
+
+Ademas, te permite **extraer** componentes de fechas y horas.
+
+```r
+ymd_hms("2010-12-13 15:30:30") %&gt;% month()
+```
+
+```
+## [1] 12
+```
+
+---
+
+## 1.9. ymd_hms
+
+Datos de hora inventados, solo nos interesa ver la hora, los minutos y los segundos.
+
+```r
+DatosPorHora&lt;-c("2010-12-13 13:30:30","2010-12-13 14:30:30","2010-12-13 15:30:30","2010-12-13 16:30:30","2010-12-13 17:30:30","2010-12-13 18:30:30","2010-12-13 19:30:30","2010-12-13 20:30:30")
+Horas&lt;-data.frame(DatosPorHora=DatosPorHora)
+```
+
+Usando **mutate** podemos separar esa informacion y extraer la que nos interesa.
+
+```r
+Horas %&gt;% 
+  mutate(
+    hora = hour(DatosPorHora),
+    minuto = minute(DatosPorHora),
+    segundo = second(DatosPorHora)
+  )
+```
+
+---
+
+## 1.10. group_by() y summarise()
+
+summarise() para resumir información de las columnas
+
+
+```r
+Pingus %&gt;% 
+  group_by(anio) %&gt;%
+  summarise(PromedioLargoPico=mean(largo_pico_mm))
+```
+
+```
+## # A tibble: 3 x 2
+##    anio PromedioLargoPico
+## * &lt;int&gt;             &lt;dbl&gt;
+## 1  2007              NA  
+## 2  2008              43.5
+## 3  2009              NA
+```
+
+---
+
+## 1.11. top_n()
+
+Obserservaciones maximas que le pidamos de una variable. 
+
+```r
+Pingus %&gt;% 
+  top_n(2,largo_pico_mm)
+```
+
+```
+## # A tibble: 2 x 9
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Papúa   Bisc~          59.6         17              230            6050 macho
+## 2 Barbijo Dream          58           17.8            181            3700 hemb~
+## # ... with 2 more variables: anio &lt;int&gt;, kilos &lt;dbl&gt;
+```
+
+---
+
+## 1.12. unique() o distinct()
+Valores únicos en esa columna.
+
+Hay varias maneras de ver este tipo de informacion:
+
+```r
+unique(Pingus$especie)
+```
+
+```
+## [1] Adelia  Papúa   Barbijo
+## Levels: Adelia Barbijo Papúa
+```
+
+
+```r
+pinguinos %&gt;% 
+* distinct(especie)
+```
+
+```
+## # A tibble: 3 x 1
+##   especie
+##   &lt;fct&gt;  
+## 1 Adelia 
+## 2 Papúa  
+## 3 Barbijo
+```
+
+---
+
+## 1.12. unique() o distinct()
+Valores únicos en esa columna.
+
+
+```r
+Pingus %&gt;% 
+  distinct(isla)
+```
+
+```
+## # A tibble: 3 x 1
+##   isla     
+##   &lt;fct&gt;    
+## 1 Torgersen
+## 2 Biscoe   
+## 3 Dream
+```
+
+---
+
+## 1.13. drop_na 
+
+Hay que tener cuidado con las nas para varias operaciones.
+
+Para filtrar nas en pipe:
+
+```r
+Pingus %&gt;% 
+  drop_na(largo_pico_mm)
+```
+
+Otra opcion:
+
+```r
+PingusSinNA &lt;- Pingus %&gt;% 
+  filter(!is.na(largo_pico_mm))
+```
+Miren que ahora tenemos menos observaciones en pingus sin NAs.
+
+---
+
+# 1.14. Ejercicios asistidos
+
+```r
+library(datos)
+Pingus&lt;-pinguinos
+```
+
+Cuantos pinguinos muestreamos?
+
+```r
+pinguinos %&gt;% 
+  count()
+```
+
+Que islas se muestrearon?
+
+```r
+Pingus %&gt;% 
+  distinct(isla)
+```
+
+Cual es nuestro tamanio de muestra por sexo e isla?
+
+```r
+Pingus %&gt;% 
+  group_by(sexo, isla) %&gt;% 
+  count()
+```
+
+---
+
+# 1.15.  Ejercicios asistidos
+Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
+
+```r
+Pingus %&gt;% 
+  group_by(especie,sexo) %&gt;% 
+  drop_na(masa_corporal_g)%&gt;% 
+  summarise(mean = mean(masa_corporal_g), n = n())
+```
+
+Cambia el peso de los pinguinos a kilos.
+
+```r
+Pingus&lt;-Pingus %&gt;% 
+  mutate(kilos = masa_corporal_g / 1000)
+```
+
+---
+
+# 5.15. Ejercicios solos
+- Crea un objeto con solo dos columnas, las de sexo y anio.
+
+```r
+#_____ &lt;-Pingus %&gt;%
+#  select(____,_____)
+```
+
+- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
+
+```r
+#______ &lt;-Pingus %&gt;%
+#  distinct(_____)
+```
+
+- Crea un objeto con solo machos.
+
+```r
+#______ &lt;-Pingus %&gt;%
+#  filter(_____ == '______')
+```
+
+- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
+
+```r
+#______ &lt;-Pingus %&gt;%
+#  filter(_____ == '______')%&gt;%
+#  filter(______ &gt;= ______)
+```
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
+
+# Ordenar, unir y exportar
+
+---
+
+# 2.1. left_join()
 
 Datos inventados.
 
@@ -125,7 +551,7 @@ Pesticidas&lt;-c(10,20,35,1,6,3,8,2,3,1)
 
 ---
 
-# 6.1. left_join()
+# 2.1. left_join()
 
 Muchas veces tengo datos de laboratorio por un lado...
 
@@ -164,7 +590,7 @@ head(Libreta)
 
 ---
 
-# 6.1. left_join()
+# 2.1. left_join()
 
 - left_join() me permite unirlos.
 
@@ -190,7 +616,7 @@ DatosJuntos
 
 ---
 
-# 6.2. pivot_longer
+# 2.2. pivot_longer
 A veces los datos se toman de manera *"no ordenada"* en el sentido de que las observaciones estan en cada columna y no en cada fila.
 
 Esto es normal, particularmente en campo o en el laboratorio y tenemos una libreta con espacio limitado.
@@ -201,7 +627,7 @@ Entonces hay que re-organizarlos.
 
 ---
 
-# 6.2. pivot_longer
+# 2.2. pivot_longer
 
 Datos inventados de 5 especies y sus riquezas.
 
@@ -235,7 +661,7 @@ head(EspecieAnio)
 
 ---
 
-# 6.2. pivot_longer
+# 2.2. pivot_longer
 
 Este argumento me permite reorganizarlas.
 
@@ -270,7 +696,7 @@ Especies_largo
 
 ---
 
-# 6.3. pivot_wider
+# 2.3. pivot_wider
 
 Pero si por alguna razon quiero tenerlos separados, puedo tambien extraerlos a lo ancho.
 
@@ -278,7 +704,7 @@ Pero si por alguna razon quiero tenerlos separados, puedo tambien extraerlos a l
 
 ---
 
-# 6.3. pivot_wider
+# 2.3. pivot_wider
 
 Datos inventados.
 
@@ -302,7 +728,7 @@ Especies_ancho
 
 ---
 
-# 6.4. Unite
+# 2.4. Unite
 
 Para unir informacion de dos columnas en una columna.
 
@@ -332,7 +758,7 @@ Para unir informacion de dos columnas en una columna.
 
 ---
 
-# 6.5. Separate
+# 2.5. Separate
 
 Separar valores de una columna en dos columnas.
 
@@ -374,7 +800,7 @@ Ojo: borra las columnas originales, si no queremos que las borre debemos agregar
 
 ---
 
-# 6.6. Rename
+# 2.6. Rename
 Cambiar el nombre de la columna.  
 El nuevo nombre se pone primero y luego se pone el nombre anterior.
 
@@ -401,7 +827,8 @@ Pingus %&gt;%
 ```
 
 ---
-# 6.6. Rename
+
+# 2.6. Rename
 Cambiar el nombre de varias columnas.  
 El nuevo nombre se pone primero y luego se pone el nombre anterior.
 
@@ -431,7 +858,7 @@ Pingus %&gt;%
 
 ---
 
-# 6.7. Relocate
+# 2.7. Relocate
 
 Mover columnas al inicio del data frame.
 
@@ -460,7 +887,7 @@ Pingus %&gt;%
 
 ---
 
-# 6.8 ggplot()
+# 2.8 ggplot()
 
 Podemos encadenar funciones y crear graficos.
 
@@ -476,7 +903,7 @@ Pingus %&gt;%
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](Clase3Parte2_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+![](Clase3Parte2_files/figure-html/unnamed-chunk-51-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -489,7 +916,7 @@ background-size: cover
 
 ---
 
-## 6.9 Ejercicios
+## 2.9 Ejercicios
 ### Paquetes
 
 
@@ -505,7 +932,7 @@ Pingus&lt;-datos::pinguinos
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### pivot_wider()
 
 
@@ -535,7 +962,7 @@ PingusAncho
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### pivot_longer()
 
 
@@ -548,7 +975,7 @@ PingusLargo &lt;- PingusAncho %&gt;%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### unite()
 
 
@@ -561,7 +988,7 @@ PingusEspecieSexo&lt;-Pingus %&gt;%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### separate()
 
 
@@ -574,7 +1001,7 @@ PingusSeparate&lt;-PingusEspecieSexo %&gt;%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### relocate()
 
 
@@ -585,7 +1012,7 @@ PingusRelocate&lt;-Pingus %&gt;%
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### left_join()
 
 Datos inventados.
@@ -618,7 +1045,7 @@ DatosJuntos&lt;-left_join(Libreta, Laboratorio,
 
 ---
 
-## 6.9. Ejercicios
+## 2.9. Ejercicios
 ### ggplot()
   
 Datos inventados de 5 especies y sus riquezas.
@@ -633,8 +1060,7 @@ Anio2012&lt;-c(6,2,3,7,8)
 Un nuevo data frame.
 
 ```r
-EspecieAnio&lt;-data.frame(Especie=Especies,
-                        Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
+EspecieAnio&lt;-data.frame(Especie=Especies,                        Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
 ```
 
 
@@ -653,7 +1079,7 @@ head(EspecieAnio)
 
 ---
 
-# 6.9. pivot_longer
+# 2.9. pivot_longer
 
 Este argumento me permite reorganizarlas.
 
@@ -688,7 +1114,7 @@ EspeciesLargo
 
 ---
 
-# 6.9. pivot_longer
+# 2.9. pivot_longer
 Importante el acomodo para poder realizar el grafico.
 
 
@@ -697,12 +1123,12 @@ ggplot(EspeciesLargo, aes(x=Especie,y=Riqueza, color=Anio, fill=Anio))+
          geom_bar(stat='identity')
 ```
 
-![](Clase3Parte2_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+![](Clase3Parte2_files/figure-html/unnamed-chunk-67-1.png)&lt;!-- --&gt;
 
 
 ---
 
-# 7. Exportar tu data.frame
+# 3. Exportar tu data.frame
 
 Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su contra parte para exportarlos.
 - write_csv()  
@@ -712,7 +1138,7 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 
 ---
 
-# 7. Exportar tu data.frame
+# 3. Exportar tu data.frame
 ## Ahora tu
 
 1- Define la carpeta.  
@@ -740,7 +1166,7 @@ write_csv(
 
 ---
 
-# 8. Continuar aprendiendo
+# 4. Continuar aprendiendo
 
 [CheatSheet](https://dplyr.tidyverse.org/)
 
@@ -756,6 +1182,7 @@ background-size: cover
 
 # Recapitulando
 
+1.0. Funciones de tidyverse (filter, mutate, summarise, unique, drop_na)
 1.1. Unir data frames.  
 1.2. Renombrar columnas.  
 1.2. Exportar data frames.  
