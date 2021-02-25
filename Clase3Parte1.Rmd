@@ -510,7 +510,7 @@ knitr::include_graphics("https://www.khstats.com/img/dplyr_image.jpg")
 
 ---
 
-# 5.1. Tidyverse 
+## 5.1. Tidyverse 
 
 Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
 
