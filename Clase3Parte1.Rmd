@@ -459,7 +459,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 
 Los datos ordenados (Tidy): es una estructuracion de los conjuntos de datos para facilitar el analisis. 
 
-```{r echo=FALSE, out.height=350}
+```{r echo=FALSE, out.height=200}
 knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/tidy-1.svg")
 ```
 
