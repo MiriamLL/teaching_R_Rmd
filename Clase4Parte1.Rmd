@@ -1,0 +1,594 @@
+---
+title: "Clase 4"
+subtitle: "Proyectos en R"
+author: "Miriam Lerma"
+date: "Marzo 2021"
+output:
+  xaringan::moon_reader:
+    css: ["default","chocolate-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+# Intro
+
+La clase es de 2 horas.
+
+- Parte I:  
+Teoria: Trabajar por proyectos.  
+Practica: Ordenar mis carpetas y crear mi proyecto.
+
+- Parte II:
+Crear un proyecto.  
+Guardarlo y compartirlo.  
+
+
+
+
+```{r, echo=FALSE,include=FALSE, message=FALSE}
+library(emo)
+library(here)
+library(fontawesome)
+```
+
+---
+
+# Ustedes
+
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y graficos, saben exportar csvs y graficos).  
+
+- Quieren tener ordenado su trabajo para poder re-hacer sus analisis en el futuro.  
+
+- Quieren trabajar con alguien mas y mandarle materiales.    
+
+
+- Necesito:
+Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
+`r emo::ji("clock")`
+
+---
+
+## Créditos
+
+Si quieren profundizar en el tema:
+
+- [Proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+
+- [Nombrar cosas por Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#1)  
+
+- [Naming things by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+
+- Presentaciones de reproducibilidad.  
+[RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)
+
+- Imágenes adicionales  
+[Unsplash](https://unsplash.com/)
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXdvcmt8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-size: cover
+
+
+# Proyectos
+
+---
+
+# 1. Trabajar por proyectos.
+## Teoria
+
+Llegara el dia en que cerraran R y haran otra cosa y tendran que volver al analisis que estaban haciendo.
+
+Tambien llegara el dia en que trabajen en multiples proyectos a la vez y quieran mantenerlos separados.
+
+---
+
+## 1.1. Donde vive tu analisis?
+
+
+Tus scripts te permiten recrear el environment (ambiente) del trabajo donde estabas trabajando. 
+
+Por esto R4DS recomienda, que **no guardes tu espacio de trabajo**.
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-workspace.png")
+```
+
+---
+
+## 1.2. Directorio de trabajo
+
+Su directorio de trabajo (working directory en inglés) es donde R busca los archivos que le pides que lea y donde colocará todos los archivos que le pidas que guarde. 
+
+RStudio muestra tu directorio de trabajo actual en la parte superior de la consola o puedes escribir: 
+
+```{r, eval=FALSE}
+getwd()
+```
+
+---
+
+## 1.2. Rutas
+
+Existen dos estilos básicos de rutas: 
+
+- Mac y Linux usan barras (slash).
+- Windows usa barras invertidas (backslash) o dos barras.
+
+
+---
+
+## 1.2. Rutas absolutas
+
+Las **rutas absolutas** te llevan a la misma ubicación sin importar tu directorio de trabajo.  
+
+Tu directorio de trabajo de puede definir manualmente, pero usar rutas absolutas dificulta compartir tus scripts.  
+Nadie más va a tener exactamente la misma configuración de directorios que tú.
+
+Por ejemplo:
+```{r, eval=FALSE}
+Pingus<-read_csv("C://Users//Lerma//Documents//4Cursos//1CIAD//01Clase Intro//Pingus_1.csv")
+```
+
+
+---
+
+## 1.2. Rutas relativas
+
+Las **rutas relativas**, siempre que hagas referencia a un archivo con una ruta relativa, RStudio lo buscará en este directorio.
+
+Tambien librerias como here, se adaptan a la ubicacion de tus proyectos.
+
+```{r, message=FALSE, eval=FALSE}
+here()
+Pingus<-read_csv(paste0(here(),"//Pingus_1.csv"))
+```
+
+---
+
+
+## 1.3. Proyectos en RStudio
+
+--
+
+Lo ideal es tener todos los archivos asociados a un proyecto en un mismo lugar.
+
+--
+
+Para crear un proyecto en R  File > New Proyect, y después elegir la adecuada.  
+Hoy usaremos New Directory.
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png")
+```
+  
+**Cuidado**:  No guarda los objectos que tengas en el environment.
+
+---
+
+## 1.4. Proyectos
+
+Es **bueno** que se limpie el environment, porque te obliga a reportar todo lo que hiciste... ... y que puedas replicarlo en el futuro.  
+
+
+
+
+
+
+#`r fa("exclamation-triangle", fill = "black")`
+
+Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes en tu environment, los guardes antes de crear tu proyecto (usando  write_csv, saveRSD o lo que prefieras).  
+
+
+---
+
+## 1.4. Proyectos 
+### Ventajas
+
+- Un proyecto te permite tener todo un 'proyecto' como su tesis, articulos, etc dentro de una sola carpeta.  
+- La carpeta se puede cambiar de lugar sin perder todos las direcciones (usando direcciones relativas).    
+- Tambien te permite definir que vas a usar y enfocarte en eso, no tener todo en diferentes lados.  
+- Te puede ayudar a colaborar con otros.  
+
+En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un flujo de trabajo consistente que te será de mucha utilidad en el futuro.
+
+#`r fa("broom", fill = "black")`
+
+---
+
+## 1.4. Proyectos
+### Recomendaciones
+
+- Crea un proyecto RStudio para cada proyecto de análisis de datos.
+- Mantén los archivos ahí.
+- Conserva los scripts ahí también; edítalos, ejecutálos por partes o en su totalidad.
+- Guarda todos los resultados de tu trabajo (gráficos y sets de datos limpios) ahí.
+- Siempre usa rutas relativas, nunca rutas absolutas.
+
+Todo lo que necesites siempre estará concentrado en una sola ubicación y claramente separado de los otros proyectos en los que estés trabajando.
+
+`r fa("hand-sparkles", fill = "black")`
+
+[R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+
+---
+
+
+## 1.5. Nombrar las cosas.
+
+### Cuales son nombres de proyecto o de objetos significativos?
+
+--
+
+**Malos nombres**:  
+
+- Introduccion final diciembre.pdf  
+- modelo.xlsx  
+- figuraI.png  
+--
+
+- Introduccion final diciembre-2.pdf    
+- Datos contacto@ gatos.cl.txt   
+- W.docx  
+--
+
+- Introduccion final diciembreFINAL.pdf   
+--
+
+- Introduccion final diciembreFINAL-final-revisado.pdf 
+
+
+
+[Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
+
+---
+
+class: center, middle
+
+## 1.5. Usar nombres.
+
+### Buenos nombres
+
+Tres principios:  
+
+Leibles para la computadora 
+#`r fa("laptop", fill = "black")`  
+Leibles para los humanos 
+#`r fa("user-friends", fill = "black")`  
+Funcionen bien con orden por defecto 
+#`r fa("robot", fill = "black")`  
+ 
+---
+
+## 1.7. Usar nombres.
+
+**Para la computadora**
+
+- Usar palabras clave.  
+- Sin caracteres especiales.  
+- Sin signos de puntuacion.  
+
+Usar "_" para separar nombres con mas de una palabra.  
+
+**Evita**
+- Usar espacios en los nombres de los archivos.  
+- Signos de puntuacion.  
+- Caracteres acentuados.  
+- Diferentes archivos con nombres similares y con diferente contenido (ej. gato y Gato).  
+
+#`r fa("laptop", fill = "black")` 
+
+---
+
+## 1.7. Usar nombres.
+
+### Para humanos.
+
+Facil de saber que contiene el archivo a partir de su nombre.
+
+- 01_introduccion.docx  
+- 02_metodologia.docx  
+- 03_discucion.docx  
+- 04_tablas.docx  
+
+#`r fa("user-friends", fill = "black")`
+
+---
+
+## 1.7. Usar nombres.
+
+Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
+
+Si no anteponemos el cero, 1...  se desalinea con 10.
+
+Mis carpetas son:  
+01Datos  
+02Analisis  
+03Resultados  
+04Discusion  
+05Referencias  
+
+Otras opciones:  
+01_Datos  
+01_datos  
+
+#`r fa("robot", fill = "black")`  
+
+---
+
+
+## 1.8. Comentar su codigo
+
+Pongan la mayor cantidad de informacion que puedan para recordar porque hicieron que cosa.
+Tener tus datos ordenados y tener un solo archivo ayuda a compartir tu trabajo y te permite replicar el experimento en el futuro.
+
+
+```{r, eval=FALSE}
+#Este codigo es para cargar mis datos
+Pingus_csv<-read_csv(here("Pingus_1.csv")) 
+#Para cargar otros datos 
+#Tengo que nombrar un objeto
+#Usar la funcion read_csv del paquete tidyverse
+#Recordar cargar la libreria here
+#Cambiar el nombre de lo que esta entre comillas
+```
+
+
+---
+
+# Ejercicios
+
+- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.
+- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.
+- Vamos a exportar un grafico en la carpeta resultados.
+- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.
+
+---
+
+## 2. Ejercicio asistido
+### 2.1. Directorio
+
+- Crea un folder para tu proyecto
+- Crea un subfolder que se llame datos (01Datos)  
+- Crea un subfolder que se llame codigo (02Scripts)  
+- Crea un subfolder que se llama resultados (03Resultados)  
+
+---
+
+## 2. Ejercicio asistido
+### 2.2. Crear un proyecto
+Haz clic en File > New Proyect, y después:
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png")
+```
+
+Traten de usar un nombre significativo (p.e. 'Curso_CIAD')
+
+---
+
+## 2. Ejercicio asistido
+### 2.2. Crear un proyecto
+Que cambio?
+
+En la esquina superior derecha sale el nombre de su proyecto.  
+
+En donde estas trabajando?
+Revisa con getwd.
+```{r}
+getwd()
+```
+
+Revisa con here.
+```{r}
+library(here)
+here()
+```
+
+---
+
+## 2.3. Ejercicio asistido
+### Cargar datos
+
+- Van a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv en su subcarpeta **01Datos**.
+
+```{r, eval=TRUE, message=FALSE}
+library(tidyverse)
+library(datos)
+library(here)
+Pingus<-pinguinos
+```
+
+1- Define la carpeta.  
+```{r}
+DatosFolder<-here("01Datos")
+```
+
+2-  Exporta el objecto a csv.
+```{r, eval=FALSE, warning=FALSE}
+write_csv(Pingus,file =paste0(DatosFolder,'/DatosPinguinos.csv'))
+```
+
+Ve en files 01Datos si aparece tu nuevo csv.
+
+---
+
+## 3.3. Ejercicio asistido
+### Script
+
+- Van a crear un **script** con codigo debe incluir: 
+1. Como cargar mis datos
+2. Cual es mi numero de muestras por sexo
+3. Cual es el promedio de peso por sexo
+
+---
+
+## 3.3. Ejercicio asistido
+### Script
+
+File>NewFile>NewScript
+
+- Escribir y cargar los paquetes
+```{r, eval=FALSE}
+library(here)
+library(tidyverse)
+```
+
+- Cargar sus datos
+```{r, eval=FALSE}
+here()
+read_csv('.//01Datos//Pinguinos.csv')
+```
+
+---
+
+
+- Calcular numero de muestras por sexo
+```{r}
+Pingus %>%
+  group_by(sexo)%>%
+  tally()
+```
+
+- Calcular el promedio de peso por sexo
+```{r}
+Pingus %>%
+  group_by (sexo) %>%
+  summarise(promedio=mean(masa_corporal_g))
+```
+
+
+---
+
+## 3.4. Ejercicio asistido
+### Figuras
+
+- Van a exportar un grafico en su carpeta resultados.  
+Un boxplot de pesos de hembras y machos separados por especie.
+
+```{r, echo=TRUE, warning=FALSE}
+MiGrafico<-ggplot(Pingus,
+                  aes(x=especie, y=masa_corporal_g, color=sexo, fill=sexo))+
+  geom_boxplot()+
+  theme_bw()
+MiGrafico
+```
+
+---
+
+## 3.4. Ejercicio asistido
+### Figuras
+
+Elige el directorio donde quieres guardar tu gráfico.
+```{r, eval=FALSE}
+ResultsFolder<-here::here("03Resultados")
+```
+Si no usan here, escriban la direccion completa del Folder.
+
+```{r, eval=FALSE}
+MiGrafico
+ggsave("MiGrafico.jpg",
+       path = ResultsFolder, #tambien la pueden escribir aqui
+       width = 16, height = 8, 
+       units = "in") #puede ser centimetros
+```
+
+---
+
+## 3.4. Ejercicio asistido
+
+### Guardar script
+
+Revisar tener:
+- DatosPinguinos.csv en carpeta de 01Datos
+- MiScript.R en la carpeta de 02Script
+- MiGrafico.jpg en la carpeta de 03Resultados
+
+---
+
+## 3.4. Ejercicio asistido
+
+- Limpiar su environment  
+- Limpiar su consola
+
+---
+
+## 3.4. Ejercicio asistido
+### Modificar script
+
+Abrir su script (MiScript.R).  
+Hacer segundo grafico.  
+File>Save as>02_grafico_longitudpico_pingus.  
+
+Modifiquemos **todas** las partes donde dice masa_corporal_g por largo_pico_mm
+
+Cambien en ggsave
+```{r, eval=FALSE}
+ggsave("02_Grafico_LargoPico.jpg, #<<
+       path = ResultsFolder, 
+       width = 16, height = 8, 
+       units = "in") 
+```
+
+---
+
+## 3.5. Mover carpeta
+
+Cierren su RStudio.  
+
+- Muevan la carpeta a otra carpeta.  
+- Abran de nuevo su proyecto picandole al Rproj o abriendo R y moviendose al proyecto.  
+- Rehagan sus analisis abriendo: 02Script>Script  
+
+
+---
+
+# 4. Zip
+
+Ahora vamos a:
+- Crear un archivo zip.
+- Bajar un archivo zip y replicar el trabajo.
+
+---
+
+### 4.1. Crear un zip del proyecto y enviarlo.
+
+- Crea tu archivo zip.
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ComoZipFolder.png")
+```
+
+---
+
+### 4.2. Bajar un zip 
+
+Enlace github bajar el zip  
+
+[Enlace Proyecto](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip).  
+
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/BajarArchivos.jpg")
+```
+
+Unzip>Correr el script>Replicar analisis. 
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+
+# Recapitulando
+
+1.0. Trabajar por proyecto.  
+1.1. Compartir proyectos.
+
+
+---
+

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 4</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <script src="Clase4Parte1_files/header-attrs-2.6/header-attrs.js"></script>
+    <link href="Clase4Parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Clase4Parte1_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Clase 4
+## Proyectos en R
+### Miriam Lerma
+### Marzo 2021
+
+---
+
+
+# Intro
+
+La clase es de 2 horas.
+
+- Parte I:  
+Teoria: Trabajar por proyectos.  
+Practica: Ordenar mis carpetas y crear mi proyecto.
+
+- Parte II:
+Crear un proyecto.  
+Guardarlo y compartirlo.  
+
+
+
+
+
+
+---
+
+# Ustedes
+
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y graficos, saben exportar csvs y graficos).  
+
+- Quieren tener ordenado su trabajo para poder re-hacer sus analisis en el futuro.  
+
+- Quieren trabajar con alguien mas y mandarle materiales.    
+
+
+- Necesito:
+Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
+🕤
+
+---
+
+## Créditos
+
+Si quieren profundizar en el tema:
+
+- [Proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+
+- [Nombrar cosas por Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#1)  
+
+- [Naming things by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+
+- Presentaciones de reproducibilidad.  
+[RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI&amp;t=55s)
+
+- Imágenes adicionales  
+[Unsplash](https://unsplash.com/)
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXdvcmt8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
+background-size: cover
+
+
+# Proyectos
+
+---
+
+# 1. Trabajar por proyectos.
+## Teoria
+
+Llegara el dia en que cerraran R y haran otra cosa y tendran que volver al analisis que estaban haciendo.
+
+Tambien llegara el dia en que trabajen en multiples proyectos a la vez y quieran mantenerlos separados.
+
+---
+
+## 1.1. Donde vive tu analisis?
+
+
+Tus scripts te permiten recrear el environment (ambiente) del trabajo donde estabas trabajando. 
+
+Por esto R4DS recomienda, que **no guardes tu espacio de trabajo**.
+
+&lt;img src="https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-workspace.png" height="350" /&gt;
+
+---
+
+## 1.2. Directorio de trabajo
+
+Su directorio de trabajo (working directory en inglés) es donde R busca los archivos que le pides que lea y donde colocará todos los archivos que le pidas que guarde. 
+
+RStudio muestra tu directorio de trabajo actual en la parte superior de la consola o puedes escribir: 
+
+
+```r
+getwd()
+```
+
+---
+
+## 1.2. Rutas
+
+Existen dos estilos básicos de rutas: 
+
+- Mac y Linux usan barras (slash).
+- Windows usa barras invertidas (backslash) o dos barras.
+
+
+---
+
+## 1.2. Rutas absolutas
+
+Las **rutas absolutas** te llevan a la misma ubicación sin importar tu directorio de trabajo.  
+
+Tu directorio de trabajo de puede definir manualmente, pero usar rutas absolutas dificulta compartir tus scripts.  
+Nadie más va a tener exactamente la misma configuración de directorios que tú.
+
+Por ejemplo:
+
+```r
+Pingus&lt;-read_csv("C://Users//Lerma//Documents//4Cursos//1CIAD//01Clase Intro//Pingus_1.csv")
+```
+
+
+---
+
+## 1.2. Rutas relativas
+
+Las **rutas relativas**, siempre que hagas referencia a un archivo con una ruta relativa, RStudio lo buscará en este directorio.
+
+Tambien librerias como here, se adaptan a la ubicacion de tus proyectos.
+
+
+```r
+here()
+Pingus&lt;-read_csv(paste0(here(),"//Pingus_1.csv"))
+```
+
+---
+
+
+## 1.3. Proyectos en RStudio
+
+--
+
+Lo ideal es tener todos los archivos asociados a un proyecto en un mismo lugar.
+
+--
+
+Para crear un proyecto en R  File &gt; New Proyect, y después elegir la adecuada.  
+Hoy usaremos New Directory.
+
+&lt;img src="https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png" height="350" /&gt;
+  
+**Cuidado**:  No guarda los objectos que tengas en el environment.
+
+---
+
+## 1.4. Proyectos
+
+Es **bueno** que se limpie el environment, porque te obliga a reportar todo lo que hiciste... ... y que puedas replicarlo en el futuro.  
+
+
+
+
+
+
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 576 512"&gt;&lt;path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/&gt;&lt;/svg&gt;
+
+Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes en tu environment, los guardes antes de crear tu proyecto (usando  write_csv, saveRSD o lo que prefieras).  
+
+
+---
+
+## 1.4. Proyectos 
+### Ventajas
+
+- Un proyecto te permite tener todo un 'proyecto' como su tesis, articulos, etc dentro de una sola carpeta.  
+- La carpeta se puede cambiar de lugar sin perder todos las direcciones (usando direcciones relativas).    
+- Tambien te permite definir que vas a usar y enfocarte en eso, no tener todo en diferentes lados.  
+- Te puede ayudar a colaborar con otros.  
+
+En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un flujo de trabajo consistente que te será de mucha utilidad en el futuro.
+
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+
+---
+
+## 1.4. Proyectos
+### Recomendaciones
+
+- Crea un proyecto RStudio para cada proyecto de análisis de datos.
+- Mantén los archivos ahí.
+- Conserva los scripts ahí también; edítalos, ejecutálos por partes o en su totalidad.
+- Guarda todos los resultados de tu trabajo (gráficos y sets de datos limpios) ahí.
+- Siempre usa rutas relativas, nunca rutas absolutas.
+
+Todo lo que necesites siempre estará concentrado en una sola ubicación y claramente separado de los otros proyectos en los que estés trabajando.
+
+
+
+[R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+
+---
+
+
+## 1.5. Nombrar las cosas.
+
+### Cuales son nombres de proyecto o de objetos significativos?
+
+--
+
+**Malos nombres**:  
+
+- Introduccion final diciembre.pdf  
+- modelo.xlsx  
+- figuraI.png  
+--
+
+- Introduccion final diciembre-2.pdf    
+- Datos contacto@ gatos.cl.txt   
+- W.docx  
+--
+
+- Introduccion final diciembreFINAL.pdf   
+--
+
+- Introduccion final diciembreFINAL-final-revisado.pdf 
+
+
+
+[Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
+
+---
+
+class: center, middle
+
+## 1.5. Usar nombres.
+
+### Buenos nombres
+
+Tres principios:  
+
+Leibles para la computadora 
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/&gt;&lt;/svg&gt;  
+Leibles para los humanos 
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/&gt;&lt;/svg&gt;  
+Funcionen bien con orden por defecto 
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M0 256v128c0 17.7 14.3 32 32 32h32V224H32c-17.7 0-32 14.3-32 32zM464 96H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H176c-44.2 0-80 35.8-80 80v272c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176c0-44.2-35.8-80-80-80zM256 416h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm128 120h-64v-32h64v32zm96 0h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm192-72h-32v192h32c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32z"/&gt;&lt;/svg&gt;  
+ 
+---
+
+## 1.7. Usar nombres.
+
+**Para la computadora**
+
+- Usar palabras clave.  
+- Sin caracteres especiales.  
+- Sin signos de puntuacion.  
+
+Usar "_" para separar nombres con mas de una palabra.  
+
+**Evita**
+- Usar espacios en los nombres de los archivos.  
+- Signos de puntuacion.  
+- Caracteres acentuados.  
+- Diferentes archivos con nombres similares y con diferente contenido (ej. gato y Gato).  
+
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/&gt;&lt;/svg&gt; 
+
+---
+
+## 1.7. Usar nombres.
+
+### Para humanos.
+
+Facil de saber que contiene el archivo a partir de su nombre.
+
+- 01_introduccion.docx  
+- 02_metodologia.docx  
+- 03_discucion.docx  
+- 04_tablas.docx  
+
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/&gt;&lt;/svg&gt;
+
+---
+
+## 1.7. Usar nombres.
+
+Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
+
+Si no anteponemos el cero, 1...  se desalinea con 10.
+
+Mis carpetas son:  
+01Datos  
+02Analisis  
+03Resultados  
+04Discusion  
+05Referencias  
+
+Otras opciones:  
+01_Datos  
+01_datos  
+
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M0 256v128c0 17.7 14.3 32 32 32h32V224H32c-17.7 0-32 14.3-32 32zM464 96H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H176c-44.2 0-80 35.8-80 80v272c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176c0-44.2-35.8-80-80-80zM256 416h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm128 120h-64v-32h64v32zm96 0h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm192-72h-32v192h32c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32z"/&gt;&lt;/svg&gt;  
+
+---
+
+
+## 1.8. Comentar su codigo
+
+Pongan la mayor cantidad de informacion que puedan para recordar porque hicieron que cosa.
+Tener tus datos ordenados y tener un solo archivo ayuda a compartir tu trabajo y te permite replicar el experimento en el futuro.
+
+
+
+```r
+#Este codigo es para cargar mis datos
+Pingus_csv&lt;-read_csv(here("Pingus_1.csv")) 
+#Para cargar otros datos 
+#Tengo que nombrar un objeto
+#Usar la funcion read_csv del paquete tidyverse
+#Recordar cargar la libreria here
+#Cambiar el nombre de lo que esta entre comillas
+```
+
+
+---
+
+# Ejercicios
+
+- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.
+- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.
+- Vamos a exportar un grafico en la carpeta resultados.
+- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.
+
+---
+
+## 2. Ejercicio asistido
+### 2.1. Directorio
+
+- Crea un folder para tu proyecto
+- Crea un subfolder que se llame datos (01Datos)  
+- Crea un subfolder que se llame codigo (02Scripts)  
+- Crea un subfolder que se llama resultados (03Resultados)  
+
+---
+
+## 2. Ejercicio asistido
+### 2.2. Crear un proyecto
+Haz clic en File &gt; New Proyect, y después:
+
+&lt;img src="https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png" height="350" /&gt;
+
+Traten de usar un nombre significativo (p.e. 'Curso_CIAD')
+
+---
+
+## 2. Ejercicio asistido
+### 2.2. Crear un proyecto
+Que cambio?
+
+En la esquina superior derecha sale el nombre de su proyecto.  
+
+En donde estas trabajando?
+Revisa con getwd.
+
+```r
+getwd()
+```
+
+```
+## [1] "C:/Users/Lerma/Documents/4Cursos/1CIAD/05Clase_Proyectos"
+```
+
+Revisa con here.
+
+```r
+library(here)
+here()
+```
+
+```
+## [1] "C:/Users/Lerma/Documents/4Cursos/1CIAD/05Clase_Proyectos"
+```
+
+---
+
+## 2.3. Ejercicio asistido
+### Cargar datos
+
+- Van a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv en su subcarpeta **01Datos**.
+
+
+```r
+library(tidyverse)
+library(datos)
+library(here)
+Pingus&lt;-pinguinos
+```
+
+1- Define la carpeta.  
+
+```r
+DatosFolder&lt;-here("01Datos")
+```
+
+2-  Exporta el objecto a csv.
+
+```r
+write_csv(Pingus,file =paste0(DatosFolder,'/DatosPinguinos.csv'))
+```
+
+Ve en files 01Datos si aparece tu nuevo csv.
+
+---
+
+## 3.3. Ejercicio asistido
+### Script
+
+- Van a crear un **script** con codigo debe incluir: 
+1. Como cargar mis datos
+2. Cual es mi numero de muestras por sexo
+3. Cual es el promedio de peso por sexo
+
+---
+
+## 3.3. Ejercicio asistido
+### Script
+
+File&gt;NewFile&gt;NewScript
+
+- Escribir y cargar los paquetes
+
+```r
+library(here)
+library(tidyverse)
+```
+
+- Cargar sus datos
+
+```r
+here()
+read_csv('.//01Datos//Pinguinos.csv')
+```
+
+---
+
+
+- Calcular numero de muestras por sexo
+
+```r
+Pingus %&gt;%
+  group_by(sexo)%&gt;%
+  tally()
+```
+
+```
+## # A tibble: 3 x 2
+##   sexo       n
+## * &lt;fct&gt;  &lt;int&gt;
+## 1 hembra   165
+## 2 macho    168
+## 3 &lt;NA&gt;      11
+```
+
+- Calcular el promedio de peso por sexo
+
+```r
+Pingus %&gt;%
+  group_by (sexo) %&gt;%
+  summarise(promedio=mean(masa_corporal_g))
+```
+
+```
+## # A tibble: 3 x 2
+##   sexo   promedio
+## * &lt;fct&gt;     &lt;dbl&gt;
+## 1 hembra    3862.
+## 2 macho     4546.
+## 3 &lt;NA&gt;        NA
+```
+
+
+---
+
+## 3.4. Ejercicio asistido
+### Figuras
+
+- Van a exportar un grafico en su carpeta resultados.  
+Un boxplot de pesos de hembras y machos separados por especie.
+
+
+```r
+MiGrafico&lt;-ggplot(Pingus,
+                  aes(x=especie, y=masa_corporal_g, color=sexo, fill=sexo))+
+  geom_boxplot()+
+  theme_bw()
+MiGrafico
+```
+
+![](Clase4Parte1_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+---
+
+## 3.4. Ejercicio asistido
+### Figuras
+
+Elige el directorio donde quieres guardar tu gráfico.
+
+```r
+ResultsFolder&lt;-here::here("03Resultados")
+```
+Si no usan here, escriban la direccion completa del Folder.
+
+
+```r
+MiGrafico
+ggsave("MiGrafico.jpg",
+       path = ResultsFolder, #tambien la pueden escribir aqui
+       width = 16, height = 8, 
+       units = "in") #puede ser centimetros
+```
+
+---
+
+## 3.4. Ejercicio asistido
+
+### Guardar script
+
+Revisar tener:
+- DatosPinguinos.csv en carpeta de 01Datos
+- MiScript.R en la carpeta de 02Script
+- MiGrafico.jpg en la carpeta de 03Resultados
+
+---
+
+## 3.4. Ejercicio asistido
+
+- Limpiar su environment  
+- Limpiar su consola
+
+---
+
+## 3.4. Ejercicio asistido
+### Modificar script
+
+Abrir su script (MiScript.R).  
+Hacer segundo grafico.  
+File&gt;Save as&gt;02_grafico_longitudpico_pingus.  
+
+Modifiquemos **todas** las partes donde dice masa_corporal_g por largo_pico_mm
+
+Cambien en ggsave
+
+```r
+*ggsave("02_Grafico_LargoPico.jpg,
+       path = ResultsFolder, 
+       width = 16, height = 8, 
+       units = "in") 
+```
+
+---
+
+## 3.5. Mover carpeta
+
+Cierren su RStudio.  
+
+- Muevan la carpeta a otra carpeta.  
+- Abran de nuevo su proyecto picandole al Rproj o abriendo R y moviendose al proyecto.  
+- Rehagan sus analisis abriendo: 02Script&gt;Script  
+
+
+---
+
+# 4. Zip
+
+Ahora vamos a:
+- Crear un archivo zip.
+- Bajar un archivo zip y replicar el trabajo.
+
+---
+
+### 4.1. Crear un zip del proyecto y enviarlo.
+
+- Crea tu archivo zip.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ComoZipFolder.png" height="350" /&gt;
+
+---
+
+### 4.2. Bajar un zip 
+
+Enlace github bajar el zip  
+
+[Enlace Proyecto](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip).  
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/BajarArchivos.jpg" height="350" /&gt;
+
+Unzip&gt;Correr el script&gt;Replicar analisis. 
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
+background-size: cover
+
+
+# Recapitulando
+
+1.0. Trabajar por proyecto.  
+1.1. Compartir proyectos.
+
+
+---
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
