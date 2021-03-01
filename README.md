@@ -18,8 +18,8 @@ Clase 5: Funciones y Unir tablas.
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase3Parte2
 
 Clase 6: Trabajar por proyecto, recapitulando todo lo que hicimos clases pasadas.
-Presentacion: https://miriamll.github.io/Curso_CIAD/Clase4Parte1
-Para bajar zip: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip
+Presentacion: https://miriamll.github.io/Curso_CIAD/Clase4Parte1  
+Para bajar zip: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip  
 
 Clase 7: Que es Rmd. 
 
