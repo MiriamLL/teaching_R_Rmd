@@ -25,6 +25,7 @@ Clase 5: Supuestos y analisis estadisticos en R.
 Presentacion: 
 
 Clase 6: Que es Rmd.  
+Presentacion: https://miriamll.github.io/Curso_CIAD/Clase6Parte1
 
 Clase 7: Presentaciones basicas en Rmd (usando xaringan).  
 
