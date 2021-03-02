@@ -26,9 +26,7 @@ Presentacion:
 
 Clase 6: Que es Rmd.  
 
-Clase 7: Escribir mis metodos y analisis estadisticos en Rmd.  
+Clase 7: Presentaciones basicas en Rmd (usando xaringan).  
 
-Clase 8: Presentaciones basicas en Rmd (usando xaringan).  
-
-Clase 9: Intro a git y github.  
+Clase 8: Intro a git y github.  
 
