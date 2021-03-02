@@ -1,0 +1,593 @@
+---
+title: "Clase 4"
+subtitle: "Rmardown"
+author: "Miriam Lerma"
+date: "Marzo 2021"
+output:
+  xaringan::moon_reader:
+    css: ["default","chocolate-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+# Intro
+
+La clase es de 2 horas.  
+- Teoria: Rmd que es.  
+- Practica: Exportar un Rmd.  
+
+
+```{r, echo=FALSE}
+library(emo)
+```
+
+--
+
+## Ustedes
+
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y graficos).  
+
+- Quieren compartir sus avances con otros.  
+- Quieren tener un buen seguimiento para ustedes entender que hicieron y poder re-hacer sus analisis con otros datos en el futuro.  
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1503694978374-8a2fa686963a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+# Rmd
+
+---
+
+# 1. RMarkdown
+
+Rmarkdown es muy conveniente porque podemos crear htmls o documentos word, e incluso presentaciones...
+...de hecho esta es una presentación en Rmd.
+
+Hay **muchas** maneras de trabajar en Rmd. Solo cubrire algunas.
+
+---
+
+## Creditos
+
+- Material de Rmarkdown.  
+[RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html).  
+[Rmarkdown por Yihui xie](https://bookdown.org/yihui/rmarkdown/).    
+
+- En español:  
+[RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+
+- En ingles:    
+[RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)  
+[RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)  
+[RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+
+---
+
+## 1. Teoria
+
+Markdown es texto plano...  
+...algo asi como lo que escriben en un block de notas.
+
+La ventaja de Rmd es que puedes incluir mucho texto e incluso se pueden escribir tesis, libros, articulos, paginas web y presentaciones dentro de **RStudio**.
+
+--
+
+Lo que lo hace especial es que en Rmd (RMarkdown) ademas puedes tener:  
+- Codigo y los resultados de ese codigo sin tener que salir de RStudio.
+
+---
+
+
+## 1.2. Porque usar Rmd?
+
+Al generar un output, la ventaja es que puedes leer lo que dice el documento, aunque no tengas R.  
+
+Por ejemplo: ustedes estan leyendo esta presentacion.  
+
+
+Ademas puedo poner:    
+Aqui quiero cargar una libreria y ver el el numero de observaciones  
+```{r}
+library(datos)
+Pingus<-pinguinos
+nrow(Pingus) #numero de observaciones
+```
+Podemos tener resultados de alguna funcion tambien sin tener que mostrar el codigo y sin tener que salir y copiar los resultados en un documento word.
+
+---
+
+## 1.3. Como abrir un Rmd.
+
+
+File>NewFile>RMarkdown
+
+Se vera algo asi:  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/RmdNew.JPG')
+```
+
+---
+
+## 1.4. Diferencias entre R y Rmd
+
+Diferencias entre R y Rmd:
+- chunks 
+- knit  
+- yaml  
+- output  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/RmdNew.JPG')
+```
+
+---
+
+## 1.5. Knitr
+
+Cuando usamos knit se guardan los cambios.    
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/knitr.jpg')
+```
+
+---
+
+## 1.6. Chunks
+
+Las partes grises son los chunks.  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/RmdNew.JPG')
+```
+
+Podemos correr la linea del codigo al darle a la flechita verde.  
+Podemos agregar nuevas lineas de codigo usando **Ctrl+Alt+I** o usando 'back ticks': ` ` ` {r} y luego ` ` `.  
+El codigo de R tiene que estar dentro de estas partes grises para que se ejecuten. 
+
+---
+
+## 1.6. Chunks
+
+- **echo** si se muestra el codigo en el output.  
+- **eval** si se ejecuta el codigo o no.  
+- **warning** evita que aparezcan las advertencias.  
+- **message** evita que aparezcan las advertencias, por ejemplo cuando cargamos librerias.  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/echo.jpg')
+```
+
+Leer mas: [Chunk options](https://rmarkdown.rstudio.com/lesson-3.html)
+
+---
+
+## 1.6. Chunks
+
+**Buenas practicas**: Ponle nombres a tus code chunks (despues del {  y la r) para detectar donde te equivocaste.  
+Los nombres son sin espacio. Esto porque si tenemos algun problema sabemos donde occurio el problema.   
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/echo.jpg')
+```
+
+---
+
+## 1.7. YAML
+
+YAML significa “YAML Ain’t Markup Language”.  
+Es una serializacion que es leible para los humanos.  
+
+Por default aparece: title, author, date, **output**.  
+Se pueden incluir muchas cosas alli, por hoy nos vamos a enfocar a cambiar el output, porque de acuerdo a lo que le pongamos podemos generar reportes en diferentes formatos.  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/YAML.JPG')
+```
+
+---
+
+## 1.7. YAML
+
+Cuando pasa por word y pdf usa sintaxis de LateX.  
+Lo "traduce" usando **PanDoc**.  
+
+```{r echo=FALSE, out.width=400}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/b739c/lesson-images/rmarkdownflow.png')
+```
+
+
+**Nota**: si tienen problemas en renderizar (knit) es probable que tenga errores que no pueden ser traducidos. 
+KnitR te va a decir donde esta el error.
+
+---
+
+
+## 1.7. Knit
+
+Es el boton que aparece en la parte de arriba, es como una bolita azul con agujas de tejer.  
+knitr una herramienta que permite la generación de informes dinámico usando R.   
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/knitr.jpg')
+```
+
+---
+
+
+## 1.7. Outputs  
+
+Pros y contras de usar uno o el otro.  
+
+- **word**: lo podemos compartir mas facilmente, y muchas revistas requieren word.  
+- **pdf**: compartir mas facilmente, no tan facil de editar.  
+- **html**: se puede incluir toda clase de contenidos.  `r emo::ji("star")` 
+
+Para cambiarlo:    
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Outputs.JPG')
+```
+
+
+---
+
+## 1.8. Outputs  
+
+En html podemos incluir animaciones:  
+
+```{r, echo=FALSE, out.height=300}
+knitr::include_graphics('https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/r-tutorial/images/transition_time.gif')
+```
+
+... y muchas otras cosas como mapas dinamicos.
+
+
+---
+
+
+## 1.8. Texto
+
+En las partes en blanco, en general se escribe igual que en cualquier programa. 
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/RmdNew.JPG')
+```
+
+
+---
+
+## 1.8. Texto
+
+Para poner:  
+*cursivas* con un asterisco antes y uno despues.  
+**negritas** con dos asteriscos antes y uno despues.  
+***cursiva y negritas*** con tres asteriscos antes y uno despues.  
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/59f29676ef5e4d74685e14f801bbc10c2dbd3cef/c0688/lesson-images/markdown-1-markup.png')
+```
+
+Mas opciones: [Texto en Rmd](https://rmarkdown.rstudio.com/lesson-8.html)
+
+---
+
+## 1.8. Titulos
+
+Si queremos poner titulos usar #. 
+- Para titulo de primer nivel #.  
+- Para titulo de segundo nivel ##.  
+- Para titulo de tecer nivel ###.  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/59f29676ef5e4d74685e14f801bbc10c2dbd3cef/c0688/lesson-images/markdown-1-markup.png')
+```
+
+---
+
+## 1.8. Navegar con titulos
+
+Navegar usando los puntitos junto al compas.  
+CONTROL+SHIFT+O aparecen los titulos para navegar en nuestro lado derecho.  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Navegar.JPG')
+```
+
+---
+
+## 1.9. Imagenes
+
+Para agregar imagenes desde mi computadora se usa signo de admiracion ! y corchetes [ , ] y dentro la direccion de la imagen.  
+Por ejemplo:  
+- ![ pie de foto ] (Imagenes/Foto.jpg)
+
+Desde internet tambien se puede usar:  
+- knitr::include_graphics('') con el enlace de la imagen entre parentesis.  
+
+
+```{r, echo=FALSE, out.height=200}
+knitr::include_graphics('https://images.unsplash.com/photo-1523224339316-5e4ae73929cc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8bWF6YXRsYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+```
+
+---
+
+## 1.9. Figuras
+
+Si creamos un plot con ggplot en un chunk y queremos ajustar el tamanio, hay que definir dentro de los { }:
+- fig.height  
+- fig.width  
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Figuras.JPG')
+```
+
+---
+
+## 1.10. Tablas
+
+Hay muchos paquetes para incluir tablas.  
+El basico es knitr::kable function dentro de su **chunk**.   
+
+```{r, echo=FALSE, out.height=350}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/09467251a219c3c6b2dae2bf1367e5736a9ef78c/feeea/lesson-images/tables-1-kable.png')
+```
+
+---
+
+## 1.12. Idioma
+
+Tools>Project Options>Spelling>Main lenguage **cambiar a Spanish**
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Lenguage.JPG')
+```
+
+---
+
+## 1.13. Ortografia
+
+Edit>Spellchecking>F7  
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Ortografia.JPG')
+```
+
+---
+
+## 1.14. R vs Rmd
+
+**Consideraciones:  **  
+Rmd tiene diferente comportamiento que R
+- Rmarkdown corre en un enviroment limpio.  
+- Todas tus variables tienen que esta dentro de tu markdown.
+- De hecho si tienes cosas en tu environment no interesa, tienen que estar dentro del codigo.  
+- Esto asegura que es reproducible, si no tiene continuidad no corre. 
+
+---
+
+# 2. Ejercicios
+## 2.1. Abrir
+
+File>NewFile>RMarkdown
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/RmdNew.JPG')
+```
+
+---
+
+## 2.2. YAML
+Cambiar el YAML:  
+- Fecha de hoy  
+- Sus nombres  
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/YAML.JPG')
+```
+
+---
+
+## 2.3. Knitr
+
+Picarle knit.  
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/knitr.jpg')
+```
+
+---
+
+## 2.4. Outputs
+
+Cambiar output a:  
+- word_document y knit
+- pdf_document y knit
+- html_document y knit
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/YAML.JPG')
+```
+
+---
+
+## 2.5. Titulos y texto.  
+Borra todo lo que esta en tu Rmd EXCEPTO el YAML.  
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/YAML.JPG')
+```
+
+---
+
+## 2.5. Titulos y texto
+
+Copia y pega y **agrega un # en cada titulo.**  
+Pon dos espacios donde quieras que pase a la siguiente linea.  
+
+- Introduccion  
+Aqui escribire mi introduccion  
+- Metodos  
+Aqui escribire mis metodos  
+- Analisis preliminares  
+Aqui escribire mis analisis  
+- Resultados  
+Aqui escribire mis resultados  
+- Discusion  
+Aqui escribire mis discusion   
+
+---
+
+## 2.5. Titulos y texto
+Dale click al simbolo (hide document outline) o usando Ctrl+Shift+O  
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Navegar.JPG')
+```
+
+---
+
+## 2.6. Cursivas y negritas
+
+Escribe en tu introduccion:
+
+'Voy a cargar datos de pinguinos'
+
+- Pon dos **asteriscos** antes y despues de la palabra 'pinguinos'.  
+- Pon un **asterisco** antes y depues de la palabras 'datos'.  
+- Pon tres **asteriscos** antes y despues de la palabra 'cargar'.
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Texto.jpg')
+```
+
+---
+
+## 2.7. Chunks
+
+- Escribir codigo dentro de los **chunks** para cargar sus datos.  
+- Escribir codigo para ver cuantas observaciones tenemos.  
+- Escribir codigo para obtener promedios.  
+
+Dale click al 'play' o triangulito verde para ejecutar.  
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(datos)
+library(tidyverse)
+```
+
+Asi cargo mis datos.  
+```{r}
+Pingus<-datos::pinguinos
+```
+
+Asi veo mi numero de observaciones.  
+```{r}
+ObservacionesPingus<-nrow(Pingus)
+```
+
+---
+
+## 2.7. Chunks
+
+  
+Asi calculo promedios por sexo.  
+```{r, warning=FALSE}
+Pingus %>%
+  group_by(sexo)%>%
+  summarize(promedios=mean(masa_corporal_g))
+```
+Nota que en Rmd, te aparecen los resultados debajo de tu code chunk.  
+
+---
+
+## 2.8. Figuras
+
+- Crea una figura.
+
+```{r,fig.height=3}
+ggplot(data = Pingus, aes(x = largo_aleta_mm)) +
+  geom_histogram(aes(fill = especie),
+                 alpha = 0.5,
+                 position = "identity") +
+  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_minimal() +
+  labs(x = "Largo de la aleta (mm)",
+       y = "Frequency",
+       title = "Longidudes de la aleta de pinguinos")
+```
+
+---
+## 2.8. Figuras
+
+- Despues, cambia el tamanio dentro de {r}. Agrega fig.height=3.  
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Figuras.JPG')
+```
+
+- Para hacer zoom debajo de tu chunk aparece un cuadrito con una flechita.  
+
+---
+
+## 2.9. Tablas
+
+Usar argumento knitr :: kable
+
+En un chunk creas tu tabla.
+```{r}
+TablaPinguinos<-Pingus %>%
+  group_by(sexo)%>%
+  summarize(promedios=mean(masa_corporal_g))
+```
+
+En otro chunk pon el siguiente codigo:  
+```{r, eval=TRUE}
+knitr::kable(TablaPinguinos)
+```
+
+---
+
+## 2.10. Opciones
+
+- Opcion 1: Compartir todo.  
+Mando documento Rmd, tal cual y le pican a las partes grises en el boton verde.  
+
+- Opcion 2: Compartir instrucciones.  
+Mando el documento Rmd en html y pueden copiar las instrucciones.  
+
+- Opcion 3:  Escribir reportes o articulos.  
+Exportar sin codigo.
+
+Cambiar echo a TRUE o cambiar echo a FALSE.  
+Mostrara o no el codigo.  
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/echo.jpg')
+```
+Denle en knit.
+
+---
+
+## 2.11. Mas opciones:
+
+Help>Markdown Quick Reference
+
+Veamos juntos donde obtener informacion.
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/46ba24a18406d82a43000fe7a11546f7f145374d/c5692/lesson-images/cheatsheets-2-path.png')
+```
+
+[Cheatsheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.240247812.66492107.1614708075-36514926.1579182721)
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1503694978374-8a2fa686963a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+
+# Recapitulando
+
+1. Que es Rmd y como funciona.
+2. Como crear diferentes outputs usando Rmd.
+
+---
