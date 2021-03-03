@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 1</title>
+    <title>Clase 2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase1Parte2_files/header-attrs-2.6/header-attrs.js"></script>
     <link href="Clase1Parte2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="Clase1Parte2_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Cargar datps"/>
+    <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte2.html"/>
+    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=695&amp;q=80"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Cargar datps"/>
+    <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte2.html"/>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=695&amp;q=80"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# Clase 1
-## Intro a R - Parte II
-### Miriam Lerma
-### Febrero 2021
+
+
+
+
+
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1589447388175-ac47d31be950?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
+background-size: cover
+
+# Clase 2
+### Cargar datos
+
+**Miriam Lerma**&lt;br&gt;
+Febrero 2021
 
 ---
-
 
 ## 1. Intro
 
@@ -33,32 +58,9 @@ Inspeccionar data.frames.
 
 
 
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
-🕤
-
-Si da tiempo:
-Rmarkdowm
-- Porque .Rmd ?
-
 ---
 
-# Clase pasada
-
-- Asignación  
-[Discución en stackoverflow](https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-assignment-operators-in-r)  
-[R inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)  
-[Leer más](https://www.roelpeters.be/the-difference-between-arrow-and-equals-assignment-in-r/)   
-
-&lt;img src="https://www.roelpeters.be/wp-content/uploads/2020/05/APL_KEYBOARD_ARROW_ASSIGNMENT-768x470.jpg" height="300" /&gt;
-
-- Proyectos  
-[Trabajar por proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
----
-
-## Quienes son ustedes? (...por hoy)
-
-Ademas de muy madrugadores
+## Quienes son ustedes? 
 
 - Saben abrir e identificar partes de R Studio
 
@@ -103,13 +105,13 @@ Foto de [Unsplash](https://unsplash.com)
 
 ---
 
-## 2. Importar datos
+## 1. Intro
 Un proyecto típico de ciencia de datos se ve así:
 
 &lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg" height="300" /&gt;
 Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
 
-Hoy queremos pasar el primer paso que es importar nuestros datos. 
+Hoy queremos pasar el primer paso que es **importar nuestros datos**. 
 
 ---
 
@@ -134,7 +136,7 @@ install.packages("cowsay")
 install.packages("here")
 ```
 
-🕠 Tarda un poquito en cargarse...
+⏰ Tarda un poquito en cargarse...
 
 ```r
 install.packages("tidyverse")
@@ -452,12 +454,10 @@ AllTracks &lt;- do.call("rbind",ListTracking)
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://unsplash.com/photos/g59r724bayQ)
+background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
 background-size: cover
 
-
-# 2.4. Ejercicios
-### Tu Turno
+# 2.4. Su turno
 
 Carga los datos de pinguinos  
 - Usando read_csv
@@ -467,585 +467,18 @@ Carga los datos de pinguinos
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
-background-size: cover
-
-# 3. Inspeccionar data frames
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-
-## 3. Inspeccionar data frames
-
-
-&lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg" height="300" /&gt;
-Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
-
-Hay muchas maneras de ver y ordenar tus datos.
-
----
-
-## 3. Inspeccionar data frames
-
-Por hoy practicaremos como:
-- Ver mis primeras y ultimas filas  
-- Ver filas especificas
-- Ver columnas especificas
-- Filtrar columnas y filas
-
-
-&lt;img src="https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png" height="300" /&gt;
-  
-  Source: frases333
----
-
-# 3.1. Inspeccionar
-### head() y tail()
-
-Para ver mis primeras y ultimas filas
-
-```r
-head(Pingus)
-```
-
-```
-## # A tibble: 6 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
-## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
-## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
-## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
-## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
-## # ... with 1 more variable: anio &lt;int&gt;
-```
-
-
-```r
-tail(Pingus)
-```
-
-```
-## # A tibble: 6 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Barbijo Dream          45.7         17              195            3650 hemb~
-## 2 Barbijo Dream          55.8         19.8            207            4000 macho
-## 3 Barbijo Dream          43.5         18.1            202            3400 hemb~
-## 4 Barbijo Dream          49.6         18.2            193            3775 macho
-## 5 Barbijo Dream          50.8         19              210            4100 macho
-## 6 Barbijo Dream          50.2         18.7            198            3775 hemb~
-## # ... with 1 more variable: anio &lt;int&gt;
-```
-
----
-
-# 3.1. Filas
-
-&lt;img src="https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png" height="300" /&gt;
-  
-  Source: frases333
-
----
-# 3.1. Filas
-### Corchetes
-
-Las filas se pone entre corchetes en la **PRIMERA** posición.
-
-```r
-(Pingus[1,])
-```
-
-```
-## # A tibble: 1 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
-## # ... with 1 more variable: anio &lt;int&gt;
-```
-
-Muéstrame las primeras 3 filas. 
-El signo de **:** es como decir "de aqui hasta acá".
-
-```r
-(Pingus[1:3,])
-```
-
-```
-## # A tibble: 3 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
-## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
-## # ... with 1 more variable: anio &lt;int&gt;
-```
-
----
-
-# 3.1. Filas
-### Pipe
-
-Otra manera de ver filas, usando paquetes dentro de **tidyverse**
-
-Es usando un **Pipe** (strg+alt+M)
-
-```r
-%&gt;% 
-```
-"Encadena" funciones, y es mas fácil de leer cuando el código se va alargando. 
-
-Aquí le puedo decir muéstrame las primeras 6 filas.
-
-```r
-Pingus %&gt;% 
-  head(6)
-```
-
-```
-## # A tibble: 6 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
-## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
-## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
-## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
-## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
-## # ... with 1 more variable: anio &lt;int&gt;
-```
-
----
-
-# 3.2. Columnas
-&lt;img src="https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png" height="300" /&gt;
-Source: frases333
-
----
-
-# 3.2. Columnas
-### head()
-
-Usando $ y el nombre de la columna .  
-
-```r
-head(Pingus$especie)
-```
-
-```
-## [1] Adelia Adelia Adelia Adelia Adelia Adelia
-## Levels: Adelia Barbijo Papúa
-```
-
-Las columnas se pone entre corchetes en la **SEGUNDA** posición.
-
-```r
-head(Pingus[,1])
-```
-
-```
-## # A tibble: 6 x 1
-##   especie
-##   &lt;fct&gt;  
-## 1 Adelia 
-## 2 Adelia 
-## 3 Adelia 
-## 4 Adelia 
-## 5 Adelia 
-## 6 Adelia
-```
-
----
-
-# 3.1. Inspeccionar
-### select()
-
-Con la función **select()**, podemos elegir:
-
-- Que columnas quiero ver.
-
-```r
-Pingus %&gt;% 
-* select(especie) %&gt;%
-  head()
-```
-
-```
-## # A tibble: 6 x 1
-##   especie
-##   &lt;fct&gt;  
-## 1 Adelia 
-## 2 Adelia 
-## 3 Adelia 
-## 4 Adelia 
-## 5 Adelia 
-## 6 Adelia
-```
-
----
-# 3.1. Inspeccionar
-### select(-)
-
-- Que columnas no quiero ver. 
-El signo **-** es como decir "menos ese"
-
-```r
-Pingus %&gt;% 
-* select(-sexo) %&gt;%
-  head()
-```
-
-```
-## # A tibble: 6 x 7
-##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
-##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
-## 1 Adelia  Torge~          39.1         18.7            181            3750  2007
-## 2 Adelia  Torge~          39.5         17.4            186            3800  2007
-## 3 Adelia  Torge~          40.3         18              195            3250  2007
-## 4 Adelia  Torge~          NA           NA               NA              NA  2007
-## 5 Adelia  Torge~          36.7         19.3            193            3450  2007
-## 6 Adelia  Torge~          39.3         20.6            190            3650  2007
-```
-
-El signo de admiración **!** es como decir "diferente a".
-
-```r
-Pingus %&gt;% 
-* select(!sexo) %&gt;%
-  head()
-```
-
-```
-## # A tibble: 6 x 7
-##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
-##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
-## 1 Adelia  Torge~          39.1         18.7            181            3750  2007
-## 2 Adelia  Torge~          39.5         17.4            186            3800  2007
-## 3 Adelia  Torge~          40.3         18              195            3250  2007
-## 4 Adelia  Torge~          NA           NA               NA              NA  2007
-## 5 Adelia  Torge~          36.7         19.3            193            3450  2007
-## 6 Adelia  Torge~          39.3         20.6            190            3650  2007
-```
-
----
-
-# 3.1. Inspeccionar
-### select(:)
-
-- Seleccionar columnas que están en medio de varias columnas.  
-El signo de **:** es como decir "de aqui hasta acá".
-
-```r
-Pingus %&gt;% 
-* select(largo_pico_mm:masa_corporal_g) %&gt;%
-  head()
-```
-
-```
-## # A tibble: 6 x 4
-##   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g
-##           &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt;
-## 1          39.1         18.7            181            3750
-## 2          39.5         17.4            186            3800
-## 3          40.3         18              195            3250
-## 4          NA           NA               NA              NA
-## 5          36.7         19.3            193            3450
-## 6          39.3         20.6            190            3650
-```
-
----
-
-# 3.1. Inspeccionar
-### unique() o distinct()
-
-Valores únicos en esa columna.
-
-```r
-unique(Pingus$especie)
-```
-
-```
-## [1] Adelia  Papúa   Barbijo
-## Levels: Adelia Barbijo Papúa
-```
-
-Usando paquetes de la librería **tidyverse**.
-
-```r
-pinguinos %&gt;% 
-* distinct(especie)
-```
-
-```
-## # A tibble: 3 x 1
-##   especie
-##   &lt;fct&gt;  
-## 1 Adelia 
-## 2 Papúa  
-## 3 Barbijo
-```
-
----
-
-# 3.1. Inspeccionar
-### Columnas y filas
-
-Muéstrame un dato especifico [FILA, COLUMNA]
-
-```r
-(Pingus[1,1])
-```
-
-```
-## # A tibble: 1 x 1
-##   especie
-##   &lt;fct&gt;  
-## 1 Adelia
-```
-
-
-```r
-(Pingus[3,2])
-```
-
-```
-## # A tibble: 1 x 1
-##   isla     
-##   &lt;fct&gt;    
-## 1 Torgersen
-```
-
----
-
-# 3.2. Filtrar
-### Operadores
-Podemos filtrar columnas de acuerdo a valores que nos interesen.
-
-Pero para esto hay que conocer algunos operadores lógicos:
-
-- El símbolo **==** es para decir 'igual a'  
-- El símbolo **!=** es para decir 'distinto a'  
-- El símbolo **&gt;** es para decir 'mayor que'
-- El símbolo **&lt;** es para decir 'menor que'
-- El símbolo **&gt;=** es para decir 'mayor o igual que'
-- El símbolo **&lt;=** es para decir 'menor o igual que'
-- El símbolo **&amp;** es para decir 'y'
-- El símbolo **|** es para decir 'o'
-
----
-# 3.2. Filtrar
-### filter(==)
-
-
-```r
-Pingus %&gt;%
-  filter(sexo == 'hembra')
-```
-Nota: las variables son sin comillas y las categorías en comillas.
-
---
-
-Vayan a su environment... y revisen... se cambio mi tabla?
-
---
-
-No. Hay que crear un nuevo objeto.
-
-```r
-PingusHembras&lt;-Pingus %&gt;%
-  filter(sexo == 'hembra')
-```
-Miren su environment.
-
----
-
-# 3.4. Filtrar
-### filter(&lt;=)
-
-
-```r
-Pingus %&gt;%
-* filter(largo_pico_mm &lt;= 39.1)
-```
-
-```
-## # A tibble: 83 x 8
-##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
-##  2 Adelia  Torg~          36.7         19.3            193            3450 hemb~
-##  3 Adelia  Torg~          38.9         17.8            181            3625 hemb~
-##  4 Adelia  Torg~          34.1         18.1            193            3475 &lt;NA&gt; 
-##  5 Adelia  Torg~          37.8         17.1            186            3300 &lt;NA&gt; 
-##  6 Adelia  Torg~          37.8         17.3            180            3700 &lt;NA&gt; 
-##  7 Adelia  Torg~          38.6         21.2            191            3800 macho
-##  8 Adelia  Torg~          34.6         21.1            198            4400 macho
-##  9 Adelia  Torg~          36.6         17.8            185            3700 hemb~
-## 10 Adelia  Torg~          38.7         19              195            3450 hemb~
-## # ... with 73 more rows, and 1 more variable: anio &lt;int&gt;
-```
-
----
-
-# 3.4. Filtrar
-### filter(&gt;=)
-
-```r
-Pingus %&gt;%
-* filter(largo_pico_mm &gt;= 39.1)
-```
-
-```
-## # A tibble: 260 x 8
-##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-##  1 Adelia  Torg~          39.1         18.7            181            3750 macho
-##  2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-##  3 Adelia  Torg~          40.3         18              195            3250 hemb~
-##  4 Adelia  Torg~          39.3         20.6            190            3650 macho
-##  5 Adelia  Torg~          39.2         19.6            195            4675 macho
-##  6 Adelia  Torg~          42           20.2            190            4250 &lt;NA&gt; 
-##  7 Adelia  Torg~          41.1         17.6            182            3200 hemb~
-##  8 Adelia  Torg~          42.5         20.7            197            4500 macho
-##  9 Adelia  Torg~          46           21.5            194            4200 macho
-## 10 Adelia  Bisc~          40.6         18.6            183            3550 macho
-## # ... with 250 more rows, and 1 more variable: anio &lt;int&gt;
-```
-
----
-
-# 3.4. Filtrar
-### filter(&amp;)
-
-
-```r
-Pingus %&gt;%
-* filter(isla == 'Biscoe' &amp; especie =='Adelia')
-```
-
-```
-## # A tibble: 44 x 8
-##    especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##    &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-##  1 Adelia  Bisc~          37.8         18.3            174            3400 hemb~
-##  2 Adelia  Bisc~          37.7         18.7            180            3600 macho
-##  3 Adelia  Bisc~          35.9         19.2            189            3800 hemb~
-##  4 Adelia  Bisc~          38.2         18.1            185            3950 macho
-##  5 Adelia  Bisc~          38.8         17.2            180            3800 macho
-##  6 Adelia  Bisc~          35.3         18.9            187            3800 hemb~
-##  7 Adelia  Bisc~          40.6         18.6            183            3550 macho
-##  8 Adelia  Bisc~          40.5         17.9            187            3200 hemb~
-##  9 Adelia  Bisc~          37.9         18.6            172            3150 hemb~
-## 10 Adelia  Bisc~          40.5         18.9            180            3950 macho
-## # ... with 34 more rows, and 1 more variable: anio &lt;int&gt;
-```
-
-
----
-class: title-slide, bottom
-
-# 3.5. Ejercicios
-- Crea un objeto con solo dos columnas, las de sexo y anio.
-
-```r
-#_____ &lt;-Pingus %&gt;%
-#  select(____,_____)
-```
-
-- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
-
-```r
-#______ &lt;-Pingus %&gt;%
-#  distinct(_____)
-```
-
-- Crea un objeto con solo machos.
-
-```r
-#______ &lt;-Pingus %&gt;%
-#  filter(_____ == '______')
-```
-
-- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
-
-```r
-#______ &lt;-Pingus %&gt;%
-#  filter(_____ == '______')%&gt;%
-#  filter(______ &gt;= ______)
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1579619597328-142326e07210?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1349&amp;q=80)
-background-size: cover
-
-# Ya esta tarde, no?
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-class: inverse
-
 ## Recapitulando
 
-- Instalar y cargar paquetes
-- Directorios
-- Importar datos
-- Mirar dentro de los data.frames
-- Filtrar datos
+Esta clase:
+- 2.1 Instalar y cargar paquetes
+- 2.2 Directorios
+- 2.3 Cargar csv y excel
 
----
+Siguiente clase:
+- 3.1 Visualizacion de datos
+- 3.2 Usar ggplot2
 
-class: inverse
 
-## Glosario
-
-- **Editor de código** donde armamos nuestro script, corremos secciones y lo modificamos.  
-- **Consola** donde vemos el procesamiento y resultados de los análisis.  
-- **Workspace** y **environment** donde aparece la lista de objetos que creamos.  
-- **Vectores** son conjunto de valores del mismo tipo.  
-- **Clase** de los objetos puede ser caracteres, numérica, lógicos y muchos otros.  
-- **Dataframe** matriz de datos con filas y columnas.  
-- **Objetos** lo que nos aparece en nuestro environment cuando hacemos una asignación.  
-- **Directorio**, para cuestiones practicas, es la dirección donde están los archivos en tu computadora.
-- **Paquetes** son colecciones de funciones que realizan operaciones.  
-- **Funciones** es un argumento que realiza una tarea especifica.
-
----
-
-# 4. RMarkdown
-
-Rmarkdown es muy conveniente porque podemos crear htmls o documentos word, e incluso presentaciones, de hecho esta es una presentación en Rmd.
-
---
-
-## 4.1. Ejemplo rápido.
-
-File &gt; NewFile &gt; RMarkdown
-
-- Agregar nombre
-- Cambiar output a 'word_document'
-- Darle al botón knit
-
---
-
-## 4.2. Aprender RMarkdown
-
-En español:
-[RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
-
-En ingles:
-[RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&amp;t=6552s)
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -1,15 +1,58 @@
 ---
-title: "Clase 1"
-subtitle: "Intro a R - Parte II"
+title: "Clase 2"
+subtitle: "Cargar datos"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default","chocolate-fonts"]
+    css: ["default"]
+    seal: false
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: true
+      
+---
+
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Cargar datps",
+    description = paste0(
+      "Introduccion a RStudio",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte2.html",
+    image = "https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=695&q=80",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+```
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1589447388175-ac47d31be950?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+# `r rmarkdown::metadata$title`
+### `r rmarkdown::metadata$subtitle`
+
+**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$date`
+
 ---
 
 ## 1. Intro
@@ -21,46 +64,20 @@ Paquetes, Directorios, Cargar datos.
 
 - Practica.  
 Cargar datos desde csv, txt, excel y desde una url (internet).
-Inspeccionar data.frames.
 
 ```{r, echo=FALSE}
 library(emo)
 ```
 
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
-`r emo::ji("clock")`
-
-Si da tiempo:
-Rmarkdowm
-- Porque .Rmd ?
-
 ---
 
-# Clase pasada
-
-- Asignación  
-[Discución en stackoverflow](https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-assignment-operators-in-r)  
-[R inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)  
-[Leer más](https://www.roelpeters.be/the-difference-between-arrow-and-equals-assignment-in-r/)   
-
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics('https://www.roelpeters.be/wp-content/uploads/2020/05/APL_KEYBOARD_ARROW_ASSIGNMENT-768x470.jpg')
-```
-
-- Proyectos  
-[Trabajar por proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
----
-
-## Quienes son ustedes? (...por hoy)
-
-Ademas de muy madrugadores
+## Quienes son ustedes? 
 
 - Saben abrir e identificar partes de R Studio
 
 - Quieren cargar sus datos a RStudio y poder inspeccionarlos.
 
-## Como quiero que salgan....
+### Objetivo de hoy
 
 - Puedan cargar datos y verlos en su computadora.
 
@@ -99,7 +116,7 @@ Foto de [Unsplash](https://unsplash.com)
 
 ---
 
-## 2. Importar datos
+## 1. Intro
 Un proyecto típico de ciencia de datos se ve así:
 
 ```{r echo=FALSE, out.height=300}
@@ -107,7 +124,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 ```
 Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
 
-Hoy queremos pasar el primer paso que es importar nuestros datos. 
+Hoy queremos pasar el primer paso que es **importar nuestros datos**. 
 
 ---
 
@@ -361,12 +378,10 @@ AllTracks <- do.call("rbind",ListTracking)
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://unsplash.com/photos/g59r724bayQ)
+background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
 background-size: cover
 
-
-# 2.4. Ejercicios
-### Tu Turno
+# 2.4. Su turno
 
 Carga los datos de pinguinos  
 - Usando read_csv
@@ -376,365 +391,16 @@ Carga los datos de pinguinos
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
-background-size: cover
-
-# 3. Inspeccionar data frames
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-
-## 3. Inspeccionar data frames
-
-
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg')
-```
-Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
-
-Hay muchas maneras de ver y ordenar tus datos.
-
----
-
-## 3. Inspeccionar data frames
-
-Por hoy practicaremos como:
-- Ver mis primeras y ultimas filas  
-- Ver filas especificas
-- Ver columnas especificas
-- Filtrar columnas y filas
-
-
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
-```
-  
-  Source: frases333
----
-
-# 3.1. Inspeccionar
-### head() y tail()
-
-Para ver mis primeras y ultimas filas
-```{r, eval=TRUE}
-head(Pingus)
-```
-
-```{r, eval=TRUE}
-tail(Pingus)
-```
-
----
-
-# 3.1. Filas
-
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
-```
-  
-  Source: frases333
-
----
-# 3.1. Filas
-### Corchetes
-
-Las filas se pone entre corchetes en la **PRIMERA** posición.
-```{r}
-(Pingus[1,])
-```
-
-Muéstrame las primeras 3 filas. 
-El signo de **:** es como decir "de aqui hasta acá".
-```{r}
-(Pingus[1:3,])
-```
-
----
-
-# 3.1. Filas
-### Pipe
-
-Otra manera de ver filas, usando paquetes dentro de **tidyverse**
-
-Es usando un **Pipe** (strg+alt+M)
-```{r, eval=FALSE}
-%>% 
-```
-"Encadena" funciones, y es mas fácil de leer cuando el código se va alargando. 
-
-Aquí le puedo decir muéstrame las primeras 6 filas.
-```{r}
-Pingus %>% 
-  head(6)
-```
-
----
-
-# 3.2. Columnas
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
-```
-Source: frases333
-
----
-
-# 3.2. Columnas
-### head()
-
-Usando $ y el nombre de la columna .  
-```{r}
-head(Pingus$especie)
-```
-
-Las columnas se pone entre corchetes en la **SEGUNDA** posición.
-```{r}
-head(Pingus[,1])
-```
-
----
-
-# 3.1. Inspeccionar
-### select()
-
-Con la función **select()**, podemos elegir:
-
-- Que columnas quiero ver.
-```{r}
-Pingus %>% 
-  select(especie) %>% #<<
-  head()
-```
-
----
-# 3.1. Inspeccionar
-### select(-)
-
-- Que columnas no quiero ver. 
-El signo **-** es como decir "menos ese"
-```{r}
-Pingus %>% 
-  select(-sexo) %>% #<<
-  head()
-```
-
-El signo de admiración **!** es como decir "diferente a".
-```{r}
-Pingus %>% 
-  select(!sexo) %>% #<<
-  head()
-```
-
----
-
-# 3.1. Inspeccionar
-### select(:)
-
-- Seleccionar columnas que están en medio de varias columnas.  
-El signo de **:** es como decir "de aqui hasta acá".
-```{r}
-Pingus %>% 
-  select(largo_pico_mm:masa_corporal_g) %>% #<<
-  head()
-```
-
----
-
-# 3.1. Inspeccionar
-### unique() o distinct()
-
-Valores únicos en esa columna.
-```{r}
-unique(Pingus$especie)
-```
-
-Usando paquetes de la librería **tidyverse**.
-```{r}
-pinguinos %>% 
-  distinct(especie) #<<
-```
-
----
-
-# 3.1. Inspeccionar
-### Columnas y filas
-
-Muéstrame un dato especifico [FILA, COLUMNA]
-```{r}
-(Pingus[1,1])
-```
-
-```{r}
-(Pingus[3,2])
-```
-
----
-
-# 3.2. Filtrar
-### Operadores
-Podemos filtrar columnas de acuerdo a valores que nos interesen.
-
-Pero para esto hay que conocer algunos operadores lógicos:
-
-- El símbolo **==** es para decir 'igual a'  
-- El símbolo **!=** es para decir 'distinto a'  
-- El símbolo **>** es para decir 'mayor que'
-- El símbolo **<** es para decir 'menor que'
-- El símbolo **>=** es para decir 'mayor o igual que'
-- El símbolo **<=** es para decir 'menor o igual que'
-- El símbolo **&** es para decir 'y'
-- El símbolo **|** es para decir 'o'
-
----
-# 3.2. Filtrar
-### filter(==)
-
-```{r, eval=FALSE}
-Pingus %>%
-  filter(sexo == 'hembra')
-```
-Nota: las variables son sin comillas y las categorías en comillas.
-
---
-
-Vayan a su environment... y revisen... se cambio mi tabla?
-
---
-
-No. Hay que crear un nuevo objeto.
-```{r}
-PingusHembras<-Pingus %>%
-  filter(sexo == 'hembra')
-```
-Miren su environment.
-
----
-
-# 3.4. Filtrar
-### filter(<=)
-
-```{r}
-Pingus %>%
-  filter(largo_pico_mm <= 39.1) #<<
-```
-
----
-
-# 3.4. Filtrar
-### filter(>=)
-```{r}
-Pingus %>%
-  filter(largo_pico_mm >= 39.1)#<<
-```
-
----
-
-# 3.4. Filtrar
-### filter(&)
-
-```{r}
-Pingus %>%
-  filter(isla == 'Biscoe' & especie =='Adelia')#<<
-```
-
-
----
-class: title-slide, bottom
-
-# 3.5. Ejercicios
-- Crea un objeto con solo dos columnas, las de sexo y anio.
-```{r}
-#_____ <-Pingus %>%
-#  select(____,_____)
-```
-
-- Crea un objeto con las diferentes especies de pinguinos que hay en el data.frame y a que especies corresponden.
-```{r}
-#______ <-Pingus %>%
-#  distinct(_____)
-```
-
-- Crea un objeto con solo machos.
-```{r}
-#______ <-Pingus %>%
-#  filter(_____ == '______')
-```
-
-- Crea un objeto con solo hembras que pesen (masa_corporal_g) igual o mas de 3800 g.
-```{r}
-#______ <-Pingus %>%
-#  filter(_____ == '______')%>%
-#  filter(______ >= ______)
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1579619597328-142326e07210?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80)
-background-size: cover
-
-# Ya esta tarde, no?
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-class: inverse
-
 ## Recapitulando
 
-- Instalar y cargar paquetes
-- Directorios
-- Importar datos
-- Mirar dentro de los data.frames
-- Filtrar datos
+Esta clase:
+- 2.1 Instalar y cargar paquetes
+- 2.2 Directorios
+- 2.3 Cargar csv y excel
 
----
+Siguiente clase:
+- 3.1 Visualizacion de datos
+- 3.2 Usar ggplot2
 
-class: inverse
 
-## Glosario
-
-- **Editor de código** donde armamos nuestro script, corremos secciones y lo modificamos.  
-- **Consola** donde vemos el procesamiento y resultados de los análisis.  
-- **Workspace** y **environment** donde aparece la lista de objetos que creamos.  
-- **Vectores** son conjunto de valores del mismo tipo.  
-- **Clase** de los objetos puede ser caracteres, numérica, lógicos y muchos otros.  
-- **Dataframe** matriz de datos con filas y columnas.  
-- **Objetos** lo que nos aparece en nuestro environment cuando hacemos una asignación.  
-- **Directorio**, para cuestiones practicas, es la dirección donde están los archivos en tu computadora.
-- **Paquetes** son colecciones de funciones que realizan operaciones.  
-- **Funciones** es un argumento que realiza una tarea especifica.
-
----
-
-# 4. RMarkdown
-
-Rmarkdown es muy conveniente porque podemos crear htmls o documentos word, e incluso presentaciones, de hecho esta es una presentación en Rmd.
-
---
-
-## 4.1. Ejemplo rápido.
-
-File > NewFile > RMarkdown
-
-- Agregar nombre
-- Cambiar output a 'word_document'
-- Darle al botón knit
-
---
-
-## 4.2. Aprender RMarkdown
-
-En español:
-[RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
-
-En ingles:
-[RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)
 
