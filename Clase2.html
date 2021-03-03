@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 2</title>
+    <title>Clase 3</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase2_files/header-attrs-2.6/header-attrs.js"></script>
     <link href="Clase2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="Clase2_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Cargar datps"/>
+    <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte3.html"/>
+    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Cargar datps"/>
+    <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte3.html"/>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# Clase 2
-## Gráficos
-### Miriam Lerma
-### Febrero 2021
+
+
+
+
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80)
+background-size: content
+
+# Clase 3
+### Gráficos
+
+**Miriam Lerma**&lt;br&gt;
+Febrero 2021
 
 ---
-
 # 1. Intro
 
 La clase es de 2 horas.
 
-Hoy: 
+Teoria:    
+- Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
 
-- ~40 minutos de teoría  
-(porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos)
+Práctica   
+- Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.  
 
-- ~15 minutos de práctica  
-Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.
+Teoria: 
+- Como cambiar la estética de mis gráficos.    
 
-- 10 minutos de receso, siesta, café u otros.
-También pueden ser para resolver dudas.
-
-- ~30 minutos de teoría.  
-(cambiar la estética de mis gráficos)
-
-- ~20 minutos de práctica.  
-Van a cambiar la estética de su gráfico.
+Práctica.    
+- Van a cambiar la estética de su gráfico.  
 
 Si da tiempo:  
 Un poco de inspiración y la infinidad de opciones de gráficos.
 
 ---
 
-# Ustedes
+## Ustedes
 
-- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos)
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).  
 
-- Quieren hacer gráficos con sus datos usando R
+- Quieren hacer gráficos con sus datos usando R.  
 
 
----
+### Objetivo de hoy
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1496740019327-63371ac821e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=802&amp;q=80)
-background-size: cover
-
-# Como quiero que salgan
-
-Pero por ahora:
-
-- Creen sus primeros gráficos
+- Crear sus primeros gráficos.  
 
 ---
 
@@ -85,18 +96,6 @@ Pero por ahora:
 
 -Imágenes adicionales
 [Unsplash](https://unsplash.com/)
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
-background-size: cover
-
-# Empecemos!
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
 
 ---
 
@@ -179,8 +178,7 @@ Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-o
 
 ---
 
-# 1.3. Practica
-## Instalar y cargar
+# 1.3. Instalar y cargar
 
 
 ```r
@@ -197,8 +195,7 @@ library(ggplot2)
 
 ---
 
-# 1.3. Practica 
-## Instalar y cargar
+# 1.3. Instalar y cargar
 
 Cargar datos de prueba
 
@@ -208,8 +205,7 @@ Prueba&lt;-datos::clima
 
 ---
 
-# 1.3. Practica 
-### Agregar datos
+# 1.3. Agregar datos
 
 
 ```r
@@ -224,8 +220,7 @@ ggplot(data=Prueba)
 
 ---
 
-# 1.3. Practica
-### Agregar ejes
+# 1.3. Agregar ejes
 
 
 ```r
@@ -239,8 +234,7 @@ ggplot(data=Prueba,mapping=aes(x=humedad,y=visibilidad))
 Noten que sus ejes tienen que ser columnas en su tabla.
 ---
 
-# 1.3. Practica
-### Agregar geometría
+# 1.3. Agregar geometría
 
 
 ```r
@@ -276,8 +270,7 @@ Hoy veremos:
 
 ---
 
-# 1.4. Tipos de gráficos
-### Gráfico de puntos, diagramas de dispersión, o scatterplot
+# 1.4. Gráfico de puntos
 
 Datos inventados de camarones, tamaño y densidad del cultivo.
 
@@ -290,8 +283,7 @@ Camarones$Densidad&lt;-c(100,200,300,400,500)
 
 ---
 
-# 1.4. Tipos de gráficos
-### Gráfico de puntos
+# 1.4. Gráfico de puntos
 
 Gráfico de datos inventados de camarones, tamaño y densidad del cultivo.
 
@@ -306,8 +298,7 @@ ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
 
 ---
 
-# 1.4. Tipos de gráficos
-### Gráfico de lineas
+# 1.4. Gráfico de lineas
 
 Datos inventados de tipo de algas, en meses (tiempo) y densidad (cantidad)
 
@@ -320,8 +311,7 @@ MareaRoja$Cantidad&lt;-c(100,200,300,200,200,300,400,500,700,200)
 
 ---
 
-# 1.4. Tipos de gráficos
-### Gráfico de lineas
+# 1.4. Gráfico de lineas
 
 Gráfico de datos inventados de tipo de bacterias, meses (tiempo) y densidad (cantidad)
 
@@ -336,8 +326,7 @@ ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
 
 ---
 
-# 1.4. Tipos de gráficos
-### Gráfico de barras
+# 1.4. Gráfico de barras
 
 Datos Inventados de microbiota vaginal en mujeres de diferente edad, y densidad (cantidad)
 
@@ -350,8 +339,7 @@ Microbiota$Cantidad&lt;-c(100,200,300,200,200,300,400,500,700,200)
 
 ---
 
-# 1.4. Tipos de gráficos
-### Gráfico de barras
+# 1.4. Gráfico de barras
 
 Gráfico de datos inventados
 
@@ -365,8 +353,7 @@ Hay que agregar un argumento porque no sabe que quieres en las barras.
 ---
 
 
-# 1.4. Tipos de gráficos
-### Gráfico de barras
+# 1.4. Gráfico de barras
 
 Gráfico de datos inventados de microbiota por edad y cantidades
 
@@ -382,8 +369,7 @@ ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
 
 ---
 
-# 1.4. Tipos de gráficos
-### Boxplot
+# 1.4. Boxplot
 
 Datos inventados de salinidad en Bahía de Santa María diferencias en las estaciones muestreadas
 
@@ -398,8 +384,7 @@ BSM$Estacion&lt;-as.factor(Estacion)
 
 ---
 
-# 1.4. Tipos de gráficos
-###  Boxplot
+# 1.4. Boxplot
 
 Gráfico de datos inventados de salinidad en Bahía de Santa María diferencias en las estaciones muestreadas.
 
@@ -415,8 +400,7 @@ ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
 
 ---
 
-# 1.4. Tipos de gráficos
-### Trayectorias
+# 1.4. Trayectorias
 
 Datos inventados de un bobo café que tenemos datos de latitud y longitud.
 
@@ -429,8 +413,7 @@ Bobos$Latitud&lt;-Latitud
 
 ---
 
-# 1.4. Tipos de gráficos
-### Trayectorias
+# 1.4. Trayectorias
 
 Gráficos de datos inventados de un bobo café que tenemos datos de latitud y longitud.
 
@@ -445,8 +428,7 @@ ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
 
 ---
 
-# 1.4. Tipos de gráficos
-### Mapas
+# 1.4. Mapas
 
 
 ```r
@@ -461,8 +443,7 @@ world &lt;- ne_countries(scale = "medium", returnclass = "sf") # en clase sf
 
 ---
 
-# 1.4. Tipos de gráficos
-### Mapas
+# 1.4. Mapas
 
 Coordenadas de Sinaloa approx. 20 grados Norte, 110 grados Oeste (Noroeste)
 
@@ -491,9 +472,8 @@ background-size: cover
 
 
 
-🕘 10 minutos 🕣
 
-Crea un gráfico de puntos con los datos de Pingüinos 🐦
+Crea un gráfico de puntos con los datos de Pingüinos 🐧
 
 - Carga los datos
 
@@ -508,18 +488,6 @@ Pingus&lt;-datos::pinguinos
 #ggplot(data=***, mapping=aes(x=***,y=***))+
 #  geom_***()
 ```
-Respuesta despues de la pausa.
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1503481766315-7a586b20f66d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1335&amp;q=80)
-background-size: cover
-
-# Pausa de 10 minutos....
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
 
 ---
 
@@ -732,7 +700,7 @@ MiGrafico&lt;-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm,
 MiGrafico
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-77-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-78-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -767,14 +735,6 @@ Grafiquen el *precio* por el *quilate* y cambien el color de lo puntos de acuerd
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1499377193864-82682aefed04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1361&amp;q=80)
-background-size: cover
-
-# Estoy para dudas
-
----
-
 ### Su turno
 
 Código  
@@ -790,18 +750,6 @@ Gráfico
 
 
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png" height="350" /&gt;
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1579619597328-142326e07210?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1349&amp;q=80)
-background-size: cover
-
-# Ya esta tarde, no?
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
 
 ---
 
@@ -824,42 +772,39 @@ library(plotly)
 
 # 4.2. Inspiración
 
-[Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)
-Si hay tiempo revisemos esto 
+- [Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)  
 
-Twitter: #tidytuesday #DatosDeMiercoles, #30díasdegráficos
+- Twitter: #tidytuesday #DatosDeMiercoles, #30díasdegráficos
 
-[RGraphGallery](https://www.r-graph-gallery.com/)
+- [RGraphGallery](https://www.r-graph-gallery.com/)
 
-[DataToViz](https://www.data-to-viz.com/)
+- [DataToViz](https://www.data-to-viz.com/)
 
-[Colores](https://coolors.co/)
+- [Colores](https://coolors.co/)
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1527345931282-806d3b11967f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
-background-size: cover
-
 # Recapitulando
 
-1. Gráficos con ggplot.  
-2. Tipos de gráfico.
-3. Temas.  
-4. Nombres en los ejes.  
-5. Colores.  
-6. Tamaño letras. 
-5. Inspiración.  
+Esta clase:  
+3.1. Gráficos con ggplot.  
+3.2. Tipos de gráfico.
+3.3. Temas.  
+3.4. Nombres en los ejes.  
+3.5. Colores.  
+3.6. Tamaño letras. 
+3.7. Inspiración.
 
-
+Siguiente clase:
+4.1 Inspeccionar dataframes
+4.2 Manipular dataframes
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"countIncrementalSlides": true,
-"self_contained": true
+"countIncrementalSlides": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

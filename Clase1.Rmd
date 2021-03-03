@@ -74,18 +74,16 @@ Van a abrir R, ubicar las partes y correr algunas variables.
 
 ## Quienes son ustedes? 
 
-- Principiantes en R (de otra manera esto es un repaso)
-
-- Saben que existe R pero no lo conocen bien
-
-- Aun así, necesitan usarlo en un futuro cercano
+- Principiantes en R (de otra manera esto es un repaso).  
+- Saben que existe R pero no lo conocen bien.  
+- Aun así, necesitan usarlo en un futuro cercano.  
 
 
 ## Hoy quiero que....
 
-- Sepan que es R y RStudio
-
-- Identifiquen las partes
+- Sepan que es R y RStudio.  
+- Identifiquen las partes.  
+Se sientan comodos en RStudio.  
 
 ---
 
