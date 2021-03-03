@@ -2,7 +2,7 @@
 title: "Clase 5"
 subtitle: "Ordenar, unir, exportar"
 author: "Miriam Lerma"
-date: "Febrero 2021"
+date: "Marzo 2021"
 output:
   xaringan::moon_reader:
     css: ["default"]

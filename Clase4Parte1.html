@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 4</title>
+    <title>Clase 6</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase4Parte1_files/header-attrs-2.6/header-attrs.js"></script>
     <link href="Clase4Parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="Clase4Parte1_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Cargar datps"/>
+    <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Cargar datps"/>
+    <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# Clase 4
-## Proyectos en R
-### Miriam Lerma
-### Marzo 2021
+
+
+
+
+class: title-slide, inverse,middle, right
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80)
+background-size: cover
+
+### Clase 6
+# Proyectos en R
+
+**Miriam Lerma**&lt;br&gt;
+Marzo 2021
 
 ---
 
@@ -24,13 +48,13 @@ class: center, middle, inverse, title-slide
 
 La clase es de 2 horas.
 
-- Parte I:  
-Teoria: Trabajar por proyectos.  
-Practica: Ordenar mis carpetas y crear mi proyecto.
+Teoria:  
+- Trabajar por proyectos.  
+- Ordenar mis carpetas y crear mi proyecto.
 
-- Parte II:
-Crear un proyecto.  
-Guardarlo y compartirlo.  
+Practica:  
+- Crear un proyecto.  
+- Guardarlo y compartirlo.  
 
 
 
@@ -46,11 +70,6 @@ Guardarlo y compartirlo.
 - Quieren tener ordenado su trabajo para poder re-hacer sus analisis en el futuro.  
 
 - Quieren trabajar con alguien mas y mandarle materiales.    
-
-
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
-🕤
 
 ---
 
@@ -74,16 +93,15 @@ Si quieren profundizar en el tema:
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXdvcmt8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
+background-image: url(https://images.unsplash.com/photo-1453169881280-2f4d42bc57b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1545&amp;q=80)
 background-size: cover
 
 
-# Proyectos
+# Empecemos!
 
 ---
 
-# 1. Trabajar por proyectos.
-## Teoria
+## 1. Teoria
 
 Llegara el dia en que cerraran R y haran otra cosa y tendran que volver al analisis que estaban haciendo.
 
@@ -102,7 +120,7 @@ Por esto R4DS recomienda, que **no guardes tu espacio de trabajo**.
 
 ---
 
-## 1.2. Directorio de trabajo
+## 1.2. Rutas
 
 Su directorio de trabajo (working directory en inglés) es donde R busca los archivos que le pides que lea y donde colocará todos los archivos que le pidas que guarde. 
 
@@ -246,13 +264,11 @@ Todo lo que necesites siempre estará concentrado en una sola ubicación y clara
 
 
 
-[Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
+Créditos: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
 
 ---
 
 class: center, middle
-
-## 1.5. Usar nombres.
 
 ### Buenos nombres
 
@@ -267,9 +283,9 @@ Funcionen bien con orden por defecto
  
 ---
 
-## 1.7. Usar nombres.
+## 1.7. Para la computadora
 
-**Para la computadora**
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/&gt;&lt;/svg&gt;
 
 - Usar palabras clave.  
 - Sin caracteres especiales.  
@@ -283,13 +299,13 @@ Usar "_" para separar nombres con mas de una palabra.
 - Caracteres acentuados.  
 - Diferentes archivos con nombres similares y con diferente contenido (ej. gato y Gato).  
 
-#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/&gt;&lt;/svg&gt; 
+ 
 
 ---
 
-## 1.7. Usar nombres.
+## 1.7. Para humanos.
 
-### Para humanos.
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/&gt;&lt;/svg&gt;
 
 Facil de saber que contiene el archivo a partir de su nombre.
 
@@ -298,11 +314,13 @@ Facil de saber que contiene el archivo a partir de su nombre.
 - 03_discucion.docx  
 - 04_tablas.docx  
 
-#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/&gt;&lt;/svg&gt;
+
 
 ---
 
-## 1.7. Usar nombres.
+## 1.7. Orden por defecto 
+
+#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M0 256v128c0 17.7 14.3 32 32 32h32V224H32c-17.7 0-32 14.3-32 32zM464 96H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H176c-44.2 0-80 35.8-80 80v272c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176c0-44.2-35.8-80-80-80zM256 416h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm128 120h-64v-32h64v32zm96 0h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm192-72h-32v192h32c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32z"/&gt;&lt;/svg&gt;
 
 Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
 
@@ -318,8 +336,6 @@ Mis carpetas son:
 Otras opciones:  
 01_Datos  
 01_datos  
-
-#&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M0 256v128c0 17.7 14.3 32 32 32h32V224H32c-17.7 0-32 14.3-32 32zM464 96H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H176c-44.2 0-80 35.8-80 80v272c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176c0-44.2-35.8-80-80-80zM256 416h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm128 120h-64v-32h64v32zm96 0h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm192-72h-32v192h32c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32z"/&gt;&lt;/svg&gt;  
 
 ---
 
@@ -344,17 +360,34 @@ Pingus_csv&lt;-read_csv(here("Pingus_1.csv"))
 
 ---
 
-# Ejercicios
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80)
+background-size: cover
 
-- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.
-- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.
-- Vamos a exportar un grafico en la carpeta resultados.
-- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.
+
+# Crear un proyecto
 
 ---
 
-## 2. Ejercicio asistido
-### 2.1. Directorio
+# 2. Ejercicios
+
+- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.  
+
+--
+
+- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.  
+
+--
+
+- Vamos a exportar un grafico en la carpeta resultados.  
+
+--
+
+- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.  
+
+---
+
+## 2.1. Directorio
 
 - Crea un folder para tu proyecto
 - Crea un subfolder que se llame datos (01Datos)  
@@ -363,18 +396,16 @@ Pingus_csv&lt;-read_csv(here("Pingus_1.csv"))
 
 ---
 
-## 2. Ejercicio asistido
-### 2.2. Crear un proyecto
+## 2.2. Crear un proyecto
 Haz clic en File &gt; New Proyect, y después:
 
 &lt;img src="https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png" height="350" /&gt;
 
-Traten de usar un nombre significativo (p.e. 'Curso_CIAD')
+Traten de usar un nombre significativo (p.e. 'ProyectoPingus')
 
 ---
 
-## 2. Ejercicio asistido
-### 2.2. Crear un proyecto
+## 2.2. Crear un proyecto
 Que cambio?
 
 En la esquina superior derecha sale el nombre de su proyecto.  
@@ -382,29 +413,13 @@ En la esquina superior derecha sale el nombre de su proyecto.
 En donde estas trabajando?
 Revisa con getwd.
 
-```r
-getwd()
-```
-
-```
-## [1] "C:/Users/Lerma/Documents/4Cursos/1CIAD/05Clase_Proyectos"
-```
 
 Revisa con here.
 
-```r
-library(here)
-here()
-```
-
-```
-## [1] "C:/Users/Lerma/Documents/4Cursos/1CIAD/05Clase_Proyectos"
-```
 
 ---
 
-## 2.3. Ejercicio asistido
-### Cargar datos
+## 2.3. Cargar datos
 
 - Van a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv en su subcarpeta **01Datos**.
 
@@ -432,8 +447,7 @@ Ve en files 01Datos si aparece tu nuevo csv.
 
 ---
 
-## 3.3. Ejercicio asistido
-### Script
+## 2.4. Script
 
 - Van a crear un **script** con codigo debe incluir: 
 1. Como cargar mis datos
@@ -442,8 +456,7 @@ Ve en files 01Datos si aparece tu nuevo csv.
 
 ---
 
-## 3.3. Ejercicio asistido
-### Script
+## 2.4. Script
 
 File&gt;NewFile&gt;NewScript
 
@@ -463,6 +476,7 @@ read_csv('.//01Datos//Pinguinos.csv')
 
 ---
 
+## 2.4. Script
 
 - Calcular numero de muestras por sexo
 
@@ -501,27 +515,16 @@ Pingus %&gt;%
 
 ---
 
-## 3.4. Ejercicio asistido
-### Figuras
+## 2.5. Figuras
 
 - Van a exportar un grafico en su carpeta resultados.  
 Un boxplot de pesos de hembras y machos separados por especie.
 
 
-```r
-MiGrafico&lt;-ggplot(Pingus,
-                  aes(x=especie, y=masa_corporal_g, color=sexo, fill=sexo))+
-  geom_boxplot()+
-  theme_bw()
-MiGrafico
-```
-
-![](Clase4Parte1_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 
 ---
 
-## 3.4. Ejercicio asistido
-### Figuras
+## 2.5. Figuras
 
 Elige el directorio donde quieres guardar tu gráfico.
 
@@ -541,9 +544,7 @@ ggsave("MiGrafico.jpg",
 
 ---
 
-## 3.4. Ejercicio asistido
-
-### Guardar script
+## 2.5. Guardar script
 
 Revisar tener:
 - DatosPinguinos.csv en carpeta de 01Datos
@@ -552,15 +553,14 @@ Revisar tener:
 
 ---
 
-## 3.4. Ejercicio asistido
+## 2.6. Limpiar 
 
 - Limpiar su environment  
 - Limpiar su consola
 
 ---
 
-## 3.4. Ejercicio asistido
-### Modificar script
+## 2.7. Reusar script
 
 Abrir su script (MiScript.R).  
 Hacer segundo grafico.  
@@ -579,7 +579,7 @@ Cambien en ggsave
 
 ---
 
-## 3.5. Mover carpeta
+## 2.8. Mover carpeta
 
 Cierren su RStudio.  
 
@@ -590,7 +590,16 @@ Cierren su RStudio.
 
 ---
 
-# 4. Zip
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1570610183363-c7531f3eaa68?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1353&amp;q=80)
+background-size: cover
+
+
+# Compartir el proyecto
+
+---
+
+# 3. Zip
 
 Ahora vamos a:
 - Crear un archivo zip.
@@ -598,7 +607,7 @@ Ahora vamos a:
 
 ---
 
-### 4.1. Crear un zip del proyecto y enviarlo.
+### 3.1. Crear un zip del proyecto y enviarlo.
 
 - Crea tu archivo zip.
 
@@ -606,7 +615,7 @@ Ahora vamos a:
 
 ---
 
-### 4.2. Bajar un zip 
+### 3.2. Bajar un zip 
 
 Enlace github bajar el zip  
 
@@ -625,11 +634,14 @@ background-size: cover
 
 # Recapitulando
 
-1.0. Trabajar por proyecto.  
-1.1. Compartir proyectos.
+Esta clase:  
+6.1. Trabajar por proyecto.    
+6.2. Compartir proyectos.  
 
+Siguiente clase:  
+7.1. Practicar modelos lineares.  
+7.2. Graficar modelos lineares.  
 
----
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

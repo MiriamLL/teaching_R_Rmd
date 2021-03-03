@@ -1,28 +1,69 @@
 ---
-title: "Clase 4"
+title: "Clase 6"
 subtitle: "Proyectos en R"
 author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
   xaringan::moon_reader:
-    css: ["default","chocolate-fonts"]
+    css: ["default"]
+    seal: false
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: true
 ---
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Cargar datps",
+    description = paste0(
+      "Introduccion a RStudio",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html",
+    image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+```
+
+class: title-slide, inverse,middle, right
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+background-size: cover
+
+### `r rmarkdown::metadata$title`
+# `r rmarkdown::metadata$subtitle`
+
+**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$date`
+
+---
+
 
 # Intro
 
 La clase es de 2 horas.
 
-- Parte I:  
-Teoria: Trabajar por proyectos.  
-Practica: Ordenar mis carpetas y crear mi proyecto.
+Teoria:  
+- Trabajar por proyectos.  
+- Ordenar mis carpetas y crear mi proyecto.
 
-- Parte II:
-Crear un proyecto.  
-Guardarlo y compartirlo.  
+Practica:  
+- Crear un proyecto.  
+- Guardarlo y compartirlo.  
 
 
 
@@ -42,11 +83,6 @@ library(fontawesome)
 - Quieren tener ordenado su trabajo para poder re-hacer sus analisis en el futuro.  
 
 - Quieren trabajar con alguien mas y mandarle materiales.    
-
-
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado.
-`r emo::ji("clock")`
 
 ---
 
@@ -70,16 +106,15 @@ Si quieren profundizar en el tema:
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8dGVhbXdvcmt8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-image: url(https://images.unsplash.com/photo-1453169881280-2f4d42bc57b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1545&q=80)
 background-size: cover
 
 
-# Proyectos
+# Empecemos!
 
 ---
 
-# 1. Trabajar por proyectos.
-## Teoria
+## 1. Teoria
 
 Llegara el dia en que cerraran R y haran otra cosa y tendran que volver al analisis que estaban haciendo.
 
@@ -100,7 +135,7 @@ knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudi
 
 ---
 
-## 1.2. Directorio de trabajo
+## 1.2. Rutas
 
 Su directorio de trabajo (working directory en inglés) es donde R busca los archivos que le pides que lea y donde colocará todos los archivos que le pidas que guarde. 
 
@@ -243,13 +278,11 @@ Todo lo que necesites siempre estará concentrado en una sola ubicación y clara
 
 
 
-[Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
+Créditos: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
 
 ---
 
 class: center, middle
-
-## 1.5. Usar nombres.
 
 ### Buenos nombres
 
@@ -264,9 +297,9 @@ Funcionen bien con orden por defecto
  
 ---
 
-## 1.7. Usar nombres.
+## 1.7. Para la computadora
 
-**Para la computadora**
+#`r fa("laptop", fill = "black")`
 
 - Usar palabras clave.  
 - Sin caracteres especiales.  
@@ -280,13 +313,13 @@ Usar "_" para separar nombres con mas de una palabra.
 - Caracteres acentuados.  
 - Diferentes archivos con nombres similares y con diferente contenido (ej. gato y Gato).  
 
-#`r fa("laptop", fill = "black")` 
+ 
 
 ---
 
-## 1.7. Usar nombres.
+## 1.7. Para humanos.
 
-### Para humanos.
+#`r fa("user-friends", fill = "black")`
 
 Facil de saber que contiene el archivo a partir de su nombre.
 
@@ -295,11 +328,13 @@ Facil de saber que contiene el archivo a partir de su nombre.
 - 03_discucion.docx  
 - 04_tablas.docx  
 
-#`r fa("user-friends", fill = "black")`
+
 
 ---
 
-## 1.7. Usar nombres.
+## 1.7. Orden por defecto 
+
+#`r fa("robot", fill = "black")`
 
 Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
 
@@ -315,8 +350,6 @@ Mis carpetas son:
 Otras opciones:  
 01_Datos  
 01_datos  
-
-#`r fa("robot", fill = "black")`  
 
 ---
 
@@ -340,17 +373,34 @@ Pingus_csv<-read_csv(here("Pingus_1.csv"))
 
 ---
 
-# Ejercicios
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+background-size: cover
 
-- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.
-- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.
-- Vamos a exportar un grafico en la carpeta resultados.
-- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.
+
+# Crear un proyecto
 
 ---
 
-## 2. Ejercicio asistido
-### 2.1. Directorio
+# 2. Ejercicios
+
+- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.  
+
+--
+
+- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.  
+
+--
+
+- Vamos a exportar un grafico en la carpeta resultados.  
+
+--
+
+- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.  
+
+---
+
+## 2.1. Directorio
 
 - Crea un folder para tu proyecto
 - Crea un subfolder que se llame datos (01Datos)  
@@ -359,40 +409,37 @@ Pingus_csv<-read_csv(here("Pingus_1.csv"))
 
 ---
 
-## 2. Ejercicio asistido
-### 2.2. Crear un proyecto
+## 2.2. Crear un proyecto
 Haz clic en File > New Proyect, y después:
 
 ```{r echo=FALSE, out.height=350}
 knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png")
 ```
 
-Traten de usar un nombre significativo (p.e. 'Curso_CIAD')
+Traten de usar un nombre significativo (p.e. 'ProyectoPingus')
 
 ---
 
-## 2. Ejercicio asistido
-### 2.2. Crear un proyecto
+## 2.2. Crear un proyecto
 Que cambio?
 
 En la esquina superior derecha sale el nombre de su proyecto.  
 
 En donde estas trabajando?
 Revisa con getwd.
-```{r}
+```{r, include=FALSE}
 getwd()
 ```
 
 Revisa con here.
-```{r}
+```{r, include=FALSE}
 library(here)
 here()
 ```
 
 ---
 
-## 2.3. Ejercicio asistido
-### Cargar datos
+## 2.3. Cargar datos
 
 - Van a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv en su subcarpeta **01Datos**.
 
@@ -417,8 +464,7 @@ Ve en files 01Datos si aparece tu nuevo csv.
 
 ---
 
-## 3.3. Ejercicio asistido
-### Script
+## 2.4. Script
 
 - Van a crear un **script** con codigo debe incluir: 
 1. Como cargar mis datos
@@ -427,8 +473,7 @@ Ve en files 01Datos si aparece tu nuevo csv.
 
 ---
 
-## 3.3. Ejercicio asistido
-### Script
+## 2.4. Script
 
 File>NewFile>NewScript
 
@@ -446,6 +491,7 @@ read_csv('.//01Datos//Pinguinos.csv')
 
 ---
 
+## 2.4. Script
 
 - Calcular numero de muestras por sexo
 ```{r}
@@ -464,13 +510,12 @@ Pingus %>%
 
 ---
 
-## 3.4. Ejercicio asistido
-### Figuras
+## 2.5. Figuras
 
 - Van a exportar un grafico en su carpeta resultados.  
 Un boxplot de pesos de hembras y machos separados por especie.
 
-```{r, echo=TRUE, warning=FALSE}
+```{r, include=FALSE, echo=TRUE, warning=FALSE}
 MiGrafico<-ggplot(Pingus,
                   aes(x=especie, y=masa_corporal_g, color=sexo, fill=sexo))+
   geom_boxplot()+
@@ -480,8 +525,7 @@ MiGrafico
 
 ---
 
-## 3.4. Ejercicio asistido
-### Figuras
+## 2.5. Figuras
 
 Elige el directorio donde quieres guardar tu gráfico.
 ```{r, eval=FALSE}
@@ -499,9 +543,7 @@ ggsave("MiGrafico.jpg",
 
 ---
 
-## 3.4. Ejercicio asistido
-
-### Guardar script
+## 2.5. Guardar script
 
 Revisar tener:
 - DatosPinguinos.csv en carpeta de 01Datos
@@ -510,15 +552,14 @@ Revisar tener:
 
 ---
 
-## 3.4. Ejercicio asistido
+## 2.6. Limpiar 
 
 - Limpiar su environment  
 - Limpiar su consola
 
 ---
 
-## 3.4. Ejercicio asistido
-### Modificar script
+## 2.7. Reusar script
 
 Abrir su script (MiScript.R).  
 Hacer segundo grafico.  
@@ -536,7 +577,7 @@ ggsave("02_Grafico_LargoPico.jpg, #<<
 
 ---
 
-## 3.5. Mover carpeta
+## 2.8. Mover carpeta
 
 Cierren su RStudio.  
 
@@ -547,7 +588,16 @@ Cierren su RStudio.
 
 ---
 
-# 4. Zip
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1570610183363-c7531f3eaa68?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1353&q=80)
+background-size: cover
+
+
+# Compartir el proyecto
+
+---
+
+# 3. Zip
 
 Ahora vamos a:
 - Crear un archivo zip.
@@ -555,7 +605,7 @@ Ahora vamos a:
 
 ---
 
-### 4.1. Crear un zip del proyecto y enviarlo.
+### 3.1. Crear un zip del proyecto y enviarlo.
 
 - Crea tu archivo zip.
 
@@ -565,7 +615,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-### 4.2. Bajar un zip 
+### 3.2. Bajar un zip 
 
 Enlace github bajar el zip  
 
@@ -586,9 +636,12 @@ background-size: cover
 
 # Recapitulando
 
-1.0. Trabajar por proyecto.  
-1.1. Compartir proyectos.
+Esta clase:  
+6.1. Trabajar por proyecto.    
+6.2. Compartir proyectos.  
 
+Siguiente clase:  
+7.1. Practicar modelos lineares.  
+7.2. Graficar modelos lineares.  
 
----
 
