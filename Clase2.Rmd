@@ -25,7 +25,7 @@ meta() %>%
     description = paste0(
       "Introduccion a RStudio",
       "Curso de R"),
-    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte3.html",
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase2.html",
     image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
     image_alt = paste0(
       "Introduccion a R y RStudio",
@@ -42,12 +42,12 @@ meta() %>%
 library(xaringanExtra)
 ```
 
-class: title-slide, center, middle
+class: title-slide, middle, right
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
-background-size: content
+background-size: cover
 
-# `r rmarkdown::metadata$title`
-### `r rmarkdown::metadata$subtitle`
+### `r rmarkdown::metadata$title`
+# `r rmarkdown::metadata$subtitle`
 
 **`r rmarkdown::metadata$author`**<br>
 `r rmarkdown::metadata$date`
@@ -888,5 +888,5 @@ Esta clase:
 3.7. Inspiración.
 
 Siguiente clase:
-4.1 Inspeccionar dataframes
-4.2 Manipular dataframes
+4.1 Realizar operaciones en R
+4.2 Inspeccionar y manipular dataframes

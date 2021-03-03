@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 3</title>
+    <title>Clase 4</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase3Parte1_files/header-attrs-2.6/header-attrs.js"></script>
     <link href="Clase3Parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="Clase3Parte1_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Cargar datps"/>
+    <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Cargar datps"/>
+    <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# Clase 3
-## Operaciones en R
-### Miriam Lerma
-### Febrero 2021
+
+
+
+
+class: title-slide, middle, right
+background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80)
+background-size: cover
+
+### Clase 4
+# Operaciones en R
+
+**Miriam Lerma**&lt;br&gt;
+Febrero 2021
 
 ---
-
 
 # Intro
 
 La clase es de 2 horas.
 
-- Parte I:  
-Teoria: Operaciones sencillas.  
-Practica: Ejercicios con operaciones.  
+Teoria: 
+- Operaciones sencillas.  
 
-- Parte II:  
-Teoria: Datos ordenados.  
-Practica: Ejercicios con funciones de tidyverse.  
+Practica: 
+- Ejercicios usando operaciones.  
+
+Teoria:  
+- Datos ordenados.  
+
+Practica:  
+- Ejercicios con funciones de tidyverse.  
 
 
 
@@ -43,13 +70,6 @@ Practica: Ejercicios con funciones de tidyverse.
 - Quieren hacer algunas operaciones matematicas usando R.
 
 - Quieren tener un dataframe que les sirva para hacer analisis y graficos.
-
-
-
-
-
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado 🕜.
 
 ---
 
@@ -113,15 +133,13 @@ Otra opcion es usar read_csv desde su computador.
 - Cualquiera puede crear su paquete y someterlo a CRAN.  
 - Cada paquete pasa por varias pruebas, y si pasa todas las pruebas queda disponible en el Archive.  
 
-&lt;img src="https://images.unsplash.com/photo-1554900773-4dd76725f876?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YXJjaGl2ZXxlbnwwfHwwfA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" height="250" /&gt;
-
 ---
 
 class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80)
 background-size: cover
 
-# PARTE I: Operaciones
+# Operaciones
 
 ---
 
@@ -599,7 +617,7 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1341&amp;q=80)
 background-size: cover
 
-# PARTE II: Orden
+# Orden
 
 ---
 
@@ -639,7 +657,7 @@ MiMejorAcomodo&lt;-c('Miriam','Mujer')
 ```
 
 Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
-Si no el proceso de ordenarlos puede ser tardado 🕛.
+Si no el proceso de ordenarlos puede ser tardado 🕗.
 
 ---
 
@@ -936,17 +954,17 @@ PingusSinSexo&lt;-Pingus %&gt;%
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1533630160910-65f5a1718c65?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
-background-size: cover
-
-
 # Recapitulando
 
-1.1. Operaciones matematicas simples.  
-1.2. Funciones basicas (mean, median, sd, range).  
-1.3. Funciones tidyverse (count, select).  
+Esta clase: 
+4.1. Operaciones matematicas simples.  
+4.2. Funciones basicas (mean, median, sd, range).  
+4.3. Funciones tidyverse (count, select).  
 
+Siguiente clase:  
+4.4. Funciones tidyverse (filter, group_by, summarize)
+4.5. Unir dataframes (join)  
+4.6. Exportar dataframes (write_csv)  
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

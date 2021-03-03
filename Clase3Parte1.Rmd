@@ -1,28 +1,73 @@
 ---
-title: "Clase 3"
+title: "Clase 4"
 subtitle: "Operaciones en R"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default","chocolate-fonts"]
+    css: ["default"]
+    seal: false
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: true
+      
+---
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Cargar datps",
+    description = paste0(
+      "Introduccion a RStudio",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html",
+    image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+```
+
+class: title-slide, middle, right
+background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
+background-size: cover
+
+### `r rmarkdown::metadata$title`
+# `r rmarkdown::metadata$subtitle`
+
+**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$date`
+
 ---
 
 # Intro
 
 La clase es de 2 horas.
 
-- Parte I:  
-Teoria: Operaciones sencillas.  
-Practica: Ejercicios con operaciones.  
+Teoria: 
+- Operaciones sencillas.  
 
-- Parte II:  
-Teoria: Datos ordenados.  
-Practica: Ejercicios con funciones de tidyverse.  
+Practica: 
+- Ejercicios usando operaciones.  
+
+Teoria:  
+- Datos ordenados.  
+
+Practica:  
+- Ejercicios con funciones de tidyverse.  
 
 ```{r, echo=FALSE}
 library(emo)
@@ -37,13 +82,6 @@ library(emo)
 - Quieren hacer algunas operaciones matematicas usando R.
 
 - Quieren tener un dataframe que les sirva para hacer analisis y graficos.
-
-
-
-
-
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado `r emo::ji("clock")`.
 
 ---
 
@@ -105,17 +143,13 @@ Otra opcion es usar read_csv desde su computador.
 - Cualquiera puede crear su paquete y someterlo a CRAN.  
 - Cada paquete pasa por varias pruebas, y si pasa todas las pruebas queda disponible en el Archive.  
 
-```{r echo=FALSE, out.height=250}
-knitr::include_graphics('https://images.unsplash.com/photo-1554900773-4dd76725f876?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YXJjaGl2ZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
-```
-
 ---
 
 class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
 background-size: cover
 
-# PARTE I: Operaciones
+# Operaciones
 
 ---
 
@@ -437,7 +471,7 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1341&q=80)
 background-size: cover
 
-# PARTE II: Orden
+# Orden
 
 ---
 
@@ -674,14 +708,14 @@ PingusSinSexo<-Pingus %>%
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1533630160910-65f5a1718c65?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
-
-
 # Recapitulando
 
-1.1. Operaciones matematicas simples.  
-1.2. Funciones basicas (mean, median, sd, range).  
-1.3. Funciones tidyverse (count, select).  
+Esta clase: 
+4.1. Operaciones matematicas simples.  
+4.2. Funciones basicas (mean, median, sd, range).  
+4.3. Funciones tidyverse (count, select).  
 
+Siguiente clase:  
+4.4. Funciones tidyverse (filter, group_by, summarize)
+4.5. Unir dataframes (join)  
+4.6. Exportar dataframes (write_csv)  
