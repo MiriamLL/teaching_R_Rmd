@@ -9,7 +9,7 @@ Clase 1-Parte 2: Paquetes, directorios e inspeccionar mis datos.
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase1Parte2
 
 Clase 2: Visualizacion de datos.  
-Presentacion: https://miriamll.github.io/Curso_CIAD/Clase2Parte1
+Presentacion: https://miriamll.github.io/Curso_CIAD/Clase2
 
 Clase 3-Parte1: Operaciones basicas e inspeccionar mis data frames.  
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase3Parte1
