@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default","chocolate-fonts"]
+    css: ["default"]
     seal: false
     nature:
       highlightStyle: github
@@ -38,37 +38,24 @@ meta() %>%
 ```
 
 
-```{r setup, include = FALSE}
+```{r include = FALSE}
 #Paquetes
 library(xaringanExtra)
-# set default options
-opts_chunk$set(echo=FALSE,
-               collapse = TRUE,
-               fig.width = 7.252,
-               fig.height = 4,
-               dpi = 300)
 ```
 
-
-
----
-
-class: title-slide, inverse, bottom
+class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1295&q=80)
 background-size: cover
 
-.right-column[
 # `r rmarkdown::metadata$title`
 ### `r rmarkdown::metadata$subtitle`
 
 **`r rmarkdown::metadata$author`**<br>
 `r rmarkdown::metadata$date`
-]
 
 ---
 
-
-class: title-slide,bottom
+class: title-slide
 
 ## 1. Intro
 
@@ -76,64 +63,29 @@ La clase es de 2 horas.
 
 Hoy: 
 
-- ~40 minutos de teoría  
+- Teoría  
 (historia de R, que es RStudio y algunos conceptos básicos para orientarse en RStudio)
 
 
-- ~15 minutos de practica  
+- Practica  
 Van a abrir R, ubicar las partes y correr algunas variables.
-
-
-- 10 minutos de receso, siesta, café u otros.
-También pueden ser para resolver dudas.
-
-- ~30 minutos de teoría.  
-(paquetes, directorios y como cargar mis datos)
-
-
-- ~20 minutos de practica.  
-Van a cargar archivos que están en el drive.
-
-
-Si da tiempo:  
-Porque usar Rmarkdown?
 
 ---
 
-## Quienes son ustedes? (...por hoy)
+## Quienes son ustedes? 
 
-.pull-left[
-Ademas de muy madrugadores
-
-```{r, echo=FALSE, out.height=200}
-knitr::include_graphics("https://images.unsplash.com/photo-1601315447719-cf782668d24e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDJ8fHJvb3N0ZXJ8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
-
-```
-]
---
-
-.pull-right[
 - Principiantes en R (de otra manera esto es un repaso)
 
 - Saben que existe R pero no lo conocen bien
 
 - Aun así, necesitan usarlo en un futuro cercano
-]
 
----
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aGFja2VyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
-background-size: cover
 
-## Como quiero que salgan....
+## Hoy quiero que....
 
---
+- Sepan que es R y RStudio
 
-Pero por ahora:
-
-- Sepan R
-
-- Puedan cargar datos
+- Identifiquen las partes
 
 ---
 
@@ -177,9 +129,9 @@ class: center
 knitr::include_graphics("https://www.r-project.org/logo/Rlogo.svg")
 ```
 
-- R es un lenguaje de programación con enfoque en análisis estadístico.
+ R es un lenguaje de programación con enfoque en análisis estadístico.
 
-- Fue desarrollado por los neozelandeses Ross Ihaka y Robert Gentleman, en 1996.
+ Fue desarrollado por los neozelandeses Ross Ihaka y Robert Gentleman, en 1996.
 
 ```{r echo=FALSE, out.height=300}
 knitr::include_graphics("https://www.nature.com/news/polopoly_fs/7.22632.1418912921!/image/TB2.jpg_gen/derivatives/fullsize/TB2.jpg")
@@ -192,7 +144,7 @@ Sylvia Tippmann/Source: Elsevier Scopus database
 ## 1.1 Que es R?
 ### Ventajas
 
-- Es gratis, en cambio otros programas como SPSS hay que **"pagarlos"** ... Lo mismo para ArCGIS.
+- Es gratis, en cambio otros programas como SPSS hay que pagarlos ... Lo mismo para ArCGIS.
 
 --
 
@@ -615,559 +567,38 @@ Hashtag: #rstatsES (en español) o #rstats (en inglés).
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1499377193864-82682aefed04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1361&q=80)
+background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
 background-size: cover
 
-# Seguro ya pasaron 40 minutos....
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-# 1.5 Ejercicios
-### Algunas operaciones
-
-Tengo tres gatos y cada uno come 2 latas de comida, cuantas latas tengo que comprar?
-```{r, eval=FALSE}
-Gatitos<-3
-Latas<-2
-Gatitos*Latas
-```
-
---
-
-Tengo 4 perros y ya se cuantos gatos, cuantas mascotas tengo en total?
-```{r, eval=FALSE}
-Perritos<-4
-Mascotas<-Perritos+Gatitos
-Mascotas
-```
-
----
-class: title-slide
-background-image: url(https://unsplash.com/photos/g59r724bayQ)
-background-size: cover
-
-# 1.5 Ejercicios
-### Clase de objetos
-
-Ejemplo
-```{r, eval=FALSE}
-NombresPerritos<-c("Lala","Lele","Lili","Lolo")
-```
-
-Checar clase de los objetos
-```{r, eval=FALSE}
-class(Perritos)
-class(NombresPerritos)
-```
-
-Como se llaman los gatitos?
-Crea tu propio objeto, rellenando el espacio entre las comillas.
-```{r, eval=FALSE}
-NombresGatitos<-c(" "," "," ")
-```
-
----
-
-class: title-slide
-background-image: url(https://unsplash.com/photos/g59r724bayQ)
-background-size: cover
-
-# 1.5 Ejercicios
-### Clase de objetos
-
-Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son 3) se comen 0.5 Kg al día y quiero ir al super cada 15 días por lo de la pandemia?
-
-```{r, eval=FALSE}
-#Perritos<-
-#Croquetas<-
-#Dias<-
-```
-
-```{r}
-#(Perritos*Croquetas)*Dias
-```
-Hasta le podríamos agregar el precio de las croquetas, si quisiéramos.
-
-```{r echo=FALSE, out.height=100}
-knitr::include_graphics('https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1503481766315-7a586b20f66d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1335&q=80)
-background-size: cover
-
-# Pausa de 10 minutos....
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVhZHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
-background-size: cover
-
-# Empecemos!
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-## 2.1. Paquetes
-
-- Son colecciones de funciones que realizan operaciones.  
-- Se instalan una única vez pero deben cargarse cada vez que se utilizan.  
-Para instalar hay que escribir: install.packages("").  
-Para cargar hay que escribir: library("").  
-
---
-
-Ahora mismo abran la consola, escriban el siguiente código y denle enter
-```{r, eval=FALSE}
-install.packages("tidyverse")
-```
-Nota: nos da un warning, solo para **advertirnos** o **informarnos** de que contiene el paquete. No es un mensaje de error.
-
-```{r, eval=FALSE}
-install.packages("here")
-```
-
-```{r, eval=FALSE}
-install.packages("cowsay")
-```
-
-Otra opción es ir al **workspace**
-Packages>Install>Escribir el nombre.
-
-Tarda un poquito en cargarse...
-
----
-
-## 2.1. Paquetes
-
-```{r, eval=FALSE}
-say(what = "Ya sabes cargar paquetes!", by = "cat")
-```
---
-No sale nada?
---
-
-```{r, comment=""}
-library("cowsay")
-say(what = "Ya sabes cargar paquetes!", by = "cat")
-```
-
----
-
-## 2.2. Directorios
-
-Donde están los archivos en tu computadora.  
-
-Manualmente: Esquina inferior derecha: **Salida** > Files > More > Set working directory
-
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/rstudio-console.svg')
-```
-
-Pero recuerden que no queremos hacer esto cada vez que entramos a R, queremos que sea automático y rápido.
-
----
-
-## 2.2. Directorios
-### Donde están tus datos?
-
-#### Opción 1
-```{r, eval=FALSE}
-getwd()
-```
-
-```{r, eval=FALSE}
-setwd()
-```
-
-Se tiene que copiar y pegar completo y cada quien va a tener diferentes carpetas en sus computadoras.
-
----
-
-## 2.2. Directorios
-### Donde están tus datos?
-
-#### Opción 2: Recomendada
-```{r, eval=FALSE}
-library(here)
-```
-
-```{r, eval=FALSE}
-here()
-```
-
-Ventajas:
-- Usa la carpeta donde tenemos guardado el script para encontrar el archivo que necesitamos.
-- Se puede compartir con colaboradores.
-- Se adapta si mueves la carpeta de lugar.
-
----
-
-
-# 2.3. Cargar datos
-### Formato CSV
-
-Cargar el paquete tidyverse
-```{r, message="FALSE", warning='FALSE'}
-library("tidyverse")
-```
-
----
-
-# 2.3. Cargar datos
-### Formato CSV
-
-Manualmente: esquina inferior derecha>Files>  
-Doble clic en el archivo de **Pingus_1.csv**  
-Esta separado por comas, entonces:
-read_csv se usa cuando los valores están separados por **comas**.
-```{r, eval=FALSE}
-Pingus_csv<-read_csv(here("Pingus_1.csv"))
-```
-
-```{r, eval=FALSE}
-head(Pingus_csv)
-```
-
----
-
-# 2.3. Cargar datos
-### Formato CSV
-Doble clic en el archivo de **Pingus_2.csv**  
-Esta separado por punto y coma.  
-read_csv2 se usa para cuando están separados con **punto y coma**.
-
-```{r, eval=FALSE}
-Pingus_csv2<-read_csv(here("Pingus_2.csv"))
-```
-
-```{r, eval=FALSE}
-head(Pingus_csv2)
-```
-
---
-
-Funciono?
-
-
-Ah! tengo que usar read_csv2 para ";"
-```{r, eval=FALSE}
-Pingus_csv2<-read_csv2(here("Pingus_2.csv"))
-```
-
-```{r, eval=FALSE}
-head(Pingus_csv2)
-```
-
----
-
-# 2.3. Cargar datos
-### Formato tab
-
-Doble clic en el archivo de **Pingus_3.txt**.  
-Esta separado por espacios.  
-read_tsv se usa para documentos que tengan tab (espacio) separated values.  
-
-```{r, eval=FALSE}
-Pingus_txt<-read_tsv(here("Pingus_3.txt"))
-```
-
-```{r, eval=FALSE}
-head(Pingus_txt)
-```
-
----
-
-# 2.3. Cargar datos
-### Formato Excel
-
-Hay que cargar la librería readxl
-```{r, eval=FALSE}
-library("readxl")
-```
-
-read_excel se usa para cargar archivos de excel.
-```{r, eval=FALSE}
-Pingus_excel<- read_excel(here("Pingus_4.xlsx"))
-```
-
-```{r, eval=FALSE}
-head(Pingus_excel)
-```
-
-Hay otros tipos de formatos pero no los vamos a ver hoy, ni creo que los vayamos a necesitar durante el curso.
-
-
----
-
-# 2.3. Cargar datos
-### Desde Internet
-
-Fuentes de datos en Internet para practicar y que vamos a usar durante el curso:  
-- [TidyTuesday](https://github.com/rfordatascience/tidytuesday)  
-- [DatosDeMiercoles](https://github.com/cienciadedatos/datos-de-miercoles)  
-
-
-Base de datos de plásticos. Datos liberados el 26 de enero de 2021.
-```{r, message=FALSE, warning=FALSE}
-plastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-26/plastics.csv')
-```
-
-Datos de plásticos
-```{r}
-head(plastics,5)
-```
-
----
-
-# 2.3. Cargar datos
-### Paquetes que contienen datos
-
-```{r}
-#install.packages("remotes")
-#remotes::install_github("cienciadedatos/datos")
-```
-
-```{r}
-library(datos)
-Pingus<-pinguinos
-```
-
-```{r}
-head(Pingus)
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://unsplash.com/photos/g59r724bayQ)
-background-size: cover
-
-
-# 2.5 Ejercicios
-### Tu Turno
-
-Carga los datos de pinguinos  
-- Usando read_csv
-- Usando read_csv2
-- Usando read_tsv
-- Usando read_excel
-
----
-
-# 2.4. Inspeccionar data frames
-
----
-
-# 2.4. Inspeccionar data frames
-
-Para ver mis primeras y ultimas filas
-```{r, eval=TRUE}
-head(Pingus)
-```
-
-```{r, eval=TRUE}
-tail(Pingus)
-```
-
----
-
-# 2.4. Inspeccionar data frames
-### Filas
-
-Las filas se pone entre corchetes en la **PRIMERA** posición.
-```{r}
-head(Pingus[1,])
-```
-
-Muéstrame las primeras 3 filas
-```{r}
-(Pingus[1:3,])
-```
-
-
----
-
-# 2.4. Inspeccionar data frames
-### Columnas
-
-Usando $ y el nombre de la columna .  
-```{r}
-head(Pingus$especie)
-```
-
-Las columnas se pone entre corchetes en la **SEGUNDA** posición.
-```{r}
-head(Pingus[,1])
-```
-
----
-
-# 2.4. Inspeccionar data frames
-### Columnas
-
-Valores únicos en esa columna
-```{r}
-unique(Pingus$especie)
-```
-
----
-# 2.4. Inspeccionar data frames
-### Columnas y filas
-
-Muéstrame un dato especifico [FILA, COLUMNA]
-```{r}
-(Pingus[1,1])
-```
-
-```{r}
-(Pingus[3,2])
-```
-
-
----
-
-# 2.5 Ejercicios
-## Exploremos los datos
-### A la par
-Cuidado con los NAs, na.rm me sirve para ignorarlos
-```{r, eval=FALSE}
-range(Pingus$masa_corporal_g,na.rm=TRUE)
-```
-
-Cuanto pesan los pinguinos en kilos.  
-Guardarlo en un objeto.  
-```{r}
-PromedioPesoPingus<-mean(Pingus$masa_corporal_g,na.rm=TRUE)
-PromedioPesoPingus/1000
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://unsplash.com/photos/g59r724bayQ)
-background-size: cover
-
-
-# 2.5 Ejercicios
 ### Su turno
 
---
-
-- Calcular el promedio del largo del pico?  
-
---
-
-- Que islas se muestrearon?  
-
 ---
-
-# 2.5 Ejercicios
-### Respuestas
-
---
-
-- Calcular el promedio del largo del pico
-```{r}
-mean(Pingus$largo_pico_mm,na.rm=TRUE)
-```
-
---
-- Que islas se muestrearon  
-```{r}
-unique(Pingus$isla)
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1586527155314-1d25428324ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
-
-# Ya esta tarde, no?
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
-
----
-
-# 3. RMarkdown
-
-Rmarkdown es muy conveniente porque podemos crear htmls o documentos word, e incluso presentaciones, de hecho esta es una presentación en Rmd.
-
---
-
-## 3.1. Ejemplo rápido.
-
-File > NewFile > RMarkdown
-
-- Agregar nombre
-- Cambiar output a 'word_document'
-- Darle al botón knit
-
---
-
-## 3.2. Aprender RMarkdown
-
-En espaniol:
-[RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
-
-En ingles:
-[RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)
-
-
----
-
-class: inverse
 
 ## Recapitulando
 
+Esta clase:
 - 1.1 Que es R?
 - 1.2 Porque R?
 - 1.3 Partes de RStudio
 - 1.4 Usar R
 - 1.5 Clases de objetos
 
+Siguiente clase:
 - 2.1 Instalar y cargar paquetes
 - 2.2 Directorios
 - 2.3 Cargar csv y excel
-- 2.4 Mirar dentro de los data.frames
-
-- 3.1 R Markdown
 
 ---
-
-
-class: inverse
 
 ## Glosario
 
 - Editor de código: donde armamos nuestro script, corremos secciones y lo modificamos.  
 - Consola: donde vemos el procesamiento y resultados de los análisis.  
-- Workspace y environment: donde aparece la lista de objetos que creamos.  
-
-- Directorio: Para cuestiones practicas, es la dirección donde están los archivos en tu computadora.
-- Paquetes: Colecciones de funciones que realizan operaciones.
-- Funciones: Un argumento que realiza una tarea especifica.
+- Workspace y environment (o ambiente): donde aparece la lista de objetos que creamos.  
 
 - Objetos.
 - Vectores conjunto de valores del mismo tipo. 
-- Clase de los objetos
+- Clase de los objetos: numerico, logico, caracter.
 - Dataframe: matriz de datos con filas y columnas.
 
 ---
