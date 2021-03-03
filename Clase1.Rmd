@@ -312,6 +312,19 @@ Asignar nombres
 ```
 Este símbolo es super importante y lo vamos a usar mucho, lo ideal es que lo ubiquen en su teclado.  
 
+- Asignación  
+[Discución en stackoverflow](https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-assignment-operators-in-r)  
+[R inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)  
+[Leer más](https://www.roelpeters.be/the-difference-between-arrow-and-equals-assignment-in-r/)   
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://www.roelpeters.be/wp-content/uploads/2020/05/APL_KEYBOARD_ARROW_ASSIGNMENT-768x470.jpg')
+```
+
+---
+## 1.4 Usar R
+
+Usar la asignacion.  
 ```{r}
 Alumnos<-c("Alvaro","Gabriela","Carolina","Angel","Denisse","Juan","Lisset",
                  "Majo","Irma","Pamela","Paulina")
