@@ -6,11 +6,68 @@ date: "Febrero 2021"
 output:
   xaringan::moon_reader:
     css: ["default","chocolate-fonts"]
+    seal: false
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: true
+      
 ---
+
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Intro a R",
+    description = paste0(
+      "Introduccion a RStudio",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1.html",
+    image = "https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=695&q=80",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+
+```{r setup, include = FALSE}
+#Paquetes
+library(xaringanExtra)
+# set default options
+opts_chunk$set(echo=FALSE,
+               collapse = TRUE,
+               fig.width = 7.252,
+               fig.height = 4,
+               dpi = 300)
+```
+
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1295&q=80)
+background-size: cover
+
+.right-column[
+# `r rmarkdown::metadata$title`
+### `r rmarkdown::metadata$subtitle`
+
+**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$date`
+]
+
+---
+
+
 class: title-slide,bottom
 
 ## 1. Intro
