@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 3</title>
+    <title>Clase 5</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase3Parte2_files/header-attrs-2.6/header-attrs.js"></script>
     <link href="Clase3Parte2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="Clase3Parte2_files/remark-css-0.0.1/chocolate-fonts.css" rel="stylesheet" />
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Cargar datps"/>
+    <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Cargar datps"/>
+    <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# Clase 3
-## Data wrangling
-### Miriam Lerma
-### Febrero 2021
+
+
+
+
+class: title-slide, middle, right
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
+
+### Clase 5
+# Ordenar, unir, exportar
+
+**Miriam Lerma**&lt;br&gt;
+Febrero 2021
 
 ---
-
 
 # Intro
 
 La clase es de 2 horas.
 
-Primera parte:  
+Teoria:  
 - Funciones del tidyverse.  
-- Funciones para unir y manipular data frames.
+- Funciones para unir y manipular data frames.  
+--
+Practica:  
 - Ejercicios.
-
-Segunda parte:  
+--
+Teoria:    
 - Unir data frames.  
 - Exportar tus datos.  
+--
+Practica:  
 - Ejercicios.
 
 
@@ -47,10 +74,6 @@ Segunda parte:
 
 - Quieren exportar su nuevo data frame.
 
-
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado
-🕛.
 
 ---
 
@@ -72,7 +95,7 @@ Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el cha
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, bottom
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
 background-size: cover
 
@@ -94,23 +117,6 @@ Otra opcion es usar read_csv desde su computador.
 
 ```r
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-```
-
-```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.0.5     v dplyr   1.0.3
-## v tidyr   1.1.2     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
 ```
 
 ---
@@ -167,7 +173,7 @@ Pero para esto hay que conocer algunos operadores lógicos:
 
 ---
 
-## 1.5. filter(==)
+## 1.4. filter(==)
 
 
 ```r
@@ -192,7 +198,7 @@ Miren su environment.
 
 ---
 
-## 1.6. filter(&lt;=)
+## 1.4. filter(&lt;=)
 
 
 ```r
@@ -219,7 +225,7 @@ Pingus %&gt;%
 
 ---
 
-## 1.6. filter(&gt;=)
+## 1.4. filter(&gt;=)
 
 
 ```r
@@ -246,7 +252,7 @@ Pingus %&gt;%
 
 ---
 
-## 1.6. filter(&amp;)
+## 1.4. filter(&amp;)
 
 
 ```r
@@ -273,7 +279,7 @@ Pingus %&gt;%
 
 ---
 
-## 1.7. mutate()
+## 1.5. mutate()
 
 Es para crear o modificar columnas.  
 Podemos crear una columna a partir de los valores de otra.
@@ -286,7 +292,7 @@ Pingus&lt;-Pingus %&gt;%
 
 ---
 
-## 1.8. lubridate
+## 1.6. lubridate
 
 Facilita el trabajo con fechas y horas, ya que te permite decirle a R que una cadena de caracteres, es tiempo y horas.
 
@@ -311,7 +317,7 @@ ymd_hms("2010-12-13 15:30:30") %&gt;% month()
 
 ---
 
-## 1.9. ymd_hms
+## 1.6. ymd_hms
 
 Datos de hora inventados, solo nos interesa ver la hora, los minutos y los segundos.
 
@@ -333,7 +339,7 @@ Horas %&gt;%
 
 ---
 
-## 1.10. group_by() y summarise()
+## 1.7. group_by() y summarise()
 
 summarise() para resumir información de las columnas
 
@@ -355,7 +361,7 @@ Pingus %&gt;%
 
 ---
 
-## 1.11. top_n()
+## 1.8. top_n()
 
 Obserservaciones maximas que le pidamos de una variable. 
 
@@ -375,7 +381,7 @@ Pingus %&gt;%
 
 ---
 
-## 1.12. unique() o distinct()
+## 1.9. unique() o distinct()
 Valores únicos en esa columna.
 
 Hay varias maneras de ver este tipo de informacion:
@@ -406,7 +412,7 @@ pinguinos %&gt;%
 
 ---
 
-## 1.12. unique() o distinct()
+## 1.9. unique() o distinct()
 Valores únicos en esa columna.
 
 
@@ -426,7 +432,7 @@ Pingus %&gt;%
 
 ---
 
-## 1.13. drop_na 
+## 1.10. drop_na 
 
 Hay que tener cuidado con las nas para varias operaciones.
 
@@ -447,28 +453,31 @@ Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
 ---
 
-# 1.14. Ejercicios asistidos
+# 1.11. Ejercicios asistidos
+
+--
+
 
 ```r
 library(datos)
 Pingus&lt;-pinguinos
 ```
 
-Cuantos pinguinos muestreamos?
+Cuantas observaciones tenemos?
 
 ```r
 pinguinos %&gt;% 
   count()
 ```
 
-Que islas se muestrearon?
+Cuantas observaciones por isla?
 
 ```r
 Pingus %&gt;% 
   distinct(isla)
 ```
 
-Cual es nuestro tamanio de muestra por sexo e isla?
+Cuantas observaciones por sexo e isla?
 
 ```r
 Pingus %&gt;% 
@@ -478,7 +487,7 @@ Pingus %&gt;%
 
 ---
 
-# 1.15.  Ejercicios asistidos
+# 1.11.  Ejercicios asistidos
 Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
 
 ```r
@@ -497,7 +506,7 @@ Pingus&lt;-Pingus %&gt;%
 
 ---
 
-# 5.15. Ejercicios solos
+# 1.12. Ejercicios solos
 - Crea un objeto con solo dos columnas, las de sexo y anio.
 
 ```r
@@ -899,12 +908,6 @@ Pingus %&gt;%
   geom_histogram()
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](Clase3Parte2_files/figure-html/unnamed-chunk-51-1.png)&lt;!-- --&gt;
-
 ---
 
 
@@ -1060,7 +1063,7 @@ Anio2012&lt;-c(6,2,3,7,8)
 Un nuevo data frame.
 
 ```r
-EspecieAnio&lt;-data.frame(Especie=Especies,                        Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
+EspecieAnio&lt;-data.frame(Especie=Especies,Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
 ```
 
 
@@ -1123,12 +1126,18 @@ ggplot(EspeciesLargo, aes(x=Especie,y=Riqueza, color=Anio, fill=Anio))+
          geom_bar(stat='identity')
 ```
 
-![](Clase3Parte2_files/figure-html/unnamed-chunk-67-1.png)&lt;!-- --&gt;
-
 
 ---
 
-# 3. Exportar tu data.frame
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
+
+# Exportar
+
+---
+
+# 3. Exportar 
 
 Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su contra parte para exportarlos.
 - write_csv()  
@@ -1138,20 +1147,13 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 
 ---
 
-# 3. Exportar tu data.frame
+# 3. Exportar 
 ## Ahora tu
 
 1- Define la carpeta.  
 
 ```r
 library(here)
-```
-
-```
-## here() starts at C:/Users/Lerma/Documents/4Cursos/1CIAD
-```
-
-```r
 ResultsFolder&lt;-here::here("Clase3 wrangling")
 ```
 
@@ -1172,22 +1174,23 @@ write_csv(
 
 [EjerciciosInteractivos](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/#section-wrangling-in-dplyr)
 
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/dplyrcheatsheet.jpg" height="300" /&gt;
 
 ---
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1533630160910-65f5a1718c65?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
-background-size: cover
 
 
 # Recapitulando
 
-1.0. Funciones de tidyverse (filter, mutate, summarise, unique, drop_na)
-1.1. Unir data frames.  
-1.2. Renombrar columnas.  
-1.2. Exportar data frames.  
+Esta clase:  
+4.1. Funciones de filter, mutate, summarise, unique, drop_na.  
+4.2. Unir data frames.  
+4.3. Renombrar columnas.  
+4.4. Exportar data frames.  
 
----
+Siguiente clase:  
+5.1. Trabajar por proyectos  
+5.2. Compartir proyectos  
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

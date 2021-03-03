@@ -1,29 +1,74 @@
 ---
-title: "Clase 3"
-subtitle: "Data wrangling"
+title: "Clase 5"
+subtitle: "Ordenar, unir, exportar"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default","chocolate-fonts"]
+    css: ["default"]
+    seal: false
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: true
+      
+---
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Cargar datps",
+    description = paste0(
+      "Introduccion a RStudio",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html",
+    image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+```
+
+class: title-slide, middle, right
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
+
+### `r rmarkdown::metadata$title`
+# `r rmarkdown::metadata$subtitle`
+
+**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$date`
+
 ---
 
 # Intro
 
 La clase es de 2 horas.
 
-Primera parte:  
+Teoria:  
 - Funciones del tidyverse.  
-- Funciones para unir y manipular data frames.
+- Funciones para unir y manipular data frames.  
+--
+Practica:  
 - Ejercicios.
-
-Segunda parte:  
+--
+Teoria:    
 - Unir data frames.  
 - Exportar tus datos.  
+--
+Practica:  
 - Ejercicios.
 
 
@@ -41,10 +86,6 @@ library(emo)
 
 - Quieren exportar su nuevo data frame.
 
-
-- Necesito:
-Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el chat si hay alguna pregunta que se me haya pasado
-`r emo::ji("clock")`.
 
 ---
 
@@ -66,7 +107,7 @@ Un voluntario que me ayude a hacer la pausa a la hora y me ayude a checar el cha
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, bottom
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
@@ -84,7 +125,7 @@ Pingus<-pinguinos
 ```
 Otra opcion es usar read_csv desde su computador.
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 ```
 
@@ -143,7 +184,7 @@ Pero para esto hay que conocer algunos operadores lógicos:
 
 ---
 
-## 1.5. filter(==)
+## 1.4. filter(==)
 
 ```{r, eval=FALSE}
 Pingus %>%
@@ -166,7 +207,7 @@ Miren su environment.
 
 ---
 
-## 1.6. filter(<=)
+## 1.4. filter(<=)
 
 ```{r}
 Pingus %>%
@@ -175,7 +216,7 @@ Pingus %>%
 
 ---
 
-## 1.6. filter(>=)
+## 1.4. filter(>=)
 
 ```{r}
 Pingus %>%
@@ -184,7 +225,7 @@ Pingus %>%
 
 ---
 
-## 1.6. filter(&)
+## 1.4. filter(&)
 
 ```{r}
 Pingus %>%
@@ -193,7 +234,7 @@ Pingus %>%
 
 ---
 
-## 1.7. mutate()
+## 1.5. mutate()
 
 Es para crear o modificar columnas.  
 Podemos crear una columna a partir de los valores de otra.
@@ -205,7 +246,7 @@ Pingus<-Pingus %>%
 
 ---
 
-## 1.8. lubridate
+## 1.6. lubridate
 
 Facilita el trabajo con fechas y horas, ya que te permite decirle a R que una cadena de caracteres, es tiempo y horas.
 ```{r, message=FALSE}
@@ -223,7 +264,7 @@ ymd_hms("2010-12-13 15:30:30") %>% month()
 
 ---
 
-## 1.9. ymd_hms
+## 1.6. ymd_hms
 
 Datos de hora inventados, solo nos interesa ver la hora, los minutos y los segundos.
 ```{r}
@@ -243,7 +284,7 @@ Horas %>%
 
 ---
 
-## 1.10. group_by() y summarise()
+## 1.7. group_by() y summarise()
 
 summarise() para resumir información de las columnas
 
@@ -255,7 +296,7 @@ Pingus %>%
 
 ---
 
-## 1.11. top_n()
+## 1.8. top_n()
 
 Obserservaciones maximas que le pidamos de una variable. 
 ```{r}
@@ -265,7 +306,7 @@ Pingus %>%
 
 ---
 
-## 1.12. unique() o distinct()
+## 1.9. unique() o distinct()
 Valores únicos en esa columna.
 
 Hay varias maneras de ver este tipo de informacion:
@@ -280,7 +321,7 @@ pinguinos %>%
 
 ---
 
-## 1.12. unique() o distinct()
+## 1.9. unique() o distinct()
 Valores únicos en esa columna.
 
 ```{r}
@@ -290,7 +331,7 @@ Pingus %>%
 
 ---
 
-## 1.13. drop_na 
+## 1.10. drop_na 
 
 Hay que tener cuidado con las nas para varias operaciones.
 
@@ -309,25 +350,28 @@ Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
 ---
 
-# 1.14. Ejercicios asistidos
+# 1.11. Ejercicios asistidos
+
+--
+
 ```{r}
 library(datos)
 Pingus<-pinguinos
 ```
 
-Cuantos pinguinos muestreamos?
+Cuantas observaciones tenemos?
 ```{r, eval=FALSE}
 pinguinos %>% 
   count()
 ```
 
-Que islas se muestrearon?
+Cuantas observaciones por isla?
 ```{r, eval=FALSE}
 Pingus %>% 
   distinct(isla)
 ```
 
-Cual es nuestro tamanio de muestra por sexo e isla?
+Cuantas observaciones por sexo e isla?
 ```{r, eval=FALSE}
 Pingus %>% 
   group_by(sexo, isla) %>% 
@@ -336,7 +380,7 @@ Pingus %>%
 
 ---
 
-# 1.15.  Ejercicios asistidos
+# 1.11.  Ejercicios asistidos
 Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
 ```{r, eval=FALSE}
 Pingus %>% 
@@ -353,7 +397,7 @@ Pingus<-Pingus %>%
 
 ---
 
-# 5.15. Ejercicios solos
+# 1.12. Ejercicios solos
 - Crea un objeto con solo dos columnas, las de sexo y anio.
 ```{r}
 #_____ <-Pingus %>%
@@ -570,7 +614,7 @@ Pingus %>%
 
 Podemos encadenar funciones y crear graficos.
 
-```{r}
+```{r, eval=FALSE}
 Pingus %>%
   filter(sexo=='hembra') %>%
   ggplot(aes(x = largo_pico_mm)) +
@@ -702,7 +746,7 @@ Anio2012<-c(6,2,3,7,8)
 
 Un nuevo data frame.
 ```{r}
-EspecieAnio<-data.frame(Especie=Especies,                        Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
+EspecieAnio<-data.frame(Especie=Especies,Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
 ```
 
 ```{r}
@@ -727,7 +771,7 @@ EspeciesLargo
 # 2.9. pivot_longer
 Importante el acomodo para poder realizar el grafico.
 
-```{r}
+```{r, eval=FALSE}
 ggplot(EspeciesLargo, aes(x=Especie,y=Riqueza, color=Anio, fill=Anio))+
          geom_bar(stat='identity')
 ```
@@ -735,7 +779,15 @@ ggplot(EspeciesLargo, aes(x=Especie,y=Riqueza, color=Anio, fill=Anio))+
 
 ---
 
-# 3. Exportar tu data.frame
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
+
+# Exportar
+
+---
+
+# 3. Exportar 
 
 Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su contra parte para exportarlos.
 - write_csv()  
@@ -745,11 +797,11 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 
 ---
 
-# 3. Exportar tu data.frame
+# 3. Exportar 
 ## Ahora tu
 
 1- Define la carpeta.  
-```{r}
+```{r, message=FALSE}
 library(here)
 ResultsFolder<-here::here("Clase3 wrangling")
 ```
@@ -766,23 +818,28 @@ write_csv(
 
 # 4. Continuar aprendiendo
 
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/dplyrcheatsheet.jpg')
+```
+
 [CheatSheet](https://dplyr.tidyverse.org/)
 
 [EjerciciosInteractivos](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/#section-wrangling-in-dplyr)
 
 
----
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1533630160910-65f5a1718c65?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
+---
 
 
 # Recapitulando
 
-1.0. Funciones de tidyverse (filter, mutate, summarise, unique, drop_na)
-1.1. Unir data frames.  
-1.2. Renombrar columnas.  
-1.2. Exportar data frames.  
+Esta clase:  
+4.1. Funciones de filter, mutate, summarise, unique, drop_na.  
+4.2. Unir data frames.  
+4.3. Renombrar columnas.  
+4.4. Exportar data frames.  
 
----
+Siguiente clase:  
+5.1. Trabajar por proyectos  
+5.2. Compartir proyectos  
+
