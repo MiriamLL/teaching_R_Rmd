@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 7</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <script src="Clase7_files/header-attrs-2.6/header-attrs.js"></script>
+    <link href="Clase7_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Cargar datps"/>
+    <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Cargar datps"/>
+    <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: title-slide, inverse, middle, right
+background-image: url(https://images.unsplash.com/photo-1612343267903-f6c1b17e6e1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=667&amp;q=80)
+background-size: cover
+
+### Clase 7
+# Exploracion y &lt;br&gt; modelo lineal
+
+**Miriam Lerma**&lt;br&gt;
+Marzo 2021
+
+---
+
+# Intro
+
+La clase es de 2 horas.
+
+- Exploracion de datos  
+- Modelos lineales
+
+
+
+
+---
+
+# Ustedes
+
+- Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
+
+- Quieren conocer explorar datos y conocer la sintaxis para hacer modelos lineales en R.  
+
+- **Nota** No vamos a ver teoria.  
+- **Nota** No hay formula secreta, los modelos dependen de sus preguntas y experimentos o muestreos.  
+
+---
+
+# Créditos &amp; materiales:  
+
+- Introducción a estadística con R &lt;br&gt; 
+[Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
+
+- [Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
+
+- [STAT 545](https://stat545.com/)
+
+- [ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
+
+- Imágenes adicionales  
+[Unsplash](https://unsplash.com/)
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1516478784322-0b77268e6c64?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvdHN8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
+background-size: cover
+
+
+# Exploracion
+
+---
+
+# 1. Exploracion de datos
+
+Graficar nuestros datos nos puede ayudar a entenderlos.
+
+
+```r
+library(tidyverse)
+```
+
+
+---
+
+# 1.2. Inspecciona
+
+Todos estos graficos tienen medias, desviaciones estandar y una correlacion entre puntos similar.  
+**Siempre inspecciona tus datos!**
+&lt;img src="https://github.com/stephlocke/lazyCDN/blob/master/DinoSequential.gif" height="350" /&gt;
+
+---
+
+## 1.2. Inspecciona
+
+Alberto Cairo creo este paquete (datasauRus) para ilustrarlo.  
+Si quieren replicar algunas graficas:  
+
+```r
+#install.packages('datasauRus')
+library(datasauRus)
+```
+
+
+```r
+ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
+  geom_point()+ theme_void()+ theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol=3)
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-6-1.png" width="40%" /&gt;
+
+
+---
+
+# 1.3. Pinguinos
+Exploremos los datos de pinguinos.
+
+.pull-left[
+
+```r
+library(ggplot2)
+library(datos)
+Pingus&lt;-datos::pinguinos
+```
+]
+
+.pull-right[
+Recordemos como se realizan los graficos de puntos.   
+
+```r
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
+* geom_point()
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-8-1.png" width="40%" /&gt;
+]
+
+---
+
+# 1.3. Pinguinos
+Sabemos que hay tres especies, separemos las especies por colores.
+
+```r
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, 
+*          color=especie))+
+  geom_point()
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-9-1.png" width="40%" /&gt;
+
+
+---
+
+# 1.3. Pinguinos
+Si agregamos una nueva capa con la linea de tendencia, especificamos un ajuste lineal ("lm") podemos ver como se relacionan estos datos.  
+No obstante! tenemos datos de tres especies diferentes!  
+
+
+```r
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g)) +
+*      geom_point(aes(color =especie))+
+       geom_smooth(method="lm")
+```
+
+![](Clase7_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+
+# 1.3. Pinguinos
+Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
+Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
+
+```r
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, color = especie)) +
+       geom_point() +
+*      geom_smooth(method = "lm")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-11-1.png" width="40%" /&gt;
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1516478784322-0b77268e6c64?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvdHN8ZW58MHx8MHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
+background-size: cover
+
+
+# Ejercicios
+
+---
+
+# 1. 4. Ejercicios juntos
+
+```r
+library(datos)
+library(tidyverse)
+Pingus&lt;-datos::pinguinos
+```
+
+Exploremos los datos usando:
+
+```r
+Adelia&lt;-Pingus%&gt;%
+  filter(especie=='Adelia')
+```
+
+- Grafico de puntos.  
+
+```r
+p1 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_point()
+p1
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-14-1.png" width="40%" /&gt;
+
+---
+
+# 1. 4. Ejercicios juntos
+Gráfico de puntos con ruido en el eje horizontal.  
+geom_jitter permite que se "muevan" los puntos un poquito.  
+
+```r
+p2 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_jitter(width = 0.1)
+p2
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-15-1.png" width="40%" /&gt;
+
+---
+
+# 1. 4. Ejercicios juntos
+
+Boxplot.  
+
+```r
+p3 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_boxplot()
+p3
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-16-1.png" width="40%" /&gt;
+
+---
+
+# 1. 4. Ejercicios juntos
+Violin.   
+
+```r
+p4 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_violin()
+p4
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-17-1.png" width="40%" /&gt;
+
+---
+
+# 1. 4. Ejercicios juntos
+Combinando boxplot y violin
+
+```r
+p5 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_violin(fill='orange', alpha=0.5)+
+       geom_boxplot(color="white", fill="black",
+                    lwd=0.8, width=0.2 )
+p5
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-18-1.png" width="40%" /&gt;
+
+---
+
+# 1. 4. Ejercicios juntos
+
+Grafico de barras con medias + SEM (error estandar en rojo)
+
+```r
+p6 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+      stat_summary(fun.y = mean, geom = "bar",
+                   width=0.5) +
+      stat_summary(fun.data = mean_se, geom = "errorbar",
+                   color="red", width=0.5)
+p6
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-19-1.png" width="40%" /&gt;
+
+---
+
+# 1.4. Ejercicios juntos
+
+La idea es que noten que hay muchas maneras de explorar sus datos.
+
+---
+
+# 1.4. facet_wrap 
+
+**face_wrap** es un argumento que nos permite ver variables categoricas separadas por panel. 
+
+
+```r
+ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
+  geom_point()+
+* facet_wrap(~especie)
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-20-1.png" width="40%" /&gt;
+
+---
+
+# 1.4. cowplot
+
+Pero **facet_wrap** lo acomoda de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
+
+Recuerden que deben instalarlo antes.
+
+```r
+#install.packages("cowplot")
+library(cowplot)
+```
+
+Elegir el orden.  
+Noten que les van a salir muchos warning por que hay NAs en nuestro data frame.
+
+```r
+cowplot::plot_grid(p1,p2,p3,p4,p5,p6, #Son los plots que creamos anteriormente
+                   labels = "AUTO") #&lt;&lt; Agrega etiquetas automaticas
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-22-1.png" width="40%" /&gt;
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1493329025335-18542a61595f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
+
+# 2. Caso de estudio
+
+---
+
+
+# 2.1. Titanic
+
+Instalar y cargar el paquete
+
+```r
+#install.packages('titanic')
+library(titanic)
+```
+
+Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
+
+```r
+Titanic_datos&lt;-titanic_train
+```
+
+Vamos a usar estos datos por que no estan "limpios" y porque tenemos que considerar que algunas variables se deben transformar a **factores**.
+
+---
+
+# 2.1. Titanic
+
+Que tipos de datos tenemos?  
+- **int**: integral, numerico sin puntos
+- **chr**: character
+- **dbl**: double, es un tipo numérico de doble precisión
+- **fct**: factor?
+
+```r
+glimpse(Titanic_datos)
+```
+
+```
+## Rows: 891
+## Columns: 12
+## $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ...
+## $ Survived    &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0...
+## $ Pclass      &lt;int&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3...
+## $ Name        &lt;chr&gt; "Braund, Mr. Owen Harris", "Cumings, Mrs. John Bradley ...
+## $ Sex         &lt;chr&gt; "male", "female", "female", "female", "male", "male", "...
+## $ Age         &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 1...
+## $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1...
+## $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0...
+## $ Ticket      &lt;chr&gt; "A/5 21171", "PC 17599", "STON/O2. 3101282", "113803", ...
+## $ Fare        &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.86...
+## $ Cabin       &lt;chr&gt; "", "C85", "", "C123", "", "", "E46", "", "", "", "G6",...
+## $ Embarked    &lt;chr&gt; "S", "C", "S", "S", "S", "Q", "S", "S", "S", "C", "S", ...
+```
+
+---
+
+# 2.1. Columnas y valores
+
+Renombrar columnas para que esten en espaniol.
+
+```r
+Titanic_datos &lt;- Titanic_datos %&gt;%
+  rename(sobrevivio=Survived,
+         clase=Pclass,
+         edad=Age,
+         sexo=Sex,
+         embarcado=Embarked,
+         precio=Fare)
+```
+
+Transformamos los espacios vacios ("") a NA
+
+```r
+Titanic_datos$embarcado &lt;- ifelse(Titanic_datos$embarcado == "",
+                                 NA,
+                                 Titanic_datos$embarcado)
+```
+
+---
+
+# 2.2. Factor
+Transformamos columnas que son factores a factor.
+
+```r
+Titanic_datos$sobrevivio &lt;- factor(Titanic_datos$sobrevivio)
+Titanic_datos$clase &lt;- factor(Titanic_datos$clase)
+Titanic_datos$sexo &lt;- factor(Titanic_datos$sexo)
+```
+
+
+```r
+glimpse(Titanic_datos)
+```
+
+```
+## Rows: 891
+## Columns: 12
+## $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ...
+## $ sobrevivio  &lt;fct&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0...
+## $ clase       &lt;fct&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3...
+## $ Name        &lt;chr&gt; "Braund, Mr. Owen Harris", "Cumings, Mrs. John Bradley ...
+## $ sexo        &lt;fct&gt; male, female, female, female, male, male, male, male, f...
+## $ edad        &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 1...
+## $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1...
+## $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0...
+## $ Ticket      &lt;chr&gt; "A/5 21171", "PC 17599", "STON/O2. 3101282", "113803", ...
+## $ precio      &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.86...
+## $ Cabin       &lt;chr&gt; "", "C85", "", "C123", "", "", "E46", "", "", "", "G6",...
+## $ embarcado   &lt;chr&gt; "S", "C", "S", "S", "S", "Q", "S", "S", "S", "C", "S", ...
+```
+
+---
+
+class: center
+
+# 2.3. Algunas preguntas.
+
+
+## ¿Cuál fue el número de sobrevivientes?  
+ 
+## ¿Cuál fue la cantidad de pasajeros en cada clase?  
+
+## ¿Cuántos hombres y mujeres a bordo?  
+ 
+## ¿Dónde (en qué puerto) subió la gente al barco?  
+
+## ¿Cuál era la distribución de edades de los pasajeros?  
+
+## ¿Cuánto costaba subir al Titanic?  
+
+---
+
+# 2.4. Supervivencia
+¿Cuál fue el número de supervivientes?  
+
+Vamos a crear un objeto con esa tabla.
+
+```r
+Sobrevivientes&lt;-Titanic_datos %&gt;%
+          group_by(sobrevivio) %&gt;%
+          count()
+```
+
+Usaremos la informacion de la tabla que creamos para agregar el numero de sobreviventes.
+
+```r
+g1 &lt;- ggplot(Titanic_datos, aes(sobrevivio)) +
+  geom_bar()+
+  geom_text(data = Sobrevivientes,
+            aes(sobrevivio, y=25, label=n),
+            color="white")+
+  xlab("Supervivencia")+
+  ylab("Frecuencia")
+g1
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-31-1.png" width="40%" /&gt;
+
+---
+
+# 2.4. Supervivencia
+Como se relacionan las variables?
+
+
+```r
+ggplot(Titanic_datos, 
+       aes(sexo, sobrevivio))+
+  geom_jitter(aes(color=interaction(factor(sexo), sobrevivio)),
+              alpha=0.5)+
+  facet_wrap(~clase)+
+  ylab("Supervivencia")+
+  scale_y_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))+
+  theme(legend.position = "none")+
+  scale_color_brewer(palette = "Set2")+
+  ggtitle("Supervivencia por clase")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-32-1.png" width="40%" /&gt;
+
+---
+
+# 2.3. Edad
+¿Cómo se relaciona la edad con la supervivencia?
+
+
+```r
+ggplot(Titanic_datos,
+       aes(sobrevivio, edad, fill=sobrevivio))+
+  geom_violin()+
+  geom_boxplot(fill="black", color="white",
+               lwd=1.1, width=0.1)+
+  theme_bw()+
+  scale_fill_brewer(palette = "Set2")+
+  theme(legend.position = "none")+
+  xlab("Supervivencia")+
+  ylab("Edad (años)")+
+  scale_x_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))+
+  coord_flip()# Rotar los ejes
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-33-1.png" width="40%" /&gt;
+
+---
+
+# 2.3. Precio
+
+Graficar edad y precio del boleto
+
+```r
+p1 &lt;- ggplot(Titanic_datos, aes(edad, precio)) +
+  geom_point()+
+  xlab("Edad (años)")+
+  ylab("Precio del boleto")
+p1
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-34-1.png" width="40%" /&gt;
+
+---
+
+# 2.3. Precio 
+
+Tiene alguna relacion la supervivencia y el precio que pagaron para abordar al titanic?
+
+```r
+p2 &lt;- ggplot(Titanic_datos, aes(sobrevivio, precio)) +
+  geom_boxplot(aes(fill=sobrevivio))+
+  xlab("Supervivencia")+
+  ylab("Precio del boleto")+
+  scale_x_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))+
+  theme(legend.position = "none")+
+  scale_fill_brewer(palette = "Set2")
+p2
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-35-1.png" width="40%" /&gt;
+
+---
+
+# 2.3.Precio: 
+
+Quienes pagaron mas estaban en el grupo de los sobrevivientes?
+
+```r
+cowplot::plot_grid(p1,p2, labels="AUTO")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-36-1.png" width="40%" /&gt;
+
+---
+
+# 2.3. Clase y edad
+
+La base de este gráfico es la misma que la del anterior
+
+```r
+ggplot(Titanic_datos,
+       aes(x= factor(clase), edad, fill=sobrevivio))+
+  geom_violin()
+```
+
+![](Clase7_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+
+---
+
+### 2.4. Ejercicios juntos
+
+Cargar datos
+
+```r
+#install.packages('titanic')
+library(titanic)
+```
+
+Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
+
+```r
+Titanic_datos&lt;-titanic_train
+```
+
+---
+
+# 2.4. Ejercicios juntos
+
+Renombrar columnas para que esten en espaniol.
+
+```r
+Titanic_datos &lt;- Titanic_datos %&gt;%
+  rename(sobrevivio=Survived,
+         clase=Pclass,
+         edad=Age,
+         sexo=Sex,
+         embarcado=Embarked,
+         precio=Fare)
+```
+
+Transformamos los espacios vacios ("") a NA
+
+```r
+Titanic_datos$embarcado &lt;- ifelse(Titanic_datos$embarcado == "",
+                                 NA,
+                                 Titanic_datos$embarcado)
+```
+
+---
+
+# 2.4. Ejercicios juntos
+
+Calcula el numero de supervivientes.
+
+```r
+supervivencia &lt;- Titanic_datos %&gt;%
+          group_by(sobrevivio) %&gt;%
+          count()
+```
+
+Grafica el numero de supervivientes.
+
+```r
+g1 &lt;- ggplot(Titanic_datos, aes(sobrevivio)) +
+  geom_bar()+
+* geom_text(data = supervivencia,
+*           aes(sobrevivio, y=25, label=n),
+            color="white")+
+  xlab("Supervivencia")+
+  ylab("Frecuencia")
+g1
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-43-1.png" width="40%" /&gt;
+
+---
+
+# 2.4. Ejercicios juntos
+
+Cuál es la cantidad de pasajeros en cada clase?
+
+```r
+g2 &lt;- ggplot(Titanic_datos,
+*            aes(clase))+
+* geom_bar()+
+* xlab("Clase")+
+  ylab("Frecuencia")
+g2
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-44-1.png" width="40%" /&gt;
+
+---
+
+# 2.4. Ejercicios juntos
+
+cuántos hombres y mujeres a bordo?
+
+```r
+g3 &lt;- ggplot(Titanic_datos,
+*            aes(sexo))+
+* geom_bar()+
+* xlab("Sexo")+
+  ylab("Frecuencia")
+g3
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-45-1.png" width="40%" /&gt;
+
+---
+
+# 2.4. Ejercicios juntos
+
+En qué puerto subió la gente al barco?
+
+```r
+g4 &lt;- ggplot(Titanic_datos,
+*            aes(embarcado))+
+* geom_bar()+
+* xlab("Lugar embarque")+
+  ylab("Frecuencia")
+g4
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-46-1.png" width="40%" /&gt;
+
+---
+
+# 2.4. Ejercicios juntos
+
+Cuál es la distribución de edades de los pasajeros?
+
+```r
+g5 &lt;- ggplot(Titanic_datos,
+*            aes(edad))+
+* geom_histogram(binwidth = 5, color="white")+
+* xlab("Edad")+
+  ylab("Frecuencia")
+```
+
+---
+
+# 2.4. Ejercicios juntos
+
+Cuánto costaba subir al Titanic?
+
+```r
+g6 &lt;- ggplot(Titanic_datos,
+*            aes(precio))+
+* geom_density(fill="gray50")+
+* xlab("Precio del boleto")+
+  ylab("Frecuencia")
+g6
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-48-1.png" width="40%" /&gt;
+
+---
+
+# 2.4. Ejercicios juntos
+
+Ver todo junto
+
+```r
+cowplot::plot_grid(g1,g2,g3,g4,g5,g6,
+                   labels="AUTO")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-49-1.png" width="40%" /&gt;
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1599599810769-bcde5a160d32?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1489&amp;q=80)
+background-size: cover
+
+# Modelos lineales
+
+---
+
+# 3. Modelos lineales
+
+- La realidad es multidimensional, compleja e incierta.  
+- Un modelo es una representación formal de un fenómeno, una reducción de dimensionalidad que posee utilidad práctica.  
+- Dicha representación normalmente puede ser condensada en una expresión matemática, una fórmula, que indica cómo una variable se relaciona con otra(s). 
+- Empíricamente, el paradigma se basa en estudiar la relación matemática entre variables aleatorias respuesta, con una distribución de probabilidades dada, y aquellas variables que la predicen, con el fin de explicar asociaciones entre variables y realizar inferencia.
+
+
+---
+
+## 3.1. Generar datos
+
+Cuando busquen ejemplos estadisticos en internet, en algun momento van a toparse con:
+
+```r
+set.seed(123)
+ejemplo &lt;- rnorm(n = 10000, mean = 0, sd = 1)
+```
+
+Que es **set.seed**?  
+**set.seed** genera secuencias de numeros "random" pero al poner una "semilla" nos aseguramos de que nos genere la misma secuencia en todas las computadoras.
+
+Que es **rnorm**?  
+**rnorm** sirve para generar muestras aleatorias a partir de una población teórica con distribución normal, dandole media y desviación estándar.
+
+--
+
+Esto se hace para que en lugar de incluir tus 10000 datos alguien pueda replicar tu probema rapidamente y poder asi ayudarte con una solucion.  
+Cuando hagan preguntas en internet, recomiendo usarlo!.  
+
+
+```r
+hist(ejemplo, col='blue', breaks=40, 
+     ylab = "Frecuencia", main = "Histograma ejemplo")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-51-1.png" width="40%" /&gt;
+
+---
+
+# 3.2. Chocolate y felicidad
+
+-  Supongamos que podemos medir felicidad de manera cuantitativa, como una variable continua.  
+- Supongamos, además, que nuestro laboratorio quiere investigar cómo impactan distintas dosis de chocolate a la felicidad de los humanos. 
+
+---
+
+# 3.2. Chocolate y felicidad
+- Para esto, tomamos una muestra de 100 voluntarios y los asignamos de manera aleatoria a 5 dosis de chocolate (20, 40, 60, 80, y 100 gramos). Los individuos consumen la dosis asignada, el chocolate aumenta su felicidad (según la fórmula felicidad=dosis∗2.5+10), que medimos y graficamos.
+
+Generar participantes
+
+```r
+id &lt;- 1:100
+```
+
+Generar dosis
+
+```r
+dosis &lt;- sort(rep(seq(20,100,20), 20))
+```
+
+Generar respuesta "ideal"
+
+```r
+respuesta &lt;- dosis * 2.5 + 10
+```
+
+Construir data.frame
+
+```r
+datos &lt;- data.frame(id=id,
+                    dosis=dosis,
+                    respuesta=respuesta)
+```
+
+---
+
+# 3.3. Graficar
+
+```r
+library(ggthemes)
+```
+
+```
+## 
+## Attaching package: 'ggthemes'
+```
+
+```
+## The following object is masked from 'package:cowplot':
+## 
+##     theme_map
+```
+
+
+```r
+p &lt;- ggplot(datos, aes(dosis, respuesta))+
+      geom_point()+
+      xlab("Dosis Chocolate (gr)")+
+      ylab("Felicidad")+
+      theme_base()+
+      theme(plot.background = element_rect(colour = NA))
+
+p
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-57-1.png" width="40%" /&gt;
+
+---
+
+# 3.3. Determinado
+
+- El modelo que construimos hasta ahora tiene valores determinados.  
+- Pero, en la realidad, esperamos variabilidad en la respuesta al chocolate entre individuos.  
+
+---
+
+# 3.4. Variabilidad
+
+- Si queremos trabajar con un modelo más realista deberíamos tener un gráfico como el siguiente:
+
+semilla
+
+```r
+set.seed(444)
+```
+
+Agregar ruido con distribucion normal (media 0, sd = 5)
+
+```r
+datos$respuesta &lt;- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
+```
+
+---
+
+# 3.4. Variabilidad
+
+Graficando ejemplo
+
+```r
+p &lt;- ggplot(datos, aes(dosis, respuesta))+
+       geom_point(alpha = 0.1)+
+       xlab("Dosis Chocolate (gr)")+
+       ylab("Felicidad")+
+       theme_base()+
+       theme(plot.background = element_rect(colour = NA))
+
+p
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-60-1.png" width="40%" /&gt;
+
+---
+
+# 3.5. Graficar
+Entre mayor dosis de chocolate más valor de felicidad.  
+
+- ¿Cuál es el valor esperado de felicidad para una dada dosis de chocolate?  
+- ¿Cómo podemos estimarlo?  
+
+Graficar
+
+```r
+ggplot(datos, aes(dosis, respuesta))+
+       geom_point(alpha = 0.1)+
+       xlab("Dosis Chocolate (gr)")+
+       ylab("Felicidad")+
+       theme_base()+
+       theme(plot.background = element_rect(colour = NA)) + 
+  geom_smooth(method = "lm", color="lightgray", se=FALSE)+
+  stat_summary(fun = mean, geom="point", size=2, color="red")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-61-1.png" width="40%" /&gt;
+
+---
+
+# 3.6. Modelo lineal
+
+En nuestro caso, queremos estudiar la relación entre la felicidad (respuesta) y la dosis de chocolate (dosis). 
+
+Importante este simbolo:
+
+```r
+~ #virgulilla
+```
+
+Crear modelo
+
+```r
+modelo_chocolate &lt;- lm(data=datos,
+                       respuesta ~ dosis)
+```
+
+---
+
+# 3.6. summary
+Ver resultados del modelo.
+
+```r
+summary(modelo_chocolate)
+```
+
+```
+## 
+## Call:
+## lm(formula = respuesta ~ dosis, data = datos)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -9.204 -3.696 -1.330  3.091 11.497 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  8.59279    1.15698   7.427 4.15e-11 ***
+## dosis        2.51659    0.01744 144.283  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 4.933 on 98 degrees of freedom
+## Multiple R-squared:  0.9953,	Adjusted R-squared:  0.9953 
+## F-statistic: 2.082e+04 on 1 and 98 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+
+# 3.7. Broom
+
+El paquete broom (de la paqueteria tidyverse), nos permite extraer información estadística de los modelos. 
+
+Aquí está la tabla con los estimadores:
+
+```r
+broom::tidy(modelo_chocolate)
+```
+
+```
+## # A tibble: 2 x 5
+##   term        estimate std.error statistic   p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 (Intercept)     8.59    1.16        7.43 4.15e- 11
+## 2 dosis           2.52    0.0174    144.   5.93e-116
+```
+
+A partir de la columna de estimadores (estimate), vemos que el consumo de chocolate incrementa la felicidad (esperamos mayor un incremento en ~2.52 unidades de felicidad por cada gramo de chocolate!). Nuestro modelo puede escribirse como:
+
+**felicidad=2.52∗dosis+8.59**
+
+En la tabla vemos que los estimadores tienen un error asociado, un estadístico t y su p-valor asociado. Por default, estos resultados están dados para un intervalo de confianza del 95%. 
+
+Coeficientes.  
+
+```r
+modelo_chocolate$coefficients
+```
+
+```
+## (Intercept)       dosis 
+##    8.592791    2.516593
+```
+
+---
+
+# 3.9. Otras partes
+También podemos acceder a porciones del modelo por separado. Puedes intentar en tu consola los siguientes comandos.
+
+Intervalos. 
+
+```r
+round(confint(modelo_chocolate), 3) 
+```
+
+```
+##             2.5 % 97.5 %
+## (Intercept) 6.297 10.889
+## dosis       2.482  2.551
+```
+
+Valores predichos.  
+
+```r
+modelo_chocolate$fitted.values
+```
+
+```
+##         1         2         3         4         5         6         7         8 
+##  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464 
+##         9        10        11        12        13        14        15        16 
+##  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464 
+##        17        18        19        20        21        22        23        24 
+##  58.92464  58.92464  58.92464  58.92464 109.25650 109.25650 109.25650 109.25650 
+##        25        26        27        28        29        30        31        32 
+## 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 
+##        33        34        35        36        37        38        39        40 
+## 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 
+##        41        42        43        44        45        46        47        48 
+## 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 
+##        49        50        51        52        53        54        55        56 
+## 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 
+##        57        58        59        60        61        62        63        64 
+## 159.58835 159.58835 159.58835 159.58835 209.92021 209.92021 209.92021 209.92021 
+##        65        66        67        68        69        70        71        72 
+## 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 
+##        73        74        75        76        77        78        79        80 
+## 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 
+##        81        82        83        84        85        86        87        88 
+## 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 
+##        89        90        91        92        93        94        95        96 
+## 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 
+##        97        98        99       100 
+## 260.25206 260.25206 260.25206 260.25206
+```
+
+Residuales.
+
+```r
+modelo_chocolate$residuals
+```
+
+```
+##          1          2          3          4          5          6          7 
+## -3.7340820 -0.3253313 -7.2040228  1.8230764  6.2374206 -1.4849028 -3.5242413 
+##          8          9         10         11         12         13         14 
+## -3.7223858  7.7465275  1.4877844 -4.3143352 -0.6928524 -0.8592309  5.5599868 
+##         15         16         17         18         19         20         21 
+##  4.3250278  1.4924641 -1.6644832 -3.0565032 -9.2036427  8.2938350 -3.6917547 
+##         22         23         24         25         26         27         28 
+## -1.3695280  1.6284255  6.0801640 -4.0978428 -6.2519795  6.5743198  5.8234953 
+##         29         30         31         32         33         34         35 
+##  1.2106117  1.0835425 -5.2902452  0.5103091 -1.4757358 -3.7085761 -3.9162956 
+##         36         37         38         39         40         41         42 
+##  5.2968920 -5.0142950 -2.3529139  9.0195442 -3.2362633  0.1993849 -8.5640945 
+##         43         44         45         46         47         48         49 
+## -3.1604928 -2.1643544  4.0636658  2.9977027 -5.5985231 -5.0065447  1.6980204 
+##         50         51         52         53         54         55         56 
+##  1.6865820 -3.6131379 -1.0289397 -0.3736114  6.5549466 -1.3179812  4.7178333 
+##         57         58         59         60         61         62         63 
+## -6.3923882  9.4660345  8.0179208  8.0522267  5.2850181  0.9212465 -2.0431453 
+##         64         65         66         67         68         69         70 
+## -1.3413859 -3.7730127  1.6005149 -1.5688469 -7.4885983 -6.5195681 -2.0817835 
+##         71         72         73         74         75         76         77 
+## 10.9844651 -2.8673810  0.4748720 -6.2423625  5.4044840 -1.7098503 -3.5693730 
+##         78         79         80         81         82         83         84 
+## -6.8639949 10.2470026 11.4971411 -3.8192960 -3.3993785 10.0773840  5.7844462 
+##         85         86         87         88         89         90         91 
+##  0.8432188 -3.2701550  2.0663079 -1.3518404 -3.9921691  0.4924023  1.2515911 
+##         92         93         94         95         96         97         98 
+##  3.3718277 -5.8060373  9.0943379 -1.1413616 -1.4143366 -4.3630079 -4.6094625 
+##         99        100 
+## -2.1794388 -2.2167067
+```
+
+---
+
+## 3.9. Supuestos
+
+Podemos explorar el ajuste y analizar el cumplimiento de supuestos en R utilizando la función plot que maneja bien objetos lm.
+
+```r
+par(mfrow = c(2, 2))
+plot(modelo_chocolate)
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-70-1.png" width="40%" /&gt;
+
+---
+
+## 3.10. Residuales
+
+Cambiemos nuestros datos para un peor ajuste. 
+
+```r
+datos$nueva_dosis &lt;- datos$dosis + rnorm(100,10,10)
+```
+
+
+```r
+nuevo_modelo &lt;- lm(data = datos,
+                   respuesta~nueva_dosis)
+```
+
+
+```r
+datos$nuevo_pred &lt;- nuevo_modelo$fitted.values
+datos$residuos &lt;- nuevo_modelo$residuals 
+```
+
+---
+
+## 3.10. Residuales
+
+Graficar.
+
+```r
+fit_plot &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
+    geom_smooth(method="lm", se=FALSE, color="lightgray")+      
+    geom_point(alpha = 0.5) +
+    theme_base()+
+    theme(plot.background = element_rect(colour = NA))+
+    xlab("Dosis Chocolate (gr)")+
+    ylab("Felicidad")
+
+fit_plot
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-74-1.png" width="40%" /&gt;
+
+---
+
+# 3.11. Residuales
+
+Graficamos nuestros puntos con ajuste alineado a la regresion y ahora los nuevos datos.
+
+```r
+pre_plot &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
+  geom_point()+
+  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
+  theme_base()+
+  theme(plot.background = element_rect(colour = NA))+
+  xlab("Dosis Chocolate (gr)")+
+  ylab("Felicidad")
+pre_plot
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-75-1.png" width="40%" /&gt;
+
+---
+
+## 3.11. Residuales
+
+Como vemos, los predichos están alineados perfectamente en la regresión. Podemos agregar los residuales de la siguiente forma:
+
+```r
+pre_plot +
+  geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
+               alpha=0.5)
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-76-1.png" width="40%" /&gt;
+
+---
+
+## 3.11. Residuales
+
+Lo que nuestra regresión está realizando es minimizar la suma de los residuos al cuadrado.  
+Una herramienta para visualizar mejor los puntos con residuos grandes es graficarlos utilizando una escala de color y tamaño.
+
+
+```r
+ggplot(datos, aes(nueva_dosis, respuesta))+
+  #Agregamos opción de color dentro del geom_point()
+  geom_point(aes(color = residuos, size=abs(residuos)))+ 
+  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
+  geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
+               alpha=0.5)+
+  theme_base()+
+  theme(plot.background = element_rect(colour = NA))+
+  xlab("Dosis Chocolate (gr)")+
+  ylab("Felicidad")+
+  scale_color_gradientn(colours = c("red", "black", "red"))+
+  guides(color = FALSE,
+         size = FALSE)
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-77-1.png" width="40%" /&gt;
+
+---
+
+## 3.12. Descomponiendo variabilidad
+
+Creamos un grafico base al que agregaremos varias capas
+
+```r
+grafico_base &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
+    geom_hline(yintercept = mean(datos$respuesta))+
+    geom_point() +
+    theme_base(base_size = 12)+
+    theme(plot.background = element_rect(colour = NA))+
+    xlab("Dosis Chocolate (gr)")+
+    ylab("Felicidad")+
+    annotate("text", label = "media global",
+             x = 30, y = mean(datos$respuesta) + 15,
+             size = 4, colour = "black")
+```
+
+Variacion respecto de la media global
+
+```r
+variacion_total &lt;- grafico_base +
+      geom_segment(aes(xend=nueva_dosis,
+                       yend=mean(datos$respuesta)),
+                       alpha=0.5)+
+      ggtitle("Variación total")
+```
+
+---
+
+## 3.12. Descomponiendo variabilidad
+
+
+```r
+variacion_total
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-80-1.png" width="40%" /&gt;
+
+---
+
+## 3.12. Descomponiendo variabilidad
+Debido a que las predictoras tienen un efecto en los valores predichos, nuestro modelo logra efectivamente explicar una porción de la variabilidad total.  
+Esta porción es la distancia entre la media y los valores predichos.  
+
+Variacion explicada.  
+
+```r
+variacion_explicada &lt;- grafico_base+
+ geom_smooth(method="lm", se=FALSE, color="lightgray")+
+  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
+  geom_segment(aes(xend = nueva_dosis, y = mean(datos$respuesta),
+                   yend = nuevo_pred), alpha=0.5)+
+  ggtitle("Variación explicada")
+```
+
+Graficos. 
+
+```r
+variacion_explicada
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-82-1.png" width="40%" /&gt;
+
+
+---
+
+## 3.13. Descomponiendo variabilidad
+Variacion no explicada por el modelo
+
+```r
+variacion_no_explicada &lt;- grafico_base +
+  geom_smooth(method="lm", se=FALSE, color="lightgray")+
+  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
+  geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
+               alpha=0.5)+
+  ggtitle("Variación no explicada")
+```
+
+
+```r
+variacion_no_explicada
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-84-1.png" width="40%" /&gt;
+
+---
+
+## 3.14. Descomponiendo variabilidad
+Idealmente, queremos que la fracción de variabilidad explicada sea grande, cercana a la total. Esta información normalmente se condensa en el llamado coeficiente de determinación (R2).  
+**R2**: toma valores entre 0 y 1, con 1 como máximo valor predictivo.  
+
+Podemos acceder al R^2 con
+
+```r
+summary(modelo_chocolate)$r.squared
+```
+
+```
+## [1] 0.9953145
+```
+
+---
+
+## 3.15. ¿Por qué hacer una regresión?
+
+Los objetivos de realizar un análisis de regresión pueden resumirse en:
+
+- Describir la relación funcional entre X e Y (rectilínea, polinomial, cuadrática, …)
+- Determinar cuánta de la variación en Y puede ser explicada por la variación de X y cuánto permanece sin explicar.
+- Estimar los parámetros del modelo.
+- Hacer inferencia sobre los parámetros del modelo (mediante pruebas de hipótesis y cálculo de intervalos de confianza).
+- Predecir nuevos valores de Y para valores específicos de X en el dominio estudiado (interpolación dentro del rango de la(s) variable(s) predictora(s)).
+
+---
+
+# 3.16 Ejercicios juntos
+Generar datos
+
+```r
+id &lt;- 1:100 
+dosis &lt;- sort(rep(seq(20,100,20), 20))
+respuesta &lt;- dosis * 2.5 + 10
+datos &lt;- data.frame(id=id,
+                    dosis=dosis,
+                    respuesta=respuesta)
+```
+
+---
+# 3.16. Ejercicios juntos
+
+```r
+library(ggthemes)
+```
+
+
+```r
+p &lt;- ggplot(datos, aes(dosis, respuesta))+
+      geom_point()+
+      xlab("Dosis Chocolate (gr)")+
+      ylab("Felicidad")+
+      theme_base()+
+      theme(plot.background = element_rect(colour = NA))
+p
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-88-1.png" width="40%" /&gt;
+
+---
+
+# 3.16. Ejercicios juntos
+
+semilla
+
+```r
+set.seed(444)
+```
+
+Agregar ruido con distribucion normal (media 0, sd = 5)
+
+```r
+datos$respuesta &lt;- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
+```
+
+---
+
+# 3.16. Ejercicios juntos
+
+
+```r
+p &lt;- ggplot(datos, aes(dosis, respuesta))+
+       geom_point(alpha = 0.1)+
+       xlab("Dosis Chocolate (gr)")+
+       ylab("Felicidad")+
+       theme_base()+
+       theme(plot.background = element_rect(colour = NA))
+
+p
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-91-1.png" width="40%" /&gt;
+
+---
+
+# 3.16. Ejercicios juntos
+
+
+```r
+modelo_chocolate &lt;- lm(data=datos,
+                       respuesta ~ dosis)
+```
+
+
+```r
+summary(modelo_chocolate)
+```
+
+```
+## 
+## Call:
+## lm(formula = respuesta ~ dosis, data = datos)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -9.204 -3.696 -1.330  3.091 11.497 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  8.59279    1.15698   7.427 4.15e-11 ***
+## dosis        2.51659    0.01744 144.283  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 4.933 on 98 degrees of freedom
+## Multiple R-squared:  0.9953,	Adjusted R-squared:  0.9953 
+## F-statistic: 2.082e+04 on 1 and 98 DF,  p-value: &lt; 2.2e-16
+```
+
+
+```r
+broom::tidy(modelo_chocolate)
+```
+
+```
+## # A tibble: 2 x 5
+##   term        estimate std.error statistic   p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 (Intercept)     8.59    1.16        7.43 4.15e- 11
+## 2 dosis           2.52    0.0174    144.   5.93e-116
+```
+
+Coeficientes.  
+
+```r
+modelo_chocolate$coefficients
+```
+
+```
+## (Intercept)       dosis 
+##    8.592791    2.516593
+```
+
+---
+
+# 3.16. Otras partes
+
+Intervalos. 
+
+```r
+round(confint(modelo_chocolate), 3) 
+```
+
+```
+##             2.5 % 97.5 %
+## (Intercept) 6.297 10.889
+## dosis       2.482  2.551
+```
+
+Valores predichos.  
+
+```r
+modelo_chocolate$fitted.values
+```
+
+```
+##         1         2         3         4         5         6         7         8 
+##  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464 
+##         9        10        11        12        13        14        15        16 
+##  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464  58.92464 
+##        17        18        19        20        21        22        23        24 
+##  58.92464  58.92464  58.92464  58.92464 109.25650 109.25650 109.25650 109.25650 
+##        25        26        27        28        29        30        31        32 
+## 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 
+##        33        34        35        36        37        38        39        40 
+## 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 109.25650 
+##        41        42        43        44        45        46        47        48 
+## 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 
+##        49        50        51        52        53        54        55        56 
+## 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 159.58835 
+##        57        58        59        60        61        62        63        64 
+## 159.58835 159.58835 159.58835 159.58835 209.92021 209.92021 209.92021 209.92021 
+##        65        66        67        68        69        70        71        72 
+## 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 
+##        73        74        75        76        77        78        79        80 
+## 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 209.92021 
+##        81        82        83        84        85        86        87        88 
+## 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 
+##        89        90        91        92        93        94        95        96 
+## 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 260.25206 
+##        97        98        99       100 
+## 260.25206 260.25206 260.25206 260.25206
+```
+
+Residuales.
+
+```r
+modelo_chocolate$residuals
+```
+
+```
+##          1          2          3          4          5          6          7 
+## -3.7340820 -0.3253313 -7.2040228  1.8230764  6.2374206 -1.4849028 -3.5242413 
+##          8          9         10         11         12         13         14 
+## -3.7223858  7.7465275  1.4877844 -4.3143352 -0.6928524 -0.8592309  5.5599868 
+##         15         16         17         18         19         20         21 
+##  4.3250278  1.4924641 -1.6644832 -3.0565032 -9.2036427  8.2938350 -3.6917547 
+##         22         23         24         25         26         27         28 
+## -1.3695280  1.6284255  6.0801640 -4.0978428 -6.2519795  6.5743198  5.8234953 
+##         29         30         31         32         33         34         35 
+##  1.2106117  1.0835425 -5.2902452  0.5103091 -1.4757358 -3.7085761 -3.9162956 
+##         36         37         38         39         40         41         42 
+##  5.2968920 -5.0142950 -2.3529139  9.0195442 -3.2362633  0.1993849 -8.5640945 
+##         43         44         45         46         47         48         49 
+## -3.1604928 -2.1643544  4.0636658  2.9977027 -5.5985231 -5.0065447  1.6980204 
+##         50         51         52         53         54         55         56 
+##  1.6865820 -3.6131379 -1.0289397 -0.3736114  6.5549466 -1.3179812  4.7178333 
+##         57         58         59         60         61         62         63 
+## -6.3923882  9.4660345  8.0179208  8.0522267  5.2850181  0.9212465 -2.0431453 
+##         64         65         66         67         68         69         70 
+## -1.3413859 -3.7730127  1.6005149 -1.5688469 -7.4885983 -6.5195681 -2.0817835 
+##         71         72         73         74         75         76         77 
+## 10.9844651 -2.8673810  0.4748720 -6.2423625  5.4044840 -1.7098503 -3.5693730 
+##         78         79         80         81         82         83         84 
+## -6.8639949 10.2470026 11.4971411 -3.8192960 -3.3993785 10.0773840  5.7844462 
+##         85         86         87         88         89         90         91 
+##  0.8432188 -3.2701550  2.0663079 -1.3518404 -3.9921691  0.4924023  1.2515911 
+##         92         93         94         95         96         97         98 
+##  3.3718277 -5.8060373  9.0943379 -1.1413616 -1.4143366 -4.3630079 -4.6094625 
+##         99        100 
+## -2.1794388 -2.2167067
+```
+
+
+---
+
+# 3.16. Graficar
+
+```r
+ggplot(datos, aes(dosis, respuesta))+
+       geom_point(alpha = 0.1)+
+       xlab("Dosis Chocolate (gr)")+
+       ylab("Felicidad")+
+       theme_base()+
+       theme(plot.background = element_rect(colour = NA)) + 
+  geom_smooth(method = "lm", color="lightgray", se=FALSE)+
+  stat_summary(fun = mean, geom="point", size=2, color="red")
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-99-1.png" width="40%" /&gt;
+
+Cambiemos nuestros datos para un peor ajuste. 
+
+```r
+datos$nueva_dosis &lt;- datos$dosis + rnorm(100,10,10)
+```
+
+
+```r
+nuevo_modelo &lt;- lm(data = datos,
+                   respuesta~nueva_dosis)
+```
+
+
+```r
+datos$nuevo_pred &lt;- nuevo_modelo$fitted.values
+datos$residuos &lt;- nuevo_modelo$residuals 
+```
+
+---
+# 3.17. Residuales
+
+```r
+fit_plot &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
+    geom_smooth(method="lm", se=FALSE, color="lightgray")+      
+    geom_point(alpha = 0.5) +
+    theme_base()+
+    theme(plot.background = element_rect(colour = NA))+
+    xlab("Dosis Chocolate (gr)")+
+    ylab("Felicidad")
+
+fit_plot
+```
+
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-103-1.png" width="40%" /&gt;
+
+---
+
+# Extras
+
+---
+
+## 4. Outliers
+
+Crear datos
+
+```r
+set.seed(42)
+ex_data  = data.frame(x = 1:10,
+                      y = 10:1 + rnorm(n = 10))
+ex_model = lm(y ~ x, data = ex_data)
+```
+
+---
+
+# 4.1 Un outlier
+Añadamos un punto (x, y) y reajustemos una regresión lineal
+
+
+```r
+point_1 = c(5.4, 11) # nuevo punto
+ex_data_1 = rbind(point_1, ex_data) # añadiéndolo
+model_1 = lm(y ~ x, data = ex_data_1) # nuevo modelo
+```
+
+El punto "extraño" no genera mayores cambios en el modelo.
+
+```r
+ggplot(data = ex_data_1, aes(x = x, y = y)) +
+  geom_point(color = "#999999") + # plotting all points
+  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
+  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
+  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelos
+  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+theme_bw()
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](Clase7_files/figure-html/unnamed-chunk-106-1.png)&lt;!-- --&gt;
+
+---
+
+# 4.2. Segundo outlier
+
+```r
+point_2 = c(18, -5.7) # nuevo punto
+ex_data_2 = rbind(point_2, ex_data) # añadiéndolo
+model_2 = lm(y ~ x, data = ex_data_2) # nuevo modelo
+```
+
+El nuevo punto no influencia el modelo.
+
+```r
+ggplot(data = ex_data_2, aes(x = x, y = y)) +
+  geom_point(color = "#999999") + # plotting all points
+  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
+  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
+  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelo
+  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+theme_bw()
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](Clase7_files/figure-html/unnamed-chunk-108-1.png)&lt;!-- --&gt;
+
+---
+
+# 4.3. Tercer outlier
+
+```r
+point_3 = c(14, 5.1) # nuevo punto
+ex_data_3 = rbind(point_3, ex_data) # añadiéndolo
+model_3 = lm(y ~ x, data = ex_data_3) # nuevo modelo
+```
+
+El nuevo modelo parece bastante distinto
+
+```r
+ggplot(data = ex_data_3, aes(x = x, y = y)) +
+  geom_point(color = "#999999") + # plotting all points
+  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
+  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
+  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelo
+  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+theme_bw()
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](Clase7_files/figure-html/unnamed-chunk-110-1.png)&lt;!-- --&gt;
+
+---
+
+
+
+---
+
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
+background-size: cover
+
+
+# Recapitulando
+
+1.0. Explorar datos.  
+1.1. Modelo lineal.
+
+---
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
