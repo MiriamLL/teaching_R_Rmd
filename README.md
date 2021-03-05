@@ -21,7 +21,7 @@ Clase 4: Trabajar por proyecto, recapitulando todo lo que hicimos clases pasadas
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase4Parte1  
 Para bajar zip: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip  
 
-Clase 5: Explorar datos y modelo lineal.
+Clase 5: Explorar datos y modelo lineal.  
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase7
 
 Clase 6: Que es Rmd.  
