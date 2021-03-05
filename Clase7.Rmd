@@ -110,19 +110,14 @@ background-size: cover
 
 Graficar nuestros datos nos puede ayudar a entenderlos.
 
-```{r, message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
-
 ---
 
 # 1.2. Inspecciona
 
 Todos estos graficos tienen medias, desviaciones estandar y una correlacion entre puntos similar.  
-**Siempre inspecciona tus datos!**
+**Siempre inspecciona tus datos!**  
 ```{r echo=FALSE, out.height=350}
-knitr::include_graphics("https://github.com/stephlocke/lazyCDN/blob/master/DinoSequential.gif")
+knitr::include_graphics("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif")
 ```
 
 ---
@@ -130,18 +125,28 @@ knitr::include_graphics("https://github.com/stephlocke/lazyCDN/blob/master/DinoS
 ## 1.2. Inspecciona
 
 Alberto Cairo creo este paquete (datasauRus) para ilustrarlo.  
+
+.pull-left[
 Si quieren replicar algunas graficas:  
-```{r, warning=FALSE}
+```{r, warning=FALSE, eval=FALSE}
 #install.packages('datasauRus')
 library(datasauRus)
-```
 
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
 ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
   geom_point()+ theme_void()+ theme(legend.position = "none")+
   facet_wrap(~dataset, ncol=3)
 ```
+]
 
+.pull-right[
+```{r, warning=FALSE, message=FALSE, out.width="70%", echo=FALSE, include=TRUE}
+library(datasauRus)
+library(ggplot2)
+ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
+  geom_point()+ theme_void()+ theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol=3)
+```
+]
 
 ---
 
@@ -149,16 +154,19 @@ ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
 Exploremos los datos de pinguinos.
 
 .pull-left[
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(ggplot2)
 library(datos)
 Pingus<-datos::pinguinos
+
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
+  geom_point() #<<
 ```
+
 ]
 
 .pull-right[
-Recordemos como se realizan los graficos de puntos.   
-```{r, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, warning=FALSE, message=FALSE, out.width="70%", echo=FALSE}
 ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
   geom_point() #<<
 ```
@@ -167,13 +175,22 @@ ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
 ---
 
 # 1.3. Pinguinos
+.pull-left[
 Sabemos que hay tres especies, separemos las especies por colores.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, 
            color=especie))+ #<<
   geom_point()
 ```
+]
 
+.pull-right[
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%",echo=FALSE}
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, 
+           color=especie))+ #<<
+  geom_point()
+```
+]
 
 ---
 
@@ -181,23 +198,42 @@ ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g,
 Si agregamos una nueva capa con la linea de tendencia, especificamos un ajuste lineal ("lm") podemos ver como se relacionan estos datos.  
 No obstante! tenemos datos de tres especies diferentes!  
 
-```{r, fig.heigth=3, warning=FALSE, message=FALSE}
+.pull-left[
+```{r, warning=FALSE, message=FALSE, include=FALSE}
 ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g)) +
        geom_point(aes(color =especie))+ #<<
        geom_smooth(method="lm")
 ```
+]
+
+.pull-right[
+```{r, fig.heigth=3, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_point(aes(color =especie))+ #<<
+       geom_smooth(method="lm")
+```
+]
 
 ---
 
 # 1.3. Pinguinos
 Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
 Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+.pull-left[
+```{r, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, color = especie)) +
        geom_point() +
        geom_smooth(method = "lm") #<<
 ```
+]
 
+.pull-right[
+```{r, warning=FALSE, message=FALSE, out.width="40%", echo=FALSE}
+ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, color = especie)) +
+       geom_point() +
+       geom_smooth(method = "lm") #<<
+```
+]
 
 ---
 
@@ -224,7 +260,7 @@ Adelia<-Pingus%>%
 ```
 
 - Grafico de puntos.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 p1 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
        geom_point()
 p1
@@ -235,7 +271,7 @@ p1
 # 1. 4. Ejercicios juntos
 Gráfico de puntos con ruido en el eje horizontal.  
 geom_jitter permite que se "muevan" los puntos un poquito.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 p2 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
        geom_jitter(width = 0.1)
 p2
@@ -246,7 +282,7 @@ p2
 # 1. 4. Ejercicios juntos
 
 Boxplot.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 p3 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
        geom_boxplot()
 p3
@@ -256,7 +292,7 @@ p3
 
 # 1. 4. Ejercicios juntos
 Violin.   
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 p4 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
        geom_violin()
 p4
@@ -265,8 +301,8 @@ p4
 ---
 
 # 1. 4. Ejercicios juntos
-Combinando boxplot y violin
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+Combinando boxplot y violin.  
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 p5 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
        geom_violin(fill='orange', alpha=0.5)+
        geom_boxplot(color="white", fill="black",
@@ -279,7 +315,7 @@ p5
 # 1. 4. Ejercicios juntos
 
 Grafico de barras con medias + SEM (error estandar en rojo)
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
 p6 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
       stat_summary(fun.y = mean, geom = "bar",
                    width=0.5) +
@@ -515,7 +551,7 @@ p2
 
 ---
 
-# 2.3.Precio: 
+# 2.3. Precio. 
 
 Quienes pagaron mas estaban en el grupo de los sobrevivientes?
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}

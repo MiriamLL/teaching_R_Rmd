@@ -96,41 +96,36 @@ background-size: cover
 
 Graficar nuestros datos nos puede ayudar a entenderlos.
 
-
-```r
-library(tidyverse)
-```
-
-
 ---
 
 # 1.2. Inspecciona
 
 Todos estos graficos tienen medias, desviaciones estandar y una correlacion entre puntos similar.  
-**Siempre inspecciona tus datos!**
-&lt;img src="https://github.com/stephlocke/lazyCDN/blob/master/DinoSequential.gif" height="350" /&gt;
+**Siempre inspecciona tus datos!**  
+&lt;img src="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif" height="350" /&gt;
 
 ---
 
 ## 1.2. Inspecciona
 
 Alberto Cairo creo este paquete (datasauRus) para ilustrarlo.  
+
+.pull-left[
 Si quieren replicar algunas graficas:  
 
 ```r
 #install.packages('datasauRus')
 library(datasauRus)
-```
 
-
-```r
 ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
   geom_point()+ theme_void()+ theme(legend.position = "none")+
   facet_wrap(~dataset, ncol=3)
 ```
+]
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-6-1.png" width="40%" /&gt;
-
+.pull-right[
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-5-1.png" width="70%" /&gt;
+]
 
 ---
 
@@ -143,33 +138,30 @@ Exploremos los datos de pinguinos.
 library(ggplot2)
 library(datos)
 Pingus&lt;-datos::pinguinos
-```
-]
 
-.pull-right[
-Recordemos como se realizan los graficos de puntos.   
-
-```r
 ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
 * geom_point()
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-8-1.png" width="40%" /&gt;
+![](Clase7_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-7-1.png" width="70%" /&gt;
 ]
 
 ---
 
 # 1.3. Pinguinos
+.pull-left[
 Sabemos que hay tres especies, separemos las especies por colores.
 
-```r
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, 
-*          color=especie))+
-  geom_point()
-```
+]
 
+.pull-right[
 &lt;img src="Clase7_files/figure-html/unnamed-chunk-9-1.png" width="40%" /&gt;
-
+]
 
 ---
 
@@ -177,29 +169,26 @@ ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g,
 Si agregamos una nueva capa con la linea de tendencia, especificamos un ajuste lineal ("lm") podemos ver como se relacionan estos datos.  
 No obstante! tenemos datos de tres especies diferentes!  
 
+.pull-left[
 
-```r
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g)) +
-*      geom_point(aes(color =especie))+
-       geom_smooth(method="lm")
-```
+]
 
-![](Clase7_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+.pull-right[
+![](Clase7_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+]
 
 ---
 
 # 1.3. Pinguinos
 Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
 Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
+.pull-left[
 
-```r
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, color = especie)) +
-       geom_point() +
-*      geom_smooth(method = "lm")
-```
+]
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-11-1.png" width="40%" /&gt;
-
+.pull-right[
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-13-1.png" width="40%" /&gt;
+]
 
 ---
 
@@ -217,6 +206,26 @@ background-size: cover
 ```r
 library(datos)
 library(tidyverse)
+```
+
+```
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+```
+
+```
+## v tibble  3.0.5     v dplyr   1.0.3
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1
+## v purrr   0.3.4
+```
+
+```
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+```r
 Pingus&lt;-datos::pinguinos
 ```
 
@@ -229,13 +238,6 @@ Adelia&lt;-Pingus%&gt;%
 
 - Grafico de puntos.  
 
-```r
-p1 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_point()
-p1
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-14-1.png" width="40%" /&gt;
 
 ---
 
@@ -243,13 +245,6 @@ p1
 Gráfico de puntos con ruido en el eje horizontal.  
 geom_jitter permite que se "muevan" los puntos un poquito.  
 
-```r
-p2 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_jitter(width = 0.1)
-p2
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-15-1.png" width="40%" /&gt;
 
 ---
 
@@ -257,41 +252,18 @@ p2
 
 Boxplot.  
 
-```r
-p3 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_boxplot()
-p3
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-16-1.png" width="40%" /&gt;
 
 ---
 
 # 1. 4. Ejercicios juntos
 Violin.   
 
-```r
-p4 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_violin()
-p4
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-17-1.png" width="40%" /&gt;
 
 ---
 
 # 1. 4. Ejercicios juntos
-Combinando boxplot y violin
+Combinando boxplot y violin.  
 
-```r
-p5 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_violin(fill='orange', alpha=0.5)+
-       geom_boxplot(color="white", fill="black",
-                    lwd=0.8, width=0.2 )
-p5
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-18-1.png" width="40%" /&gt;
 
 ---
 
@@ -299,16 +271,6 @@ p5
 
 Grafico de barras con medias + SEM (error estandar en rojo)
 
-```r
-p6 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-      stat_summary(fun.y = mean, geom = "bar",
-                   width=0.5) +
-      stat_summary(fun.data = mean_se, geom = "errorbar",
-                   color="red", width=0.5)
-p6
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-19-1.png" width="40%" /&gt;
 
 ---
 
@@ -329,7 +291,7 @@ ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
 * facet_wrap(~especie)
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-20-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-22-1.png" width="40%" /&gt;
 
 ---
 
@@ -352,7 +314,7 @@ cowplot::plot_grid(p1,p2,p3,p4,p5,p6, #Son los plots que creamos anteriormente
                    labels = "AUTO") #&lt;&lt; Agrega etiquetas automaticas
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-22-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-24-1.png" width="40%" /&gt;
 
 ---
 
@@ -515,7 +477,7 @@ g1 &lt;- ggplot(Titanic_datos, aes(sobrevivio)) +
 g1
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-31-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-33-1.png" width="40%" /&gt;
 
 ---
 
@@ -537,7 +499,7 @@ ggplot(Titanic_datos,
   ggtitle("Supervivencia por clase")
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-32-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-34-1.png" width="40%" /&gt;
 
 ---
 
@@ -561,7 +523,7 @@ ggplot(Titanic_datos,
   coord_flip()# Rotar los ejes
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-33-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-35-1.png" width="40%" /&gt;
 
 ---
 
@@ -577,7 +539,7 @@ p1 &lt;- ggplot(Titanic_datos, aes(edad, precio)) +
 p1
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-34-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-36-1.png" width="40%" /&gt;
 
 ---
 
@@ -597,11 +559,11 @@ p2 &lt;- ggplot(Titanic_datos, aes(sobrevivio, precio)) +
 p2
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-35-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-37-1.png" width="40%" /&gt;
 
 ---
 
-# 2.3.Precio: 
+# 2.3. Precio. 
 
 Quienes pagaron mas estaban en el grupo de los sobrevivientes?
 
@@ -609,7 +571,7 @@ Quienes pagaron mas estaban en el grupo de los sobrevivientes?
 cowplot::plot_grid(p1,p2, labels="AUTO")
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-36-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-38-1.png" width="40%" /&gt;
 
 ---
 
@@ -623,7 +585,7 @@ ggplot(Titanic_datos,
   geom_violin()
 ```
 
-![](Clase7_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+![](Clase7_files/figure-html/unnamed-chunk-39-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -691,7 +653,7 @@ g1 &lt;- ggplot(Titanic_datos, aes(sobrevivio)) +
 g1
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-43-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-45-1.png" width="40%" /&gt;
 
 ---
 
@@ -708,7 +670,7 @@ g2 &lt;- ggplot(Titanic_datos,
 g2
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-44-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-46-1.png" width="40%" /&gt;
 
 ---
 
@@ -725,7 +687,7 @@ g3 &lt;- ggplot(Titanic_datos,
 g3
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-45-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-47-1.png" width="40%" /&gt;
 
 ---
 
@@ -742,7 +704,7 @@ g4 &lt;- ggplot(Titanic_datos,
 g4
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-46-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-48-1.png" width="40%" /&gt;
 
 ---
 
@@ -773,7 +735,7 @@ g6 &lt;- ggplot(Titanic_datos,
 g6
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-48-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-50-1.png" width="40%" /&gt;
 
 ---
 
@@ -786,7 +748,7 @@ cowplot::plot_grid(g1,g2,g3,g4,g5,g6,
                    labels="AUTO")
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-49-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-51-1.png" width="40%" /&gt;
 
 
 ---
@@ -835,7 +797,7 @@ hist(ejemplo, col='blue', breaks=40,
      ylab = "Frecuencia", main = "Histograma ejemplo")
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-51-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-53-1.png" width="40%" /&gt;
 
 ---
 
@@ -906,7 +868,7 @@ p &lt;- ggplot(datos, aes(dosis, respuesta))+
 p
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-57-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-59-1.png" width="40%" /&gt;
 
 ---
 
@@ -950,7 +912,7 @@ p &lt;- ggplot(datos, aes(dosis, respuesta))+
 p
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-60-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-62-1.png" width="40%" /&gt;
 
 ---
 
@@ -973,7 +935,7 @@ ggplot(datos, aes(dosis, respuesta))+
   stat_summary(fun = mean, geom="point", size=2, color="red")
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-61-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-63-1.png" width="40%" /&gt;
 
 ---
 
@@ -1163,7 +1125,7 @@ par(mfrow = c(2, 2))
 plot(modelo_chocolate)
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-70-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-72-1.png" width="40%" /&gt;
 
 ---
 
@@ -1205,7 +1167,7 @@ fit_plot &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
 fit_plot
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-74-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-76-1.png" width="40%" /&gt;
 
 ---
 
@@ -1224,7 +1186,7 @@ pre_plot &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
 pre_plot
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-75-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-77-1.png" width="40%" /&gt;
 
 ---
 
@@ -1238,7 +1200,7 @@ pre_plot +
                alpha=0.5)
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-76-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-78-1.png" width="40%" /&gt;
 
 ---
 
@@ -1264,7 +1226,7 @@ ggplot(datos, aes(nueva_dosis, respuesta))+
          size = FALSE)
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-77-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-79-1.png" width="40%" /&gt;
 
 ---
 
@@ -1304,7 +1266,7 @@ variacion_total &lt;- grafico_base +
 variacion_total
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-80-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-82-1.png" width="40%" /&gt;
 
 ---
 
@@ -1329,7 +1291,7 @@ Graficos.
 variacion_explicada
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-82-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-84-1.png" width="40%" /&gt;
 
 
 ---
@@ -1351,7 +1313,7 @@ variacion_no_explicada &lt;- grafico_base +
 variacion_no_explicada
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-84-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-86-1.png" width="40%" /&gt;
 
 ---
 
@@ -1413,7 +1375,7 @@ p &lt;- ggplot(datos, aes(dosis, respuesta))+
 p
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-88-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-90-1.png" width="40%" /&gt;
 
 ---
 
@@ -1447,7 +1409,7 @@ p &lt;- ggplot(datos, aes(dosis, respuesta))+
 p
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-91-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-93-1.png" width="40%" /&gt;
 
 ---
 
@@ -1615,7 +1577,7 @@ ggplot(datos, aes(dosis, respuesta))+
   stat_summary(fun = mean, geom="point", size=2, color="red")
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-99-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-101-1.png" width="40%" /&gt;
 
 Cambiemos nuestros datos para un peor ajuste. 
 
@@ -1650,7 +1612,7 @@ fit_plot &lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
 fit_plot
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-103-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-105-1.png" width="40%" /&gt;
 
 ---
 
@@ -1698,7 +1660,7 @@ theme_bw()
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-![](Clase7_files/figure-html/unnamed-chunk-106-1.png)&lt;!-- --&gt;
+![](Clase7_files/figure-html/unnamed-chunk-108-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -1727,7 +1689,7 @@ theme_bw()
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-![](Clase7_files/figure-html/unnamed-chunk-108-1.png)&lt;!-- --&gt;
+![](Clase7_files/figure-html/unnamed-chunk-110-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -1756,7 +1718,7 @@ theme_bw()
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-![](Clase7_files/figure-html/unnamed-chunk-110-1.png)&lt;!-- --&gt;
+![](Clase7_files/figure-html/unnamed-chunk-112-1.png)&lt;!-- --&gt;
 
 ---
 
