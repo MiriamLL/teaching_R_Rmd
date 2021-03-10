@@ -57,7 +57,7 @@ La clase es de 2 horas.
 
 ## Ustedes
 
-- Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
+- Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y gráficos).  
 
 - Quieren conocer explorar datos y conocer la sintaxis para hacer modelos lineales en R.  
 
@@ -106,10 +106,10 @@ background-size: cover
 
 ---
 
-# 1.1. Inspecciona
+## 1.1. Inspecciona
 
 **Siempre inspecciona tus datos!** &lt;br&gt;
-Todos esto [graficos]("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif) tienen medias, desviaciones estandar y una correlacion entre puntos similar. 
+Todos esto [gráficos]("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif) tienen medias, desviaciones estandar y una correlacion entre puntos similar. 
 
 
 &lt;img src="https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif" height="350" /&gt;
@@ -163,7 +163,7 @@ Pingus&lt;-datos::pinguinos
 ---
 
 # 1.2. Pinguinos
-Recordemos como se realizan los graficos de puntos. 
+Recordemos como se realizan los gráficos de puntos. 
 
 .pull-left[
 
@@ -225,7 +225,7 @@ ggplot(Pingus,
 ---
 
 # 1.2. Pinguinos
-Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
+Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados gráficos usando los mismos datos.  
 Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
 
 .pull-left[
@@ -262,7 +262,7 @@ ggplot(Pingus,
 ]
 
 .pull-right[
-&lt;img src="Clase7_files/figure-html/plot05-out-1.png" width="80%" /&gt;
+&lt;img src="Clase7_files/figure-html/plot05-out-1.png" height="80%" /&gt;
 ]
 
 ---
@@ -276,7 +276,7 @@ background-size: cover
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 ```r
 library(datos)
@@ -295,8 +295,8 @@ Adelia&lt;-Pingus%&gt;%
 
 ---
 
-# 1. 4. Ejercicios juntos
-Grafico de puntos.  
+## 1. 4. Ejercicios juntos
+gráfico de puntos.  
 
 ```r
 p1 &lt;- ggplot(Adelia, aes(x=largo_aleta_mm, y=masa_corporal_g)) +
@@ -308,7 +308,7 @@ p1
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 Boxplot.  
 
@@ -322,7 +322,7 @@ p2
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 Violin.   
 
@@ -337,7 +337,7 @@ p3
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 Subamos un poco el nivel. 
 Combinando boxplot y violin.  
@@ -356,7 +356,7 @@ p4
 
 ---
 
-# 1.4. facet_wrap 
+## 1.4. facet_wrap 
 
 Ver variables categoricas separadas por panel. 
 
@@ -371,7 +371,7 @@ ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
 
 ---
 
-# 1.4. cowplot
+## 1.4. cowplot
 
 Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
 
@@ -384,7 +384,7 @@ library(cowplot)
 
 ---
 
-# 1.4. cowplot
+## 1.4. cowplot
 
 Elegir el orden.  
 Noten que les van a salir muchos warning por que hay NAs en nuestro data frame.
@@ -407,7 +407,7 @@ background-size: cover
 
 ---
 
-# 2. Modelos lineales
+## 2. Modelos lineales
 
 Recordatorio: 
 
@@ -506,7 +506,7 @@ p
 
 ---
 
-# 2.4. Chocolate y felicidad
+## 2.4. Chocolate y felicidad
 
 - Pero, en la realidad, esperamos variabilidad en la respuesta al chocolate entre individuos.  
 - Si queremos trabajar con un modelo **más realista** deberíamos tener mas variacion en la respuesta:
@@ -525,7 +525,7 @@ datos$respuesta &lt;- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 
 ---
 
-# 2.4. Chocolate y felicidad
+## 2.4. Chocolate y felicidad
 
 - Modelo un poco **más** realista, la respuesta muestra variaciones.
 
@@ -549,7 +549,7 @@ p
 
 ---
 
-# 2.5. Chocolate y felicidad
+## 2.5. Chocolate y felicidad
 Entre mayor dosis de chocolate más valor de felicidad.  
 
 - ¿Cuál es el valor esperado de felicidad para una dada dosis de chocolate?  
@@ -561,7 +561,7 @@ Entre mayor dosis de chocolate más valor de felicidad.
 
 ---
 
-# 2.6. Modelo lineal
+## 2.6. Modelo lineal
 
 Para construir modelos en R, es importante el simbolo *virgulilla*
 
@@ -580,7 +580,7 @@ modelo_chocolate &lt;- lm(data=datos,
 
 ---
 
-# 2.6. summary
+## 2.6. summary
 Ver resultados del modelo.
 
 ```r
@@ -610,7 +610,7 @@ summary(modelo_chocolate)
 
 ---
 
-# 2.7. Broom
+## 2.7. Broom
 
 El paquete broom (de la paqueteria tidyverse), nos permite extraer información estadística de los modelos. 
 
@@ -636,7 +636,7 @@ Nuestro modelo puede escribirse como:
 
 ---
 
-# 2.8. Recordatorio
+## 2.8. Recordatorio
 
 **felicidad=2.52∗dosis+8.59**
 
@@ -644,7 +644,7 @@ Nuestro modelo puede escribirse como:
 
 ---
 
-# 2.9. Coeficientes.
+## 2.9. Coeficientes
 
 También podemos acceder a porciones del modelo por separado. 
 
@@ -661,7 +661,7 @@ modelo_chocolate$coefficients
 
 ---
 
-# 2.9. Intervalos.
+## 2.9. Intervalos
 
 Intervalos. 
 
@@ -741,7 +741,7 @@ datos$residuos &lt;- nuevo_modelo$residuals
 
 ---
 
-# 2.11. Nuevo modelo
+## 2.11. Nuevo modelo
 
 Estos son nuestros nuevos datos, y la linea de regression. 
 
@@ -813,7 +813,7 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
 ---
 
-## 2.13 Ejercicios juntos
+## 2.13. Ejercicios juntos
 
 Modelo ideal.
 

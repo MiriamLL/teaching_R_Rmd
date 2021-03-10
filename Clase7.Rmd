@@ -72,7 +72,7 @@ library(ggplot2)
 
 ## Ustedes
 
-- Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
+- Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y gráficos).  
 
 - Quieren conocer explorar datos y conocer la sintaxis para hacer modelos lineales en R.  
 
@@ -121,10 +121,10 @@ background-size: cover
 
 ---
 
-# 1.1. Inspecciona
+## 1.1. Inspecciona
 
 **Siempre inspecciona tus datos!** <br>
-Todos esto [graficos]("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif) tienen medias, desviaciones estandar y una correlacion entre puntos similar. 
+Todos esto [gráficos]("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif) tienen medias, desviaciones estandar y una correlacion entre puntos similar. 
 
 
 ```{r echo=FALSE, out.height=350}
@@ -183,7 +183,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/allisonhorst/palmerpe
 ---
 
 # 1.2. Pinguinos
-Recordemos como se realizan los graficos de puntos. 
+Recordemos como se realizan los gráficos de puntos. 
 
 .pull-left[
 ```{r first-plot1b, eval=FALSE}
@@ -245,7 +245,7 @@ ggplot(Pingus,
 ---
 
 # 1.2. Pinguinos
-Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
+Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados gráficos usando los mismos datos.  
 Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
 
 .pull-left[
@@ -281,7 +281,7 @@ ggplot(Pingus,
 ]
 
 .pull-right[
-```{r plot05-out, ref.label='plot05', warning=FALSE,echo=FALSE, out.width="80%"}
+```{r plot05-out, ref.label='plot05', warning=FALSE,echo=FALSE, out.height="80%"}
 ```
 ]
 
@@ -296,7 +296,7 @@ background-size: cover
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 ```{r, warning=FALSE, message=FALSE}
 library(datos)
 library(tidyverse)
@@ -315,8 +315,8 @@ knitr::include_graphics("https://raw.githubusercontent.com/allisonhorst/palmerpe
 
 ---
 
-# 1. 4. Ejercicios juntos
-Grafico de puntos.  
+## 1. 4. Ejercicios juntos
+gráfico de puntos.  
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
 p1 <- ggplot(Adelia, aes(x=largo_aleta_mm, y=masa_corporal_g)) +
        geom_point() #<<
@@ -325,7 +325,7 @@ p1
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 Boxplot.  
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
@@ -336,7 +336,7 @@ p2
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 Violin.   
 
@@ -348,7 +348,7 @@ p3
 
 ---
 
-# 1. 4. Ejercicios juntos
+## 1. 4. Ejercicios juntos
 
 Subamos un poco el nivel. 
 Combinando boxplot y violin.  
@@ -364,7 +364,7 @@ p4
 
 ---
 
-# 1.4. facet_wrap 
+## 1.4. facet_wrap 
 
 Ver variables categoricas separadas por panel. 
 
@@ -376,7 +376,7 @@ ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
 
 ---
 
-# 1.4. cowplot
+## 1.4. cowplot
 
 Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
 
@@ -388,7 +388,7 @@ library(cowplot)
 
 ---
 
-# 1.4. cowplot
+## 1.4. cowplot
 
 Elegir el orden.  
 Noten que les van a salir muchos warning por que hay NAs en nuestro data frame.
@@ -408,7 +408,7 @@ background-size: cover
 
 ---
 
-# 2. Modelos lineales
+## 2. Modelos lineales
 
 Recordatorio: 
 
@@ -504,7 +504,7 @@ p
 
 ---
 
-# 2.4. Chocolate y felicidad
+## 2.4. Chocolate y felicidad
 
 - Pero, en la realidad, esperamos variabilidad en la respuesta al chocolate entre individuos.  
 - Si queremos trabajar con un modelo **más realista** deberíamos tener mas variacion en la respuesta:
@@ -521,7 +521,7 @@ datos$respuesta <- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 
 ---
 
-# 2.4. Chocolate y felicidad
+## 2.4. Chocolate y felicidad
 
 - Modelo un poco **más** realista, la respuesta muestra variaciones.
 
@@ -545,7 +545,7 @@ p
 
 ---
 
-# 2.5. Chocolate y felicidad
+## 2.5. Chocolate y felicidad
 Entre mayor dosis de chocolate más valor de felicidad.  
 
 - ¿Cuál es el valor esperado de felicidad para una dada dosis de chocolate?  
@@ -559,7 +559,7 @@ knitr::include_graphics("https://images.unsplash.com/photo-1553452118-621e1f860f
 
 ---
 
-# 2.6. Modelo lineal
+## 2.6. Modelo lineal
 
 Para construir modelos en R, es importante el simbolo *virgulilla*
 ```{r, eval=FALSE} 
@@ -576,7 +576,7 @@ modelo_chocolate <- lm(data=datos,
 
 ---
 
-# 2.6. summary
+## 2.6. summary
 Ver resultados del modelo.
 ```{r}
 summary(modelo_chocolate)
@@ -584,7 +584,7 @@ summary(modelo_chocolate)
 
 ---
 
-# 2.7. Broom
+## 2.7. Broom
 
 El paquete broom (de la paqueteria tidyverse), nos permite extraer información estadística de los modelos. 
 
@@ -601,7 +601,7 @@ Nuestro modelo puede escribirse como:
 
 ---
 
-# 2.8. Recordatorio
+## 2.8. Recordatorio
 
 **felicidad=2.52∗dosis+8.59**
 
@@ -611,7 +611,7 @@ knitr::include_graphics("https://datascience.foundation/img/pdf_images/understan
 
 ---
 
-# 2.9. Coeficientes.
+## 2.9. Coeficientes
 
 También podemos acceder a porciones del modelo por separado. 
 
@@ -622,7 +622,7 @@ modelo_chocolate$coefficients
 
 ---
 
-# 2.9. Intervalos.
+## 2.9. Intervalos
 
 Intervalos. 
 ```{r}
@@ -680,7 +680,7 @@ datos$residuos <- nuevo_modelo$residuals
 
 ---
 
-# 2.11. Nuevo modelo
+## 2.11. Nuevo modelo
 
 Estos son nuestros nuevos datos, y la linea de regression. 
 
@@ -746,7 +746,7 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
 ---
 
-## 2.13 Ejercicios juntos
+## 2.13. Ejercicios juntos
 
 Modelo ideal.
 ```{r}
