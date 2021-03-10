@@ -65,33 +65,48 @@ La clase es de 2 horas.
 library(emo)
 library(here)
 library(fontawesome)
+library(ggplot2)
 ```
 
----
+--
 
-# Ustedes
+## Ustedes
 
 - Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
 
 - Quieren conocer explorar datos y conocer la sintaxis para hacer modelos lineales en R.  
 
-- **Nota** No vamos a ver teoria.  
-- **Nota** No hay formula secreta, los modelos dependen de sus preguntas y experimentos o muestreos.  
+--
+
+<br>
+
+ **Notas** <br>
+Ya vieron teoria, hoy es solo para que practiquen en R. <br>
+Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.  
 
 ---
 
 # Créditos & materiales:  
 
-- Introducción a estadística con R <br> 
+- Ejercicios de estadística con R <br> 
 [Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
 
-- [Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
+- Ejemplos de regresiones lineales simples <br>
+[Sthda por Alboukadel Kassambara](http://www.sthda.com/english/articles/40-regression-analysis/167-simple-linear-regression-in-r/)`r emo::ji("star")` 
 
-- [STAT 545](https://stat545.com/)
+- Libro <br> 
+[Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
 
-- [ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
+- Tutoriales diversos <br> 
+[STAT 545](https://stat545.com/)
 
-- Imágenes adicionales  
+- Ejercicios practicos <br> 
+[ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
+
+- Outliers <br> 
+[Rocio Joo](https://github.com/rociojoo)
+
+- Imágenes adicionales <br> 
 [Unsplash](https://unsplash.com/)
 
 
@@ -102,46 +117,46 @@ background-image: url(https://images.unsplash.com/photo-1516478784322-0b77268e6c
 background-size: cover
 
 
-# Exploracion
+# Exploración
 
 ---
 
-# 1. Exploracion de datos
+# 1.1. Inspecciona
 
-Graficar nuestros datos nos puede ayudar a entenderlos.
+**Siempre inspecciona tus datos!** <br>
+Todos esto [graficos]("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif) tienen medias, desviaciones estandar y una correlacion entre puntos similar. 
 
----
 
-# 1.2. Inspecciona
-
-Todos estos graficos tienen medias, desviaciones estandar y una correlacion entre puntos similar.  
-**Siempre inspecciona tus datos!**  
 ```{r echo=FALSE, out.height=350}
 knitr::include_graphics("https://raw.githubusercontent.com/stephlocke/lazyCDN/master/DinoSequential.gif")
 ```
 
 ---
 
-## 1.2. Inspecciona
+## 1.1. Inspecciona
 
 Alberto Cairo creo este paquete (datasauRus) para ilustrarlo.  
 
 .pull-left[
 Si quieren replicar algunas graficas:  
-```{r, warning=FALSE, eval=FALSE}
+```{r, warning=FALSE}
 #install.packages('datasauRus')
 library(datasauRus)
+```
 
-ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
-  geom_point()+ theme_void()+ theme(legend.position = "none")+
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, echo=TRUE, eval=FALSE}
+ggplot(datasaurus_dozen,
+       aes(x=x, y=y, 
+           colour=dataset))+
+  geom_point()+ 
+  theme_void()+ 
+  theme(legend.position = "none")+
   facet_wrap(~dataset, ncol=3)
 ```
 ]
 
 .pull-right[
-```{r, warning=FALSE, message=FALSE, out.width="70%", echo=FALSE, include=TRUE}
-library(datasauRus)
-library(ggplot2)
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, echo=FALSE, out.width="90%"}
 ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
   geom_point()+ theme_void()+ theme(legend.position = "none")+
   facet_wrap(~dataset, ncol=3)
@@ -150,88 +165,123 @@ ggplot(datasaurus_dozen,aes(x=x, y=y, colour=dataset))+
 
 ---
 
-# 1.3. Pinguinos
+# 1.2. Pinguinos
 Exploremos los datos de pinguinos.
 
-.pull-left[
-```{r, warning=FALSE, message=FALSE}
+```{r}
 library(ggplot2)
 library(datos)
 Pingus<-datos::pinguinos
-
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
-  geom_point() #<<
 ```
 
-]
-
-.pull-right[
-```{r, warning=FALSE, message=FALSE, out.width="70%", echo=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g))+
-  geom_point() #<<
+.center[
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png")
 ```
 ]
 
 ---
 
-# 1.3. Pinguinos
+# 1.2. Pinguinos
+Recordemos como se realizan los graficos de puntos. 
+
 .pull-left[
+```{r first-plot1b, eval=FALSE}
+ggplot(Pingus) +
+  aes(x = largo_aleta_mm, 
+      y = masa_corporal_g)+
+  geom_point()#<<
+```
+]
+
+.pull-right[
+```{r first-plot1b-out, ref.label='first-plot1b', warning=FALSE,echo=FALSE, out.width="80%"}
+```
+]
+
+---
+
+# 1.2. Pinguinos
 Sabemos que hay tres especies, separemos las especies por colores.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, 
+
+.pull-left[
+```{r plot02, eval=FALSE}
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g, 
            color=especie))+ #<<
   geom_point()
 ```
 ]
 
 .pull-right[
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%",echo=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, 
-           color=especie))+ #<<
-  geom_point()
+```{r plot02-out, ref.label='plot02', warning=FALSE,echo=FALSE, out.width="80%"}
 ```
 ]
 
+
 ---
 
-# 1.3. Pinguinos
+# 1.2. Pinguinos
 Si agregamos una nueva capa con la linea de tendencia, especificamos un ajuste lineal ("lm") podemos ver como se relacionan estos datos.  
 No obstante! tenemos datos de tres especies diferentes!  
 
 .pull-left[
-```{r, warning=FALSE, message=FALSE, include=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g)) +
+```{r plot03, eval=FALSE}
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g)) +
        geom_point(aes(color =especie))+ #<<
        geom_smooth(method="lm")
 ```
 ]
 
 .pull-right[
-```{r, fig.heigth=3, warning=FALSE, message=FALSE, echo=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_point(aes(color =especie))+ #<<
-       geom_smooth(method="lm")
+```{r plot03-out, ref.label='plot03', warning=FALSE,message=FALSE, echo=FALSE, out.width="80%"}
+```
+]
+
+
+---
+
+# 1.2. Pinguinos
+Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
+Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
+
+.pull-left[
+```{r plot04, eval=FALSE}
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g, 
+           color = especie)) +
+       geom_point() +
+       geom_smooth(method = "lm") #<<
+```
+]
+
+.pull-right[
+```{r plot04-out, ref.label='plot04', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
 ```
 ]
 
 ---
 
-# 1.3. Pinguinos
-Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados graficos usando los mismos datos.  
-Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
+# 1.3. facet_wrap 
+
+**face_wrap** es un argumento que nos permite ver variables categoricas separadas por panel. 
+
 .pull-left[
-```{r, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, color = especie)) +
-       geom_point() +
-       geom_smooth(method = "lm") #<<
+```{r plot05, eval=FALSE}
+ggplot(Pingus, 
+       aes(x=largo_pico_mm, 
+           y=alto_pico_mm)) +
+  geom_point()+
+  facet_wrap(~especie) #<<
 ```
 ]
 
 .pull-right[
-```{r, warning=FALSE, message=FALSE, out.width="40%", echo=FALSE}
-ggplot(Pingus, aes(largo_aleta_mm, masa_corporal_g, color = especie)) +
-       geom_point() +
-       geom_smooth(method = "lm") #<<
+```{r plot05-out, ref.label='plot05', warning=FALSE,echo=FALSE, out.width="80%"}
 ```
 ]
 
@@ -247,34 +297,30 @@ background-size: cover
 ---
 
 # 1. 4. Ejercicios juntos
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(datos)
 library(tidyverse)
 Pingus<-datos::pinguinos
 ```
 
-Exploremos los datos usando:
+Exploremos los datos usando solo los datos de Pinguinos de Adelia.
 ```{r}
 Adelia<-Pingus%>%
-  filter(especie=='Adelia')
+  filter(especie=='Adelia') #<<
 ```
 
-- Grafico de puntos.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
-p1 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_point()
-p1
+```{r echo=FALSE, out.height=200}
+knitr::include_graphics("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png")
 ```
 
 ---
 
 # 1. 4. Ejercicios juntos
-Gráfico de puntos con ruido en el eje horizontal.  
-geom_jitter permite que se "muevan" los puntos un poquito.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
-p2 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_jitter(width = 0.1)
-p2
+Grafico de puntos.  
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+p1 <- ggplot(Adelia, aes(x=largo_aleta_mm, y=masa_corporal_g)) +
+       geom_point() #<<
+p1
 ```
 
 ---
@@ -282,61 +328,47 @@ p2
 # 1. 4. Ejercicios juntos
 
 Boxplot.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+p2 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
+       geom_boxplot() #<<
+p2
+```
+
+---
+
+# 1. 4. Ejercicios juntos
+
+Violin.   
+
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
 p3 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_boxplot()
+       geom_violin() #<<
 p3
 ```
 
 ---
 
 # 1. 4. Ejercicios juntos
-Violin.   
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
+
+Subamos un poco el nivel. 
+Combinando boxplot y violin.  
+Hagamos un plot compuesto y cambiemos los [colores](https://coolors.co/palettes/trending).  
+
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
 p4 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_violin()
+       geom_violin(fill='#e76f51', alpha=0.5)+ #<<
+       geom_boxplot(color="#e76f51", fill="#e9c46a",#<<
+                    lwd=0.8, width=0.2 )
 p4
 ```
 
 ---
 
-# 1. 4. Ejercicios juntos
-Combinando boxplot y violin.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
-p5 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_violin(fill='orange', alpha=0.5)+
-       geom_boxplot(color="white", fill="black",
-                    lwd=0.8, width=0.2 )
-p5
-```
-
----
-
-# 1. 4. Ejercicios juntos
-
-Grafico de barras con medias + SEM (error estandar en rojo)
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%", include=FALSE}
-p6 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-      stat_summary(fun.y = mean, geom = "bar",
-                   width=0.5) +
-      stat_summary(fun.data = mean_se, geom = "errorbar",
-                   color="red", width=0.5)
-p6
-```
-
----
-
-# 1.4. Ejercicios juntos
-
-La idea es que noten que hay muchas maneras de explorar sus datos.
-
----
-
 # 1.4. facet_wrap 
 
-**face_wrap** es un argumento que nos permite ver variables categoricas separadas por panel. 
+Ver variables categoricas separadas por panel. 
 
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+```{r, warning=FALSE, message=FALSE, out.height="10%"}
 ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
   geom_point()+
   facet_wrap(~especie) #<<
@@ -346,366 +378,23 @@ ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
 
 # 1.4. cowplot
 
-Pero **facet_wrap** lo acomoda de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
+Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
 
-Recuerden que deben instalarlo antes.
+Deben instalarlo antes.
 ```{r}
 #install.packages("cowplot")
 library(cowplot)
 ```
 
+---
+
+# 1.4. cowplot
+
 Elegir el orden.  
 Noten que les van a salir muchos warning por que hay NAs en nuestro data frame.
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-cowplot::plot_grid(p1,p2,p3,p4,p5,p6, #Son los plots que creamos anteriormente
-                   labels = "AUTO") #<< Agrega etiquetas automaticas
-```
-
----
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1493329025335-18542a61595f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
-background-size: cover
-
-# 2. Caso de estudio
-
----
-
-
-# 2.1. Titanic
-
-Instalar y cargar el paquete
-```{r, warning=FALSE}
-#install.packages('titanic')
-library(titanic)
-```
-
-Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
-```{r}
-Titanic_datos<-titanic_train
-```
-
-Vamos a usar estos datos por que no estan "limpios" y porque tenemos que considerar que algunas variables se deben transformar a **factores**.
-
----
-
-# 2.1. Titanic
-
-Que tipos de datos tenemos?  
-- **int**: integral, numerico sin puntos
-- **chr**: character
-- **dbl**: double, es un tipo numérico de doble precisión
-- **fct**: factor?
-```{r}
-glimpse(Titanic_datos)
-```
-
----
-
-# 2.1. Columnas y valores
-
-Renombrar columnas para que esten en espaniol.
-```{r}
-Titanic_datos <- Titanic_datos %>%
-  rename(sobrevivio=Survived,
-         clase=Pclass,
-         edad=Age,
-         sexo=Sex,
-         embarcado=Embarked,
-         precio=Fare)
-```
-
-Transformamos los espacios vacios ("") a NA
-```{r}
-Titanic_datos$embarcado <- ifelse(Titanic_datos$embarcado == "",
-                                 NA,
-                                 Titanic_datos$embarcado)
-```
-
----
-
-# 2.2. Factor
-Transformamos columnas que son factores a factor.
-```{r}
-Titanic_datos$sobrevivio <- factor(Titanic_datos$sobrevivio)
-Titanic_datos$clase <- factor(Titanic_datos$clase)
-Titanic_datos$sexo <- factor(Titanic_datos$sexo)
-```
-
-```{r}
-glimpse(Titanic_datos)
-```
-
----
-
-class: center
-
-# 2.3. Algunas preguntas.
-
-
-## ¿Cuál fue el número de sobrevivientes?  
- 
-## ¿Cuál fue la cantidad de pasajeros en cada clase?  
-
-## ¿Cuántos hombres y mujeres a bordo?  
- 
-## ¿Dónde (en qué puerto) subió la gente al barco?  
-
-## ¿Cuál era la distribución de edades de los pasajeros?  
-
-## ¿Cuánto costaba subir al Titanic?  
-
----
-
-# 2.4. Supervivencia
-¿Cuál fue el número de supervivientes?  
-
-Vamos a crear un objeto con esa tabla.
-```{r}
-Sobrevivientes<-Titanic_datos %>%
-          group_by(sobrevivio) %>%
-          count()
-```
-
-Usaremos la informacion de la tabla que creamos para agregar el numero de sobreviventes.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g1 <- ggplot(Titanic_datos, aes(sobrevivio)) +
-  geom_bar()+
-  geom_text(data = Sobrevivientes,
-            aes(sobrevivio, y=25, label=n),
-            color="white")+
-  xlab("Supervivencia")+
-  ylab("Frecuencia")
-g1
-```
-
----
-
-# 2.4. Supervivencia
-Como se relacionan las variables?
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-ggplot(Titanic_datos, 
-       aes(sexo, sobrevivio))+
-  geom_jitter(aes(color=interaction(factor(sexo), sobrevivio)),
-              alpha=0.5)+
-  facet_wrap(~clase)+
-  ylab("Supervivencia")+
-  scale_y_discrete(breaks=c("0","1"),
-        labels=c("No", "Sí"))+
-  theme(legend.position = "none")+
-  scale_color_brewer(palette = "Set2")+
-  ggtitle("Supervivencia por clase")
-```
-
----
-
-# 2.3. Edad
-¿Cómo se relaciona la edad con la supervivencia?
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-ggplot(Titanic_datos,
-       aes(sobrevivio, edad, fill=sobrevivio))+
-  geom_violin()+
-  geom_boxplot(fill="black", color="white",
-               lwd=1.1, width=0.1)+
-  theme_bw()+
-  scale_fill_brewer(palette = "Set2")+
-  theme(legend.position = "none")+
-  xlab("Supervivencia")+
-  ylab("Edad (años)")+
-  scale_x_discrete(breaks=c("0","1"),
-        labels=c("No", "Sí"))+
-  coord_flip()# Rotar los ejes
-```
-
----
-
-# 2.3. Precio
-
-Graficar edad y precio del boleto
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p1 <- ggplot(Titanic_datos, aes(edad, precio)) +
-  geom_point()+
-  xlab("Edad (años)")+
-  ylab("Precio del boleto")
-p1
-```
-
----
-
-# 2.3. Precio 
-
-Tiene alguna relacion la supervivencia y el precio que pagaron para abordar al titanic?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p2 <- ggplot(Titanic_datos, aes(sobrevivio, precio)) +
-  geom_boxplot(aes(fill=sobrevivio))+
-  xlab("Supervivencia")+
-  ylab("Precio del boleto")+
-  scale_x_discrete(breaks=c("0","1"),
-        labels=c("No", "Sí"))+
-  theme(legend.position = "none")+
-  scale_fill_brewer(palette = "Set2")
-p2
-```
-
----
-
-# 2.3. Precio. 
-
-Quienes pagaron mas estaban en el grupo de los sobrevivientes?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-cowplot::plot_grid(p1,p2, labels="AUTO")
-```
-
----
-
-# 2.3. Clase y edad
-
-La base de este gráfico es la misma que la del anterior
-```{r, fig.heigth=3, warning=FALSE, message=FALSE}
-ggplot(Titanic_datos,
-       aes(x= factor(clase), edad, fill=sobrevivio))+
-  geom_violin()
-```
-
----
-
-### 2.4. Ejercicios juntos
-
-Cargar datos
-```{r, warning=FALSE}
-#install.packages('titanic')
-library(titanic)
-```
-
-Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
-```{r}
-Titanic_datos<-titanic_train
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-Renombrar columnas para que esten en espaniol.
-```{r}
-Titanic_datos <- Titanic_datos %>%
-  rename(sobrevivio=Survived,
-         clase=Pclass,
-         edad=Age,
-         sexo=Sex,
-         embarcado=Embarked,
-         precio=Fare)
-```
-
-Transformamos los espacios vacios ("") a NA
-```{r}
-Titanic_datos$embarcado <- ifelse(Titanic_datos$embarcado == "",
-                                 NA,
-                                 Titanic_datos$embarcado)
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-Calcula el numero de supervivientes.
-```{r}
-supervivencia <- Titanic_datos %>%
-          group_by(sobrevivio) %>%
-          count()
-```
-
-Grafica el numero de supervivientes.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g1 <- ggplot(Titanic_datos, aes(sobrevivio)) +
-  geom_bar()+
-  geom_text(data = supervivencia, #<<
-            aes(sobrevivio, y=25, label=n), #<<
-            color="white")+
-  xlab("Supervivencia")+
-  ylab("Frecuencia")
-g1
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-Cuál es la cantidad de pasajeros en cada clase?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g2 <- ggplot(Titanic_datos,
-             aes(clase))+ #<<
-  geom_bar()+ #<<
-  xlab("Clase")+ #<<
-  ylab("Frecuencia")
-g2
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-cuántos hombres y mujeres a bordo?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g3 <- ggplot(Titanic_datos,
-             aes(sexo))+ #<<
-  geom_bar()+ #<<
-  xlab("Sexo")+ #<<
-  ylab("Frecuencia")
-g3
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-En qué puerto subió la gente al barco?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g4 <- ggplot(Titanic_datos,
-             aes(embarcado))+#<<
-  geom_bar()+#<<
-  xlab("Lugar embarque")+#<<
-  ylab("Frecuencia")
-g4
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-Cuál es la distribución de edades de los pasajeros?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g5 <- ggplot(Titanic_datos,
-             aes(edad))+#<<
-  geom_histogram(binwidth = 5, color="white")+#<<
-  xlab("Edad")+#<<
-  ylab("Frecuencia")
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-Cuánto costaba subir al Titanic?
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-g6 <- ggplot(Titanic_datos,
-             aes(precio))+#<<
-  geom_density(fill="gray50")+#<<
-  xlab("Precio del boleto")+#<<
-  ylab("Frecuencia")
-g6
-```
-
----
-
-# 2.4. Ejercicios juntos
-
-Ver todo junto
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-cowplot::plot_grid(g1,g2,g3,g4,g5,g6,
-                   labels="AUTO")
+cowplot::plot_grid(p1,p2,p3,p4, #Estos son los plots que crearon antes
+                   labels = "AUTO") #<< Agrega letras
 ```
 
 
@@ -719,7 +408,9 @@ background-size: cover
 
 ---
 
-# 3. Modelos lineales
+# 2. Modelos lineales
+
+Recordatorio: 
 
 - La realidad es multidimensional, compleja e incierta.  
 - Un modelo es una representación formal de un fenómeno, una reducción de dimensionalidad que posee utilidad práctica.  
@@ -729,7 +420,7 @@ background-size: cover
 
 ---
 
-## 3.1. Generar datos
+## 2.1. Generar datos
 
 Cuando busquen ejemplos estadisticos en internet, en algun momento van a toparse con:
 ```{r}
@@ -745,25 +436,27 @@ Que es **rnorm**?
 
 --
 
-Esto se hace para que en lugar de incluir tus 10000 datos alguien pueda replicar tu probema rapidamente y poder asi ayudarte con una solucion.  
-Cuando hagan preguntas en internet, recomiendo usarlo!.  
-
-```{r, fig.heigth=2, warning=FALSE, out.width="40%"}
-hist(ejemplo, col='blue', breaks=40, 
-     ylab = "Frecuencia", main = "Histograma ejemplo")
-```
+Cuando hagan preguntas en internet, es muy util usarlo! 
 
 ---
 
-# 3.2. Chocolate y felicidad
+## 2.2. Ejemplo practico
+
+### Chocolate y felicidad
 
 -  Supongamos que podemos medir felicidad de manera cuantitativa, como una variable continua.  
 - Supongamos, además, que nuestro laboratorio quiere investigar cómo impactan distintas dosis de chocolate a la felicidad de los humanos. 
 
+.center[
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics("https://images.unsplash.com/photo-1553452118-621e1f860f43?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80")
+```
+]
+
 ---
 
-# 3.2. Chocolate y felicidad
-- Para esto, tomamos una muestra de 100 voluntarios y los asignamos de manera aleatoria a 5 dosis de chocolate (20, 40, 60, 80, y 100 gramos). Los individuos consumen la dosis asignada, el chocolate aumenta su felicidad (según la fórmula felicidad=dosis∗2.5+10), que medimos y graficamos.
+## 2.2. Chocolate y felicidad
+Para esto, tomamos una muestra de **100 voluntarios** y los asignamos de manera aleatoria a **5 dosis de chocolate (20, 40, 60, 80, y 100 gramos)**. Los individuos consumen la dosis asignada, el chocolate aumenta su felicidad (según la fórmula felicidad=dosis∗2.5+10), que medimos y graficamos.
 
 Generar participantes
 ```{r}
@@ -782,43 +475,41 @@ respuesta <- dosis * 2.5 + 10
 
 Construir data.frame
 ```{r}
-datos <- data.frame(id=id,
-                    dosis=dosis,
-                    respuesta=respuesta)
+datos <- data.frame(id=id,dosis=dosis,respuesta=respuesta)
 ```
 
 ---
 
-# 3.3. Graficar
-```{r}
-library(ggthemes)
-```
+## 2.3. Chocolate y felicidad
+Asi se veria nuestro modelo **ideal**
 
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p <- ggplot(datos, aes(dosis, respuesta))+
+.pull-left[
+```{r plot10, eval=FALSE}
+p <- ggplot(datos, 
+            aes(x=dosis, 
+                y=respuesta))+
       geom_point()+
       xlab("Dosis Chocolate (gr)")+
-      ylab("Felicidad")+
-      theme_base()+
-      theme(plot.background = element_rect(colour = NA))
-
+      ylab("Felicidad")
 p
 ```
+]
+
+
+.pull-right[
+```{r plot10-out, ref.label='plot10', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
+
 
 ---
 
-# 3.3. Determinado
+# 2.4. Chocolate y felicidad
 
-- El modelo que construimos hasta ahora tiene valores determinados.  
 - Pero, en la realidad, esperamos variabilidad en la respuesta al chocolate entre individuos.  
+- Si queremos trabajar con un modelo **más realista** deberíamos tener mas variacion en la respuesta:
 
----
-
-# 3.4. Variabilidad
-
-- Si queremos trabajar con un modelo más realista deberíamos tener un gráfico como el siguiente:
-
-semilla
+Semilla para muestras aleatorias.
 ```{r}
 set.seed(444)
 ```
@@ -830,52 +521,54 @@ datos$respuesta <- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 
 ---
 
-# 3.4. Variabilidad
+# 2.4. Chocolate y felicidad
 
-Graficando ejemplo
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p <- ggplot(datos, aes(dosis, respuesta))+
+- Modelo un poco **más** realista, la respuesta muestra variaciones.
+
+.pull-left[
+```{r plot11, eval=FALSE}
+p <- ggplot(datos, 
+            aes(x=dosis, 
+                y=respuesta))+
        geom_point(alpha = 0.1)+
        xlab("Dosis Chocolate (gr)")+
-       ylab("Felicidad")+
-       theme_base()+
-       theme(plot.background = element_rect(colour = NA))
-
+       ylab("Felicidad")
 p
 ```
+]
+
+.pull-right[
+```{r plot11-out, ref.label='plot11', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
+
 
 ---
 
-# 3.5. Graficar
+# 2.5. Chocolate y felicidad
 Entre mayor dosis de chocolate más valor de felicidad.  
 
 - ¿Cuál es el valor esperado de felicidad para una dada dosis de chocolate?  
 - ¿Cómo podemos estimarlo?  
 
-Graficar
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-ggplot(datos, aes(dosis, respuesta))+
-       geom_point(alpha = 0.1)+
-       xlab("Dosis Chocolate (gr)")+
-       ylab("Felicidad")+
-       theme_base()+
-       theme(plot.background = element_rect(colour = NA)) + 
-  geom_smooth(method = "lm", color="lightgray", se=FALSE)+
-  stat_summary(fun = mean, geom="point", size=2, color="red")
+.center[
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics("https://images.unsplash.com/photo-1553452118-621e1f860f43?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80")
 ```
+]
 
 ---
 
-# 3.6. Modelo lineal
+# 2.6. Modelo lineal
 
-En nuestro caso, queremos estudiar la relación entre la felicidad (respuesta) y la dosis de chocolate (dosis). 
-
-Importante este simbolo:
+Para construir modelos en R, es importante el simbolo *virgulilla*
 ```{r, eval=FALSE} 
-~ #virgulilla
+~  
 ```
 
-Crear modelo
+En nuestro caso, queremos estudiar la relación entre la felicidad (respuesta) y la dosis de chocolate (dosis).
+Entonces el modelo se construiria de la siguiente manera.
+
 ```{r}
 modelo_chocolate <- lm(data=datos,
                        respuesta ~ dosis)
@@ -883,7 +576,7 @@ modelo_chocolate <- lm(data=datos,
 
 ---
 
-# 3.6. summary
+# 2.6. summary
 Ver resultados del modelo.
 ```{r}
 summary(modelo_chocolate)
@@ -891,7 +584,7 @@ summary(modelo_chocolate)
 
 ---
 
-# 3.7. Broom
+# 2.7. Broom
 
 El paquete broom (de la paqueteria tidyverse), nos permite extraer información estadística de los modelos. 
 
@@ -900,11 +593,27 @@ Aquí está la tabla con los estimadores:
 broom::tidy(modelo_chocolate)
 ```
 
-A partir de la columna de estimadores (estimate), vemos que el consumo de chocolate incrementa la felicidad (esperamos mayor un incremento en ~2.52 unidades de felicidad por cada gramo de chocolate!). Nuestro modelo puede escribirse como:
+A partir de la columna de estimadores (estimate), vemos que el consumo de chocolate incrementa la felicidad (esperamos mayor un incremento en ~2.52 unidades de felicidad por cada gramo de chocolate).  
+
+Nuestro modelo puede escribirse como:
 
 **felicidad=2.52∗dosis+8.59**
 
-En la tabla vemos que los estimadores tienen un error asociado, un estadístico t y su p-valor asociado. Por default, estos resultados están dados para un intervalo de confianza del 95%. 
+---
+
+# 2.8. Recordatorio
+
+**felicidad=2.52∗dosis+8.59**
+
+```{r echo=FALSE, out.height=300}
+knitr::include_graphics("https://datascience.foundation/img/pdf_images/understanding_of_linear_regression_with_python_1.png")
+```
+
+---
+
+# 2.9. Coeficientes.
+
+También podemos acceder a porciones del modelo por separado. 
 
 Coeficientes.  
 ```{r}
@@ -913,8 +622,7 @@ modelo_chocolate$coefficients
 
 ---
 
-# 3.9. Otras partes
-También podemos acceder a porciones del modelo por separado. Puedes intentar en tu consola los siguientes comandos.
+# 2.9. Intervalos.
 
 Intervalos. 
 ```{r}
@@ -923,38 +631,48 @@ round(confint(modelo_chocolate), 3)
 
 Valores predichos.  
 ```{r}
-modelo_chocolate$fitted.values
+head(modelo_chocolate$fitted.values,5)
 ```
 
 Residuales.
 ```{r}
-modelo_chocolate$residuals
+head(modelo_chocolate$residuals,5)
 ```
 
 ---
 
-## 3.9. Supuestos
+## 2.10. Supuestos
 
 Podemos explorar el ajuste y analizar el cumplimiento de supuestos en R utilizando la función plot que maneja bien objetos lm.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+
+.pull-left[
+```{r plot13, eval=FALSE}
 par(mfrow = c(2, 2))
 plot(modelo_chocolate)
 ```
+]
+
+.pull-right[
+```{r plot13-out, ref.label='plot13', warning=FALSE,echo=FALSE, message=FALSE, out.width="100%"}
+```
+]
 
 ---
 
-## 3.10. Residuales
+## 2.11. Nuevo modelo
 
 Cambiemos nuestros datos para un peor ajuste. 
 ```{r}
 datos$nueva_dosis <- datos$dosis + rnorm(100,10,10)
 ```
 
+Creemos un nuevo modelo.
 ```{r}
 nuevo_modelo <- lm(data = datos,
                    respuesta~nueva_dosis)
 ```
 
+Agreguemos los valores predichos y los residuales a nuestro data frame.
 ```{r}
 datos$nuevo_pred <- nuevo_modelo$fitted.values
 datos$residuos <- nuevo_modelo$residuals 
@@ -962,172 +680,75 @@ datos$residuos <- nuevo_modelo$residuals
 
 ---
 
-## 3.10. Residuales
+# 2.11. Nuevo modelo
 
-Graficar.
+Estos son nuestros nuevos datos, y la linea de regression. 
+
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-fit_plot <- ggplot(datos, aes(nueva_dosis, respuesta))+
-    geom_smooth(method="lm", se=FALSE, color="lightgray")+      
-    geom_point(alpha = 0.5) +
-    theme_base()+
-    theme(plot.background = element_rect(colour = NA))+
-    xlab("Dosis Chocolate (gr)")+
-    ylab("Felicidad")
-
-fit_plot
-```
-
----
-
-# 3.11. Residuales
-
-Graficamos nuestros puntos con ajuste alineado a la regresion y ahora los nuevos datos.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-pre_plot <- ggplot(datos, aes(nueva_dosis, respuesta))+
+Plot_nueva_dosis<- ggplot(datos, aes(nueva_dosis, respuesta))+
   geom_point()+
   geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
-  theme_base()+
   theme(plot.background = element_rect(colour = NA))+
   xlab("Dosis Chocolate (gr)")+
   ylab("Felicidad")
-pre_plot
+Plot_nueva_dosis
 ```
 
 ---
 
-## 3.11. Residuales
+## 2.11. Residuales
 
-Como vemos, los predichos están alineados perfectamente en la regresión. Podemos agregar los residuales de la siguiente forma:
+Agregar los residuales.
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-pre_plot +
-  geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
+Plot_nueva_dosis +
+  geom_segment(aes(xend = nueva_dosis, #<<
+                   yend = nuevo_pred), #<<
                alpha=0.5)
 ```
 
 ---
 
-## 3.11. Residuales
+## 2.11. Residuales
 
 Lo que nuestra regresión está realizando es minimizar la suma de los residuos al cuadrado.  
 Una herramienta para visualizar mejor los puntos con residuos grandes es graficarlos utilizando una escala de color y tamaño.
 
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+.pull-left[
+```{r plot14, eval=FALSE}
 ggplot(datos, aes(nueva_dosis, respuesta))+
-  #Agregamos opción de color dentro del geom_point()
   geom_point(aes(color = residuos, size=abs(residuos)))+ 
   geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
   geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
                alpha=0.5)+
-  theme_base()+
-  theme(plot.background = element_rect(colour = NA))+
   xlab("Dosis Chocolate (gr)")+
   ylab("Felicidad")+
   scale_color_gradientn(colours = c("red", "black", "red"))+
   guides(color = FALSE,
          size = FALSE)
 ```
+]
+
+.pull-right[
+```{r plot14-out, ref.label='plot14', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
 
 ---
 
-## 3.12. Descomponiendo variabilidad
-
-Creamos un grafico base al que agregaremos varias capas
-```{r, fig.heigth=3, warning=FALSE, message=FALSE}
-grafico_base <- ggplot(datos, aes(nueva_dosis, respuesta))+
-    geom_hline(yintercept = mean(datos$respuesta))+
-    geom_point() +
-    theme_base(base_size = 12)+
-    theme(plot.background = element_rect(colour = NA))+
-    xlab("Dosis Chocolate (gr)")+
-    ylab("Felicidad")+
-    annotate("text", label = "media global",
-             x = 30, y = mean(datos$respuesta) + 15,
-             size = 4, colour = "black")
-```
-
-Variacion respecto de la media global
-```{r, fig.heigth=3, warning=FALSE, message=FALSE}
-variacion_total <- grafico_base +
-      geom_segment(aes(xend=nueva_dosis,
-                       yend=mean(datos$respuesta)),
-                       alpha=0.5)+
-      ggtitle("Variación total")
-```
-
----
-
-## 3.12. Descomponiendo variabilidad
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-variacion_total
-```
-
----
-
-## 3.12. Descomponiendo variabilidad
-Debido a que las predictoras tienen un efecto en los valores predichos, nuestro modelo logra efectivamente explicar una porción de la variabilidad total.  
-Esta porción es la distancia entre la media y los valores predichos.  
-
-Variacion explicada.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-variacion_explicada <- grafico_base+
- geom_smooth(method="lm", se=FALSE, color="lightgray")+
-  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
-  geom_segment(aes(xend = nueva_dosis, y = mean(datos$respuesta),
-                   yend = nuevo_pred), alpha=0.5)+
-  ggtitle("Variación explicada")
-```
-
-Graficos. 
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-variacion_explicada
-```
-
-
----
-
-## 3.13. Descomponiendo variabilidad
-Variacion no explicada por el modelo
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-variacion_no_explicada <- grafico_base +
-  geom_smooth(method="lm", se=FALSE, color="lightgray")+
-  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
-  geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
-               alpha=0.5)+
-  ggtitle("Variación no explicada")
-```
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-variacion_no_explicada
-```
-
----
-
-## 3.14. Descomponiendo variabilidad
-Idealmente, queremos que la fracción de variabilidad explicada sea grande, cercana a la total. Esta información normalmente se condensa en el llamado coeficiente de determinación (R2).  
-**R2**: toma valores entre 0 y 1, con 1 como máximo valor predictivo.  
-
-Podemos acceder al R^2 con
-```{r}
-summary(modelo_chocolate)$r.squared
-```
-
----
-
-## 3.15. ¿Por qué hacer una regresión?
+## 2.12. ¿Por qué hacer una regresión?
 
 Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
-- Describir la relación funcional entre X e Y (rectilínea, polinomial, cuadrática, …)
+- Describir la relación funcional entre X e Y
 - Determinar cuánta de la variación en Y puede ser explicada por la variación de X y cuánto permanece sin explicar.
 - Estimar los parámetros del modelo.
 - Hacer inferencia sobre los parámetros del modelo (mediante pruebas de hipótesis y cálculo de intervalos de confianza).
-- Predecir nuevos valores de Y para valores específicos de X en el dominio estudiado (interpolación dentro del rango de la(s) variable(s) predictora(s)).
 
 ---
 
-# 3.16 Ejercicios juntos
-Generar datos
+## 2.13 Ejercicios juntos
+
+Modelo ideal.
 ```{r}
 id <- 1:100 
 dosis <- sort(rep(seq(20,100,20), 20))
@@ -1137,145 +758,117 @@ datos <- data.frame(id=id,
                     respuesta=respuesta)
 ```
 
----
-# 3.16. Ejercicios juntos
-```{r}
-library(ggthemes)
-```
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p <- ggplot(datos, aes(dosis, respuesta))+
+Explorar los datos.
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, eval=FALSE, out.width="40%"}
+p <- ggplot(datos, 
+            aes(x=dosis, y=respuesta))+
       geom_point()+
       xlab("Dosis Chocolate (gr)")+
-      ylab("Felicidad")+
-      theme_base()+
-      theme(plot.background = element_rect(colour = NA))
+      ylab("Felicidad")
 p
 ```
 
 ---
 
-# 3.16. Ejercicios juntos
+## 2.14. Ejercicios juntos
 
-semilla
+Modelo con un poco mas realista.
 ```{r}
 set.seed(444)
-```
-
-Agregar ruido con distribucion normal (media 0, sd = 5)
-```{r}
 datos$respuesta <- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 ```
 
----
-
-# 3.16. Ejercicios juntos
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p <- ggplot(datos, aes(dosis, respuesta))+
+Explorar los datos.
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, eval=FALSE}
+p <- ggplot(datos, 
+            aes(x=dosis, y=respuesta))+
        geom_point(alpha = 0.1)+
        xlab("Dosis Chocolate (gr)")+
-       ylab("Felicidad")+
-       theme_base()+
-       theme(plot.background = element_rect(colour = NA))
-
+       ylab("Felicidad")
 p
 ```
 
 ---
 
-# 3.16. Ejercicios juntos
+## 2.14. Ejercicios juntos
 
-```{r}
+Sintaxis de modelos lineares.
+```{r, eval=FALSE}
 modelo_chocolate <- lm(data=datos,
                        respuesta ~ dosis)
 ```
 
-```{r}
+Obtener estimadores.
+```{r, eval=FALSE}
 summary(modelo_chocolate)
-```
-
-```{r}
 broom::tidy(modelo_chocolate)
 ```
 
-Coeficientes.  
-```{r}
+Ver coeficientes.
+```{r, eval=FALSE}
 modelo_chocolate$coefficients
 ```
 
----
-
-# 3.16. Otras partes
-
-Intervalos. 
-```{r}
-round(confint(modelo_chocolate), 3) 
-```
-
-Valores predichos.  
-```{r}
-modelo_chocolate$fitted.values
-```
-
-Residuales.
-```{r}
-modelo_chocolate$residuals
-```
-
-
----
-
-# 3.16. Graficar
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-ggplot(datos, aes(dosis, respuesta))+
-       geom_point(alpha = 0.1)+
-       xlab("Dosis Chocolate (gr)")+
-       ylab("Felicidad")+
-       theme_base()+
-       theme(plot.background = element_rect(colour = NA)) + 
+Graficar
+```{r, eval=FALSE}
+ggplot(datos, aes(dosis, respuesta))+ geom_point(alpha = 0.1)+
+       xlab("Dosis Chocolate (gr)")+ylab("Felicidad")+
   geom_smooth(method = "lm", color="lightgray", se=FALSE)+
   stat_summary(fun = mean, geom="point", size=2, color="red")
 ```
 
+---
+
+## 2.14. Ejercicios juntos
+
 Cambiemos nuestros datos para un peor ajuste. 
-```{r}
+```{r, eval=FALSE}
 datos$nueva_dosis <- datos$dosis + rnorm(100,10,10)
 ```
 
-```{r}
+```{r, eval=FALSE}
 nuevo_modelo <- lm(data = datos,
                    respuesta~nueva_dosis)
 ```
 
-```{r}
+```{r, eval=FALSE}
 datos$nuevo_pred <- nuevo_modelo$fitted.values
 datos$residuos <- nuevo_modelo$residuals 
 ```
 
----
-# 3.17. Residuales
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-fit_plot <- ggplot(datos, aes(nueva_dosis, respuesta))+
-    geom_smooth(method="lm", se=FALSE, color="lightgray")+      
-    geom_point(alpha = 0.5) +
-    theme_base()+
-    theme(plot.background = element_rect(colour = NA))+
-    xlab("Dosis Chocolate (gr)")+
-    ylab("Felicidad")
-
-fit_plot
+```{r, eval=FALSE}
+ggplot(datos, aes(nueva_dosis, respuesta))+
+  geom_point(aes(color = residuos, size=abs(residuos)))+ 
+  geom_point(aes(nueva_dosis, nuevo_pred), color="gray50", pch=1) +
+  geom_segment(aes(xend = nueva_dosis, yend = nuevo_pred),
+               alpha=0.5)+
+  xlab("Dosis Chocolate (gr)")+
+  ylab("Felicidad")+
+  scale_color_gradientn(colours = c("red", "black", "red"))+
+  guides(color = FALSE,
+         size = FALSE)
 ```
 
 ---
 
-# Extras
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1476837579993-f1d3948f17c2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+# Outliers
 
 ---
 
-## 4. Outliers
+## 3. Outliers
 
-Crear datos
+Un valor atípico (en inglés outlier) es una observación que es numéricamente distante del resto de los datos.
+- Que hacer con ellos?
+
+---
+
+## 3. Outliers
+
+Generemos datos.
 ```{r}
 set.seed(42)
 ex_data  = data.frame(x = 1:10,
@@ -1283,86 +876,131 @@ ex_data  = data.frame(x = 1:10,
 ex_model = lm(y ~ x, data = ex_data)
 ```
 
+.pull-left[
+```{r plot21, eval=FALSE}
+ggplot(data = ex_data, 
+       aes(x = x, 
+           y = y)) +
+  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + 
+  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + 
+  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+theme_bw()
+```
+]
+
+.pull-right[
+```{r plot21-out, ref.label='plot21', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
+
 ---
 
-# 4.1 Un outlier
-Añadamos un punto (x, y) y reajustemos una regresión lineal
+## 3. Outliers
 
+Añadamos un punto (x, y) y reajustemos una regresión lineal
 ```{r}
 point_1 = c(5.4, 11) # nuevo punto
-ex_data_1 = rbind(point_1, ex_data) # añadiéndolo
-model_1 = lm(y ~ x, data = ex_data_1) # nuevo modelo
+ex_data_1 = rbind(point_1, ex_data) 
+model_1 = lm(y ~ x, data = ex_data_1) 
 ```
 
-El punto "extraño" no genera mayores cambios en el modelo.
-```{r}
-ggplot(data = ex_data_1, aes(x = x, y = y)) +
-  geom_point(color = "#999999") + # plotting all points
-  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
-  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
-  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelos
-  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+
+.pull-left[
+```{r plot22, eval=FALSE}
+ggplot(data = ex_data_1, aes(x = x, 
+                             y = y)) +
+  geom_point(color = "black") + # plotting all points
+  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # Denotar el nuevo punto
+  geom_smooth(data = ex_data, method = "lm", # línea de regresión del modelo inicial
+              se = FALSE, aes(color = "inicial")) + 
+  geom_smooth(method = "lm", # línea de regresión del nuevo modelos
+              se = FALSE, aes(color = "nuevo"), linetype = 2) + 
+  scale_color_manual(name = "modelos", 
+                     labels = c("inicial", "nuevo"), 
+                     values = c("red", "blue")) +
 theme_bw()
 ```
+]
+
+.pull-right[
+```{r plot22-out, ref.label='plot22', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
+
 
 ---
 
-# 4.2. Segundo outlier
-```{r}
-point_2 = c(18, -5.7) # nuevo punto
-ex_data_2 = rbind(point_2, ex_data) # añadiéndolo
-model_2 = lm(y ~ x, data = ex_data_2) # nuevo modelo
+## 3.2. Otro outlier
 
+Creemos un nuevo punto, agreguemoslo al data frame y creemos un nuevo modelo.
+```{r}
+point_2 = c(18, -5.7) 
+ex_data_2 = rbind(point_2, ex_data) 
+model_2 = lm(y ~ x, data = ex_data_2) 
 ```
 
-El nuevo punto no influencia el modelo.
-```{r}
+.pull-left[
+```{r plot23, eval=FALSE}
 ggplot(data = ex_data_2, aes(x = x, y = y)) +
-  geom_point(color = "#999999") + # plotting all points
+  geom_point(color = "black") + # plotting all points
   geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
   geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
   geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelo
-  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("red", "blue")) +
 theme_bw()
-
 ```
+]
+
+.pull-right[
+```{r plot23-out, ref.label='plot23', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
+
 
 ---
 
-# 4.3. Tercer outlier
+## 3.3. Un ultimo outlier
+
+Creemos un nuevo punto, agreguemoslo al data frame y creemos un nuevo modelo.
 ```{r}
-point_3 = c(14, 5.1) # nuevo punto
-ex_data_3 = rbind(point_3, ex_data) # añadiéndolo
-model_3 = lm(y ~ x, data = ex_data_3) # nuevo modelo
+point_3 = c(14, 5.1) 
+ex_data_3 = rbind(point_3, ex_data) 
+model_3 = lm(y ~ x, data = ex_data_3) 
 ```
 
-El nuevo modelo parece bastante distinto
-```{r}
+El nuevo modelo parece bastante distinto.
+.pull-left[
+```{r plot24, eval=FALSE}
 ggplot(data = ex_data_3, aes(x = x, y = y)) +
-  geom_point(color = "#999999") + # plotting all points
-  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
-  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
-  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelo
-  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
+  geom_point(color = "black") + 
+  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + #
+  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + 
+  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + 
+  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("red", "blue")) +
 theme_bw()
 ```
+]
 
----
-
-
+.pull-right[
+```{r plot24-out, ref.label='plot24', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
+```
+]
 
 ---
 
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-image: url(https://images.unsplash.com/photo-1612343267903-f6c1b17e6e1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80)
 background-size: cover
 
 
 # Recapitulando
 
-1.0. Explorar datos.  
-1.1. Modelo lineal.
+1.1. Explorar datos.  
+1.2. Modelo lineal.
 
----
+Siguiente clase:  
+2.1. Objetos clase factor.  
+2.2. Analisis de varianza.  
+
 
