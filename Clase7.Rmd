@@ -1,6 +1,6 @@
 ---
 title: "Clase 7"
-subtitle: "Exploracion y <br> modelo lineal"
+subtitle: "Exploración y <br> modelo lineal"
 author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
