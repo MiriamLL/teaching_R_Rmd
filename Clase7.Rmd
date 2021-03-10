@@ -281,7 +281,7 @@ ggplot(Pingus,
 ]
 
 .pull-right[
-```{r plot05-out, ref.label='plot05', warning=FALSE,echo=FALSE, out.height="80%"}
+```{r plot05-out, ref.label='plot05', warning=FALSE,echo=FALSE, out.width="80%"}
 ```
 ]
 
@@ -368,7 +368,7 @@ p4
 
 Ver variables categoricas separadas por panel. 
 
-```{r, warning=FALSE, message=FALSE, out.height="10%"}
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
 ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
   geom_point()+
   facet_wrap(~especie) #<<
