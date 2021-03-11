@@ -1,0 +1,708 @@
+---
+title: "Clase 8"
+subtitle: "Factores y <br> Anova"
+author: "Miriam Lerma"
+date: "Marzo 2021"
+output:
+  xaringan::moon_reader:
+    css: ["default"]
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      
+---
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Cargar datps",
+    description = paste0(
+      "Introduccion a RStudio",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html",
+    image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+```
+
+class: title-slide, inverse, middle, right
+background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+### `r rmarkdown::metadata$title`
+# `r rmarkdown::metadata$subtitle`
+
+**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$date`
+
+---
+
+# Intro
+
+La clase es de 2 horas.
+
+- Factores  
+- Analisis de varianza (ANOVA)
+
+
+```{r, echo=FALSE,include=FALSE, message=FALSE}
+library(emo)
+library(here)
+library(fontawesome)
+library(ggplot2)
+```
+
+--
+
+## Ustedes
+
+- Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
+
+- Quieren saber como transformar a factor y conocer la sintaxis para hacer analisis de varianza en R.  
+
+--
+
+**Notas** <br>
+Ya vieron teoria. <br>
+Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.  
+
+---
+
+# Créditos & materiales:  
+
+- Ejercicios de estadística con R <br> 
+[Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
+
+- Ejemplos de regresiones lineales simples <br>
+[Sthda por Alboukadel Kassambara](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)`r emo::ji("star")` 
+
+- Libro <br> 
+[Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
+
+- Tutoriales diversos <br> 
+[STAT 545](https://stat545.com/)
+
+- Ejercicios practicos <br> 
+[ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
+
+- Otros ejemplos:  
+[Libro](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)  
+
+- Imágenes adicionales <br> 
+[Unsplash](https://unsplash.com/)
+
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1551415923-31d2072bc248?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80)
+background-size: cover
+
+# 1. Factores
+
+---
+
+
+## 1.1. Titanic
+
+Instalar y cargar el paquete
+```{r, warning=FALSE, message=FALSE}
+#install.packages('titanic')
+library(titanic)
+library(tidyverse)
+```
+
+Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
+```{r}
+Titanic_datos<-titanic_train
+```
+
+Vamos a usar estos datos por que no estan "limpios". 
+
+La idea es que **consideren** que algunas variables se deben transformar a **factores**.
+
+---
+
+## 1.2. Columnas y valores
+
+Renombrar columnas para que esten en espaniol.
+```{r}
+Titanic_datos <- Titanic_datos %>%
+  rename(sobrevivio=Survived,
+         clase=Pclass,
+         edad=Age,
+         sexo=Sex,
+         embarcado=Embarked,
+         precio=Fare)
+```
+
+Transformamos los espacios vacios ("") a NA
+```{r}
+Titanic_datos$embarcado <- ifelse(Titanic_datos$embarcado == "",
+                                 NA,
+                                 Titanic_datos$embarcado)
+```
+
+---
+
+
+## 1.3. Factores
+
+Que tipos de datos tenemos?  
+- **int**: integral, numerico sin decimales  
+- **chr**: character
+- **dbl**: double, es un tipo numérico de doble precisión
+- **fct**: factor? No hay ninguno con esta clase. 
+```{r}
+glimpse(Titanic_datos)
+```
+
+---
+
+## 1.3. Factores
+Transformamos columnas que son factores a factor.  
+**fct**: factor? Ahora si existen columnas con esta clase.
+```{r}
+Titanic_datos$sobrevivio <- factor(Titanic_datos$sobrevivio)
+Titanic_datos$clase <- factor(Titanic_datos$clase)
+Titanic_datos$sexo <- factor(Titanic_datos$sexo)
+```
+
+```{r}
+glimpse(Titanic_datos)
+```
+
+---
+
+## 1.4. Supervivencia
+¿Cuál fue el número de supervivientes?  
+
+Vamos a crear un objeto con esa tabla.
+```{r}
+Sobrevivientes<-Titanic_datos %>%
+          group_by(sobrevivio) %>%
+          count()
+```
+
+Usaremos la informacion de la tabla que creamos para agregar el numero de sobreviventes.
+
+.pull-left[
+```{r, warning=FALSE, message=FALSE}
+g1 <- ggplot(Titanic_datos, 
+             aes(sobrevivio)) +
+  geom_bar()+
+  geom_text(data = Sobrevivientes,
+            aes(sobrevivio, 
+                y=25, 
+                label=n),
+            color="white")+
+  xlab("Supervivencia")+
+  ylab("Frecuencia")
+```
+]
+
+.pull-right[
+```{r, echo=FALSE,out.width="80%"}
+g1
+```
+]
+
+---
+
+## 1.4. Supervivencia
+
+¿Cuántos hombres y mujeres sobrevivieron y que clase? 
+ 
+Podemos explorar los datos separando por sexo, por clase y por si sobrevivieron o no.
+
+.pull-left[
+```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
+g2<-ggplot(Titanic_datos, 
+       aes(sexo, sobrevivio))+
+  geom_jitter(aes(color=interaction(factor(sexo), 
+                                    sobrevivio)), #<<
+              alpha=0.5)+
+  facet_wrap(~clase)+
+  ylab("Supervivencia")+
+  scale_y_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))+
+  theme(legend.position = "none")+
+  scale_color_brewer(palette = "Set2")+
+  ggtitle("Supervivencia por clase")
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="80%"}
+g2
+```
+]
+
+---
+
+## 1.3. Edad
+¿Cómo se relaciona la edad con la supervivencia?
+
+Podemos explorar los datos separando por sexo,y crear graficos compuestos.
+
+.pull-left[
+```{r}
+g3<-ggplot(Titanic_datos,
+       aes(sobrevivio, edad, 
+           fill=sobrevivio))+ #<<
+  geom_violin()+
+  geom_boxplot(fill="black", color="white",
+               lwd=1.1, width=0.1)+
+  xlab("Supervivencia")+
+  ylab("Edad (años)")+
+  scale_x_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))+
+  coord_flip()# Rotar los ejes
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="80%"}
+g3
+```
+]
+
+---
+
+## 1.3. Precio
+
+Podemos explorar si los que tenian un boleto mas caro, tenian mas posibilidades de sobrevivir.
+
+.pull-left[
+```{r}
+p2 <- ggplot(Titanic_datos, aes(precio, as.factor(sobrevivio))) +
+  geom_boxplot(aes(fill=sobrevivio))+
+  ylab("Supervivencia")+
+  xlab("Precio del boleto")+
+  scale_x_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="80%"}
+p2
+```
+]
+
+---
+
+## 1.3. Clase y edad
+
+Podemos explorar si los que tenian la edad tenia un efecto, ademas de la clase, en las posibilidades de sobrevivir.
+
+.pull-left[
+```{r}
+c1<-ggplot(Titanic_datos,
+       aes(x= as.factor(clase), edad, fill=sobrevivio))+
+  geom_violin()
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="80%"}
+c1
+```
+]
+
+---
+
+## 1.4. Ejercicios juntos
+
+Cargar datos
+```{r, warning=FALSE, message=FALSE}
+#install.packages('titanic')
+library(titanic)
+library(tidyverse)
+```
+
+Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
+```{r}
+Titanic_datos<-titanic_train
+```
+
+---
+
+## 1.4. Ejercicios juntos
+
+Renombrar columnas para que esten en espaniol.
+```{r}
+Titanic_datos <- Titanic_datos %>%
+  rename(sobrevivio=Survived,
+         clase=Pclass,
+         edad=Age,
+         sexo=Sex,
+         embarcado=Embarked,
+         precio=Fare)
+```
+
+Transformamos los espacios vacios ("") a NA
+```{r}
+Titanic_datos$embarcado <- ifelse(Titanic_datos$embarcado == "",
+                                 NA,
+                                 Titanic_datos$embarcado)
+```
+
+---
+
+## 1.4. Ejercicios juntos
+
+Grafico de prueba
+```{r, eval=FALSE}
+ggplot(Titanic_datos,
+             aes(clase))+#<<
+  geom_histogram(binwidth = 5, color="white")+#<<
+  xlab("Clase")+#<<
+  ylab("Frecuencia")
+
+```
+Noten que las clases son 1, 2 y 3 si no le decimos que es **factor**, lo interpreta como **numerico**.
+
+Para transformar clase de numerico a factor.
+```{r}
+Titanic_datos$clase <- factor(Titanic_datos$clase)
+```
+
+---
+
+## 1.4. Ejercicios juntos
+
+Prueben con y sin cambiar a factor.
+```{r, eval=FALSE}
+ggplot(Titanic_datos, aes(precio, as.factor(sobrevivio))) +
+  geom_boxplot(aes(fill=sobrevivio))+
+  xlab("Supervivencia")+
+  ylab("Precio del boleto")+
+  scale_x_discrete(breaks=c("0","1"),
+        labels=c("No", "Sí"))
+```
+
+Para transformar clase de numerico a factor.
+```{r}
+Titanic_datos$sobrevivio <- factor(Titanic_datos$sobrevivio)
+```
+
+---
+
+## 1.4. Ejercicios juntos
+
+Calcula el numero de supervivientes.
+```{r}
+supervivencia <- Titanic_datos %>%
+          group_by(sobrevivio) %>%
+          count()
+```
+
+Grafica el numero de supervivientes.
+```{r,  eval=FALSE}
+ggplot(Titanic_datos, aes(sobrevivio)) +
+  geom_bar()+
+  geom_text(data = supervivencia, #<<
+            aes(sobrevivio, y=25, label=n), #<<
+            color="white")+
+  xlab("Supervivencia")+
+  ylab("Frecuencia")
+```
+
+---
+
+## 1.4. Ejercicios juntos
+
+Grafica la frecuencia del sexo de los pasajeros.
+
+Prueba con y sin cambiar a factor.
+```{r, eval=FALSE}
+ggplot(Titanic_datos,
+             aes(sexo))+ #<<
+  geom_bar()+ #<<
+  xlab("Sexo")+ #<<
+  ylab("Frecuencia")
+```
+
+Para transformar clase de numerico a factor.
+```{r}
+Titanic_datos$sobrevivio <- factor(Titanic_datos$sobrevivio)
+```
+
+---
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-size: cover
+
+# ANOVAS
+
+---
+
+## 2.1. Teoria
+
+[Teoria](https://rpubs.com/Joaquin_AR/219148)
+
+El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.
+
+--
+
+Un análisis de la varianza permite determinar, por ejemplo, si diferentes tratamientos (es decir, un grupo de más de dos tratamientos) muestran diferencias significativas en sus resultados o si por el contrario puede suponerse que sus medias poblacionales no difieren.
+
+
+---
+
+## 2.2. Insectos
+
+[Ejercicio](https://biocosas.github.io/R/050_anova.html)
+
+
+Estamos interesados en conocer si hay colores más atractivos para los insectos.  
+Para ello se diseñaron trampas con los siguientes colores: amarillo, azul, blanco y verde.  
+Se cuantificó el número de insectos que quedaban atrapados.
+
+<br>
+<br>
+Generemos los datos.
+```{r}
+insectos <- c(16,11,20,21,14,7,37,32,15,25,39,
+              41,21,12,14,17,13,17,45,59,48,46,38,47)
+colores <- as.factor(c(rep(c("azul", "verde", "blanco", "amarillo"), 
+                           each=6)))
+```
+
+**rep** es repetir ese factor, **each** seis veces.
+
+
+---
+
+## 2.2. Insectos
+
+Exploramos los datos
+```{r, fig.height=3}
+boxplot(insectos ~ colores, col = c("yellow", "blue", "white","green"), ylab = "Número de insectos atrapados")
+```
+
+```{r}
+tapply(insectos, colores, mean)
+```
+
+---
+
+## 2.3. ANOVA
+
+Esta es la forma de pedir un ANOVA en R:
+```{r}
+Anova_insectos<-aov(lm(insectos ~ colores))
+```
+
+Elementos generados en el ANOVA:
+```{r}
+names(Anova_insectos)
+```
+
+Igual que con los modelos lineares, pedimos un resumen de la tabla del ANOVA
+```{r}
+summary(Anova_insectos)
+```
+
+---
+
+## 2.3. TukeyHSD
+
+Si hemos detectado diferencias significativas entre las medias de las poblaciones. ¿Sería posible saber cuáles son los grupos que generan estas diferencias?
+
+
+```{r, fig.height, echo=FALSE}
+tapply(insectos, colores, mean)
+intervalos<-TukeyHSD(Anova_insectos)
+intervalos
+```
+
+
+
+---
+
+## 2.4. Validación del modelo 
+
+
+Los supuestos que se deben cumplir son tres: 
+
+- Independencia, 
+- homocedasticidad y 
+- normalidad.
+
+---
+
+## 2.5. Independencia
+
+Los valores deben ser independientes.
+```{r, fig.height=3}
+plot(Anova_insectos$residuals)
+```
+
+---
+
+## 2.6. Normalidad
+
+El test de Shapiro-Wilk indica que no tenemos evidencia suficiente para rechazar la hipótesis nula (normalidad de los residuos)
+```{r}
+shapiro.test(Anova_insectos$residuals)
+```
+
+```{r, fig.height=3}
+hist(Anova_insectos$residuals)
+qqnorm(Anova_insectos$residuals) 
+qqline(Anova_insectos$residuals)
+```
+
+---
+
+## 2.7. Homocedasticidad
+
+El test de Bartlett indica que no tenemos evidencia suficiente para rechazar la hipótesis nula (las varianzas son iguales)
+```{r}
+bartlett.test(Anova_insectos$residuals ~ colores)
+```
+
+---
+
+## 2.8. Ejercicios juntos
+
+
+Generar datos y modelo.
+```{r, eval=FALSE}
+insectos <- c(16,11,20,21,14,7,37,32,15,25,39,41,21,12,14,17,13,17,45,59,48,46,38,47)
+colores <- as.factor(c(rep(c("azul", "verde", "blanco", "amarillo"), each =6)))
+```
+
+```{r, eval=FALSE}
+Anova_insectos<-aov( lm(insectos ~ colores) )
+```
+
+```{r, eval=FALSE}
+summary(Anova_insectos)
+```
+
+---
+
+## 2.8. Ejercicios juntos
+
+Independencia
+```{r, eval=FALSE}
+plot(Anova_insectos$residuals)
+```
+
+Normalidad
+```{r, eval=FALSE}
+hist(Anova_insectos$residuals)
+qqnorm(Anova_insectos$residuals) 
+qqline(Anova_insectos$residuals)
+```
+
+```{r, eval=FALSE}
+shapiro.test(Anova_insectos$residuals)
+```
+
+Homoscedasticidad
+```{r, eval=FALSE}
+bartlett.test(Anova_insectos$residuals ~ colores)
+```
+
+---
+
+## 2.8. Ejercicios juntos
+
+Veamos si los grupos son diferentes y cuales grupos son diferentes.
+```{r, eval=FALSE}
+TukeyHSD(Anova_insectos)
+```
+
+```{r}
+Insectos_df<-data.frame(insectos=insectos,colores=colores)
+```
+
+```{r, eval=FALSE}
+ggplot(Insectos_df, aes(x=colores,y=insectos)) +
+  geom_boxplot(aes(fill=colores))+
+  xlab("Color de la trampa")+
+  ylab("Numero de insectos")+
+  scale_fill_manual(values=c("#e9c46a", "#457b9d","#f1faee","#2a9d8f"))+
+  theme_classic()+
+  theme(legend.position = "none")
+```
+
+Juega con la grafica, cambiando temas.
+
+---
+
+
+## 2.9. Extra
+
+Dos factores:
+```{r}
+Insectos_df$tamanio <- as.factor(c(rep(c("grande", "mediana", "chica"), 
+                           each=2)))
+```
+
+```{r}
+Anova_insectos_2<-aov((insectos ~ colores + tamanio),data=Insectos_df)
+```
+
+Interaccion:
+```{r}
+Anova_insectos_3<-aov((insectos ~ colores * tamanio),data=Insectos_df)
+```
+
+```{r}
+Anova_insectos_4<-aov((insectos ~ colores + tamanio + colores : tamanio),data=Insectos_df)
+```
+
+---
+
+# 2.9. Otras anovas
+```{r}
+summary(Anova_insectos_2)
+```
+
+```{r}
+summary(Anova_insectos_3)
+```
+
+```{r}
+summary(Anova_insectos_4)
+```
+
+---
+
+
+class: title-slide, inverse, bottom
+background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVtYmxlYmVlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-size: cover
+
+
+# Recapitulando
+
+1.1. Objetos clase factor.  
+1.2. Analisis de varianza.  
+
+Siguiente clase:  
+2.1. Basicos en Rmd
+
+
