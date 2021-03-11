@@ -515,12 +515,14 @@ Pingus %>%
 - Van a exportar un grafico en su carpeta resultados.  
 Un boxplot de pesos de hembras y machos separados por especie.
 
-```{r, include=FALSE, echo=TRUE, warning=FALSE}
+```{r}
 MiGrafico<-ggplot(Pingus,
-                  aes(x=especie, y=masa_corporal_g, color=sexo, fill=sexo))+
+                  aes(x=especie, 
+                      y=masa_corporal_g, 
+                      color=sexo, 
+                      fill=sexo))+
   geom_boxplot()+
   theme_bw()
-MiGrafico
 ```
 
 ---
@@ -569,7 +571,7 @@ Modifiquemos **todas** las partes donde dice masa_corporal_g por largo_pico_mm
 
 Cambien en ggsave
 ```{r, eval=FALSE}
-ggsave("02_Grafico_LargoPico.jpg, #<<
+ggsave("02_LargoPico.jpg", #<<
        path = ResultsFolder, 
        width = 16, height = 8, 
        units = "in") 
@@ -641,7 +643,7 @@ Esta clase:
 6.2. Compartir proyectos.  
 
 Siguiente clase:  
-7.1. Practicar modelos lineares.  
-7.2. Graficar modelos lineares.  
+7.1. Sintaxis de modelos lineares.  
+7.2. Linea de ajuste en nuestros graficos.  
 
 
