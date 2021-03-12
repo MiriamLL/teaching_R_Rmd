@@ -24,10 +24,13 @@ Para bajar zip: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.
 Clase 5: Explorar datos y modelo lineal.  
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase7
 
-Clase 6: Que es Rmd.  
+Clase 6: Factores y anova.  
+Presentacion: https://miriamll.github.io/Curso_CIAD/Clase8
+
+Clase 7: Que es Rmd.  
 Presentacion: https://miriamll.github.io/Curso_CIAD/Clase6Parte1
 
-Clase 7: Presentaciones basicas en Rmd (usando xaringan).  
+Clase 8: Presentaciones basicas en Rmd (usando xaringan).  
 
-Clase 8: Intro a git y github.  
+Clase 9: Intro a git y github.  
 
