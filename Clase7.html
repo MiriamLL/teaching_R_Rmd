@@ -265,6 +265,28 @@ ggplot(Pingus,
 &lt;img src="Clase7_files/figure-html/plot05-out-1.png" width="80%" /&gt;
 ]
 
+
+---
+
+## 1.4. cowplot
+
+Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
+
+Deben instalarlo antes.
+
+```r
+#install.packages("cowplot")
+library(cowplot)
+```
+
+Guardar plots con nombres e incluirlos en una sola figura.    
+
+```r
+cowplot::plot_grid(p1,p2,p3,p4, 
+                   labels = "AUTO") #&lt;&lt; Agrega letras
+```
+
+
 ---
 
 class: title-slide, inverse, bottom
@@ -284,6 +306,31 @@ library(tidyverse)
 Pingus&lt;-datos::pinguinos
 ```
 
+Crear un grafico.
+
+```r
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g, 
+*          color = especie)) +
+       geom_point() +
+       geom_smooth(method = "lm") 
+```
+
+Cambiemos el orden de los argumentos.
+
+```r
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g)) +
+*      geom_point(aes(color =especie))+
+       geom_smooth(method="lm")
+```
+
+---
+
+## 1. 4. Ejercicios juntos
+
 Exploremos los datos usando solo los datos de Pinguinos de Adelia.
 
 ```r
@@ -291,72 +338,14 @@ Adelia&lt;-Pingus%&gt;%
 * filter(especie=='Adelia')
 ```
 
-&lt;img src="https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png" height="200" /&gt;
-
----
-
-## 1. 4. Ejercicios juntos
-gráfico de puntos.  
 
 ```r
-p1 &lt;- ggplot(Adelia, aes(x=largo_aleta_mm, y=masa_corporal_g)) +
-*      geom_point()
-p1
+ggplot(Adelia, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g)) +
+       geom_point())+
+       geom_smooth(method="lm")
 ```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-12-1.png" width="40%" /&gt;
-
----
-
-## 1. 4. Ejercicios juntos
-
-Boxplot.  
-
-```r
-p2 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-*      geom_boxplot()
-p2
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-13-1.png" width="40%" /&gt;
-
----
-
-## 1. 4. Ejercicios juntos
-
-Violin.   
-
-
-```r
-p3 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-*      geom_violin()
-p3
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-14-1.png" width="40%" /&gt;
-
----
-
-## 1. 4. Ejercicios juntos
-
-Subamos un poco el nivel. 
-Combinando boxplot y violin.  
-Hagamos un plot compuesto y cambiemos los [colores](https://coolors.co/palettes/trending).  
-
-
-```r
-p4 &lt;- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-*      geom_violin(fill='#e76f51', alpha=0.5)+
-*      geom_boxplot(color="#e76f51", fill="#e9c46a",
-                    lwd=0.8, width=0.2 )
-p4
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-15-1.png" width="40%" /&gt;
-
----
-
-## 1.4. facet_wrap 
 
 Ver variables categoricas separadas por panel. 
 
@@ -366,34 +355,6 @@ ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
   geom_point()+
 * facet_wrap(~especie)
 ```
-
----
-
-## 1.4. cowplot
-
-Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
-
-Deben instalarlo antes.
-
-```r
-#install.packages("cowplot")
-library(cowplot)
-```
-
----
-
-## 1.4. cowplot
-
-Elegir el orden.  
-Noten que les van a salir muchos warning por que hay NAs en nuestro data frame.
-
-```r
-cowplot::plot_grid(p1,p2,p3,p4, #Estos son los plots que crearon antes
-                   labels = "AUTO") #&lt;&lt; Agrega letras
-```
-
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-18-1.png" width="40%" /&gt;
-
 
 ---
 
@@ -754,7 +715,7 @@ Plot_nueva_dosis&lt;- ggplot(datos, aes(nueva_dosis, respuesta))+
 Plot_nueva_dosis
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-40-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-38-1.png" width="40%" /&gt;
 
 ---
 
@@ -769,7 +730,7 @@ Plot_nueva_dosis +
                alpha=0.5)
 ```
 
-&lt;img src="Clase7_files/figure-html/unnamed-chunk-41-1.png" width="40%" /&gt;
+&lt;img src="Clase7_files/figure-html/unnamed-chunk-39-1.png" width="40%" /&gt;
 
 ---
 
@@ -1049,7 +1010,6 @@ ex_data_3 = rbind(point_3, ex_data)
 model_3 = lm(y ~ x, data = ex_data_3) 
 ```
 
-El nuevo modelo parece bastante distinto.
 .pull-left[
 
 ```r

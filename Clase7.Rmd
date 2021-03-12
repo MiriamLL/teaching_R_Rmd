@@ -285,6 +285,26 @@ ggplot(Pingus,
 ```
 ]
 
+
+---
+
+## 1.4. cowplot
+
+Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
+
+Deben instalarlo antes.
+```{r}
+#install.packages("cowplot")
+library(cowplot)
+```
+
+Guardar plots con nombres e incluirlos en una sola figura.    
+```{r, eval=FALSE}
+cowplot::plot_grid(p1,p2,p3,p4, 
+                   labels = "AUTO") #<< Agrega letras
+```
+
+
 ---
 
 class: title-slide, inverse, bottom
@@ -303,68 +323,42 @@ library(tidyverse)
 Pingus<-datos::pinguinos
 ```
 
+Crear un grafico.
+```{r, eval=FALSE}
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g, 
+           color = especie)) + #<<
+       geom_point() +
+       geom_smooth(method = "lm") 
+```
+
+Cambiemos el orden de los argumentos.
+```{r, eval=FALSE}
+ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g)) +
+       geom_point(aes(color =especie))+ #<<
+       geom_smooth(method="lm")
+```
+
+---
+
+## 1. 4. Ejercicios juntos
+
 Exploremos los datos usando solo los datos de Pinguinos de Adelia.
 ```{r}
 Adelia<-Pingus%>%
   filter(especie=='Adelia') #<<
 ```
 
-```{r echo=FALSE, out.height=200}
-knitr::include_graphics("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png")
+```{r, eval=FALSE}
+ggplot(Adelia, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g)) +
+       geom_point())+
+       geom_smooth(method="lm")
 ```
-
----
-
-## 1. 4. Ejercicios juntos
-gráfico de puntos.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p1 <- ggplot(Adelia, aes(x=largo_aleta_mm, y=masa_corporal_g)) +
-       geom_point() #<<
-p1
-```
-
----
-
-## 1. 4. Ejercicios juntos
-
-Boxplot.  
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p2 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_boxplot() #<<
-p2
-```
-
----
-
-## 1. 4. Ejercicios juntos
-
-Violin.   
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p3 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_violin() #<<
-p3
-```
-
----
-
-## 1. 4. Ejercicios juntos
-
-Subamos un poco el nivel. 
-Combinando boxplot y violin.  
-Hagamos un plot compuesto y cambiemos los [colores](https://coolors.co/palettes/trending).  
-
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-p4 <- ggplot(Adelia, aes(largo_aleta_mm, masa_corporal_g)) +
-       geom_violin(fill='#e76f51', alpha=0.5)+ #<<
-       geom_boxplot(color="#e76f51", fill="#e9c46a",#<<
-                    lwd=0.8, width=0.2 )
-p4
-```
-
----
-
-## 1.4. facet_wrap 
 
 Ver variables categoricas separadas por panel. 
 
@@ -373,30 +367,6 @@ ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
   geom_point()+
   facet_wrap(~especie) #<<
 ```
-
----
-
-## 1.4. cowplot
-
-Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
-
-Deben instalarlo antes.
-```{r}
-#install.packages("cowplot")
-library(cowplot)
-```
-
----
-
-## 1.4. cowplot
-
-Elegir el orden.  
-Noten que les van a salir muchos warning por que hay NAs en nuestro data frame.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, out.width="40%"}
-cowplot::plot_grid(p1,p2,p3,p4, #Estos son los plots que crearon antes
-                   labels = "AUTO") #<< Agrega letras
-```
-
 
 ---
 
@@ -968,7 +938,6 @@ ex_data_3 = rbind(point_3, ex_data)
 model_3 = lm(y ~ x, data = ex_data_3) 
 ```
 
-El nuevo modelo parece bastante distinto.
 .pull-left[
 ```{r plot24, eval=FALSE}
 ggplot(data = ex_data_3, aes(x = x, y = y)) +
