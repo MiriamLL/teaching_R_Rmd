@@ -47,8 +47,6 @@ Febrero 2021
 
 ## 1. Intro
 
-La clase es de 2 horas.
-
 - Teoría.  
 Paquetes, Directorios, Cargar datos.
 
@@ -108,13 +106,15 @@ Foto de [Unsplash](https://unsplash.com)
 Un proyecto típico de ciencia de datos se ve así:
 
 &lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg" height="300" /&gt;
+.right[
 Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/)
+]
 
 Hoy queremos pasar el primer paso que es **importar nuestros datos**. 
 
 ---
 
-## 2.1. Paquetes
+## 1.1. Paquetes
 
 - Son colecciones de funciones que realizan operaciones.  
 - Se instalan una única vez pero deben cargarse cada vez que se utilizan.  
@@ -135,7 +135,7 @@ install.packages("cowsay")
 install.packages("here")
 ```
 
-🕑 Tarda un poquito en cargarse...
+⏲ Tarda un poquito en cargarse...
 
 ```r
 install.packages("tidyverse")
@@ -147,7 +147,7 @@ Packages&gt;Install&gt;Escribir el nombre.
 
 ---
 
-## 2.1. Paquetes
+## 1.1. Paquetes
 
 
 ```r
@@ -188,7 +188,7 @@ Ya sabes cargar paquetes!
 ---
 
 
-## 2.2. Directorios
+## 1.2. Directorios
 
 Donde están los archivos en tu computadora.  
 
@@ -200,8 +200,8 @@ Pero recuerden que no queremos hacer esto cada vez que entramos a R, queremos qu
 
 ---
 
-## 2.2. Directorios
-### Donde están tus datos?
+## 1.2. Directorios
+Donde están tus datos?
 
 Opción 1
 
@@ -218,8 +218,9 @@ Se tiene que copiar y pegar completo y cada quien va a tener diferentes carpetas
 
 ---
 
-## 2.2. Directorios
-### Donde están tus datos?
+## 1.2. Directorios
+
+Donde están tus datos?
 
 
 ```r
@@ -239,8 +240,7 @@ Ventajas:
 ---
 
 
-# 2.3. Cargar datos
-### Formato CSV
+## 1.3. Cargar datos
 
 Cargar el paquete tidyverse
 
@@ -267,13 +267,13 @@ library("tidyverse")
 
 ---
 
-# 2.3. Cargar datos
-### Formato CSV
+## 1.4. Formato CSV
 
-Manualmente: esquina inferior derecha&gt;Files&gt;  
-Doble clic en el archivo de **Pingus_1.csv**  
-Esta separado por comas, entonces:
-read_csv se usa cuando los valores están separados por **comas**.
+Manualmente: esquina inferior derecha  
+Files&gt; Doble clic en el archivo de **Pingus_1.csv**  
+Esta separado por comas, entonces:  
+read_csv se usa cuando los valores están separados por **comas**.  
+
 
 ```r
 Pingus_csv&lt;-read_csv(here("Pingus_1.csv"))
@@ -286,8 +286,7 @@ head(Pingus_csv)
 
 ---
 
-# 2.3. Cargar datos
-### Formato CSV
+## 1.4. Formato CSV
 Doble clic en el archivo de **Pingus_2.csv**  
 Esta separado por punto y coma.  
 read_csv2 se usa para cuando están separados con **punto y coma**.
@@ -320,8 +319,7 @@ head(Pingus_csv2)
 
 ---
 
-# 2.3. Cargar datos
-### Formato tab
+## 1.5.  Formato tab
 
 Doble clic en el archivo de **Pingus_3.txt**.  
 Esta separado por espacios.  
@@ -339,8 +337,7 @@ head(Pingus_txt)
 
 ---
 
-# 2.3. Cargar datos
-### Formato Excel
+## 1.6. Formato Excel
 
 Hay que cargar la librería readxl
 
@@ -364,8 +361,7 @@ Hay otros tipos de formatos pero no los vamos a ver hoy, ni creo que los vayamos
 
 ---
 
-# 2.3. Cargar datos
-### Desde Internet
+## 1.7. Desde Internet
 
 Fuentes de datos en Internet para practicar y que vamos a usar durante el curso:  
 - [TidyTuesday](https://github.com/rfordatascience/tidytuesday)  
@@ -399,8 +395,7 @@ head(plastics,5)
 
 ---
 
-# 2.3. Cargar datos
-### Paquetes que contienen datos
+## 1.8. Paquetes que contienen datos
 
 
 ```r
@@ -435,7 +430,7 @@ head(Pingus)
 ---
 
 
-# 2.3. Unir documentos
+## 1.9. Unir documentos
 
 Se pueden unir muchos documentos (En este ejemplo .xlsx)
 Pero **ojo** el numero de columnas y nombres de las columnas debe ser lo mismo.
@@ -452,11 +447,11 @@ AllTracks &lt;- do.call("rbind",ListTracking)
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, bottom
 background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
 background-size: cover
 
-# 2.4. Su turno
+# 1.10. Su turno
 
 Carga los datos de pinguinos  
 - Usando read_csv
@@ -465,6 +460,10 @@ Carga los datos de pinguinos
 - Usando read_excel
 
 ---
+
+class: title-slide, bottom
+background-image: url(https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1489&amp;q=80)
+background-size: cover
 
 ## Recapitulando
 
@@ -476,8 +475,6 @@ Esta clase:
 Siguiente clase:
 - 3.1 Visualizacion de datos
 - 3.2 Usar ggplot2
-
-
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

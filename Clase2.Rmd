@@ -55,8 +55,6 @@ background-size: cover
 ---
 # 1. Intro
 
-La clase es de 2 horas.
-
 Teoria:    
 - Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
 
@@ -879,14 +877,9 @@ knitr::include_graphics('https://www.datanovia.com/en/wp-content/uploads/dn-tuto
 # Recapitulando
 
 Esta clase:  
-3.1. Gráficos con ggplot.  
-3.2. Tipos de gráfico.
-3.3. Temas.  
-3.4. Nombres en los ejes.  
-3.5. Colores.  
-3.6. Tamaño letras. 
-3.7. Inspiración.
+- 3.1 Visualizacion de datos
+- 3.2 Usar ggplot2
 
 Siguiente clase:
-4.1 Realizar operaciones en R
-4.2 Inspeccionar y manipular dataframes
+- 4.1 Realizar operaciones en R
+- 4.2 Inspeccionar y manipular dataframes
