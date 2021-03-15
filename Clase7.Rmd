@@ -55,9 +55,7 @@ background-size: cover
 
 # Intro
 
-La clase es de 2 horas.
-
-- Exploracion de datos  
+- Exploración de datos  
 - Modelos lineales
 
 
@@ -81,7 +79,7 @@ library(ggplot2)
 <br>
 
  **Notas** <br>
-Ya vieron teoria, hoy es solo para que practiquen en R. <br>
+Ya vieron teoría, hoy es solo para que practiquen en R. <br>
 Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.  
 
 ---
@@ -290,7 +288,7 @@ ggplot(Pingus,
 
 ## 1.4. cowplot
 
-Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es facil de cambiar, para cambiar como estan acomodados podemos usar **cowplot** o **patchwork**.  
+Noten que al usar **facet_wrap** los paneles se acomodan de cierta manera que no es fácil de cambiar, para cambiar como están acomodados podemos usar **cowplot** o **patchwork**.  
 
 Deben instalarlo antes.
 ```{r}
@@ -323,7 +321,7 @@ library(tidyverse)
 Pingus<-datos::pinguinos
 ```
 
-Crear un grafico.
+Crear un gráfico.
 ```{r, eval=FALSE}
 ggplot(Pingus, 
        aes(x=largo_aleta_mm, 
@@ -385,14 +383,12 @@ Recordatorio:
 - La realidad es multidimensional, compleja e incierta.  
 - Un modelo es una representación formal de un fenómeno, una reducción de dimensionalidad que posee utilidad práctica.  
 - Dicha representación normalmente puede ser condensada en una expresión matemática, una fórmula, que indica cómo una variable se relaciona con otra(s). 
-- Empíricamente, el paradigma se basa en estudiar la relación matemática entre variables aleatorias respuesta, con una distribución de probabilidades dada, y aquellas variables que la predicen, con el fin de explicar asociaciones entre variables y realizar inferencia.
-
 
 ---
 
 ## 2.1. Generar datos
 
-Cuando busquen ejemplos estadisticos en internet, en algun momento van a toparse con:
+Cuando busquen ejemplos en Internet, en algún momento van a toparse con:
 ```{r}
 set.seed(123)
 ejemplo <- rnorm(n = 10000, mean = 0, sd = 1)
@@ -406,13 +402,11 @@ Que es **rnorm**?
 
 --
 
-Cuando hagan preguntas en internet, es muy util usarlo! 
+Cuando hagan preguntas en internet, es muy útil usarlo! 
 
 ---
 
-## 2.2. Ejemplo practico
-
-### Chocolate y felicidad
+## 2.2. Chocolate y felicidad
 
 -  Supongamos que podemos medir felicidad de manera cuantitativa, como una variable continua.  
 - Supongamos, además, que nuestro laboratorio quiere investigar cómo impactan distintas dosis de chocolate a la felicidad de los humanos. 
@@ -484,7 +478,7 @@ Semilla para muestras aleatorias.
 set.seed(444)
 ```
 
-Agregar ruido con distribucion normal (media 0, sd = 5)
+Agregar ruido con distribución normal (media 0, sd = 5)
 ```{r}
 datos$respuesta <- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 ```
@@ -500,7 +494,7 @@ datos$respuesta <- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 p <- ggplot(datos, 
             aes(x=dosis, 
                 y=respuesta))+
-       geom_point(alpha = 0.1)+
+       geom_point(alpha = 0.1)+ #<<
        xlab("Dosis Chocolate (gr)")+
        ylab("Felicidad")
 p
@@ -512,6 +506,7 @@ p
 ```
 ]
 
+**nuevo concepto**: alpha en el grafico crea puntos con _'transparencia'._
 
 ---
 
@@ -537,7 +532,7 @@ Para construir modelos en R, es importante el simbolo *virgulilla*
 ```
 
 En nuestro caso, queremos estudiar la relación entre la felicidad (respuesta) y la dosis de chocolate (dosis).
-Entonces el modelo se construiria de la siguiente manera.
+Entonces el modelo se construiría de la siguiente manera.
 
 ```{r}
 modelo_chocolate <- lm(data=datos,
@@ -879,7 +874,7 @@ model_1 = lm(y ~ x, data = ex_data_1)
 ```{r plot22, eval=FALSE}
 ggplot(data = ex_data_1, aes(x = x, 
                              y = y)) +
-  geom_point(color = "black") + # plotting all points
+  geom_point(color = "black") + # todos los puntos
   geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # Denotar el nuevo punto
   geom_smooth(data = ex_data, method = "lm", # línea de regresión del modelo inicial
               se = FALSE, aes(color = "inicial")) + 
