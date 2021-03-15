@@ -45,21 +45,12 @@ Febrero 2021
 ---
 # 1. Intro
 
-La clase es de 2 horas.
-
-Teoria:    
 - Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
-
-Práctica   
 - Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.  
 
-Teoria: 
 - Como cambiar la estética de mis gráficos.    
-
-Práctica.    
 - Van a cambiar la estética de su gráfico.  
 
-Si da tiempo:  
 Un poco de inspiración y la infinidad de opciones de gráficos.
 
 ---
@@ -94,7 +85,7 @@ Un poco de inspiración y la infinidad de opciones de gráficos.
 [IntroduccionToGGplot](https://englelab.gatech.edu/useRguide/introduction-to-ggplot2.html)  
 [gg is for Grammar of Graphics](https://pkg.garrickadenbuie.com/trug-ggplot2)
 
--Imágenes adicionales
+-Imágenes adicionales  
 [Unsplash](https://unsplash.com/)
 
 ---
@@ -115,7 +106,9 @@ Graficar es transformar datos a visualizaciones que varian en tamaño, forma y c
 
 &lt;img src="https://paldhous.github.io/ucb/2016/dataviz/img/class2_1.jpg" height="350" /&gt;
   
+.right[
 Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+]
 
 ---
 
@@ -125,7 +118,9 @@ Hay muchas maneras de graficar datos, pero hay diferentes maneras de percibirlos
 
 &lt;img src="https://paldhous.github.io/ucb/2016/dataviz/img/class2_2.jpg" height="350" /&gt;
   
-  Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+.right[
+Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+]
 
 ---
 
@@ -134,8 +129,10 @@ Hay muchas maneras de graficar datos, pero hay diferentes maneras de percibirlos
 Cual es más intuitiva?
 
 &lt;img src="https://paldhous.github.io/ucb/2016/dataviz/img/class2_4.jpg" height="350" /&gt;
-  
+
+.right[
 Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+]
 
 ---
 
@@ -172,8 +169,9 @@ El paquete **ggplot** funciona por **capas**, si han usado SIG (sistema de infor
 
 &lt;img src="https://englelab.gatech.edu/useRguide/images/dataviz/ge_geom.png" height="200" /&gt;
   
+.right[
 Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-overview.html)
-
+]
 
 
 ---
@@ -252,21 +250,20 @@ Que dice el warning?
 Te avisa que había NAs y que no se incluyeron en el gráfico.
 
 ---
-class: center, middle
-
 # 1.4. Tipos de gráficos
 
-Hoy veremos: 
--Puntos
--Lineas
--Barras
--Boxplots
--Trayectorias 
--Mapas
-
+.center[
+Hoy veremos:  
+-Puntos  
+-Lineas  
+-Barras  
+-Boxplots  
+-Trayectorias  
+-Mapas  
 ... pero hay muchos mas.
 
 &lt;img src="http://www.typesofgraphs.com/wp-content/uploads/2015/12/Typesofgraphs.png" height="300" /&gt;
+]
 
 ---
 
@@ -704,7 +701,7 @@ MiGrafico
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, bottom
 background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
 background-size: cover
 
@@ -784,20 +781,185 @@ library(plotly)
 
 ---
 
+class: title-slide, middle, bottom
+background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80)
+background-size: cover
+
 # Recapitulando
 
 Esta clase:  
-3.1. Gráficos con ggplot.  
-3.2. Tipos de gráfico.
-3.3. Temas.  
-3.4. Nombres en los ejes.  
-3.5. Colores.  
-3.6. Tamaño letras. 
-3.7. Inspiración.
+-3.1 Visualizacion de datos  
+-3.2 Usar ggplot2  
 
-Siguiente clase:
-4.1 Realizar operaciones en R
-4.2 Inspeccionar y manipular dataframes
+Siguiente clase:  
+-4.1 Realizar operaciones en R  
+-4.2 Inspeccionar y manipular dataframes  
+
+---
+
+# 5. Materiales extra
+Estos materiales son especificos para los objetivos de alumnos del curso de CIAD.
+
+---
+
+### 5.1. Mapa y Scatterpie
+Mapa con puntos en diferentes tamanios.
+
+Ejemplo de: [mapa con scatterpies](https://cran.r-project.org/web/packages/scatterpie/vignettes/scatterpie.html)
+
+1- Crear datos
+
+```r
+set.seed(123)
+long &lt;- rnorm(50, sd=100)
+lat &lt;- rnorm(50, sd=50)
+d &lt;- data.frame(long=long, lat=lat)
+d &lt;- with(d, d[abs(long) &lt; 150 &amp; abs(lat) &lt; 70,])
+n &lt;- nrow(d)
+d$region &lt;- factor(1:n)
+d$A &lt;- abs(rnorm(n, sd=1))
+d$B &lt;- abs(rnorm(n, sd=2))
+d$C &lt;- abs(rnorm(n, sd=3))
+d$D &lt;- abs(rnorm(n, sd=4))
+d[1, 4:7] &lt;- d[1, 4:7] * 3
+head(d)
+```
+
+```
+##          long        lat region          A        B        C        D
+## 1  -56.047565  12.665926      1 2.13121969 8.663359 3.928711 8.676792
+## 2  -23.017749  -1.427338      2 0.25688371 1.403569 1.375096 4.945092
+## 4    7.050839  68.430114      3 0.24669188 0.524395 3.189978 5.138863
+## 5   12.928774 -11.288549      4 0.34754260 3.144288 3.789556 2.295894
+## 8 -126.506123  29.230687      5 0.95161857 3.029335 1.048951 2.471943
+## 9  -68.685285   6.192712      6 0.04502772 3.203072 2.596539 4.439393
+```
+No se asusten pero lo anterior es solo para que tengan un dataframe que tenga las mismas caracteristicas.
+
+---
+
+### 5.1. Mapa y Scatterpie
+
+Si no tienen estos paquetes hay que instalarlos.
+
+```r
+library(ggplot2)
+library(scatterpie)
+```
+
+---
+
+### 5.1. Mapa y Scatterpie
+
+Mapa con puntos en diferentes tamaños.
+
+2- Grafiquen los 'scatterpie'
+
+```r
+ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region), data=d,
+cols=LETTERS[1:4]) + coord_equal()
+```
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-88-1.png" height="350" /&gt;
+
+---
+
+### 5.1. Mapa y Scatterpie
+
+Mapa con puntos en diferentes tamanios.
+
+3- Modificar el tamanio de los 'pies'
+
+```r
+d$radius &lt;- 6 * abs(rnorm(n))
+p &lt;- ggplot() + geom_scatterpie(aes(x=long, y=lat, 
+                                    group=region, r=radius), 
+                                data=d,cols=LETTERS[1:4], color=NA) +
+  coord_equal()
+```
+
+
+---
+
+### 5.1. Mapa y Scatterpie
+Mapa con puntos en diferentes tamanios.
+
+4- Esto agrega como una leyenda como referencia del tamanio del pie.
+
+```r
+p + geom_scatterpie_legend(d$radius, x=-140, y=-70)
+```
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-90-1.png" height="350" /&gt;
+
+
+---
+
+### 5.1. Mapa y Scatterpie
+Mapa con puntos en diferentes tamanios.
+
+5- Agregar el mapa de fondo
+
+```r
+world &lt;- map_data('world')
+p &lt;- ggplot(world, aes(long, lat)) +
+    geom_map(map=world, aes(map_id=region), fill=NA, color="black") +
+    coord_quickmap()
+p + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius),
+                    data=d, cols=LETTERS[1:4], color=NA, alpha=.8) +
+    geom_scatterpie_legend(d$radius, x=-160, y=-55)
+```
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-91-1.png" height="350" /&gt;
+
+---
+
+### 5.1. Mapa y Scatterpie
+
+
+Para leer más:
+
+[Básicos para mapas](https://www.r-spatial.org//r/2018/10/25/ggplot2-sf-2.html)
+
+[Otro ejemplo de mapa con scatterpies](https://www.r-bloggers.com/2018/01/plot-pie-charts-of-racial-composition-in-largest-metro-areas-on-a-map-in-r/amp/)
+
+---
+
+### 5.2. Grafico de barras con desviacion estandar.
+
+Creditos: [RGraphGallery](https://www.r-graph-gallery.com/4-barplot-with-error-bar.html)
+
+1- Cargar paqueteria
+
+```r
+library(ggplot2)
+```
+
+2- Crear un data frame inventado.
+
+```r
+data &lt;- data.frame(
+  name=letters[1:5],
+  value=sample(seq(4,15),5),
+  sd=c(1,0.2,3,2,4))
+```
+
+---
+
+### 5.2. Grafico de barras con desviacion estandar.
+
+3- Graficar
+
+```r
+ggplot(data) +
+  geom_bar( aes(x=name, y=value), 
+            stat="identity", 
+            fill="skyblue", alpha=0.7) +
+  geom_errorbar(aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3)
+```
+
+&lt;img src="https://www.r-graph-gallery.com/4-barplot-with-error-bar_files/figure-html/thecode-1.png" height="250" /&gt;
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -53,41 +53,33 @@ background-size: cover
 
 ---
 
-# Intro
+## 1. Intro
 
-La clase es de 2 horas.
-
-Teoria: 
 - Operaciones sencillas.  
-
-Practica: 
 - Ejercicios usando operaciones.  
 
-Teoria:  
 - Datos ordenados.  
-
-Practica:  
 - Ejercicios con funciones de tidyverse.  
 
 ```{r, echo=FALSE}
 library(emo)
 ```
 
----
+--
 
-# Ustedes
+## Ustedes
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos)
 
-- Quieren hacer algunas operaciones matematicas usando R.
+- Quieren hacer algunas operaciones matemáticas usando R.
 
-- Quieren tener un dataframe que les sirva para hacer analisis y graficos.
+- Quieren tener un dataframe que les sirva para hacer análisis y gráficos.
 
 ---
 
 ## Créditos
 
--Todo el material basado en el libro:  
+-Material basado en el libro:  
 [R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
@@ -104,10 +96,9 @@ library(emo)
 
 ---
 
-# 1. Clase anterior
+## 1. CRAN
 
-## Datos pinguinos.
-Los datos de pinguinos solo estan en github, aun no en CRAN
+Los datos de pinguinos solo están en github, aun no en CRAN
 
 ```{r, include=TRUE, eval=FALSE}
 install.packages(remotes)
@@ -121,21 +112,20 @@ Pueden darle 1 si quieren, pero tarda un poquito.
 
 ---
 
-# 1. Clase anterior
+## 1. CRAN
 
-## Datos pinguinos. 
 `r emo::ji("penguin")`
 
-Cargen sus datos, que los vamos a usar mas adelante.
+Carguen sus datos, que los vamos a usar mas adelante.
 ```{r}
 library(datos)
 Pingus<-datos::pinguinos
 ```
-Otra opcion es usar read_csv desde su computador.
+Otra opción es usar read_csv desde su computador.
 
 ---
 
-# 1.2. CRAN
+## 1. CRAN
 
 [CRAN](https://cran.r-project.org/) es un acrónimo de **C**omprehensive **R** **A**rchive **N**etwork.
 
@@ -149,12 +139,12 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
 background-size: cover
 
-# Operaciones
+# 2. Operaciones
 
 ---
 
-# 2. Operaciones
 ## 2.1. Operaciones basicas
+
 Sumas
 ```{r}
 15+6
@@ -167,7 +157,6 @@ Restas
 
 ---
 
-# 2. Operaciones
 ## 2.1. Operaciones basicas
 
 Divisiones
@@ -182,8 +171,7 @@ Multiplicaciones
 
 ---
 
-# 2.1. Operaciones
-## Usando objetos
+## 2.2. Operaciones usando objetos
 ```{r}
 Personas<-5+6
 Pizzas<-5*12
@@ -196,8 +184,7 @@ Personas/Pizzas
 
 ---
 
-# 2.2. Funciones
-## Comunes
+## 2.3. Funciones comunes
 
 Media
 ```{r}
@@ -217,8 +204,7 @@ sd(Temperatura)
 
 ---
 
-# 2.2. Funciones
-## Comunes
+## 2.3. Funciones comunes
 
 Rangos
 ```{r}
@@ -237,7 +223,7 @@ max(Temperatura)
 
 ---
 
-# 2.4. Buscar ayuda
+## 2.4. Buscar ayuda
 
 ```{r}
 mean(1,3,6,9,12)
@@ -275,8 +261,7 @@ Hashtag: #rstatsES (en español) o #rstats (en inglés).
 
 ---
 
-# 2.5. Ejercicios
-### Perritos
+## 2.5. Ejercicios
 
 Tengo tres gatos y cada uno come 2 latas de comida, cuantas latas tengo que comprar?
 ```{r, eval=FALSE}
@@ -296,8 +281,7 @@ Mascotas
 
 ---
 
-# 2.5 Ejercicios
-### Croquetas
+## 2.5 Ejercicios
 
 Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son 3) se comen 0.5 Kg al día y quiero ir al super cada 15 días por lo de la pandemia?
 
@@ -318,7 +302,7 @@ knitr::include_graphics('https://images.unsplash.com/photo-1571999001321-f54197a
 
 ---
 
-# 2.3. Datos pinguinos.
+## 2.6. Datos pinguinos.
 `r emo::ji("penguin")`
 Si ya cargaron los datos de pinguinos, omitan este paso.
 ```{r}
@@ -328,7 +312,7 @@ Pingus<-pinguinos
 
 ---
 
-# 2.3. Datos pinguinos. 
+## 2.6. Datos pinguinos. 
 
 ```{r echo=FALSE, out.height=350}
 knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png')
@@ -338,7 +322,7 @@ Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembra
 
 ---
 
-# 2.3. Datos pinguinos. 
+## 2.6. Datos pinguinos. 
 
 Son datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
 ```{r echo=FALSE, out.height=250}
@@ -347,7 +331,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpe
 
 ---
 
-# 2.3. Datos pinguinos. 
+## 2.6. Datos pinguinos. 
 
 Como calculo el rango de la masa corporal de los pinguinos?  
 ***Cuidado con los NAs!, na.rm me sirve para ignorarlos***
@@ -365,8 +349,7 @@ PromedioPesoPingus/1000
 
 ---
 
-# 2.6. Ejercicios
-### Pinguinos
+## 2.7. Ejercicios pinguinos.
 
 - Como calculo el promedio del largo del pico de los pinguinos?  
 ```{r, eval=FALSE}
@@ -378,7 +361,7 @@ m**n(Pingus$largo_pico_mm,na.rm=TRUE)
 r***e(Pingus$*****,na.rm=TRUE)
 ```
 
-- Como obtengo el valor **minimo** del largo del pico de los pinguinos?  
+- Como obtengo el valor **mínimo** del largo del pico de los pinguinos?  
 ```{r, eval=FALSE}
 m**(Pingus$*****,na.rm=TRUE)
 ```
@@ -389,16 +372,16 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80)
 background-size: cover
 
-# Inspeccionar data frames
+# 3. Inspeccionar data frames
 
 ---
 
-# 3.1. Inspeccionar data frames
+## 3.1. Inspeccionar data frames
 
 - Ver mis primeras y ultimas filas  
 - Ver filas especificas
 - Ver columnas especificas
-- Extraer especificos de acuerdo a su columna y fila
+- Extraer específicos de acuerdo a su columna y fila
 
 ```{r echo=FALSE, out.height=300}
 knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
@@ -408,7 +391,7 @@ Source: frases333
 
 ---
 
-# 3.2. head() y tail()
+## 3.2. head() y tail()
 
 Para ver mis primeras y ultimas filas
 ```{r, eval=TRUE}
@@ -421,8 +404,7 @@ tail(Pingus)
 
 ---
 
-# 3.3. Filas
-### Corchetes
+## 3.3. Filas
 
 Las filas se pone entre corchetes en la **PRIMERA** posición.
 ```{r}
@@ -430,15 +412,14 @@ Las filas se pone entre corchetes en la **PRIMERA** posición.
 ```
 
 Muéstrame las primeras 3 filas. 
-El signo de **:** es como decir "de aqui hasta acá".
+El signo de **:** es como decir "de aquí hasta acá".
 ```{r}
 (Pingus[1:3,])
 ```
 
 ---
 
-# 3.5. Columnas
-### head()
+## 3.4. Columnas
 
 Las columnas se pone entre corchetes en la **SEGUNDA** posición.
 ```{r}
@@ -452,8 +433,7 @@ head(Pingus$especie)
 
 ---
 
-# 3.1. Inspeccionar
-### Columnas y filas
+## 3.5. Columnas y filas
 
 Muéstrame un dato especifico [FILA, COLUMNA]
 ```{r}
@@ -471,17 +451,13 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1341&q=80)
 background-size: cover
 
-# Orden
+# 4. Datos ordenados
 
 ---
 
-# 4. Datos ordenados
+## 4.1. Ordenar datos
 
-### 4.1. Ordenar datos
-
-Segun fuentes no oficiales:  
-El 80% del tiempo del analisis de datos se utiliza en el proceso de limpieza y preparacion de los datos.
-Y se realiza la operacion varias veces.  
+El proceso mas tardado es el de limpieza y preparación de los datos, y se realiza varias veces.  
 
 ```{r echo=FALSE, out.height=300}
 knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/data-science.svg')
@@ -489,21 +465,21 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 
 ---
 
-# 4.1. Datos ordenados
+## 4.2. Datos ordenados
 
-Los datos ordenados (Tidy): es una estructuracion de los conjuntos de datos para facilitar el analisis. 
+Los datos ordenados (Tidy): es una estructuración de los conjuntos de datos para facilitar el análisis. 
 
 ```{r echo=FALSE, out.height=200}
 knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/tidy-1.svg")
 ```
 
 - Cada variable debe estar columna
-- Cada observacion es una fila
-- Cada tipo de unidad de observacion forma una tabla 
+- Cada observación es una fila
+- Cada tipo de unidad de observación forma una tabla 
 
 ---
 
-# 4.3. Errores comunes
+## 4.3. Errores comunes
 
 Se recomienda que al almacenar datos:
 - Diferentes tipos de variables se almacenen en columnas separadas.
@@ -518,7 +494,7 @@ Si no el proceso de ordenarlos puede ser tardado `r emo::ji("clock")`.
 
 ---
 
-# 5. Ordenar
+## 4.4. Ordenar
 
 Hay muchas maneras de ordenar y manipular tus datos.  
 En ingles le dicen 'data wrangling' que significa como rodeo.
@@ -534,19 +510,19 @@ knitr::include_graphics("https://www.khstats.com/img/dplyr_image.jpg")
 
 ---
 
-# 5. Ordenar
+## 4.5. Ordenar
 
-### Porque usar datos ordenados?  
-- Muchos comandos se basan en la suposicion de que tus datos estan ordenados.  
-- El formato es el esperado para analisis estadisticos.  
-- Tener datos ordenados ayudan a realizar los graficos.  
-- Podemos compartirlos y la otra persona podria entender nuestra tabla mas rapido que en una tabla desordenada.  
+**Porque usar datos ordenados? **
+- Muchos comandos se basan en la suposición de que tus datos están ordenados.  
+- El formato es el esperado para análisis estadísticos.  
+- Tener datos ordenados ayudan a realizar los gráficos.  
+- Podemos compartirlos y la otra persona podría entender nuestra tabla mas rápido que en una tabla desordenada.  
 
 ---
 
-## 5.1. Tidyverse 
+## 4.6. Tidyverse 
 
-Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
+Tidyverse engloba varios paquetes, la mayoría para específicamente para inspeccionar y manipular tus datos. 
 
 ```{r echo=FALSE, out.height=450}
 knitr::include_graphics('https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png')
@@ -554,7 +530,7 @@ knitr::include_graphics('https://hbctraining.github.io/Intro-to-R/img/tidyverse_
 
 ---
 
-## 5.2. Pipe
+## 4.7. Pipe
 
 Vamos a usar mucho el **pipe** un argumento que se usa para encadenar funciones.
 
@@ -565,7 +541,7 @@ En su teclado: strg+alt+M
 
 ---
 
-## 5.3. Manipular
+## 4.8. Manipular
 
 El paquete dplyr nos da una serie de herramientas para *manipular* datos
 
@@ -577,13 +553,13 @@ Las principales funciones, o *verbos* de dplyr, son:
 - `mutate()`, para crear o modificar columnas
 - `summarise()`, para resumir información de las columnas
 
-Hoy veremos algunas, la proxima clase veremos otras.
+Hoy veremos algunas, la próxima clase veremos otras.
 
 ---
 
-## 5.4. count()
+## 4.9. count()
 
-Cuandos datos tengo?
+Cuantos datos tengo?
 ```{r, eval=FALSE}
 Pingus %>% 
   count()
@@ -597,7 +573,7 @@ Pingus %>%
 
 ---
 
-## 5.4. count()
+## 4.10. count()
 
 Cuantos datos tengo por isla y por especie?
 ```{r}
@@ -614,11 +590,10 @@ Pingus %>%
 
 ---
 
-## 5.5. select()
+## 4.11. select()
 
 Con la función **select()**, podemos elegir:
-
-- Que columnas quiero ver.
+Que columnas quiero ver.
 ```{r}
 Pingus %>% 
   select(especie) %>% #<<
@@ -627,9 +602,9 @@ Pingus %>%
 
 ---
 
-## 5.5. select(-)
+## 4.12. select(-)
 
-- Que columnas no quiero ver.  
+Que columnas no quiero ver.  
 El signo **-** es como decir "menos ese"
 ```{r}
 Pingus %>% 
@@ -639,9 +614,9 @@ Pingus %>%
 
 ---
 
-## 5.5. select(-)
+## 4.13. select(-)
 
-- El signo de admiración **!** es como decir "diferente a".
+El signo de admiración **!** es como decir "diferente a".
 ```{r}
 Pingus %>% 
   select(!sexo) %>% #<<
@@ -650,10 +625,10 @@ Pingus %>%
 
 ---
 
-## 5.6. select(:)
+## 4.14. select(:)
 
-- Seleccionar columnas que están en medio de varias columnas.  
-El signo de **:** es como decir "de aqui hasta acá".
+Seleccionar columnas que están en medio de varias columnas.  
+El signo de **:** es como decir "de aquí hasta acá".
 ```{r}
 Pingus %>% 
   select(largo_pico_mm:masa_corporal_g) %>% #<<
@@ -662,9 +637,9 @@ Pingus %>%
 
 ---
 
-## 5.6. select(:)
+## 4.15. select(:)
 
-Tambien se pueden usar cadenas de caracteres (strings)
+También se pueden usar cadenas de caracteres (strings).  
 Tanto usando como termina el nombre de la columna.
 ```{r}
 Pingus %>% 
@@ -674,9 +649,10 @@ Pingus %>%
 
 ---
 
-## 5.6. select(:)
+## 4.16. select(:)
 
-Como seleccionando como inicia.
+También se pueden usar cadenas de caracteres (strings).  
+Como seleccionando como inicia el nombre de la columna.  
 ```{r}
 Pingus %>% 
   select(starts_with("masa"))
@@ -684,8 +660,8 @@ Pingus %>%
 
 ---
 
-# 5.7. Ejercicios
-## count
+# 4.17. Ejercicios
+**count**
 ```{r, eval=FALSE}
 Pingus %>% #strg+alt+M
   count()
@@ -693,7 +669,7 @@ Pingus %>%
   count(especie) #specie
 ```
 
-##select
+**select**
 ```{r, eval=FALSE}
 Pingus %>% 
   select(especie) %>%
@@ -708,14 +684,20 @@ PingusSinSexo<-Pingus %>%
 
 ---
 
+class: title-slide, middle,  bottom
+background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
+background-size: cover
+
+.right[
 # Recapitulando
 
-Esta clase: 
-4.1. Operaciones matematicas simples.  
-4.2. Funciones basicas (mean, median, sd, range).  
+Esta clase:  
+4.1. Operaciones matemáticas simples.  
+4.2. Funciones básicas (mean, median, sd, range).  
 4.3. Funciones tidyverse (count, select).  
 
 Siguiente clase:  
-4.4. Funciones tidyverse (filter, group_by, summarize)
-4.5. Unir dataframes (join)  
-4.6. Exportar dataframes (write_csv)  
+5.1. Funciones tidyverse (filter, group_by, summarize)  
+5.2. Unir dataframes (join)  
+5.3. Exportar dataframes (write_csv)  
+]
