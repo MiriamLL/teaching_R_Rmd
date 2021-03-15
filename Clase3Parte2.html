@@ -43,35 +43,35 @@ Marzo 2021
 
 ---
 
-# Intro
+## 1. Intro
 
-La clase es de 2 horas.
+- Funciones del tidyverse.&lt;br&gt;
 
-Teoria:  
-- Funciones del tidyverse.  
-- Funciones para unir y manipular data frames.  
 --
-Practica:  
-- Ejercicios.
+
+- Funciones para unir y manipular data frames.&lt;br&gt; 
+
 --
-Teoria:    
-- Unir data frames.  
-- Exportar tus datos.  
+
+- Ejercicios.&lt;br&gt;
+
 --
-Practica:  
-- Ejercicios.
+
+- Unir data frames.&lt;br&gt;
+- Exportar tus datos.&lt;br&gt;
+
+--
+
+- Ejercicios.&lt;br&gt;
 
 
 
+--
 
----
-
-# Ustedes
+## Ustedes
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).
-
 - Quieren manipular sus data frames.
-
 - Quieren exportar su nuevo data frame.
 
 
@@ -79,7 +79,7 @@ Practica:
 
 ## Créditos
 
--Todo el material basado en el libro:  
+-Material basado en el libro:  
 [R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
@@ -90,7 +90,7 @@ Practica:
 [RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&amp;t=3605s)
 
 
--Imágenes adicionales
+-Imágenes adicionales  
 [Unsplash](https://unsplash.com/)
 
 ---
@@ -106,7 +106,7 @@ background-size: cover
 ## Datos pinguinos. 
 🐧
 
-Cargen sus datos, que los vamos a usar mas adelante.
+Si van a hacer los ejercicios a la par, cargen sus datos.
 
 ```r
 library(datos)
@@ -153,7 +153,7 @@ Las principales funciones, o *verbos* de dplyr, son:
 - `mutate()`, para crear o modificar columnas
 - `summarise()`, para resumir información de las columnas
 
-Hoy veremos algunas, la proxima clase veremos otras.
+count y select las vimos las clase pasada.
 
 ---
 
@@ -453,7 +453,7 @@ Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
 ---
 
-# 1.11. Ejercicios asistidos
+## 1.11. Ejercicios asistidos
 
 --
 
@@ -487,7 +487,7 @@ Pingus %&gt;%
 
 ---
 
-# 1.11.  Ejercicios asistidos
+## 1.11.  Ejercicios asistidos
 Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
 
 ```r
@@ -506,7 +506,7 @@ Pingus&lt;-Pingus %&gt;%
 
 ---
 
-# 1.12. Ejercicios solos
+## 1.12. Ejercicios solos
 - Crea un objeto con solo dos columnas, las de sexo y anio.
 
 ```r
@@ -919,102 +919,6 @@ background-size: cover
 
 ---
 
-## 2.9 Ejercicios
-### Paquetes
-
-
-```r
-library(tidyverse)
-library(datos)
-```
-
-
-```r
-Pingus&lt;-datos::pinguinos
-```
-
----
-
-## 2.9. Ejercicios
-### pivot_wider()
-
-
-```r
-PingusAncho&lt;-Pingus %&gt;% 
-  pivot_wider(names_from = especie, 
-              values_from = largo_pico_mm)
-PingusAncho
-```
-
-```
-## # A tibble: 343 x 9
-##    isla  alto_pico_mm largo_aleta_mm masa_corporal_g sexo   anio Adelia Papúa
-##    &lt;fct&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;list&gt; &lt;lis&gt;
-##  1 Torg~         18.7            181            3750 macho  2007 &lt;dbl ~ &lt;NUL~
-##  2 Torg~         17.4            186            3800 hemb~  2007 &lt;dbl ~ &lt;NUL~
-##  3 Torg~         18              195            3250 hemb~  2007 &lt;dbl ~ &lt;NUL~
-##  4 Torg~         NA               NA              NA &lt;NA&gt;   2007 &lt;dbl ~ &lt;NUL~
-##  5 Torg~         19.3            193            3450 hemb~  2007 &lt;dbl ~ &lt;NUL~
-##  6 Torg~         20.6            190            3650 macho  2007 &lt;dbl ~ &lt;NUL~
-##  7 Torg~         17.8            181            3625 hemb~  2007 &lt;dbl ~ &lt;NUL~
-##  8 Torg~         19.6            195            4675 macho  2007 &lt;dbl ~ &lt;NUL~
-##  9 Torg~         18.1            193            3475 &lt;NA&gt;   2007 &lt;dbl ~ &lt;NUL~
-## 10 Torg~         20.2            190            4250 &lt;NA&gt;   2007 &lt;dbl ~ &lt;NUL~
-## # ... with 333 more rows, and 1 more variable: Barbijo &lt;list&gt;
-```
-
----
-
-## 2.9. Ejercicios
-### pivot_longer()
-
-
-```r
-PingusLargo &lt;- PingusAncho %&gt;%
-  pivot_longer(c(Adelia, Papúa, Barbijo),
-    names_to = "Especies",
-    values_to = "largo_pico_mm" )
-```
-
----
-
-## 2.9. Ejercicios
-### unite()
-
-
-```r
-PingusEspecieSexo&lt;-Pingus %&gt;% 
-  unite(col = especie_sexo,
-        c("especie", "sexo"),
-        sep = ": ")
-```
-
----
-
-## 2.9. Ejercicios
-### separate()
-
-
-```r
-PingusSeparate&lt;-PingusEspecieSexo %&gt;% 
- separate(col = especie_sexo,
-           into = c("especie", "sexo"),
-           sep = ":")
-```
-
----
-
-## 2.9. Ejercicios
-### relocate()
-
-
-```r
-PingusRelocate&lt;-Pingus %&gt;% 
-  relocate(sexo, anio)
-```
-
----
-
 ## 2.9. Ejercicios
 ### left_join()
 
@@ -1170,28 +1074,29 @@ write_csv(
 
 # 4. Continuar aprendiendo
 
+Usar [CheatSheet](https://dplyr.tidyverse.org/), que son acordeones para tener la información mas a la mano.  
+Realizar [ejercicios](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/#section-wrangling-in-dplyr).  
+
+En R&gt;  
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/dplyrcheatsheet.jpg" height="300" /&gt;
-
-[CheatSheet](https://dplyr.tidyverse.org/)
-
-[EjerciciosInteractivos](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/#section-wrangling-in-dplyr)
-
-
 
 ---
 
+class: title-slide, bottom, left
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80)
+background-size: cover
 
 # Recapitulando
 
 Esta clase:  
-4.1. Funciones de filter, mutate, summarise, unique, drop_na.  
-4.2. Unir data frames.  
-4.3. Renombrar columnas.  
-4.4. Exportar data frames.  
+5.1. Funciones de filter, mutate, summarise, unique, drop_na.  
+5.2. Unir data frames.  
+5.3. Renombrar columnas.  
+5.4. Exportar data frames.  
 
 Siguiente clase:  
-5.1. Trabajar por proyectos  
-5.2. Compartir proyectos  
+6.1. Trabajar por proyectos  
+6.2. Compartir proyectos  
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

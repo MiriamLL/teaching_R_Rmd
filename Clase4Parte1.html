@@ -46,28 +46,24 @@ Marzo 2021
 
 # Intro
 
-La clase es de 2 horas.
-
-Teoria:  
 - Trabajar por proyectos.  
+
 - Ordenar mis carpetas y crear mi proyecto.
 
-Practica:  
+--
+
 - Crear un proyecto.  
 - Guardarlo y compartirlo.  
 
 
 
+--
 
+## Ustedes
 
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y gráficos, saben exportar csvs y gráficos).  
 
----
-
-# Ustedes
-
-- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y graficos, saben exportar csvs y graficos).  
-
-- Quieren tener ordenado su trabajo para poder re-hacer sus analisis en el futuro.  
+- Quieren tener ordenado su trabajo para poder re-hacer sus análisis en el futuro.  
 
 - Quieren trabajar con alguien mas y mandarle materiales.    
 
@@ -103,9 +99,9 @@ background-size: cover
 
 ## 1. Teoria
 
-Llegara el dia en que cerraran R y haran otra cosa y tendran que volver al analisis que estaban haciendo.
+Llegara el día en que cerraran R y harán otra cosa y tendrán que volver al análisis que estaban haciendo.
 
-Tambien llegara el dia en que trabajen en multiples proyectos a la vez y quieran mantenerlos separados.
+También llegara el día en que trabajen en múltiples proyectos a la vez y quieran mantenerlos separados.
 
 ---
 
@@ -163,7 +159,7 @@ Pingus&lt;-read_csv("C://Users//Lerma//Documents//4Cursos//1CIAD//01Clase Intro/
 
 Las **rutas relativas**, siempre que hagas referencia a un archivo con una ruta relativa, RStudio lo buscará en este directorio.
 
-Tambien librerias como here, se adaptan a la ubicacion de tus proyectos.
+También librerías como here, se adaptan a la ubicación de tus proyectos.
 
 
 ```r
@@ -210,9 +206,9 @@ Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes
 ## 1.4. Proyectos 
 ### Ventajas
 
-- Un proyecto te permite tener todo un 'proyecto' como su tesis, articulos, etc dentro de una sola carpeta.  
+- Un proyecto te permite tener todo un 'proyecto' como su tesis, artículos, etc, dentro de una sola carpeta.  
 - La carpeta se puede cambiar de lugar sin perder todos las direcciones (usando direcciones relativas).    
-- Tambien te permite definir que vas a usar y enfocarte en eso, no tener todo en diferentes lados.  
+- También te permite definir que vas a usar y enfocarte en eso, no tener todo en diferentes lados.  
 - Te puede ayudar a colaborar con otros.  
 
 En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un flujo de trabajo consistente que te será de mucha utilidad en el futuro.
@@ -226,7 +222,7 @@ En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un fl
 
 - Crea un proyecto RStudio para cada proyecto de análisis de datos.
 - Mantén los archivos ahí.
-- Conserva los scripts ahí también; edítalos, ejecutálos por partes o en su totalidad.
+- Conserva los scripts ahí también; edítalos, ejecútalos por partes o en su totalidad.
 - Guarda todos los resultados de tu trabajo (gráficos y sets de datos limpios) ahí.
 - Siempre usa rutas relativas, nunca rutas absolutas.
 
@@ -234,14 +230,16 @@ Todo lo que necesites siempre estará concentrado en una sola ubicación y clara
 
 
 
-[R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+.rigth[
+Fuente [R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+]
 
 ---
 
 
 ## 1.5. Nombrar las cosas.
 
-### Cuales son nombres de proyecto o de objetos significativos?
+**Cuales son nombres de proyecto o de objetos significativos?**
 
 --
 
@@ -268,34 +266,38 @@ Créditos: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
 
 ---
 
-class: center, middle
+## 1.5. Nombrar las cosas.
 
-### Buenos nombres
+**Buenos nombres**
 
 Tres principios:  
 
+.center[
 Leibles para la computadora 
 #&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/&gt;&lt;/svg&gt;  
 Leibles para los humanos 
 #&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/&gt;&lt;/svg&gt;  
 Funcionen bien con orden por defecto 
 #&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M0 256v128c0 17.7 14.3 32 32 32h32V224H32c-17.7 0-32 14.3-32 32zM464 96H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H176c-44.2 0-80 35.8-80 80v272c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176c0-44.2-35.8-80-80-80zM256 416h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm128 120h-64v-32h64v32zm96 0h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm192-72h-32v192h32c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32z"/&gt;&lt;/svg&gt;  
- 
+]
+
 ---
 
 ## 1.7. Para la computadora
 
+.center[
 #&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/&gt;&lt;/svg&gt;
+]
 
 - Usar palabras clave.  
 - Sin caracteres especiales.  
-- Sin signos de puntuacion.  
+- Sin signos de puntuación.  
 
 Usar "_" para separar nombres con mas de una palabra.  
 
 **Evita**
 - Usar espacios en los nombres de los archivos.  
-- Signos de puntuacion.  
+- Signos de puntuación.  
 - Caracteres acentuados.  
 - Diferentes archivos con nombres similares y con diferente contenido (ej. gato y Gato).  
 
@@ -305,9 +307,11 @@ Usar "_" para separar nombres con mas de una palabra.
 
 ## 1.7. Para humanos.
 
+.center[
 #&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z"/&gt;&lt;/svg&gt;
+]
 
-Facil de saber que contiene el archivo a partir de su nombre.
+Fácil de saber que contiene el archivo a partir de su nombre.
 
 - 01_introduccion.docx  
 - 02_metodologia.docx  
@@ -320,7 +324,9 @@ Facil de saber que contiene el archivo a partir de su nombre.
 
 ## 1.7. Orden por defecto 
 
+.center[
 #&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M0 256v128c0 17.7 14.3 32 32 32h32V224H32c-17.7 0-32 14.3-32 32zM464 96H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H176c-44.2 0-80 35.8-80 80v272c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176c0-44.2-35.8-80-80-80zM256 416h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm128 120h-64v-32h64v32zm96 0h-64v-32h64v32zm-32-120c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm192-72h-32v192h32c17.7 0 32-14.3 32-32V256c0-17.7-14.3-32-32-32z"/&gt;&lt;/svg&gt;
+]
 
 Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
 
@@ -342,13 +348,13 @@ Otras opciones:
 
 ## 1.8. Comentar su codigo
 
-Pongan la mayor cantidad de informacion que puedan para recordar porque hicieron que cosa.
+Pongan la mayor cantidad de información que puedan para recordar porque hicieron que cosa.
 Tener tus datos ordenados y tener un solo archivo ayuda a compartir tu trabajo y te permite replicar el experimento en el futuro.
 
 
 
 ```r
-#Este codigo es para cargar mis datos
+#Este código es para cargar mis datos
 Pingus_csv&lt;-read_csv(here("Pingus_1.csv")) 
 #Para cargar otros datos 
 #Tengo que nombrar un objeto
@@ -375,11 +381,11 @@ background-size: cover
 
 --
 
-- Vamos a crear un script con codigo debe incluir: numero de muestras y el promedio de alguna variable del data.frame.  
+- Vamos a crear un script con código debe incluir: numero de muestras y el promedio de alguna variable del data.frame.  
 
 --
 
-- Vamos a exportar un grafico en la carpeta resultados.  
+- Vamos a exportar un gráfico en la carpeta resultados.  
 
 --
 
@@ -391,15 +397,17 @@ background-size: cover
 
 - Crea un folder para tu proyecto
 - Crea un subfolder que se llame datos (01Datos)  
-- Crea un subfolder que se llame codigo (02Scripts)  
+- Crea un subfolder que se llame código (02Scripts)  
 - Crea un subfolder que se llama resultados (03Resultados)  
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/NewFileBoton.jpg" height="350" /&gt;
 
 ---
 
 ## 2.2. Crear un proyecto
 Haz clic en File &gt; New Proyect, y después:
 
-&lt;img src="https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png" height="350" /&gt;
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/NuevoProyecto.jpg" height="350" /&gt;
 
 Traten de usar un nombre significativo (p.e. 'ProyectoPingus')
 
@@ -416,6 +424,8 @@ Revisa con getwd.
 
 Revisa con here.
 
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/FigurasCuboProyectoR.jpg" height="350" /&gt;
 
 ---
 
@@ -517,7 +527,7 @@ Pingus %&gt;%
 
 ## 2.5. Figuras
 
-- Van a exportar un grafico en su carpeta resultados.  
+- Van a exportar un gráfico en su carpeta resultados.  
 Un boxplot de pesos de hembras y machos separados por especie.
 
 
@@ -540,7 +550,7 @@ Elige el directorio donde quieres guardar tu gráfico.
 ```r
 ResultsFolder&lt;-here::here("03Resultados")
 ```
-Si no usan here, escriban la direccion completa del Folder.
+Si no usan here, escriban la dirección completa del Folder.
 
 
 ```r
@@ -572,7 +582,7 @@ Revisar tener:
 ## 2.7. Reusar script
 
 Abrir su script (MiScript.R).  
-Hacer segundo grafico.  
+Hacer segundo gráfico.  
 File&gt;Save as&gt;02_grafico_longitudpico_pingus.  
 
 Modifiquemos **todas** las partes donde dice masa_corporal_g por largo_pico_mm
@@ -595,6 +605,8 @@ Cierren su RStudio.
 - Muevan la carpeta a otra carpeta.  
 - Abran de nuevo su proyecto picandole al Rproj o abriendo R y moviendose al proyecto.  
 - Rehagan sus analisis abriendo: 02Script&gt;Script  
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/FigurasCuboProyectoR.jpg" height="350" /&gt;
 
 
 ---
@@ -649,7 +661,7 @@ Esta clase:
 
 Siguiente clase:  
 7.1. Sintaxis de modelos lineares.  
-7.2. Linea de ajuste en nuestros graficos.  
+7.2. Linea de ajuste en nuestros gráficos.  
 
 
     </textarea>

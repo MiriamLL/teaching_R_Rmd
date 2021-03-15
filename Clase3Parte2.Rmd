@@ -53,37 +53,37 @@ background-size: cover
 
 ---
 
-# Intro
+## 1. Intro
 
-La clase es de 2 horas.
+- Funciones del tidyverse.<br>
 
-Teoria:  
-- Funciones del tidyverse.  
-- Funciones para unir y manipular data frames.  
 --
-Practica:  
-- Ejercicios.
---
-Teoria:    
-- Unir data frames.  
-- Exportar tus datos.  
---
-Practica:  
-- Ejercicios.
 
+- Funciones para unir y manipular data frames.<br> 
+
+--
+
+- Ejercicios.<br>
+
+--
+
+- Unir data frames.<br>
+- Exportar tus datos.<br>
+
+--
+
+- Ejercicios.<br>
 
 ```{r, echo=FALSE}
 library(emo)
 ```
 
----
+--
 
-# Ustedes
+## Ustedes
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).
-
 - Quieren manipular sus data frames.
-
 - Quieren exportar su nuevo data frame.
 
 
@@ -91,7 +91,7 @@ library(emo)
 
 ## Créditos
 
--Todo el material basado en el libro:  
+-Material basado en el libro:  
 [R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
@@ -102,7 +102,7 @@ library(emo)
 [RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&t=3605s)
 
 
--Imágenes adicionales
+-Imágenes adicionales  
 [Unsplash](https://unsplash.com/)
 
 ---
@@ -118,7 +118,7 @@ background-size: cover
 ## Datos pinguinos. 
 `r emo::ji("penguin")`
 
-Cargen sus datos, que los vamos a usar mas adelante.
+Si van a hacer los ejercicios a la par, cargen sus datos.
 ```{r}
 library(datos)
 Pingus<-pinguinos
@@ -164,7 +164,7 @@ Las principales funciones, o *verbos* de dplyr, son:
 - `mutate()`, para crear o modificar columnas
 - `summarise()`, para resumir información de las columnas
 
-Hoy veremos algunas, la proxima clase veremos otras.
+count y select las vimos las clase pasada.
 
 ---
 
@@ -350,7 +350,7 @@ Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
 ---
 
-# 1.11. Ejercicios asistidos
+## 1.11. Ejercicios asistidos
 
 --
 
@@ -380,7 +380,7 @@ Pingus %>%
 
 ---
 
-# 1.11.  Ejercicios asistidos
+## 1.11.  Ejercicios asistidos
 Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
 ```{r, eval=FALSE}
 Pingus %>% 
@@ -397,7 +397,7 @@ Pingus<-Pingus %>%
 
 ---
 
-# 1.12. Ejercicios solos
+## 1.12. Ejercicios solos
 - Crea un objeto con solo dos columnas, las de sexo y anio.
 ```{r}
 #_____ <-Pingus %>%
@@ -632,78 +632,6 @@ background-size: cover
 
 ---
 
-## 2.9 Ejercicios
-### Paquetes
-
-```{r}
-library(tidyverse)
-library(datos)
-```
-
-```{r}
-Pingus<-datos::pinguinos
-```
-
----
-
-## 2.9. Ejercicios
-### pivot_wider()
-
-```{r, warning=FALSE}
-PingusAncho<-Pingus %>% 
-  pivot_wider(names_from = especie, 
-              values_from = largo_pico_mm)
-PingusAncho
-```
-
----
-
-## 2.9. Ejercicios
-### pivot_longer()
-
-```{r}
-PingusLargo <- PingusAncho %>%
-  pivot_longer(c(Adelia, Papúa, Barbijo),
-    names_to = "Especies",
-    values_to = "largo_pico_mm" )
-```
-
----
-
-## 2.9. Ejercicios
-### unite()
-
-```{r}
-PingusEspecieSexo<-Pingus %>% 
-  unite(col = especie_sexo,
-        c("especie", "sexo"),
-        sep = ": ")
-```
-
----
-
-## 2.9. Ejercicios
-### separate()
-
-```{r}
-PingusSeparate<-PingusEspecieSexo %>% 
- separate(col = especie_sexo,
-           into = c("especie", "sexo"),
-           sep = ":")
-```
-
----
-
-## 2.9. Ejercicios
-### relocate()
-
-```{r}
-PingusRelocate<-Pingus %>% 
-  relocate(sexo, anio)
-```
-
----
-
 ## 2.9. Ejercicios
 ### left_join()
 
@@ -818,28 +746,29 @@ write_csv(
 
 # 4. Continuar aprendiendo
 
+Usar [CheatSheet](https://dplyr.tidyverse.org/), que son acordeones para tener la información mas a la mano.  
+Realizar [ejercicios](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/#section-wrangling-in-dplyr).  
+
+En R>  
 ```{r echo=FALSE, out.height=300}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/dplyrcheatsheet.jpg')
 ```
 
-[CheatSheet](https://dplyr.tidyverse.org/)
-
-[EjerciciosInteractivos](https://allisonhorst.shinyapps.io/edge-of-the-tidyverse/#section-wrangling-in-dplyr)
-
-
-
 ---
 
+class: title-slide, bottom, left
+background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
+background-size: cover
 
 # Recapitulando
 
 Esta clase:  
-4.1. Funciones de filter, mutate, summarise, unique, drop_na.  
-4.2. Unir data frames.  
-4.3. Renombrar columnas.  
-4.4. Exportar data frames.  
+5.1. Funciones de filter, mutate, summarise, unique, drop_na.  
+5.2. Unir data frames.  
+5.3. Renombrar columnas.  
+5.4. Exportar data frames.  
 
 Siguiente clase:  
-5.1. Trabajar por proyectos  
-5.2. Compartir proyectos  
+6.1. Trabajar por proyectos  
+6.2. Compartir proyectos  
 
