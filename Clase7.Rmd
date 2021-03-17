@@ -251,9 +251,9 @@ Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas 
 ggplot(Pingus, 
        aes(x=largo_aleta_mm, 
            y=masa_corporal_g, 
-           color = especie)) +
+           color = especie)) +#<<
        geom_point() +
-       geom_smooth(method = "lm") #<<
+       geom_smooth(method = "lm")
 ```
 ]
 
@@ -305,6 +305,31 @@ cowplot::plot_grid(p1,p2,p3,p4,
 
 ---
 
+## 1.5. plotly
+
+Cargar libreria.
+```{r, message=FALSE, warning=FALSE}
+#install.packages(plotly)
+library(plotly)
+```
+
+Crear ggplot.
+```{r}
+Pingus_puntos<-ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g, 
+           color = especie)) +
+       geom_point()
+```
+
+La funcion **ggplotly** te permite inspeccionar tu grafico de manera interactiva.
+```{r, eval=FALSE}
+ggplotly(Pingus_puntos)
+```
+Vamos a ver un ejemplo en los ejercicios.
+
+---
+
 class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1516478784322-0b77268e6c64?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvdHN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
 background-size: cover
@@ -314,7 +339,7 @@ background-size: cover
 
 ---
 
-## 1. 4. Ejercicios juntos
+## 1. 6. Ejercicios juntos
 ```{r, warning=FALSE, message=FALSE}
 library(datos)
 library(tidyverse)
@@ -342,7 +367,14 @@ ggplot(Pingus,
 
 ---
 
-## 1. 4. Ejercicios juntos
+## 1. 6. Ejercicios junto
+Ver variables categoricas separadas por panel. 
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
+  geom_point()+
+  facet_wrap(~especie) #<<
+```
 
 Exploremos los datos usando solo los datos de Pinguinos de Adelia.
 ```{r}
@@ -358,12 +390,30 @@ ggplot(Adelia,
        geom_smooth(method="lm")
 ```
 
-Ver variables categoricas separadas por panel. 
 
-```{r, warning=FALSE, message=FALSE, eval=FALSE}
-ggplot(Pingus, aes(largo_pico_mm, alto_pico_mm)) +
-  geom_point()+
-  facet_wrap(~especie) #<<
+
+---
+
+## 1. 6. Ejercicios juntos
+
+Cargar libreria.
+```{r}
+#install.packages(plotly)
+library(plotly)
+```
+
+Crear ggplot.
+```{r}
+Pingus_puntos<-ggplot(Pingus, 
+       aes(x=largo_aleta_mm, 
+           y=masa_corporal_g, 
+           color = especie)) +
+       geom_point()
+```
+
+La funcion **ggplotly** te permite inspeccionar tu grafico de manera interactiva.
+```{r, eval=FALSE}
+ggplotly(Pingus_puntos) #<<
 ```
 
 ---
@@ -615,6 +665,8 @@ Podemos explorar el ajuste y analizar el cumplimiento de supuestos en R utilizan
 par(mfrow = c(2, 2))
 plot(modelo_chocolate)
 ```
+
+**nuevo concepto** par(mfrow), es que nos muestre los graficos en dos columnas y dos filas. _par_ por grafical parameters, _mf_ de Multiple Figures/Frames y _row_ de ordenado por fila.
 ]
 
 .pull-right[
@@ -675,7 +727,6 @@ Plot_nueva_dosis +
 
 ## 2.11. Residuales
 
-Lo que nuestra regresión está realizando es minimizar la suma de los residuos al cuadrado.  
 Una herramienta para visualizar mejor los puntos con residuos grandes es graficarlos utilizando una escala de color y tamaño.
 
 .pull-left[
@@ -713,7 +764,7 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
 ## 2.13. Ejercicios juntos
 
-Modelo ideal.
+Generar nuestros datos.
 ```{r}
 id <- 1:100 
 dosis <- sort(rep(seq(20,100,20), 20))
@@ -721,33 +772,16 @@ respuesta <- dosis * 2.5 + 10
 datos <- data.frame(id=id,
                     dosis=dosis,
                     respuesta=respuesta)
-```
-
-Explorar los datos.
-```{r, fig.heigth=2, warning=FALSE, message=FALSE, eval=FALSE, out.width="40%"}
-p <- ggplot(datos, 
-            aes(x=dosis, y=respuesta))+
-      geom_point()+
-      xlab("Dosis Chocolate (gr)")+
-      ylab("Felicidad")
-p
-```
-
----
-
-## 2.14. Ejercicios juntos
-
-Modelo con un poco mas realista.
-```{r}
 set.seed(444)
 datos$respuesta <- datos$respuesta + rnorm(n = 100, mean = 0, sd = 5)
 ```
 
-Explorar los datos.
+Crear figura.
 ```{r, fig.heigth=2, warning=FALSE, message=FALSE, eval=FALSE}
 p <- ggplot(datos, 
             aes(x=dosis, y=respuesta))+
        geom_point(alpha = 0.1)+
+       geom_smooth(method="lm")+
        xlab("Dosis Chocolate (gr)")+
        ylab("Felicidad")
 p
@@ -774,18 +808,10 @@ Ver coeficientes.
 modelo_chocolate$coefficients
 ```
 
-Graficar
-```{r, eval=FALSE}
-ggplot(datos, aes(dosis, respuesta))+ geom_point(alpha = 0.1)+
-       xlab("Dosis Chocolate (gr)")+ylab("Felicidad")+
-  geom_smooth(method = "lm", color="lightgray", se=FALSE)+
-  stat_summary(fun = mean, geom="point", size=2, color="red")
-```
-
 ---
 
 ## 2.14. Ejercicios juntos
-
+Ver los residuales.
 Cambiemos nuestros datos para un peor ajuste. 
 ```{r, eval=FALSE}
 datos$nueva_dosis <- datos$dosis + rnorm(100,10,10)
