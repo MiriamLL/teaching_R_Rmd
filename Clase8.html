@@ -185,9 +185,10 @@ Transformamos columnas que son factores a factor.
 **fct**: factor? Ahora si existen columnas con esta clase.
 
 ```r
-Titanic_datos$sobrevivio &lt;- as.factor(Titanic_datos$sobrevivio)
-Titanic_datos$clase &lt;- as.factor(Titanic_datos$clase)
-Titanic_datos$sexo &lt;- as.factor(Titanic_datos$sexo)
+Titanic_datos&lt;-Titanic_datos%&gt;%
+    mutate(sobrevivio = as_factor(sobrevivio),
+           clase = as_factor(clase),
+           sexo = as_factor(sexo))
 ```
 
 
@@ -414,7 +415,7 @@ Noten que las clases son 1, 2 y 3 si no le decimos que es **factor**, lo interpr
 Para transformar a factor.
 
 ```r
-Titanic_datos$sobrevivio &lt;- factor(Titanic_datos$sobrevivio)
+Titanic_datos$sobrevivio &lt;- as.factor(Titanic_datos$sobrevivio)
 ```
 
 ---
