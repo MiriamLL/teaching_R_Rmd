@@ -340,6 +340,15 @@ background-size: cover
 ---
 
 ## 1. 6. Ejercicios juntos
+- Cargar datos de pinguinos
+- Crear dos gráficos de puntos con lineas de regresión
+- Usar facet_wrap
+- Crear un gráfico de puntos interactivo usando plotly
+
+---
+
+## 1. 6. Ejercicios juntos
+Cargarlos desde el paquete, usar read_csv, o import dataset. 
 ```{r, warning=FALSE, message=FALSE}
 library(datos)
 library(tidyverse)
@@ -367,7 +376,7 @@ ggplot(Pingus,
 
 ---
 
-## 1. 6. Ejercicios junto
+## 1. 6. Ejercicios juntos
 Ver variables categoricas separadas por panel. 
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
@@ -676,6 +685,31 @@ plot(modelo_chocolate)
 
 ---
 
+## 2.10. Supuestos
+
+.pull-left[
+Cargar e instalar paquetes.
+```{r, message=FALSE, warning=FALSE}
+#install.packages("performance")
+#install.packages('see')
+library(performance)
+```
+
+Este paquete tiene muchas funciones para checar supuestos del modelo. Se puede usar por separado check_collinearity(), check_normality(), check_heteroscedasticity() o checar todo junto con check_model().
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+check_model(modelo_chocolate)
+```
+]
+
+.pull-right[
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+check_model(modelo_chocolate)
+```
+]
+
+
+---
+
 ## 2.11. Nuevo modelo
 
 Cambiemos nuestros datos para un peor ajuste. 
@@ -763,7 +797,16 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 ---
 
 ## 2.13. Ejercicios juntos
+- Generar datos, usando set.seed y rnorm
+- Crear una figura con estos datos
+- Crear un modelo lineal
+- Extraer estimadores del modelo
+- Crear un segundo modelo
+- Graficar los residuales
 
+---
+
+## 2.13. Ejercicios juntos
 Generar nuestros datos.
 ```{r}
 id <- 1:100 
@@ -807,6 +850,18 @@ Ver coeficientes.
 ```{r, eval=FALSE}
 modelo_chocolate$coefficients
 ```
+
+Checar supuestos.
+```{r, eval=FALSE}
+#install.packages("performance")
+#install.packages('see')
+library(performance)
+```
+
+```{r, eval=FALSE}
+check_model(modelo_chocolate)
+```
+
 
 ---
 
