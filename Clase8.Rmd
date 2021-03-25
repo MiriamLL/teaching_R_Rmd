@@ -87,7 +87,7 @@ Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.
 - Ejercicios de estadística con R <br> 
 [Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
 
-- Ejemplos de regresiones lineales simples <br>
+- Ejemplos de anovas <br>
 [Sthda por Alboukadel Kassambara](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)`r emo::ji("star")` 
 
 - Libro <br> 
@@ -378,7 +378,7 @@ ggplot(Titanic_datos,
   xlab("sobrevivencia")+
   ylab("Precio del boleto")+
   theme_classic()+
-  scale_x_discrete(breaks=c("1","2"),
+  scale_x_discrete(breaks=c("0","1"),
         labels=c("No", "Sí"))
 ```
 
@@ -386,7 +386,7 @@ Noten que las clases son 1, 2 y 3 si no le decimos que es **factor**, lo interpr
 
 Para transformar a factor.
 ```{r}
-Titanic_datos$sobrevivio <- as.factor(Titanic_datos$sobrevivio)
+Titanic_datos$sobrevivio <- as_factor(Titanic_datos$sobrevivio)
 ```
 
 ---
@@ -396,7 +396,7 @@ Titanic_datos$sobrevivio <- as.factor(Titanic_datos$sobrevivio)
 Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
 ggplot(Titanic_datos,
-       aes(x= as.factor(clase), edad, 
+       aes(x= as_factor(clase), edad,
            fill=sobrevivio))+
   geom_violin()+
   xlab("Clase")+
@@ -408,12 +408,12 @@ ggplot(Titanic_datos,
 
 Para transformar a factor.
 ```{r}
-Titanic_datos$clase <- as.factor(Titanic_datos$clase)
+Titanic_datos$clase <- as_factor(Titanic_datos$clase)
 ```
 
 ---
 
-## 1.8. Sexo y clase
+## 1.7. Sexo y clase
 
 Gráfica la frecuencia del sexo de los pasajeros.
 
@@ -421,7 +421,7 @@ Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
 ggplot(Titanic_datos, 
        aes(sexo, sobrevivio))+
-  geom_jitter(aes(color=interaction(factor(sexo), 
+  geom_jitter(aes(color=interaction(as_factor(sexo), 
                                     sobrevivio)))+
   facet_wrap(~clase)+
   ylab("Supervivencia")+
@@ -446,14 +446,12 @@ background-size: cover
 
 ---
 
-## 2.1. Teoria
+## 2.1. Teoría
 
 [Teoria](https://rpubs.com/Joaquin_AR/219148)
 
-El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.
-
+El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.  
 --
-
 Un análisis de la varianza permite determinar, por ejemplo, si diferentes tratamientos (es decir, un grupo de más de dos tratamientos) muestran diferencias significativas en sus resultados o si por el contrario puede suponerse que sus medias poblacionales no difieren.
 
 
@@ -492,7 +490,7 @@ Insectos_df<-data.frame(insectos=insectos,colores=colores)
 Exploramos los datos
 ```{r, fig.height=3}
 Trampas_Fig<-ggplot(Insectos_df, 
-       aes(x=colores,y=insectos,)) +
+       aes(x=colores,y=insectos)) +
   geom_boxplot(aes(fill=colores))+
   xlab("Número de insectos atrapados")+
   ylab("Color trampa")+
@@ -598,8 +596,68 @@ bartlett.test(Anova_insectos$residuals ~ colores)
 
 ---
 
-## 2.8. Ejercicios juntos
+## 2.8. Otras anovas
 
+Crear nueva columna con factor de tamaño.
+```{r}
+Insectos_df$tamanio <- as.factor(c(rep(c("grande", "mediana", "chica"), 
+                           each=2)))
+```
+
+Crear nuevo modelo.
+```{r}
+Anova_insectos_2<-aov((insectos ~ colores + tamanio),data=Insectos_df)
+```
+
+Resultados del modelo.
+```{r}
+summary(Anova_insectos_2)
+```
+
+---
+
+## 2.8. Otras anovas
+
+Agregar interacción en el modelo.
+```{r}
+Anova_insectos_3<-aov((insectos ~ colores * tamanio),data=Insectos_df)
+```
+
+Otra manera de escribir el mismo modelo.
+```{r}
+Anova_insectos_4<-aov((insectos ~ colores + tamanio + colores : tamanio),data=Insectos_df)
+```
+
+---
+
+##  2.8. Otras anovas
+
+Mismos resultados.
+```{r}
+summary(Anova_insectos_3)
+```
+
+```{r}
+summary(Anova_insectos_4)
+```
+
+---
+
+## 2.9. Ejercicios juntos
+
+- Generar datos
+- Crear modelo
+- Ver resultados del modelo
+- Verificar algunos supuestos
+- Analisis TukeyHSD
+- Grafico
+- Anova de dos factores
+- Anova con interacción
+
+
+---
+
+## 2.9. Ejercicios juntos
 
 Generar datos y modelo.
 ```{r, eval=FALSE}
@@ -617,7 +675,8 @@ summary(Anova_insectos)
 
 ---
 
-## 2.8. Ejercicios juntos
+
+## 2.9. Ejercicios juntos
 
 Independencia
 ```{r, eval=FALSE}
@@ -642,7 +701,7 @@ bartlett.test(Anova_insectos$residuals ~ colores)
 
 ---
 
-## 2.8. Ejercicios juntos
+## 2.9. Ejercicios juntos
 
 Veamos si los grupos son diferentes y cuales grupos son diferentes.
 ```{r, eval=FALSE}
@@ -667,45 +726,44 @@ Juega con la grafica, cambiando temas.
 
 ---
 
-## 2.9. Otras anovas
+## 2.9. Ejercicios juntos
 
-Dos factores:
-```{r}
+Crear nueva columna con factor de tamaño.
+```{r, eval=FALSE}
 Insectos_df$tamanio <- as.factor(c(rep(c("grande", "mediana", "chica"), 
                            each=2)))
 ```
 
-```{r}
+```{r, eval=FALSE}
 Anova_insectos_2<-aov((insectos ~ colores + tamanio),data=Insectos_df)
 ```
 
-Interaccion:
-```{r}
-Anova_insectos_3<-aov((insectos ~ colores * tamanio),data=Insectos_df)
-```
-
-```{r}
-Anova_insectos_4<-aov((insectos ~ colores + tamanio + colores : tamanio),data=Insectos_df)
+```{r, eval=FALSE}
+summary(Anova_insectos_2)
 ```
 
 ---
 
-##  2.9. Otras anovas
+## 2.9. Ejercicios juntos
 
-```{r}
-summary(Anova_insectos_2)
+Interacción:
+```{r, eval=FALSE}
+Anova_insectos_3<-aov((insectos ~ colores * tamanio),data=Insectos_df)
 ```
 
-```{r}
+```{r, eval=FALSE}
+Anova_insectos_4<-aov((insectos ~ colores + tamanio + colores : tamanio),data=Insectos_df)
+```
+
+```{r, eval=FALSE}
 summary(Anova_insectos_3)
 ```
 
-```{r}
+```{r, eval=FALSE}
 summary(Anova_insectos_4)
 ```
 
 ---
-
 
 class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVtYmxlYmVlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
