@@ -1,6 +1,6 @@
 ---
-title: "EjercicioPrueba"
-author: "MiriamL"
+title: "EjercicioPruebaRmd"
+author: "Miriam Lerma"
 date: "29/3/2021"
 output: 
   html_document:
@@ -31,7 +31,7 @@ Se colectaron un total de `r nrow(Adelia)` muestras correspondientes a pinguinos
 
 Se creo un modelo linear para ver la relacion entre el peso y el largo de la aleta.
 ```{r, message=FALSE}
-lm_Adelia<-lm(data=Adelia,largo_pico_mm ~ alto_pico_mm) #crea el modelo
+lm_Adelia<-lm(data=Adelia,masa_corporal_g ~ largo_aleta_mm) #crea el modelo
 TablaResultados<-broom::tidy(lm_Adelia)#crea la tabla
 ```
 
@@ -42,16 +42,17 @@ El rango de peso de los pingunos de Adelia es entre `r min(Adelia$masa_corporal_
 ```{r}
 #Primero hay que crear la tabla
 TablaPinguinos<-Adelia %>% 
-  group_by(sexo) %>% 
   drop_na(masa_corporal_g)%>% 
-  summarise(mean = mean(masa_corporal_g), n = n())
+  summarise(promedio_pesos = mean(masa_corporal_g), 
+            promedio_aletas=mean(largo_aleta_mm),
+            n = n())
 ```
 
 ```{r}
 knitr::kable(TablaPinguinos, caption = "Tabla 1. Masa corporal (g) de pinguinos de Adelia")
 ```
 
-Hay una relacion entre la masa corporal y el largo de la aleta en los Pinguinos de Adelia (Masa corporal = `r TablaResultados[2,1]` x Largo de aleta + `r TablaResultados[2,2]`,Tabla 2, Fig. 2).
+Hay una relacion entre la masa corporal y el largo de la aleta en los Pinguinos de Adelia (Masa corporal = `r TablaResultados[2,2]` x Largo de aleta `r TablaResultados[1,2]`,Tabla 2, Fig. 2).
 
 ```{r, message=FALSE, warning=FALSE}
 library(kableExtra)
@@ -62,10 +63,20 @@ kbl(TablaResultados,
 ```
 
 
-**Fig 2**. Largo del pico y alto del pico en Pinguinos de Adelia. 
+**Fig 2**. Masa corporal y largo de aleta en Pinguinos de Adelia. 
 ```{r, message=FALSE, warning=FALSE, fig.height=5, fig.width=5}
 ggplot(Adelia, aes(x=masa_corporal_g, y=largo_aleta_mm))+
-  geom_point()
+  geom_point()+
+  geom_smooth(method="lm")+
+  theme_classic()
+  
+```
+
+```{r, echo=FALSE, include=FALSE}
+#Prueba 
+Largo<-200
+Masa<-(TablaResultados[1,2])+(TablaResultados[2,2]*Largo)
+Masa
 ```
 
 # Discusión  
