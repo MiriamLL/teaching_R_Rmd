@@ -30,6 +30,8 @@ Presentacion: https://miriamll.github.io/Curso_CIAD/Clase8
 Clase 7: Que es Rmd.  
 Presentacion: https://miriamll.github.io/Curso_CIAD/Rmd-Parte1  
 Decargar ejemplo: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd  
+Descargar bib: https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib  
+
 
 Clase 8: Presentaciones (usando xaringan).  
 
