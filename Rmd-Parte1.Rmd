@@ -871,6 +871,19 @@ Agregar un titulo de primer nivel en el apartado final que diga 'Referencias'
 
 ---
 
+# 20. Ejercicios
+
+
+- Descarga Rmd que contiene ejemplos de las partes vistas durante este curso [`r fa("external-link-alt", fill = "#52b788")`Rmd](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd)
+- Descarga el archivo bib [`r fa("external-link-alt", fill = "#52b788")`bib](https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib)
+- Dale knitr
+
+
+
+
+
+---
+
 class: left
 
 # Contacto
