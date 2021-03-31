@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
   xaringan::moon_reader:
-    css: ["default"]
+    css: RZero-themer.css
     seal: false
     nature:
       highlightStyle: github
@@ -47,7 +47,7 @@ background-size: cover
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$author`<br>
 `r rmarkdown::metadata$date`
 
 ---
@@ -55,14 +55,10 @@ background-size: cover
 
 # Intro
 
-- Trabajar por proyectos.  
-
-- Ordenar mis carpetas y crear mi proyecto.
-
---
-
-- Crear un proyecto.  
-- Guardarlo y compartirlo.  
+- Trabajar por proyectos. <br>
+- Ordenar mis carpetas y crear mi proyecto.<br>
+- Crear un proyecto.<br>
+- Guardarlo y compartirlo.<br>
 
 ```{r, echo=FALSE,include=FALSE, message=FALSE}
 library(emo)
@@ -74,11 +70,9 @@ library(fontawesome)
 
 ## Ustedes
 
-- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y gráficos, saben exportar csvs y gráficos).  
-
-- Quieren tener ordenado su trabajo para poder re-hacer sus análisis en el futuro.  
-
-- Quieren trabajar con alguien mas y mandarle materiales.    
+- Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos, saben hacer algunas operaciones y gráficos, saben exportar csvs y gráficos).  <br>
+- Quieren tener ordenado su trabajo para poder re-hacer sus análisis en el futuro.<br>
+- Quieren trabajar con alguien mas y mandarle materiales.<br>
 
 ---
 
@@ -97,12 +91,12 @@ Si quieren profundizar en el tema:
 
 - Imágenes adicionales  
 [Unsplash](https://unsplash.com/)
-
+[Portada por Hannah Busing](https://unsplash.com/@hannahbusing)
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1453169881280-2f4d42bc57b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1545&q=80)
+class: title-slide, inverse, center, middle
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
 background-size: cover
 
 
@@ -203,14 +197,11 @@ knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudi
 
 ## 1.4. Proyectos
 
-Es **bueno** que se limpie el environment, porque te obliga a reportar todo lo que hiciste... ... y que puedas replicarlo en el futuro.  
+Es **bueno** que se limpie el environment, porque te obliga a reportar todo lo que hiciste... ... y que puedas replicarlo en el futuro. <br>
 
-
-
-
-
-
-#`r fa("exclamation-triangle", fill = "black")`
+.center[
+<h3>`r fa("exclamation-triangle", fill = "black")`</h3>
+]
 
 Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes en tu environment, los guardes antes de crear tu proyecto (usando  write_csv, saveRSD o lo que prefieras).  
 
@@ -227,7 +218,9 @@ Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes
 
 En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un flujo de trabajo consistente que te será de mucha utilidad en el futuro.
 
-#`r fa("broom", fill = "black")`
+.center[
+<h3>`r fa("broom", fill = "black")`</h3>
+]
 
 ---
 
@@ -278,30 +271,17 @@ Fuente [R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.ht
 
 Créditos: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
 
----
-
-## 1.5. Nombrar las cosas.
+--
 
 **Buenos nombres**
 
-Tres principios:  
-
-.center[
-Leibles para la computadora 
-#`r fa("laptop", fill = "black")`  
-Leibles para los humanos 
-#`r fa("user-friends", fill = "black")`  
-Funcionen bien con orden por defecto 
-#`r fa("robot", fill = "black")`  
-]
+<h4>`r fa("laptop", fill = "black")`  Leibles para la computadora</h4>
+<h4>`r fa("user-friends", fill = "black")` Leibles para los humanos </h4>
+<h4>`r fa("robot", fill = "black")`  Funcionen bien con orden por defecto </h4>
 
 ---
 
-## 1.7. Para la computadora
-
-.center[
-#`r fa("laptop", fill = "black")`
-]
+## 1.7. Para la computadora `r fa("laptop", fill = "black")`
 
 - Usar palabras clave.  
 - Sin caracteres especiales.  
@@ -319,11 +299,7 @@ Usar "_" para separar nombres con mas de una palabra.
 
 ---
 
-## 1.7. Para humanos.
-
-.center[
-#`r fa("user-friends", fill = "black")`
-]
+## 1.7. Para humanos `r fa("user-friends", fill = "black")`
 
 Fácil de saber que contiene el archivo a partir de su nombre.
 
@@ -336,11 +312,7 @@ Fácil de saber que contiene el archivo a partir de su nombre.
 
 ---
 
-## 1.7. Orden por defecto 
-
-.center[
-#`r fa("robot", fill = "black")`
-]
+## 1.7. Orden por defecto `r fa("robot", fill = "black")`
 
 Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
 
@@ -379,7 +351,7 @@ Pingus_csv<-read_csv(here("Pingus_1.csv"))
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, inverse, center, middle
 background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
 background-size: cover
 
@@ -423,7 +395,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 Haz clic en File > New Proyect, y después:
 
 ```{r echo=FALSE, out.height=350}
-knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/NuevoProyecto.jpg")
+knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/NuevoProyecto.png")
 ```
 
 Traten de usar un nombre significativo (p.e. 'ProyectoPingus')
@@ -448,7 +420,7 @@ here()
 ```
 
 ```{r echo=FALSE, out.height=350}
-knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/FigurasCuboProyectoR.jpg")
+knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/CuboProyectoR.jpg")
 ```
 
 ---
@@ -602,16 +574,15 @@ Cierren su RStudio.
 - Rehagan sus analisis abriendo: 02Script>Script  
 
 ```{r echo=FALSE, out.height=350}
-knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/FigurasCuboProyectoR.jpg")
+knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/CuboProyectoR.jpg")
 ```
 
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1570610183363-c7531f3eaa68?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1353&q=80)
+class: title-slide, inverse, center, middle
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
 background-size: cover
-
 
 # Compartir el proyecto
 
@@ -649,19 +620,34 @@ Unzip>Correr el script>Replicar analisis.
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
-
-
 # Recapitulando
 
 Esta clase:  
-6.1. Trabajar por proyecto.    
-6.2. Compartir proyectos.  
+- Trabajar por proyecto.    
+- Compartir proyectos.  
 
 Siguiente clase:  
-7.1. Sintaxis de modelos lineares.  
-7.2. Linea de ajuste en nuestros gráficos.  
+- Sintaxis de modelos lineares.  
+- Linea de ajuste en nuestros gráficos.  
+
+### Contacto
+
+```{r, echo=FALSE}
+library(fontawesome)
+```
+
+Para dudas, comentarios y sugerencias:
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en
+- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+
+.center[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]
 
 

@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
   xaringan::moon_reader:
-    css: ["default"]
+    css: RZero2-themer.css
     seal: false
     nature:
       highlightStyle: github
@@ -76,6 +76,7 @@ background-size: cover
 
 ```{r, echo=FALSE}
 library(emo)
+library(fontawesome)
 ```
 
 --
@@ -111,7 +112,7 @@ class: title-slide, bottom
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
-# Ordenar, unir y exportar
+# Ordenar
 
 ---
 
@@ -158,13 +159,13 @@ El paquete dplyr nos da una serie de herramientas para *manipular* datos
 
 Las principales funciones, o *verbos* de dplyr, son:
 
-- `count()` para contar
-- `select()`, para seleccionar columnas
-- `filter()`, para filtrar filas
-- `mutate()`, para crear o modificar columnas
-- `summarise()`, para resumir información de las columnas
+- count() para contar
+- select(), para seleccionar columnas
+- filter(), para filtrar filas
+- mutate(), para crear o modificar columnas
+- summarise(), para resumir información de las columnas
 
-count y select las vimos las clase pasada.
+count y select las vimos las clase pasada[`r fa("external-link-alt", fill = "#52b788")`Operaciones](https://miriamlerma.netlify.app/materiales.html)
 
 ---
 
@@ -350,9 +351,13 @@ Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
 ---
 
-## 1.11. Ejercicios asistidos
+class: title-slide, inverse
 
---
+# Ejercicios
+
+---
+
+## 1.11. Ejercicios 
 
 ```{r}
 library(datos)
@@ -380,7 +385,7 @@ Pingus %>%
 
 ---
 
-## 1.11.  Ejercicios asistidos
+## 1.11.  Ejercicios 
 Cual es el promedio de peso entre hembras y machos por especie? y en base a cuantas observaciones?
 ```{r, eval=FALSE}
 Pingus %>% 
@@ -430,7 +435,7 @@ class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
-# Ordenar, unir y exportar
+# Unir
 
 ---
 
@@ -621,14 +626,12 @@ Pingus %>%
   geom_histogram()
 ```
 
+
 ---
 
+class: title-slide, inverse
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
-
-# Su turno!
+# Ejercicios
 
 ---
 
@@ -726,7 +729,6 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 ---
 
 # 3. Exportar 
-## Ahora tu
 
 1- Define la carpeta.  
 ```{r, message=FALSE}
@@ -756,19 +758,34 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-class: title-slide, bottom, left
-background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
-background-size: cover
-
 # Recapitulando
 
 Esta clase:  
-5.1. Funciones de filter, mutate, summarise, unique, drop_na.  
-5.2. Unir data frames.  
-5.3. Renombrar columnas.  
-5.4. Exportar data frames.  
+- Funciones de filter, mutate, summarise, unique, drop_na.  
+- Unir data frames.  
+- Renombrar columnas.  
+- Exportar data frames.  
 
 Siguiente clase:  
-6.1. Trabajar por proyectos  
-6.2. Compartir proyectos  
+- Trabajar por proyectos  
+- Compartir proyectos  
 
+### Contacto
+
+```{r, echo=FALSE}
+library(fontawesome)
+```
+
+Para dudas, comentarios y sugerencias:
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en
+- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+
+.center[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]

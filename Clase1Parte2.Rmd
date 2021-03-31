@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default"]
+    css: RZero2-themer.css
     seal: false
     nature:
       highlightStyle: github
@@ -98,18 +98,13 @@ library(emo)
 
 Imágenes adicionales
 [Unsplash](https://unsplash.com/)
+[Portada por Fredy Jacob](https://unsplash.com/@thefredyjacob)
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1606818855637-f637cdb124b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
-background-size: cover
+class: title-slide, middle, center
 
 # Empecemos!
-
-.right[
-Foto de [Unsplash](https://unsplash.com)
-]
 
 
 ---
@@ -165,6 +160,7 @@ say(what = "Ya sabes cargar paquetes!", by = "cat")
 ```
 --
 No sale nada?
+Hay que cargar la libreria primero.
 
 --
 
@@ -172,6 +168,7 @@ No sale nada?
 library("cowsay")
 say(what = "Ya sabes cargar paquetes!", by = "cat")
 ```
+
 
 ---
 
@@ -331,7 +328,7 @@ plastics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 ```
 
 Datos de plásticos
-```{r}
+```{r, eval=FALSE}
 head(plastics,5)
 ```
 
@@ -372,17 +369,17 @@ AllTracks <- do.call("rbind",ListTracking)
 
 ---
 
-class: title-slide, bottom
+class: title-slide, center
 background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
 background-size: cover
 
 # 1.10. Su turno
 
 Carga los datos de pinguinos  
-- Usando read_csv
-- Usando read_csv2
-- Usando read_tsv
-- Usando read_excel
+ Usando read_csv <br>
+ Usando read_csv2 <br>
+ Usando read_tsv <br>
+ Usando read_excel <br>
 
 ---
 
@@ -400,4 +397,35 @@ Esta clase:
 Siguiente clase:
 - 3.1 Visualizacion de datos
 - 3.2 Usar ggplot2
+
+---
+
+class: title-slide, inverse, bottom
+
+## Contacto
+
+```{r, echo=FALSE}
+library(fontawesome)
+```
+
+Te recomiendo seguir con la clase: [`r fa("external-link-alt", fill = "#52b788")`Cargar tus datos](https://miriamlerma.netlify.app/materiales.html).
+
+Para dudas, comentarios y sugerencias:  
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en 
+- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+
+<br>
+<br>
+
+
+.center[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+##`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]
+
 

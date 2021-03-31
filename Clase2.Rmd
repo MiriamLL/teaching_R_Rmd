@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default"]
+    css: RZero2-themer.css
     seal: false
     nature:
       highlightStyle: github
@@ -49,7 +49,7 @@ background-size: cover
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-**`r rmarkdown::metadata$author`**<br>
+`r rmarkdown::metadata$author`<br>
 `r rmarkdown::metadata$date`
 
 ---
@@ -96,6 +96,7 @@ Un poco de inspiración y la infinidad de opciones de gráficos.
 [gg is for Grammar of Graphics](https://pkg.garrickadenbuie.com/trug-ggplot2)
 
 -Imágenes adicionales  
+[Portada por David Pisnoy](https://unsplash.com/@davidpisnoy)
 [Unsplash](https://unsplash.com/)
 
 ---
@@ -256,6 +257,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ```
 
 Noten que sus ejes tienen que ser columnas en su tabla.
+
 ---
 
 # 1.3. Agregar geometría
@@ -506,14 +508,10 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
-
-# Su turno!
+class: inverse, center, middle
+# Ejercicios
 
 ---
-
 
 # 1.5. Ejercicios
 
@@ -557,7 +555,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, inverse, center, middle
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
 background-size:cover
 
@@ -565,8 +563,7 @@ background-size:cover
 
 ---
 
-#2.1. Estéticas 
-### Colores de los símbolos
+## 2.1. Colores de los símbolos
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, 
@@ -586,8 +583,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-#2.1. Estéticas 
-### Temas
+## 2.2. Temas
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
@@ -607,8 +603,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-#2.1. Estéticas 
-###  Fondos
+## 2.3. Fondos
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
@@ -630,8 +625,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-#2.1. Estéticas 
-### Modificar ejes
+## 2.4. Modificar ejes
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
@@ -654,8 +648,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-#2.1. Estéticas 
-### Tamaño de letras
+## 2.5. Tamaño de letras
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
@@ -677,8 +670,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-#2.1. Estéticas 
-### Leyendas
+## 2.6. Leyendas
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
@@ -700,16 +692,13 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-# 3.1 Ayuda
-## Cheat sheet
+## 2.7 Cheat sheet
 
 Help>CheatSheets>Data Visualization with ggplot
 
 ---
 
-# 3.2. Errores comunes
-### Orden
-
+## 2.8. Errores comunes de orden
 No tener los datos ordenados.  
 Noten que para definir los ejes usamos columnas, por lo tanto es importante que tengan sus datos ordenados de esta manera.  
 Si no los tienen asi por ahora, lo veremos mas adelante en 'ordenar mis datos'.  
@@ -722,8 +711,7 @@ De libro [R4DS](https://r4ds-en-espaniol.netlify.app/)
 
 ---
 
-# 3.2. Errores comunes
-### Sintaxis
+## 2.8. Errores comunes de sintaxis
 
 No poner el **+**
 ```{r}
@@ -752,7 +740,7 @@ Falta un parentesis despues de especie.
 
 ---
 
-# 3.3. Ejercicios
+## 2.9. Grafico como objeto
 
 Pero primero sepan que pueden guardar su gráfico como objeto y agregar estéticas a su gráfico base con el signo de +
 ```{r, echo=TRUE, eval=FALSE}
@@ -771,7 +759,7 @@ MiGrafico+ #<<
 
 ---
 
-# 3.3. Ejercicios
+## 2.10. Grafico como objeto
 
 También sepan que no necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
 ```{r, echo=TRUE, eval=FALSE}
@@ -788,19 +776,12 @@ ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
 
 ---
 
-class: title-slide, bottom
-background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
-
-### Su turno
-
-a) Intenten crear un gráfico solos y los asistiré si tienen dudas  
-
-b) Les daré instrucciones
+class: inverse, center, middle
+# Ejercicios
 
 ---
 
-### Su turno
+## 2.11. Su turno
 
 Creen un gráfico de puntos con los datos de diamantes
 ```{r}
@@ -817,7 +798,7 @@ Grafiquen el *precio* por el *quilate* y cambien el color de lo puntos de acuerd
 
 ---
 
-### Su turno
+##  2.11. Respuesta
 
 Código  
 ```{r, echo=TRUE, eval=FALSE}
@@ -841,11 +822,9 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-# 4. Otras posibilidades
+# 3. Otras posibilidades
 
----
-# 4.1. Animaciones
-
+.pull-left[
 Los gráficos se pueden animar.
 
 ```{r, eval=FALSE}
@@ -856,188 +835,57 @@ library(plotly)
 ```{r, echo=FALSE, out.height=350}
 knitr::include_graphics('https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/r-tutorial/images/transition_time.gif')
 ```
+]
+
+.pull-right[
+
+Existen muchisimas posibilidades
+
+Explorar:
+
+- [Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)  <br>
+- Twitter: #tidytuesday #DatosDeMiercoles, #30díasdegráficos <br>
+
+- [RGraphGallery](https://www.r-graph-gallery.com/) <br>
+
+- [DataToViz](https://www.data-to-viz.com/) <br>
+
+- [Colores](https://coolors.co/) <br>
+]
 
 ---
 
-# 4.2. Inspiración
-
-- [Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)  
-
-- Twitter: #tidytuesday #DatosDeMiercoles, #30díasdegráficos
-
-- [RGraphGallery](https://www.r-graph-gallery.com/)
-
-- [DataToViz](https://www.data-to-viz.com/)
-
-- [Colores](https://coolors.co/)
-
----
-
-class: title-slide, middle, bottom
-background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
-background-size: cover
+class: middle, bottom
 
 # Recapitulando
 
 Esta clase:  
--3.1 Visualizacion de datos  
--3.2 Usar ggplot2  
+- Visualizacion de datos<br>
+- Usar ggplot2 <br>
 
 Siguiente clase:  
--4.1 Realizar operaciones en R  
--4.2 Inspeccionar y manipular dataframes  
+- Realizar operaciones en R <br>
+- Inspeccionar y manipular dataframes <br>
 
----
 
-# 5. Materiales extra
-Estos materiales son especificos para los objetivos de alumnos del curso de CIAD.
+### Contacto
 
----
-
-### 5.1. Mapa y Scatterpie
-Mapa con puntos en diferentes tamanios.
-
-Ejemplo de: [mapa con scatterpies](https://cran.r-project.org/web/packages/scatterpie/vignettes/scatterpie.html)
-
-1- Crear datos
-```{r}
-set.seed(123)
-long <- rnorm(50, sd=100)
-lat <- rnorm(50, sd=50)
-d <- data.frame(long=long, lat=lat)
-d <- with(d, d[abs(long) < 150 & abs(lat) < 70,])
-n <- nrow(d)
-d$region <- factor(1:n)
-d$A <- abs(rnorm(n, sd=1))
-d$B <- abs(rnorm(n, sd=2))
-d$C <- abs(rnorm(n, sd=3))
-d$D <- abs(rnorm(n, sd=4))
-d[1, 4:7] <- d[1, 4:7] * 3
-head(d)
-```
-No se asusten pero lo anterior es solo para que tengan un dataframe que tenga las mismas caracteristicas.
-
----
-
-### 5.1. Mapa y Scatterpie
-
-Si no tienen estos paquetes hay que instalarlos.
-```{r}
-library(ggplot2)
-library(scatterpie)
+```{r, echo=FALSE}
+library(fontawesome)
 ```
 
----
+Para dudas, comentarios y sugerencias:  
+- Escríbeme a miriamjlerma@gmail.com
 
-### 5.1. Mapa y Scatterpie
+Este material esta accesible y se encuentra en 
+- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
 
-Mapa con puntos en diferentes tamaños.
-
-2- Grafiquen los 'scatterpie'
-```{r, eval=FALSE}
-ggplot() + geom_scatterpie(aes(x=long, y=lat, group=region), data=d,
-cols=LETTERS[1:4]) + coord_equal()
+.center[
+```{r, echo=FALSE}
+library(fontawesome)
 ```
+<h2>`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]</h2>
 
-```{r, echo=FALSE, out.height=350}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-88-1.png')
-```
-
----
-
-### 5.1. Mapa y Scatterpie
-
-Mapa con puntos en diferentes tamanios.
-
-3- Modificar el tamanio de los 'pies'
-```{r, eval=FALSE}
-d$radius <- 6 * abs(rnorm(n))
-p <- ggplot() + geom_scatterpie(aes(x=long, y=lat, 
-                                    group=region, r=radius), 
-                                data=d,cols=LETTERS[1:4], color=NA) +
-  coord_equal()
-```
-
-
----
-
-### 5.1. Mapa y Scatterpie
-Mapa con puntos en diferentes tamanios.
-
-4- Esto agrega como una leyenda como referencia del tamanio del pie.
-```{r, eval=FALSE}
-p + geom_scatterpie_legend(d$radius, x=-140, y=-70)
-```
-
-```{r, echo=FALSE, out.height=350}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-90-1.png')
-```
-
-
----
-
-### 5.1. Mapa y Scatterpie
-Mapa con puntos en diferentes tamanios.
-
-5- Agregar el mapa de fondo
-```{r, eval=FALSE}
-world <- map_data('world')
-p <- ggplot(world, aes(long, lat)) +
-    geom_map(map=world, aes(map_id=region), fill=NA, color="black") +
-    coord_quickmap()
-p + geom_scatterpie(aes(x=long, y=lat, group=region, r=radius),
-                    data=d, cols=LETTERS[1:4], color=NA, alpha=.8) +
-    geom_scatterpie_legend(d$radius, x=-160, y=-55)
-```
-
-```{r, echo=FALSE, out.height=350}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-91-1.png')
-```
-
----
-
-### 5.1. Mapa y Scatterpie
-
-
-Para leer más:
-
-[Básicos para mapas](https://www.r-spatial.org//r/2018/10/25/ggplot2-sf-2.html)
-
-[Otro ejemplo de mapa con scatterpies](https://www.r-bloggers.com/2018/01/plot-pie-charts-of-racial-composition-in-largest-metro-areas-on-a-map-in-r/amp/)
-
----
-
-### 5.2. Grafico de barras con desviacion estandar.
-
-Creditos: [RGraphGallery](https://www.r-graph-gallery.com/4-barplot-with-error-bar.html)
-
-1- Cargar paqueteria
-```{r}
-library(ggplot2)
-```
-
-2- Crear un data frame inventado.
-```{r}
-data <- data.frame(
-  name=letters[1:5],
-  value=sample(seq(4,15),5),
-  sd=c(1,0.2,3,2,4))
-```
-
----
-
-### 5.2. Grafico de barras con desviacion estandar.
-
-3- Graficar
-```{r, eval=FALSE}
-ggplot(data) +
-  geom_bar( aes(x=name, y=value), 
-            stat="identity", 
-            fill="skyblue", alpha=0.7) +
-  geom_errorbar(aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3)
-```
-
-```{r, echo=FALSE, out.height=250}
-knitr::include_graphics('https://www.r-graph-gallery.com/4-barplot-with-error-bar_files/figure-html/thecode-1.png')
-```
 

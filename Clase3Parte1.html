@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase3Parte1_files/header-attrs-2.6/header-attrs.js"></script>
-    <link href="Clase3Parte1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
     <meta name="twitter:title" content="Cargar datps"/>
     <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
@@ -23,6 +22,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Miriam Lerma"/>
+    <link rel="stylesheet" href="RZero2-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -80,6 +80,7 @@ Febrero 2021
 
 -Imágenes adicionales:  
 [Unsplash](https://unsplash.com/)  
+[Portada por StellrWeb](https://unsplash.com/) 
 [Allison Horst](https://github.com/allisonhorst/palmerpenguins)
 
 ---
@@ -125,7 +126,7 @@ Otra opción es usar read_csv desde su computador.
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, inverse, bottom,right
 background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80)
 background-size: cover
 
@@ -374,7 +375,9 @@ Pingus&lt;-pinguinos
 
 ## 2.6. Datos pinguinos. 
 
+.center[
 &lt;img src="https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png" height="350" /&gt;
+]
 
 Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembras y machos.  De 2007 a 2009.  
 
@@ -383,7 +386,10 @@ Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembra
 ## 2.6. Datos pinguinos. 
 
 Son datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
+
+.center[
 &lt;img src="https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/culmen_depth.png" height="250" /&gt;
+]
 
 ---
 
@@ -633,7 +639,7 @@ MiMejorAcomodo&lt;-c('Miriam','Mujer')
 ```
 
 Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
-Si no el proceso de ordenarlos puede ser tardado 🕧.
+Si no el proceso de ordenarlos puede ser tardado 🕟.
 
 ---
 
@@ -688,11 +694,11 @@ El paquete dplyr nos da una serie de herramientas para *manipular* datos
 
 Las principales funciones, o *verbos* de dplyr, son:
 
-- `count()` para contar
-- `select()`, para seleccionar columnas
-- `filter()`, para filtrar filas
-- `mutate()`, para crear o modificar columnas
-- `summarise()`, para resumir información de las columnas
+- count() para contar
+- select(), para seleccionar columnas
+- filter(), para filtrar filas
+- mutate(), para crear o modificar columnas
+- summarise(), para resumir información de las columnas
 
 Hoy veremos algunas, la próxima clase veremos otras.
 
@@ -930,22 +936,32 @@ PingusSinSexo&lt;-Pingus %&gt;%
 
 ---
 
-class: title-slide, middle,  bottom
-background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1351&amp;q=80)
-background-size: cover
-
-.right[
-# Recapitulando
+## Recapitulando
 
 Esta clase:  
-4.1. Operaciones matemáticas simples.  
-4.2. Funciones básicas (mean, median, sd, range).  
-4.3. Funciones tidyverse (count, select).  
+- Operaciones matemáticas simples.  
+- Funciones básicas (mean, median, sd, range).  
+- Funciones tidyverse (count, select).  
 
 Siguiente clase:  
-5.1. Funciones tidyverse (filter, group_by, summarize)  
-5.2. Unir dataframes (join)  
-5.3. Exportar dataframes (write_csv)  
+- Funciones tidyverse (filter, group_by, summarize)  
+- Unir dataframes (join)  
+- Exportar dataframes (write_csv)  
+
+### Contacto
+
+
+
+Para dudas, comentarios y sugerencias:
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en
+- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+
+.center[
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#2a9d8f;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

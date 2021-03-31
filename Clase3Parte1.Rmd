@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: ["default"]
+    css: RZero2-themer.css
     seal: false
     nature:
       highlightStyle: github
@@ -92,6 +92,7 @@ library(emo)
 
 -Imágenes adicionales:  
 [Unsplash](https://unsplash.com/)  
+[Portada por StellrWeb](https://unsplash.com/) 
 [Allison Horst](https://github.com/allisonhorst/palmerpenguins)
 
 ---
@@ -135,7 +136,7 @@ Otra opción es usar read_csv desde su computador.
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, inverse, bottom,right
 background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
 background-size: cover
 
@@ -314,9 +315,11 @@ Pingus<-pinguinos
 
 ## 2.6. Datos pinguinos. 
 
+.center[
 ```{r echo=FALSE, out.height=350}
 knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png')
 ```
+]
 
 Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembras y machos.  De 2007 a 2009.  
 
@@ -325,9 +328,12 @@ Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembra
 ## 2.6. Datos pinguinos. 
 
 Son datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
+
+.center[
 ```{r echo=FALSE, out.height=250}
 knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/culmen_depth.png')
 ```
+]
 
 ---
 
@@ -547,11 +553,11 @@ El paquete dplyr nos da una serie de herramientas para *manipular* datos
 
 Las principales funciones, o *verbos* de dplyr, son:
 
-- `count()` para contar
-- `select()`, para seleccionar columnas
-- `filter()`, para filtrar filas
-- `mutate()`, para crear o modificar columnas
-- `summarise()`, para resumir información de las columnas
+- count() para contar
+- select(), para seleccionar columnas
+- filter(), para filtrar filas
+- mutate(), para crear o modificar columnas
+- summarise(), para resumir información de las columnas
 
 Hoy veremos algunas, la próxima clase veremos otras.
 
@@ -684,20 +690,34 @@ PingusSinSexo<-Pingus %>%
 
 ---
 
-class: title-slide, middle,  bottom
-background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
-background-size: cover
-
-.right[
-# Recapitulando
+## Recapitulando
 
 Esta clase:  
-4.1. Operaciones matemáticas simples.  
-4.2. Funciones básicas (mean, median, sd, range).  
-4.3. Funciones tidyverse (count, select).  
+- Operaciones matemáticas simples.  
+- Funciones básicas (mean, median, sd, range).  
+- Funciones tidyverse (count, select).  
 
 Siguiente clase:  
-5.1. Funciones tidyverse (filter, group_by, summarize)  
-5.2. Unir dataframes (join)  
-5.3. Exportar dataframes (write_csv)  
+- Funciones tidyverse (filter, group_by, summarize)  
+- Unir dataframes (join)  
+- Exportar dataframes (write_csv)  
+
+### Contacto
+
+```{r, echo=FALSE}
+library(fontawesome)
+```
+
+Para dudas, comentarios y sugerencias:
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en
+- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+
+.center[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
 ]

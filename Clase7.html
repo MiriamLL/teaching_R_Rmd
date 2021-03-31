@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase7_files/header-attrs-2.6/header-attrs.js"></script>
-    <link href="Clase7_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
     <meta name="twitter:title" content="Cargar datps"/>
     <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
@@ -23,6 +22,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Miriam Lerma"/>
+    <link rel="stylesheet" href="RZero-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -38,7 +38,7 @@ background-size: cover
 ### Clase 7
 # Exploración y &lt;br&gt; modelo lineal
 
-**Miriam Lerma**&lt;br&gt;
+Miriam Lerma&lt;br&gt;
 Marzo 2021
 
 ---
@@ -91,6 +91,7 @@ Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.
 
 - Imágenes adicionales &lt;br&gt; 
 [Unsplash](https://unsplash.com/)
+[Portada por Kristine Wook](https://unsplash.com/@kwook)
 
 
 ---
@@ -144,7 +145,7 @@ ggplot(datasaurus_dozen,
 
 ---
 
-# 1.2. Pinguinos
+## 1.2. Pinguinos
 Exploremos los datos de pinguinos.
 
 
@@ -160,7 +161,7 @@ Pingus&lt;-datos::pinguinos
 
 ---
 
-# 1.2. Pinguinos
+## 1.2. Pinguinos
 Recordemos como se realizan los gráficos de puntos. 
 
 .pull-left[
@@ -179,7 +180,7 @@ ggplot(Pingus) +
 
 ---
 
-# 1.2. Pinguinos
+## 1.2. Pinguinos
 Sabemos que hay tres especies, separemos las especies por colores.
 
 .pull-left[
@@ -200,7 +201,7 @@ ggplot(Pingus,
 
 ---
 
-# 1.2. Pinguinos
+## 1.2. Pinguinos
 Si agregamos una nueva capa con la linea de tendencia, especificamos un ajuste lineal ("lm") podemos ver como se relacionan estos datos.  
 No obstante! tenemos datos de tres especies diferentes!  
 
@@ -222,7 +223,7 @@ ggplot(Pingus,
 
 ---
 
-# 1.2. Pinguinos
+## 1.2. Pinguinos
 Cambiando algunos argumentos nos permite explorar y obtener diferentes resultados gráficos usando los mismos datos.  
 Por ejemplo, si cambiamos la ubicacion del color, le decimos que me haga lineas por especies.
 
@@ -244,7 +245,7 @@ ggplot(Pingus,
 
 ---
 
-# 1.3. facet_wrap 
+## 1.3. facet_wrap 
 
 **facet_wrap** es un argumento que nos permite ver variables categoricas separadas por panel. 
 
@@ -324,7 +325,7 @@ background-size: cover
 
 ---
 
-## 1. 6. Ejercicios juntos
+## 1. 6. Ejercicios 
 - Cargar datos de pinguinos
 - Crear dos gráficos de puntos con lineas de regresión
 - Usar facet_wrap
@@ -332,7 +333,7 @@ background-size: cover
 
 ---
 
-## 1. 6. Ejercicios juntos
+## 1. 6. Ejercicios 
 Cargarlos desde el paquete, usar read_csv, o import dataset. 
 
 ```r
@@ -364,7 +365,7 @@ ggplot(Pingus,
 
 ---
 
-## 1. 6. Ejercicios juntos
+## 1. 6. Ejercicios 
 Ver variables categoricas separadas por panel. 
 
 
@@ -394,7 +395,7 @@ ggplot(Adelia,
 
 ---
 
-## 1. 6. Ejercicios juntos
+## 1. 6. Ejercicios
 
 Cargar libreria.
 
@@ -421,7 +422,7 @@ La funcion **ggplotly** te permite inspeccionar tu grafico de manera interactiva
 
 ---
 
-class: title-slide, inverse, bottom
+class: bottom
 background-image: url(https://images.unsplash.com/photo-1599599810769-bcde5a160d32?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1489&amp;q=80)
 background-size: cover
 
@@ -858,7 +859,13 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
 ---
 
-## 2.13. Ejercicios juntos
+class: title-slide, inverse, bottom
+
+# Ejercicios
+
+---
+
+## 2.13. Ejercicios
 - Generar datos, usando set.seed y rnorm
 - Crear una figura con estos datos
 - Crear un modelo lineal
@@ -868,7 +875,7 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
 ---
 
-## 2.13. Ejercicios juntos
+## 2.13. Ejercicios 
 Generar nuestros datos.
 
 ```r
@@ -896,7 +903,7 @@ p
 
 ---
 
-## 2.14. Ejercicios juntos
+## 2.14. Ejercicios 
 
 Sintaxis de modelos lineares.
 
@@ -934,7 +941,7 @@ check_model(modelo_chocolate)
 
 ---
 
-## 2.14. Ejercicios juntos
+## 2.14. Ejercicios 
 Ver los residuales.
 Cambiemos nuestros datos para un peor ajuste. 
 
@@ -971,8 +978,6 @@ ggplot(datos, aes(nueva_dosis, respuesta))+
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1476837579993-f1d3948f17c2?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
-background-size: cover
 
 # Outliers
 
@@ -1110,21 +1115,31 @@ theme_bw()
 
 ---
 
-
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1612343267903-f6c1b17e6e1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=667&amp;q=80)
-background-size: cover
-
-
 # Recapitulando
 
-7.1. Explorar datos.  
-7.2. Modelo lineal.
+Esta clase:  
+- Explorar datos.  
+- Modelo lineal.
 
 Siguiente clase:  
-8.1. Objetos clase factor.  
-8.2. Analisis de varianza.  
+- Objetos clase factor.  
+- Analisis de varianza.  
 
+### Contacto
+
+
+
+Para dudas, comentarios y sugerencias:
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en
+- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+
+.center[
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#2a9d8f;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
