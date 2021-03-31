@@ -102,7 +102,9 @@ Imágenes adicionales
 
 ---
 
-class: title-slide, middle, center
+class: title-slide, bottom, center
+background-image: url(https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80)
+background-size: cover
 
 # Empecemos!
 
@@ -369,11 +371,11 @@ AllTracks <- do.call("rbind",ListTracking)
 
 ---
 
-class: title-slide, center
-background-image: url(https://images.unsplash.com/photo-1559311648-addd6af95dd4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+class: title-slide, top, left
+background-image: url(https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80)
 background-size: cover
 
-# 1.10. Su turno
+# 1.10. Ejercicios
 
 Carga los datos de pinguinos  
  Usando read_csv <br>
@@ -383,49 +385,43 @@ Carga los datos de pinguinos
 
 ---
 
-class: title-slide, bottom
+class: title-slide
 background-image: url(https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80)
 background-size: cover
 
 ## Recapitulando
 
 Esta clase:
-- 2.1 Instalar y cargar paquetes
-- 2.2 Directorios
-- 2.3 Cargar csv y excel
+- Instalar y cargar paquetes
+- Directorios
+- Cargar csv y excel
 
 Siguiente clase:
-- 3.1 Visualizacion de datos
-- 3.2 Usar ggplot2
+- Visualizacion de datos
+- Usar ggplot2
 
----
-
-class: title-slide, inverse, bottom
-
-## Contacto
+.right[
+### Contacto
 
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
 
-Te recomiendo seguir con la clase: [`r fa("external-link-alt", fill = "#52b788")`Cargar tus datos](https://miriamlerma.netlify.app/materiales.html).
+Para dudas, comentarios y sugerencias: <br>
+Escríbeme a miriamjlerma@gmail.com
 
-Para dudas, comentarios y sugerencias:  
-- Escríbeme a miriamjlerma@gmail.com
+Este material esta accesible <br> y se encuentra en 
+ mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
 
-Este material esta accesible y se encuentra en 
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
-
-<br>
-<br>
-
-
-.center[
-```{r, echo=FALSE}
-library(fontawesome)
-```
-##`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
 ]
+
+<h1>
+.right[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+[`r fa("home", fill = '#52b788')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
 
 
