@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: RZero2-themer.css
+    css: RZero-themer_darktitle.css
     seal: false
     nature:
       highlightStyle: github
@@ -40,6 +40,7 @@ meta() %>%
 ```{r include = FALSE}
 #Paquetes
 library(xaringanExtra)
+library(fontawesome)
 ```
 
 class: title-slide, middle, right
@@ -53,22 +54,21 @@ background-size: cover
 `r rmarkdown::metadata$date`
 
 ---
+
+class: inverse
+
 # 1. Intro
 
 - Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
 - Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.  
-
 - Como cambiar la estética de mis gráficos.    
 - Van a cambiar la estética de su gráfico.  
 
-Un poco de inspiración y la infinidad de opciones de gráficos.
+--
 
----
-
-## Ustedes
+### Ustedes
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).  
-
 - Quieren hacer gráficos con sus datos usando R.  
 
 
@@ -78,26 +78,25 @@ Un poco de inspiración y la infinidad de opciones de gráficos.
 
 ---
 
+class: inverse
+
 # Créditos
 
 -Todo el material basado en el libro:  
-[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
-
--Y el libro de:  
-[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+[`r fa("book-open", fill = "#f2cc8f")` R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
-[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
-[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
-[RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[`r fa("github-alt", fill = "#f2cc8f")` Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[`r fa("github-alt", fill = "#f2cc8f")` Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[`r fa("github-alt", fill = "#f2cc8f")` RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
 
 -En ingles:  
 [IntroduccionToGGplot](https://englelab.gatech.edu/useRguide/introduction-to-ggplot2.html)  
 [gg is for Grammar of Graphics](https://pkg.garrickadenbuie.com/trug-ggplot2)
 
 -Imágenes adicionales  
-[Portada por David Pisnoy](https://unsplash.com/@davidpisnoy)
-[Unsplash](https://unsplash.com/)
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada por David Pisnoy](https://unsplash.com/@davidpisnoy)<br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)
 
 ---
 
@@ -109,7 +108,7 @@ El objetivo de un gráfico es comunicar. En ciencia, la idea es brindar informac
 knitr::include_graphics("http://www.typesofgraphs.com/wp-content/uploads/2015/12/Typesofgraphs.png")
 ```
   
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
@@ -121,9 +120,7 @@ Graficar es transformar datos a visualizaciones que varian en tamaño, forma y c
 knitr::include_graphics("https://paldhous.github.io/ucb/2016/dataviz/img/class2_1.jpg")
 ```
   
-.right[
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
-]
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
@@ -135,9 +132,8 @@ Hay muchas maneras de graficar datos, pero hay diferentes maneras de percibirlos
 knitr::include_graphics("https://paldhous.github.io/ucb/2016/dataviz/img/class2_2.jpg")
 ```
   
-.right[
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
-]
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+
 
 ---
 
@@ -149,9 +145,7 @@ Cual es más intuitiva?
 knitr::include_graphics("https://paldhous.github.io/ucb/2016/dataviz/img/class2_4.jpg")
 ```
 
-.right[
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
-]
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
@@ -192,9 +186,9 @@ El paquete **ggplot** funciona por **capas**, si han usado SIG (sistema de infor
 knitr::include_graphics("https://englelab.gatech.edu/useRguide/images/dataviz/ge_geom.png")
 ```
   
-.right[
+
 Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-overview.html)
-]
+
 
 
 ---
@@ -231,11 +225,11 @@ ggplot(data=Prueba)
 
 --
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=6, echo=FALSE, include=TRUE}
 ggplot(data=Prueba)
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-11-1.png')
 ```
 
@@ -285,7 +279,6 @@ Te avisa que había NAs y que no se incluyeron en el gráfico.
 ---
 # 1.4. Tipos de gráficos
 
-.center[
 Hoy veremos:  
 -Puntos  
 -Lineas  
@@ -295,6 +288,7 @@ Hoy veremos:
 -Mapas  
 ... pero hay muchos mas.
 
+.center[
 ```{r echo=FALSE, out.height=300}
 knitr::include_graphics("http://www.typesofgraphs.com/wp-content/uploads/2015/12/Typesofgraphs.png")
 ```
@@ -508,8 +502,11 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-class: inverse, center, middle
-# Ejercicios
+class: inverse
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+Crea un grafico de puntos usando datos de pingüinos
 
 ---
 
@@ -555,7 +552,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-class: title-slide, inverse, center, middle
+class: title-slide, inverse, right, middle
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
 background-size:cover
 
@@ -698,7 +695,8 @@ Help>CheatSheets>Data Visualization with ggplot
 
 ---
 
-## 2.8. Errores comunes de orden
+## 2.8. Errores comunes
+
 No tener los datos ordenados.  
 Noten que para definir los ejes usamos columnas, por lo tanto es importante que tengan sus datos ordenados de esta manera.  
 Si no los tienen asi por ahora, lo veremos mas adelante en 'ordenar mis datos'.  
@@ -707,7 +705,7 @@ Si no los tienen asi por ahora, lo veremos mas adelante en 'ordenar mis datos'.
 knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/visualization-stat-bar.svg')
 ```
   
-De libro [R4DS](https://r4ds-en-espaniol.netlify.app/) 
+Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/) 
 
 ---
 
@@ -742,14 +740,14 @@ Falta un parentesis despues de especie.
 
 ## 2.9. Grafico como objeto
 
-Pero primero sepan que pueden guardar su gráfico como objeto y agregar estéticas a su gráfico base con el signo de +
+Se pueden guardar los gráficos como objeto 
 ```{r, echo=TRUE, eval=FALSE}
 MiGrafico<-ggplot(data=Pingus, 
                   mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, 
-                              color=especie))+
-  geom_point()
+                              color=especie))+ geom_point()
 ```
 
+Y agregar estéticas a su gráfico base con el signo de +
 ```{r, fig.height=3, echo=TRUE, eval=FALSE}
 MiGrafico+ #<<
   theme_bw()+
@@ -759,13 +757,13 @@ MiGrafico+ #<<
 
 ---
 
-## 2.10. Grafico como objeto
+## 2.10. Omitir partes
 
-También sepan que no necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
+No necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
 ```{r, echo=TRUE, eval=FALSE}
-MiGrafico<-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, 
-                              color=especie))+
-  geom_point()
+MiGrafico<-ggplot(Pingus, 
+                  aes(x=largo_pico_mm,y=largo_aleta_mm, 
+                              color=especie))+geom_point()
 MiGrafico
 ```
 
@@ -776,19 +774,25 @@ ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
 
 ---
 
-class: inverse, center, middle
-# Ejercicios
+class: inverse
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+- Crear un gráfico de puntos con los datos de diamantes <br>
+- Graficar el *precio* por el *quilate* -
+- Cambiar el color de lo puntos de acuerdo al *corte* 
+- Cambiar el nombre en el eje x por 'Precio en dolares' y el eje y por 'kt'.
 
 ---
 
-## 2.11. Su turno
+## 2.11. Ejercicios
 
-Creen un gráfico de puntos con los datos de diamantes
+- Crear un gráfico de puntos con los datos de diamantes
 ```{r}
 Diamantes<-datos::diamantes
 ```
 
-Grafiquen el *precio* por el *quilate* y cambien el color de lo puntos de acuerdo al *corte* y cambien el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
+Graficar el *precio* por el *quilate* y cambiar el color de lo puntos de acuerdo al *corte* y cambiar el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
 ```{r}
 #ggplot(data=***,mapping=aes(x=***, y=***, color=****))+
 #  geom_****()+
@@ -816,7 +820,7 @@ ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
   xlab("Precio en pesos")+ylab("kt")
 ```
 
-```{r echo=FALSE, out.height=350}
+```{r echo=FALSE, out.height=300}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png')
 ```
 
@@ -839,23 +843,23 @@ knitr::include_graphics('https://www.datanovia.com/en/wp-content/uploads/dn-tuto
 
 .pull-right[
 
-Existen muchisimas posibilidades
 
 Explorar:
 
 - [Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)  <br>
-- Twitter: #tidytuesday #DatosDeMiercoles, #30díasdegráficos <br>
+
+- Twitter: <br> #tidytuesday <br> #DatosDeMiercoles, #30díasdegráficos <br>
 
 - [RGraphGallery](https://www.r-graph-gallery.com/) <br>
 
 - [DataToViz](https://www.data-to-viz.com/) <br>
 
-- [Colores](https://coolors.co/) <br>
+- [Coolors](https://coolors.co/) <br>
 ]
 
 ---
 
-class: middle, bottom
+class: inverse
 
 # Recapitulando
 
@@ -867,25 +871,25 @@ Siguiente clase:
 - Realizar operaciones en R <br>
 - Inspeccionar y manipular dataframes <br>
 
-
+.right[
 ### Contacto
 
+Para dudas, comentarios y sugerencias: <br>
+Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible <br> y se encuentra en 
+ mi [`r fa("external-link-alt", fill = "#ffd166")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#ffd166")`página](https://miriamlerma.netlify.app/materiales.html)
+
+]
+
+<h1>
+.right[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
+[`r fa("home", fill = '#ffd166')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
 
-Para dudas, comentarios y sugerencias:  
-- Escríbeme a miriamjlerma@gmail.com
-
-Este material esta accesible y se encuentra en 
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
-
-.center[
-```{r, echo=FALSE}
-library(fontawesome)
-```
-<h2>`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
-]</h2>
 
 
