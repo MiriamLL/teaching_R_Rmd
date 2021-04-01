@@ -50,7 +50,7 @@ background-size: cover
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-`r rmarkdown::metadata$author`<br>
+### `r rmarkdown::metadata$author`<br>
 `r rmarkdown::metadata$date`
 
 ---
