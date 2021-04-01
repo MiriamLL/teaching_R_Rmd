@@ -47,11 +47,12 @@ background-size: cover
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-`r rmarkdown::metadata$author`<br>
+## **`r rmarkdown::metadata$author`**<br>
 `r rmarkdown::metadata$date`
 
 ---
 
+class: inverse
 
 # Intro
 
@@ -76,22 +77,24 @@ library(fontawesome)
 
 ---
 
+class: inverse 
+
 ## Créditos
 
 Si quieren profundizar en el tema:
 
-- [Proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
+- [`r fa("book-open", fill = "#f2cc8f")` Proyectos en R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
 
-- [Nombrar cosas por Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#1)  
+- [`r fa("github-alt", fill = "#f2cc8f")` Nombrar cosas por Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#1)  
 
-- [Naming things by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
+- [`r fa("book-open", fill = "#f2cc8f")` Naming things by Jenny Bryan](http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf)
 
-- Presentaciones de reproducibilidad.  
-[RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)
+- Presentaciones de reproducibilidad<br> 
+[`r fa("youtube", fill = "#f2cc8f")` RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)
 
 - Imágenes adicionales  
-[Unsplash](https://unsplash.com/)
-[Portada por Hannah Busing](https://unsplash.com/@hannahbusing)
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)<br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada por Hannah Busing](https://unsplash.com/@hannahbusing)
 
 ---
 
@@ -135,9 +138,7 @@ RStudio muestra tu directorio de trabajo actual en la parte superior de la conso
 getwd()
 ```
 
----
-
-## 1.2. Rutas
+--
 
 Existen dos estilos básicos de rutas: 
 
@@ -152,9 +153,10 @@ Existen dos estilos básicos de rutas:
 Las **rutas absolutas** te llevan a la misma ubicación sin importar tu directorio de trabajo.  
 
 Tu directorio de trabajo de puede definir manualmente, pero usar rutas absolutas dificulta compartir tus scripts.  
-Nadie más va a tener exactamente la misma configuración de directorios que tú.
 
-Por ejemplo:
+`r fa("exclamation-triangle", fill = "black")` Nadie más va a tener exactamente la misma configuración de directorios que tú.
+
+Por ejemplo, esta es la ruta a un archivo que solo aplica para mi computadora.
 ```{r, eval=FALSE}
 Pingus<-read_csv("C://Users//Lerma//Documents//4Cursos//1CIAD//01Clase Intro//Pingus_1.csv")
 ```
@@ -170,6 +172,9 @@ También librerías como here, se adaptan a la ubicación de tus proyectos.
 
 ```{r, message=FALSE, eval=FALSE}
 here()
+```
+
+```{r, message=FALSE, eval=FALSE}
 Pingus<-read_csv(paste0(here(),"//Pingus_1.csv"))
 ```
 
@@ -191,25 +196,34 @@ Hoy usaremos New Directory.
 knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/screenshots/rstudio-project-1.png")
 ```
   
-**Cuidado**:  No guarda los objectos que tengas en el environment.
+
 
 ---
 
 ## 1.4. Proyectos
 
-Es **bueno** que se limpie el environment, porque te obliga a reportar todo lo que hiciste... ... y que puedas replicarlo en el futuro. <br>
+<br>
+Es **bueno** que se limpie el environment, te obliga a reportar todo lo que hiciste... <br> 
+.right[... y que puedas replicarlo en el futuro. <br>]
 
-.center[
-<h3>`r fa("exclamation-triangle", fill = "black")`</h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+.left[
+<h3>⚠️ Cuidado<h3> 
 ]
 
-Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes en tu environment, los guardes antes de crear tu proyecto (usando  write_csv, saveRSD o lo que prefieras).  
+Cuando creas tu nuevo proyecto, no guarda los objectos que tengas en el environment.<br>
+Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes en tu environment, guardalos antes de crear tu proyecto <br>
+Para guardar tus objetos puedes usar  write_csv, saveRSD o lo que prefieras.  
 
 
 ---
 
-## 1.4. Proyectos 
-### Ventajas
+## 1.4. Ventajas
 
 - Un proyecto te permite tener todo un 'proyecto' como su tesis, artículos, etc, dentro de una sola carpeta.  
 - La carpeta se puede cambiar de lugar sin perder todos las direcciones (usando direcciones relativas).    
@@ -219,13 +233,12 @@ Pero lo que si estas siguiendo estos pasos a la par y tienes objetos importantes
 En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un flujo de trabajo consistente que te será de mucha utilidad en el futuro.
 
 .center[
-<h3>`r fa("broom", fill = "black")`</h3>
+<h1>🙌🏽 </h1>
 ]
 
 ---
 
-## 1.4. Proyectos
-### Recomendaciones
+## 1.4. Recomendaciones
 
 - Crea un proyecto RStudio para cada proyecto de análisis de datos.
 - Mantén los archivos ahí.
@@ -235,9 +248,7 @@ En resumen, los proyectos en RStudio te ofrecen la oportunidad de mantener un fl
 
 Todo lo que necesites siempre estará concentrado en una sola ubicación y claramente separado de los otros proyectos en los que estés trabajando.
 
-`r fa("hand-sparkles", fill = "black")`
-
-.rigth[
+.right[
 Fuente [R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.html)
 ]
 
@@ -269,7 +280,7 @@ Fuente [R4DS](https://r4ds-en-espaniol.netlify.app/flujo-de-trabajo-proyectos.ht
 
 
 
-Créditos: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
+Fuente: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
 
 --
 
@@ -288,6 +299,8 @@ Créditos: [Stephanie Orellana](https://sporella.github.io/nombrar_cosas/#3)
 - Sin signos de puntuación.  
 
 Usar "_" para separar nombres con mas de una palabra.  
+
+<br>
 
 **Evita**
 - Usar espacios en los nombres de los archivos.  
@@ -312,7 +325,7 @@ Fácil de saber que contiene el archivo a partir de su nombre.
 
 ---
 
-## 1.7. Orden por defecto `r fa("robot", fill = "black")`
+## 1.7. Orden por defecto `r fa("robot")`
 
 Usar algo numerico al inicio permite ordenarlos por defecto, y lo mejor es anteponer ceros.  
 
@@ -351,30 +364,13 @@ Pingus_csv<-read_csv(here("Pingus_1.csv"))
 
 ---
 
-class: title-slide, inverse, center, middle
-background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
-background-size: cover
+class: inverse
 
-
-# Crear un proyecto
-
----
-
-# 2. Ejercicios
-
-- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv.  
-
---
-
-- Vamos a crear un script con código debe incluir: numero de muestras y el promedio de alguna variable del data.frame.  
-
---
-
-- Vamos a exportar un gráfico en la carpeta resultados.  
-
---
-
-- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script.  
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+- Vamos a descargar datos de library(datos) y los van a guardar en su compu usando el argumento write_csv  
+- Vamos a crear un script con código debe incluir: numero de muestras y el promedio de alguna variable del data.frame  
+- Vamos a exportar un gráfico en la carpeta resultados 
+- Vamos a cambiar su proyecto de carpeta y lo van a volver a abrir y volver a correr el script  
 
 ---
 
@@ -493,7 +489,6 @@ Pingus %>%
   summarise(promedio=mean(masa_corporal_g))
 ```
 
-
 ---
 
 ## 2.5. Figuras
@@ -591,8 +586,8 @@ background-size: cover
 # 3. Zip
 
 Ahora vamos a:
-- Crear un archivo zip.
-- Bajar un archivo zip y replicar el trabajo.
+- Crear un archivo zip
+- Bajar un archivo zip y replicar el trabajo
 
 ---
 
@@ -610,7 +605,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 Enlace github bajar el zip  
 
-[Enlace Proyecto](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip).  
+[`r fa("external-link-alt")` Enlace Proyecto](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaProyecto.zip).  
 
 ```{r echo=FALSE, out.height=350}
 knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/BajarArchivos.jpg")
@@ -619,6 +614,9 @@ knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 Unzip>Correr el script>Replicar analisis. 
 
 ---
+
+class: title-slide
+background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
 
 # Recapitulando
 
@@ -630,24 +628,26 @@ Siguiente clase:
 - Sintaxis de modelos lineares.  
 - Linea de ajuste en nuestros gráficos.  
 
+.right[
 ### Contacto
 
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
 
-Para dudas, comentarios y sugerencias:
-- Escríbeme a miriamjlerma@gmail.com
+Para dudas, comentarios y sugerencias:<br>
+ Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible y se encuentra en
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible y se encuentra en <br>
+ mi [`r fa("external-link-alt", fill = "#219ebc")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#219ebc")`página](https://miriamlerma.netlify.app/materiales.html)
+]
 
-.center[
+<h1>
+.right[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
-]
-
+[`r fa("home", fill = '#219ebc')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
 

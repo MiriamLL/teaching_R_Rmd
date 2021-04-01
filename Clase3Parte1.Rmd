@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: RZero2-themer.css
+    css: RZero-themer_darktitle.css
     seal: false
     nature:
       highlightStyle: github
@@ -25,7 +25,6 @@ meta() %>%
       "Introduccion a RStudio",
       "Curso de R"),
     url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html",
-    image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
     image_alt = paste0(
       "Introduccion a R y RStudio",
       "Curso de R"),
@@ -41,14 +40,14 @@ meta() %>%
 library(xaringanExtra)
 ```
 
-class: title-slide, middle, right
+class: title-slide, inverse, middle, right
 background-image: url(https://images.unsplash.com/photo-1564939558297-fc396f18e5c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80)
 background-size: cover
 
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-**`r rmarkdown::metadata$author`**<br>
+## **`r rmarkdown::metadata$author`**<br>
 `r rmarkdown::metadata$date`
 
 ---
@@ -57,7 +56,6 @@ background-size: cover
 
 - Operaciones sencillas.  
 - Ejercicios usando operaciones.  
-
 - Datos ordenados.  
 - Ejercicios con funciones de tidyverse.  
 
@@ -67,33 +65,33 @@ library(emo)
 
 --
 
-## Ustedes
+### Ustedes
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos)
-
 - Quieren hacer algunas operaciones matemáticas usando R.
-
 - Quieren tener un dataframe que les sirva para hacer análisis y gráficos.
 
 ---
 
+class: inverse 
+
 ## Créditos
 
 -Material basado en el libro:  
-[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+[`r fa("book-open", fill = "#f2cc8f")` R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
-[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[`r fa("github-alt", fill = "#f2cc8f")` Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
 
 -Presentaciones de tidyverse:  
-[María Paula Caldas](https://mpaulacaldas.github.io/rrrtidyverse/)`r emo::ji("star")`  
-[RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&t=3605s)
+[`r fa("github-alt", fill = "#f2cc8f")` María Paula Caldas](https://mpaulacaldas.github.io/rrrtidyverse/)  
+[`r fa("youtube", fill = "#f2cc8f")` RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&t=3605s)
 
 
 -Imágenes adicionales:  
-[Unsplash](https://unsplash.com/)  
-[Portada por StellrWeb](https://unsplash.com/) 
-[Allison Horst](https://github.com/allisonhorst/palmerpenguins)
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)  
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada por StellrWeb](https://unsplash.com/) <br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Allison Horst](https://github.com/allisonhorst/palmerpenguins)
 
 ---
 
@@ -115,20 +113,18 @@ Pueden darle 1 si quieren, pero tarda un poquito.
 
 ## 1. CRAN
 
-`r emo::ji("penguin")`
-
-Carguen sus datos, que los vamos a usar mas adelante.
+Carguen los datos de pinguinos `r emo::ji("penguin")`, los vamos a usar mas adelante.
 ```{r}
 library(datos)
 Pingus<-datos::pinguinos
 ```
-Otra opción es usar read_csv desde su computador.
+Otra opción es usar read_csv desde su computadora.
 
 ---
 
 ## 1. CRAN
 
-[CRAN](https://cran.r-project.org/) es un acrónimo de **C**omprehensive **R** **A**rchive **N**etwork.
+**[CRAN](https://cran.r-project.org/)** es un acrónimo de **C**omprehensive **R** **A**rchive **N**etwork.
 
 - CRAN tiene hasta Noviembre de 2020, 16mil paquetes.  
 - Cualquiera puede crear su paquete y someterlo a CRAN.  
@@ -254,11 +250,19 @@ Lo primero que hay que hacer es tener paciencia y revisar que no hayamos escrito
 Si no funciona, otra opción es literalmente copiar el error que nos aparece y escribirlo en google.
 
 Fuentes confiables son: 
-- stackoverflow.  
+- stackoverflow  
 Seguro lo vamos a usar en algún momento durante la clase.
 
 - twitter  
 Hashtag: #rstatsES (en español) o #rstats (en inglés).
+
+---
+
+class: inverse
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+Realizar operaciones en R usando objetos
 
 ---
 
@@ -297,23 +301,17 @@ Quiero calcular cuantos kilos de croquetas debo comprar si mis perritos (que son
 ```
 Hasta le podríamos agregar el precio de las croquetas, si quisiéramos.
 
-```{r echo=FALSE, out.height=100}
-knitr::include_graphics('https://images.unsplash.com/photo-1571999001321-f54197a02cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
-```
+<h1>`r fa("dog", fill = "#black")`</h1>
 
 ---
 
 ## 2.6. Datos pinguinos.
-`r emo::ji("penguin")`
-Si ya cargaron los datos de pinguinos, omitan este paso.
+
+Inspeccionen los datos de pinguinos.
 ```{r}
 library(datos)
 Pingus<-pinguinos
 ```
-
----
-
-## 2.6. Datos pinguinos. 
 
 .center[
 ```{r echo=FALSE, out.height=350}
@@ -321,13 +319,13 @@ knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpe
 ```
 ]
 
-Son datos de tres especies de pinguinos.  En varias islas diferentes.  De hembras y machos.  De 2007 a 2009.  
 
 ---
 
 ## 2.6. Datos pinguinos. 
 
-Son datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
+Incluye datos de hembras y machos, de tres especies diferentes en tres islas diferentes.
+Incluye datos de medidas como masa corporal, longitud del pico, largo de la aleta.  
 
 .center[
 ```{r echo=FALSE, out.height=250}
@@ -339,14 +337,15 @@ knitr::include_graphics('https://raw.githubusercontent.com/allisonhorst/palmerpe
 
 ## 2.6. Datos pinguinos. 
 
-Como calculo el rango de la masa corporal de los pinguinos?  
-***Cuidado con los NAs!, na.rm me sirve para ignorarlos***
+Como calculo el **rango** de la masa corporal de los pinguinos?  
+**Cuidado con los NAs!, na.rm me sirve para ignorarlos**
+
 ```{r, eval=FALSE}
 range(Pingus$masa_corporal_g,
       na.rm=TRUE) #<<
 ```
 
-Cuanto pesan en promedio los pinguinos en kilos?  
+Cuanto pesan en **promedio** los pinguinos en kilos?  
 Guardarlo en un objeto y transformar de kilos a gramos.
 ```{r}
 PromedioPesoPingus<-mean(Pingus$masa_corporal_g,na.rm=TRUE)
@@ -357,7 +356,7 @@ PromedioPesoPingus/1000
 
 ## 2.7. Ejercicios pinguinos.
 
-- Como calculo el promedio del largo del pico de los pinguinos?  
+- Como calculo el **promedio** del largo del pico de los pinguinos?  
 ```{r, eval=FALSE}
 m**n(Pingus$largo_pico_mm,na.rm=TRUE)
 ```
@@ -374,11 +373,11 @@ m**(Pingus$*****,na.rm=TRUE)
 
 ---
 
-class: title-slide, inverse, bottom
+class: inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80)
 background-size: cover
 
-# 3. Inspeccionar data frames
+# **3. Inspeccionar <br>data frames**
 
 ---
 
@@ -393,7 +392,7 @@ background-size: cover
 knitr::include_graphics('https://www.frases333.com/wp-content/uploads/2019/03/Filas-Columnas.png')
 ```
   
-Source: frases333
+Fuente: frases333
 
 ---
 
@@ -412,12 +411,12 @@ tail(Pingus)
 
 ## 3.3. Filas
 
-Las filas se pone entre corchetes en la **PRIMERA** posición.
+Las filas se pone entre corchetes en la **primera** posición.
 ```{r}
 (Pingus[1,])
 ```
 
-Muéstrame las primeras 3 filas. 
+Muéstrame las primeras 3 filas. <br>
 El signo de **:** es como decir "de aquí hasta acá".
 ```{r}
 (Pingus[1:3,])
@@ -427,7 +426,7 @@ El signo de **:** es como decir "de aquí hasta acá".
 
 ## 3.4. Columnas
 
-Las columnas se pone entre corchetes en la **SEGUNDA** posición.
+Las columnas se pone entre corchetes en la **segunda** posición.
 ```{r}
 head(Pingus[,1])
 ```
@@ -441,7 +440,7 @@ head(Pingus$especie)
 
 ## 3.5. Columnas y filas
 
-Muéstrame un dato especifico [FILA, COLUMNA]
+Muéstrame un dato especifico [**fila**, **columna**]
 ```{r}
 (Pingus[1,1])
 ```
@@ -453,11 +452,12 @@ Muéstrame un dato especifico [FILA, COLUMNA]
 
 ---
 
-class: title-slide, inverse, bottom
+class: inverse, bottom, left
 background-image: url(https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1341&q=80)
 background-size: cover
 
-# 4. Datos ordenados
+
+# 4. Datos <br>ordenados
 
 ---
 
@@ -473,7 +473,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 
 ## 4.2. Datos ordenados
 
-Los datos ordenados (Tidy): es una estructuración de los conjuntos de datos para facilitar el análisis. 
+Los datos ordenados (**"tidy"**), es una estructuración de los conjuntos de datos para facilitar el análisis. 
 
 ```{r echo=FALSE, out.height=200}
 knitr::include_graphics("https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/tidy-1.svg")
@@ -510,9 +510,8 @@ Hay muchas maneras de hacer las mismas operaciones. Hoy usaremos el paquete **ti
 library(tidyverse)
 ```
 
-```{r echo=FALSE, out.height=340}
-knitr::include_graphics("https://www.khstats.com/img/dplyr_image.jpg")
-```
+<h1>`r fa("hat-cowboy-side", fill = '#FFFFFF')`<h1>
+
 
 ---
 
@@ -530,9 +529,11 @@ knitr::include_graphics("https://www.khstats.com/img/dplyr_image.jpg")
 
 Tidyverse engloba varios paquetes, la mayoría para específicamente para inspeccionar y manipular tus datos. 
 
-```{r echo=FALSE, out.height=450}
-knitr::include_graphics('https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png')
+.center[
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics('https://tidyverse.tidyverse.org/articles/tidyverse-logo.png')
 ```
+]
 
 ---
 
@@ -549,29 +550,29 @@ En su teclado: strg+alt+M
 
 ## 4.8. Manipular
 
-El paquete dplyr nos da una serie de herramientas para *manipular* datos
+El paquete dplyr nos da una serie de herramientas para **manipular** datos
 
-Las principales funciones, o *verbos* de dplyr, son:
+Las principales funciones, o **verbos** de dplyr, son:
 
-- count() para contar
-- select(), para seleccionar columnas
-- filter(), para filtrar filas
-- mutate(), para crear o modificar columnas
-- summarise(), para resumir información de las columnas
+- **count()** para contar
+- **select()**, para seleccionar columnas
+- **filter()**, para filtrar filas
+- **mutate()**, para crear o modificar columnas
+- **summarise()**, para resumir información de las columnas
 
-Hoy veremos algunas, la próxima clase veremos otras.
+Hoy veremos **count** y **select**, la próxima clase los otros.
 
 ---
 
 ## 4.9. count()
 
-Cuantos datos tengo?
+¿Cuantos datos tengo?
 ```{r, eval=FALSE}
 Pingus %>% 
   count()
 ```
 
-Cuantos datos tengo por especie?
+¿Cuantos datos tengo por especie?
 ```{r, eval=FALSE}
 Pingus %>% 
   count(especie)
@@ -581,13 +582,13 @@ Pingus %>%
 
 ## 4.10. count()
 
-Cuantos datos tengo por isla y por especie?
+¿Cuantos datos tengo por isla y por especie?
 ```{r}
 Pingus %>% 
   count(isla,especie)
 ```
 
-El argumento arrange() nos ayuda ordenarlos 
+El argumento **arrange()** nos ayuda ordenarlos 
 ```{r, eval=FALSE}
 Pingus %>%
   count(anio) %>% 
@@ -666,32 +667,48 @@ Pingus %>%
 
 ---
 
-# 4.17. Ejercicios
-**count**
+class: inverse
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+.pull-left[
 ```{r, eval=FALSE}
-Pingus %>% #strg+alt+M
-  count()
 Pingus %>% 
-  count(especie) #specie
+  count()
 ```
 
-**select**
+```{r, eval=FALSE}
+Pingus %>% 
+  count(especie) 
+```
+]
+
+.pull-right[
 ```{r, eval=FALSE}
 Pingus %>% 
   select(especie) %>%
   head()
+```
+
+```{r, eval=FALSE}
 Pingus %>% 
-  select(-sexo) %>% #sex
-  head()
-PingusSinSexo<-Pingus %>% 
-  select(-sexo) %>% #sex
+  select(-sexo) %>% 
   head()
 ```
 
+```{r, eval=FALSE}
+PingusSinSexo<-Pingus %>% 
+  select(-sexo) %>% 
+  head()
+```
+]
+
 ---
 
-## Recapitulando
+class: inverse
+background-size: cover
 
+## Recapitulando
 Esta clase:  
 - Operaciones matemáticas simples.  
 - Funciones básicas (mean, median, sd, range).  
@@ -702,22 +719,22 @@ Siguiente clase:
 - Unir dataframes (join)  
 - Exportar dataframes (write_csv)  
 
+.right[
 ### Contacto
+Para dudas, comentarios y sugerencias: <br>
+Escríbeme a miriamjlerma@gmail.com
 
-```{r, echo=FALSE}
-library(fontawesome)
-```
-
-Para dudas, comentarios y sugerencias:
-- Escríbeme a miriamjlerma@gmail.com
-
-Este material esta accesible y se encuentra en
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
-
-.center[
-```{r, echo=FALSE}
-library(fontawesome)
-```
-`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible <br> y se encuentra en 
+ mi [`r fa("external-link-alt", fill = "#ffd166")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#ffd166")`página](https://miriamlerma.netlify.app/materiales.html)
 ]
+<h1>
+.right[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+[`r fa("home", fill = '#ffd166')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
+
+
+

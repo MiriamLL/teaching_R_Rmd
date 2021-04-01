@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
   xaringan::moon_reader:
-    css: RZero2-themer.css
+    css: RZero-themer_darktitle.css
     seal: false
     nature:
       highlightStyle: github
@@ -26,7 +26,6 @@ meta() %>%
       "Introduccion a RStudio",
       "Curso de R"),
     url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase1Parte2.html",
-    image = "https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=695&q=80",
     image_alt = paste0(
       "Introduccion a R y RStudio",
       "Curso de R"),
@@ -54,6 +53,7 @@ background-size: cover
 `r rmarkdown::metadata$date`
 
 ---
+class: inverse
 
 ## 1. Intro
 
@@ -65,9 +65,10 @@ Cargar datos desde csv, txt, excel y desde una url (internet).
 
 ```{r, echo=FALSE}
 library(emo)
+library(fontawesome)
 ```
 
----
+--
 
 ## Quienes son ustedes? 
 
@@ -80,29 +81,30 @@ library(emo)
 - Puedan cargar datos y verlos en su computadora.
 
 ---
+class: inverse
 
 # Créditos
 
 -El material esta basado en el libro:  
-[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+[`r fa("book-open", fill = "#f2cc8f")` R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -El libro de:  
-[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+[`r fa("book-open", fill = "#f2cc8f")` Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
 
 -Y materiales de RLadies   
-[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
-[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
-[RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
-[Primeros pasos en R por Riva Quiroga](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
+[`r fa("github-alt", fill = "#f2cc8f")` Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[`r fa("github-alt", fill = "#f2cc8f")` Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[`r fa("github-alt", fill = "#f2cc8f")` RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[`r fa("github-alt", fill = "#f2cc8f")` Primeros pasos en R por Riva Quiroga](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
 
 
-Imágenes adicionales
-[Unsplash](https://unsplash.com/)
-[Portada por Fredy Jacob](https://unsplash.com/@thefredyjacob)
+Imágenes adicionales<br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)<br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada por Fredy Jacob](https://unsplash.com/@thefredyjacob)
 
 ---
 
-class: title-slide, bottom, center
+class: title-slide, middle, right
 background-image: url(https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80)
 background-size: cover
 
@@ -371,11 +373,9 @@ AllTracks <- do.call("rbind",ListTracking)
 
 ---
 
-class: title-slide, top, left
-background-image: url(https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80)
-background-size: cover
+class: inverse
 
-# 1.10. Ejercicios
+# 1.10. Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
 Carga los datos de pinguinos  
  Usando read_csv <br>
@@ -411,8 +411,8 @@ Para dudas, comentarios y sugerencias: <br>
 Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible <br> y se encuentra en 
- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+ mi [`r fa("external-link-alt", fill = "#9d0208")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#9d0208")`página](https://miriamlerma.netlify.app/materiales.html)
 
 ]
 
@@ -421,7 +421,7 @@ y mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = '#52b788')`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = '#9d0208')`](https://miriamlerma.netlify.app/materiales.html)
 ]</h1>
 
 

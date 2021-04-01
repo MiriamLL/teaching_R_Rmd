@@ -22,7 +22,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Miriam Lerma"/>
-    <link rel="stylesheet" href="RZero2-themer.css" type="text/css" />
+    <link rel="stylesheet" href="RZero-themer_darktitle.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -43,22 +43,21 @@ Miriam Lerma&lt;br&gt;
 Febrero 2021
 
 ---
+
+class: inverse
+
 # 1. Intro
 
 - Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
 - Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.  
-
 - Como cambiar la estética de mis gráficos.    
 - Van a cambiar la estética de su gráfico.  
 
-Un poco de inspiración y la infinidad de opciones de gráficos.
+--
 
----
-
-## Ustedes
+### Ustedes
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).  
-
 - Quieren hacer gráficos con sus datos usando R.  
 
 
@@ -68,26 +67,25 @@ Un poco de inspiración y la infinidad de opciones de gráficos.
 
 ---
 
+class: inverse
+
 # Créditos
 
 -Todo el material basado en el libro:  
-[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
-
--Y el libro de:  
-[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
-[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
-[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
-[RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 480 512"&gt;&lt;path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/&gt;&lt;/svg&gt; Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 480 512"&gt;&lt;path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/&gt;&lt;/svg&gt; Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 480 512"&gt;&lt;path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/&gt;&lt;/svg&gt; RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
 
 -En ingles:  
 [IntroduccionToGGplot](https://englelab.gatech.edu/useRguide/introduction-to-ggplot2.html)  
 [gg is for Grammar of Graphics](https://pkg.garrickadenbuie.com/trug-ggplot2)
 
 -Imágenes adicionales  
-[Portada por David Pisnoy](https://unsplash.com/@davidpisnoy)
-[Unsplash](https://unsplash.com/)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"/&gt;&lt;/svg&gt; Portada por David Pisnoy](https://unsplash.com/@davidpisnoy)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"/&gt;&lt;/svg&gt; Unsplash](https://unsplash.com/)
 
 ---
 
@@ -97,7 +95,7 @@ El objetivo de un gráfico es comunicar. En ciencia, la idea es brindar informac
 
 &lt;img src="http://www.typesofgraphs.com/wp-content/uploads/2015/12/Typesofgraphs.png" height="350" /&gt;
   
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
@@ -107,9 +105,7 @@ Graficar es transformar datos a visualizaciones que varian en tamaño, forma y c
 
 &lt;img src="https://paldhous.github.io/ucb/2016/dataviz/img/class2_1.jpg" height="350" /&gt;
   
-.right[
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
-]
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
@@ -119,9 +115,8 @@ Hay muchas maneras de graficar datos, pero hay diferentes maneras de percibirlos
 
 &lt;img src="https://paldhous.github.io/ucb/2016/dataviz/img/class2_2.jpg" height="350" /&gt;
   
-.right[
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
-]
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
+
 
 ---
 
@@ -131,9 +126,7 @@ Cual es más intuitiva?
 
 &lt;img src="https://paldhous.github.io/ucb/2016/dataviz/img/class2_4.jpg" height="350" /&gt;
 
-.right[
-Source: [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
-]
+Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
@@ -170,9 +163,9 @@ El paquete **ggplot** funciona por **capas**, si han usado SIG (sistema de infor
 
 &lt;img src="https://englelab.gatech.edu/useRguide/images/dataviz/ge_geom.png" height="200" /&gt;
   
-.right[
+
 Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-overview.html)
-]
+
 
 
 ---
@@ -213,9 +206,9 @@ ggplot(data=Prueba)
 
 --
 
+![](Clase2_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-11-1.png" height="300" /&gt;
 
 ---
 
@@ -254,7 +247,6 @@ Te avisa que había NAs y que no se incluyeron en el gráfico.
 ---
 # 1.4. Tipos de gráficos
 
-.center[
 Hoy veremos:  
 -Puntos  
 -Lineas  
@@ -264,6 +256,7 @@ Hoy veremos:
 -Mapas  
 ... pero hay muchos mas.
 
+.center[
 &lt;img src="http://www.typesofgraphs.com/wp-content/uploads/2015/12/Typesofgraphs.png" height="300" /&gt;
 ]
 
@@ -458,8 +451,11 @@ ggplot()+
 
 ---
 
-class: inverse, center, middle
-# Ejercicios
+class: inverse
+
+# Ejercicios &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;
+
+Crea un grafico de puntos usando datos de pingüinos
 
 ---
 
@@ -501,7 +497,7 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
 
 ---
 
-class: title-slide, inverse, center, middle
+class: title-slide, inverse, right, middle
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80)
 background-size:cover
 
@@ -610,14 +606,15 @@ Help&gt;CheatSheets&gt;Data Visualization with ggplot
 
 ---
 
-## 2.8. Errores comunes de orden
+## 2.8. Errores comunes
+
 No tener los datos ordenados.  
 Noten que para definir los ejes usamos columnas, por lo tanto es importante que tengan sus datos ordenados de esta manera.  
 Si no los tienen asi por ahora, lo veremos mas adelante en 'ordenar mis datos'.  
 
 &lt;img src="https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/visualization-stat-bar.svg" width="600" /&gt;
   
-De libro [R4DS](https://r4ds-en-espaniol.netlify.app/) 
+Fuente: [R4DS](https://r4ds-en-espaniol.netlify.app/) 
 
 ---
 
@@ -655,15 +652,15 @@ Falta un parentesis despues de especie.
 
 ## 2.9. Grafico como objeto
 
-Pero primero sepan que pueden guardar su gráfico como objeto y agregar estéticas a su gráfico base con el signo de +
+Se pueden guardar los gráficos como objeto 
 
 ```r
 MiGrafico&lt;-ggplot(data=Pingus, 
                   mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, 
-                              color=especie))+
-  geom_point()
+                              color=especie))+ geom_point()
 ```
 
+Y agregar estéticas a su gráfico base con el signo de +
 
 ```r
 *MiGrafico+
@@ -674,14 +671,14 @@ MiGrafico&lt;-ggplot(data=Pingus,
 
 ---
 
-## 2.10. Grafico como objeto
+## 2.10. Omitir partes
 
-También sepan que no necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
+No necesitan escribir todo (data, mapping se puede omitir) si siguen un orden.
 
 ```r
-MiGrafico&lt;-ggplot(Pingus, aes(x=largo_pico_mm,y=largo_aleta_mm, 
-                              color=especie))+
-  geom_point()
+MiGrafico&lt;-ggplot(Pingus, 
+                  aes(x=largo_pico_mm,y=largo_aleta_mm, 
+                              color=especie))+geom_point()
 MiGrafico
 ```
 
@@ -689,20 +686,26 @@ MiGrafico
 
 ---
 
-class: inverse, center, middle
-# Ejercicios
+class: inverse
+
+# Ejercicios &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;
+
+- Crear un gráfico de puntos con los datos de diamantes &lt;br&gt;
+- Graficar el *precio* por el *quilate* -
+- Cambiar el color de lo puntos de acuerdo al *corte* 
+- Cambiar el nombre en el eje x por 'Precio en dolares' y el eje y por 'kt'.
 
 ---
 
-## 2.11. Su turno
+## 2.11. Ejercicios
 
-Creen un gráfico de puntos con los datos de diamantes
+- Crear un gráfico de puntos con los datos de diamantes
 
 ```r
 Diamantes&lt;-datos::diamantes
 ```
 
-Grafiquen el *precio* por el *quilate* y cambien el color de lo puntos de acuerdo al *corte* y cambien el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
+Graficar el *precio* por el *quilate* y cambiar el color de lo puntos de acuerdo al *corte* y cambiar el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
 
 ```r
 #ggplot(data=***,mapping=aes(x=***, y=***, color=****))+
@@ -727,7 +730,7 @@ ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
 Gráfico  
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png" height="350" /&gt;
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png" height="300" /&gt;
 
 ---
 
@@ -747,23 +750,23 @@ library(plotly)
 
 .pull-right[
 
-Existen muchisimas posibilidades
 
 Explorar:
 
 - [Visualizaciones en R](https://www.notion.so/Data-Viz-Bookmarks-dc01718020bd4fd6a8a4ca80e6bce933) by Silvia Canelón (@spcanelon) and Tom Mock (@thomas_mock)  &lt;br&gt;
-- Twitter: #tidytuesday #DatosDeMiercoles, #30díasdegráficos &lt;br&gt;
+
+- Twitter: &lt;br&gt; #tidytuesday &lt;br&gt; #DatosDeMiercoles, #30díasdegráficos &lt;br&gt;
 
 - [RGraphGallery](https://www.r-graph-gallery.com/) &lt;br&gt;
 
 - [DataToViz](https://www.data-to-viz.com/) &lt;br&gt;
 
-- [Colores](https://coolors.co/) &lt;br&gt;
+- [Coolors](https://coolors.co/) &lt;br&gt;
 ]
 
 ---
 
-class: middle, bottom
+class: inverse
 
 # Recapitulando
 
@@ -775,22 +778,24 @@ Siguiente clase:
 - Realizar operaciones en R &lt;br&gt;
 - Inspeccionar y manipular dataframes &lt;br&gt;
 
-
+.right[
 ### Contacto
 
+Para dudas, comentarios y sugerencias: &lt;br&gt;
+Escríbeme a miriamjlerma@gmail.com
 
+Este material esta accesible &lt;br&gt; y se encuentra en 
+ mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
 
-Para dudas, comentarios y sugerencias:  
-- Escríbeme a miriamjlerma@gmail.com
+]
 
-Este material esta accesible y se encuentra en 
-- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+&lt;h1&gt;
+.right[
 
-.center[
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;](https://miriamlerma.netlify.app/materiales.html)
+]&lt;/h1&gt;
 
-&lt;h2&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#2a9d8f;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
-]&lt;/h2&gt;
 
 
     </textarea>

@@ -67,16 +67,16 @@ class: title-slide
 - Practica  
 Van a abrir R, ubicar las partes y correr algunas variables.
 
----
+--
 
-## Quienes son ustedes? 
+### Quienes son ustedes? 
 
 - Principiantes en R (de otra manera esto es un repaso).  
 - Saben que existe R pero no lo conocen bien.  
 - Aun así, necesitan usarlo en un futuro cercano.  
 
 
-## Hoy quiero que....
+### Hoy quiero que....
 
 - Sepan que es R y RStudio.  
 - Identifiquen las partes.  
@@ -84,25 +84,27 @@ Se sientan comodos en RStudio.
 
 ---
 
+class: title-slide, inverse
+
 # Créditos
 
 -El material esta basado en el libro:  
-[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+[`r fa("book-open", fill = "#f2cc8f")` R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y el libro de:  
-[Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
+[`r fa("book-open", fill = "#f2cc8f")` Bookdown, por Sonia Mendizabal](https://songeo.github.io/introduccion-r-bookdown/)
 
 -Y materiales de RLadies   
-[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
-[Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
-[RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
-[Primeros pasos en R por Riva Quiroga](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
+[`r fa("github-alt", fill = "#f2cc8f")` Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[`r fa("github-alt", fill = "#f2cc8f")` Recursos en espanol ](https://github.com/rladies/recursos_en_espanol)  
+[`r fa("github-alt", fill = "#f2cc8f")` RdesdeCero por Yanina Bellini](https://github.com/rladies/meetup-presentations_santarosa/blob/master/RdesdeCero)  
+[`r fa("github-alt", fill = "#f2cc8f")` Primeros pasos en R por Riva Quiroga](https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd)  
 
 
 Imágenes adicionales  
-[Portada de Unsplash por Jan Tinneberg](https://unsplash.com/@craft_ear)  
-[Unsplash](https://unsplash.com/)  
-[Allison horst](https://twitter.com/allison_horst?lang=es)  
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada de Unsplash por Jan Tinneberg](https://unsplash.com/@craft_ear)  
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)  
+[`r fa("twitter", fill = "#f2cc8f")` Allison horst](https://twitter.com/allison_horst?lang=es)  
 
 ---
 
@@ -169,7 +171,7 @@ R nos puede ahorrar tiempo y esfuerzo.
 - Tiene una curva de aprendizaje
 - Es como aprender un nuevo idioma
 
-```{r, echo=FALSE, out.height=300}
+```{r, echo=FALSE, out.height=450}
 knitr::include_graphics("https://pbs.twimg.com/media/EK8s79kUEAU3cAT?format=jpg&name=small")
 ```
 
@@ -184,14 +186,14 @@ knitr::include_graphics("https://pbs.twimg.com/media/EK8s79kUEAU3cAT?format=jpg&
 
 .pull-left[
 R es el motor.  
-```{r echo=FALSE, out.height=150}
+```{r echo=FALSE, out.height=200}
 knitr::include_graphics("https://images.unsplash.com/photo-1578586524259-489a03948798?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80")
 ```
 ]
 
 .pull-right[
 RStudio es el volante.  
-```{r echo=FALSE, out.height=150}
+```{r echo=FALSE, out.height=200}
 knitr::include_graphics("https://images.unsplash.com/photo-1605445622210-2dd2586bccea?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJpdmluZyUyMHdoZWVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
 ```
 ]
@@ -520,11 +522,9 @@ Hay quienes usan . (Ej. "Los.alumnos").
 
 ---
 
-class: title-slide, top, left
-background-image: url(https://images.unsplash.com/photo-1538766017398-415434a31a5b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
-background-size: cover
+class: title-slide
 
-# Su turno
+# Su turno `r fa("pencil-alt", fill = '#264653')`
 
 - Abran RStudio <br>
 - Escriban en la consola y denle enter<br>
@@ -555,15 +555,13 @@ Siguiente clase:
 Para dudas, comentarios y sugerencias:  <br>
 Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible <br> y se encuentra en: mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/) y mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible <br> y se encuentra en: mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/) y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
 ]
 
 <h1>
 .right[
-```{r, echo=FALSE}
-library(fontawesome)
-```
-[`r fa("home", fill = '#52b788')`](https://miriamlerma.netlify.app/materiales.html)
-]</h1>
+
+[`r fa("home", fill = '#f2cc8f')`</h1>volver](https://miriamlerma.netlify.app/materiales.html)
+]
 
 

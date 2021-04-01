@@ -5,12 +5,10 @@
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="Clase8_files/header-attrs-2.6/header-attrs.js"></script>
-    <link href="Clase8_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
     <meta name="twitter:title" content="Cargar datps"/>
     <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
     <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
-    <meta name="twitter:image:src" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
     <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@MiriamLL"/>
@@ -18,11 +16,11 @@
     <meta property="og:title" content="Cargar datps"/>
     <meta property="og:description" content="Introduccion a RStudioCurso de R"/>
     <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html"/>
-    <meta property="og:image" content="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80"/>
     <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Miriam Lerma"/>
+    <link rel="stylesheet" href="RZero-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -32,16 +30,18 @@
 
 
 class: title-slide, inverse, middle, right
-background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
+background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80)
 background-size: cover
 
 ### Clase 8
 # Factores y &lt;br&gt; Anova
 
-**Miriam Lerma**&lt;br&gt;
+## Miriam Lerma&lt;br&gt;
 Marzo 2021
 
 ---
+
+class: inverse
 
 # Intro
 
@@ -56,7 +56,6 @@ Marzo 2021
 ## Ustedes
 
 - Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
-
 - Quieren saber como transformar a factor y conocer la sintaxis para hacer analisis de varianza en R.  
 
 --
@@ -66,30 +65,24 @@ Ya vieron teoría. &lt;br&gt;
 Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.  
 
 ---
+class: inverse
 
 # Créditos &amp; materiales:  
 
-- Ejercicios de estadística con R &lt;br&gt; 
-[Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
+Materiales &lt;br&gt; 
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/&gt;&lt;/svg&gt; Sthda por Alboukadel Kassambara](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)
 
-- Ejemplos de anovas &lt;br&gt;
-[Sthda por Alboukadel Kassambara](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)⭐ 
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
 
-- Libro &lt;br&gt; 
-[Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Tutoriales STAT 545](https://stat545.com/)
 
-- Tutoriales diversos &lt;br&gt; 
-[STAT 545](https://stat545.com/)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/&gt;&lt;/svg&gt; ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
 
-- Ejercicios practicos &lt;br&gt; 
-[ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Libro por Steve Midway](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)  
 
-- Otros ejemplos:  
-[Libro](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)  
-
-- Imágenes adicionales &lt;br&gt; 
-[Unsplash](https://unsplash.com/)
-
+Imágenes adicionales &lt;br&gt; 
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"/&gt;&lt;/svg&gt; Unsplash](https://unsplash.com/)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"/&gt;&lt;/svg&gt; Portada Unsplash por Thomas Millot](https://unsplash.com/@tmillot)
 
 ---
 
@@ -164,18 +157,18 @@ glimpse(Titanic_datos)
 ```
 ## Rows: 891
 ## Columns: 12
-## $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ...
-## $ sobrevivio  &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0...
-## $ clase       &lt;int&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3...
-## $ Name        &lt;chr&gt; "Braund, Mr. Owen Harris", "Cumings, Mrs. John Bradley ...
-## $ sexo        &lt;chr&gt; "male", "female", "female", "female", "male", "male", "...
-## $ edad        &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 1...
-## $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1...
-## $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0...
-## $ Ticket      &lt;chr&gt; "A/5 21171", "PC 17599", "STON/O2. 3101282", "113803", ...
-## $ precio      &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.86...
-## $ Cabin       &lt;chr&gt; "", "C85", "", "C123", "", "", "E46", "", "", "", "G6",...
-## $ embarcado   &lt;chr&gt; "S", "C", "S", "S", "S", "Q", "S", "S", "S", "C", "S", ...
+## $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...
+## $ sobrevivio  &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0,...
+## $ clase       &lt;int&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3, 3, 2, 2, 3, 1, 3, 3, 3, 1, 3, 3,...
+## $ Name        &lt;chr&gt; "Braund, Mr. Owen Harris", "Cumings, Mrs. John Bradley (Florence Briggs Thayer)", "Heikki...
+## $ sexo        &lt;chr&gt; "male", "female", "female", "female", "male", "male", "male", "male", "female", "female",...
+## $ edad        &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, 2, NA, 31, NA, 35, 34, 15, ...
+## $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1, 0, 0, 0, 0, 0, 3, 1, 0, 3, 0, 0,...
+## $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 5, 0, 2, 0, 0,...
+## $ Ticket      &lt;chr&gt; "A/5 21171", "PC 17599", "STON/O2. 3101282", "113803", "373450", "330877", "17463", "3499...
+## $ precio      &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.8625, 21.0750, 11.1333, 30.0708, 16....
+## $ Cabin       &lt;chr&gt; "", "C85", "", "C123", "", "", "E46", "", "", "", "G6", "C103", "", "", "", "", "", "", "...
+## $ embarcado   &lt;chr&gt; "S", "C", "S", "S", "S", "Q", "S", "S", "S", "C", "S", "S", "S", "S", "S", "S", "Q", "S",...
 ```
 
 ---
@@ -199,18 +192,18 @@ glimpse(Titanic_datos)
 ```
 ## Rows: 891
 ## Columns: 12
-## $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ...
-## $ sobrevivio  &lt;fct&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0...
-## $ clase       &lt;fct&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3...
-## $ Name        &lt;chr&gt; "Braund, Mr. Owen Harris", "Cumings, Mrs. John Bradley ...
-## $ sexo        &lt;fct&gt; male, female, female, female, male, male, male, male, f...
-## $ edad        &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 1...
-## $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1...
-## $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0...
-## $ Ticket      &lt;chr&gt; "A/5 21171", "PC 17599", "STON/O2. 3101282", "113803", ...
-## $ precio      &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.86...
-## $ Cabin       &lt;chr&gt; "", "C85", "", "C123", "", "", "E46", "", "", "", "G6",...
-## $ embarcado   &lt;chr&gt; "S", "C", "S", "S", "S", "Q", "S", "S", "S", "C", "S", ...
+## $ PassengerId &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25...
+## $ sobrevivio  &lt;fct&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0,...
+## $ clase       &lt;fct&gt; 3, 1, 3, 1, 3, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 2, 3, 3, 2, 2, 3, 1, 3, 3, 3, 1, 3, 3,...
+## $ Name        &lt;chr&gt; "Braund, Mr. Owen Harris", "Cumings, Mrs. John Bradley (Florence Briggs Thayer)", "Heikki...
+## $ sexo        &lt;fct&gt; male, female, female, female, male, male, male, male, female, female, female, female, mal...
+## $ edad        &lt;dbl&gt; 22, 38, 26, 35, 35, NA, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, 2, NA, 31, NA, 35, 34, 15, ...
+## $ SibSp       &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 0, 1, 0, 0, 0, 0, 0, 3, 1, 0, 3, 0, 0,...
+## $ Parch       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 5, 0, 2, 0, 0,...
+## $ Ticket      &lt;chr&gt; "A/5 21171", "PC 17599", "STON/O2. 3101282", "113803", "373450", "330877", "17463", "3499...
+## $ precio      &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 8.4583, 51.8625, 21.0750, 11.1333, 30.0708, 16....
+## $ Cabin       &lt;chr&gt; "", "C85", "", "C123", "", "", "E46", "", "", "", "G6", "C103", "", "", "", "", "", "", "...
+## $ embarcado   &lt;chr&gt; "S", "C", "S", "S", "S", "Q", "S", "S", "S", "C", "S", "S", "S", "S", "S", "S", "Q", "S",...
 ```
 
 ---
@@ -340,7 +333,10 @@ p3&lt;-ggplot(Titanic_datos,
 
 ---
 
-## 1.7. Ejercicios juntos
+class: inverse
+
+
+# Ejercicios &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;
 
 - Cargar datos de titanic
 - Cargar paqueteria tidyverse
@@ -352,7 +348,7 @@ p3&lt;-ggplot(Titanic_datos,
 
 ---
 
-## 1.7. Ejercicios juntos
+## 1.7. Ejercicios
 
 Cargar datos
 
@@ -370,7 +366,7 @@ Titanic_datos&lt;-titanic_train
 
 ---
 
-## 1.7. Ejercicios juntos
+## 1.7. Ejercicios
 
 Renombrar columnas para que estén en español.
 
@@ -394,7 +390,8 @@ Titanic_datos$embarcado &lt;- ifelse(Titanic_datos$embarcado == "",
 
 ---
 
-## 1.7. Precio
+## 1.7. Ejercicios
+### Graficar precio
 
 Prueba con y sin cambiar a factor.
 
@@ -420,7 +417,8 @@ Titanic_datos$sobrevivio &lt;- as_factor(Titanic_datos$sobrevivio)
 
 ---
 
-## 1.7. Clase y edad
+## 1.7. Ejercicios
+### Graficar clase y edad
 
 Prueba con y sin cambiar a factor.
 
@@ -444,7 +442,8 @@ Titanic_datos$clase &lt;- as_factor(Titanic_datos$clase)
 
 ---
 
-## 1.7. Sexo y clase
+## 1.7. Ejercicios
+### Sexo y clase
 
 Gráfica la frecuencia del sexo de los pasajeros.
 
@@ -472,7 +471,7 @@ Titanic_datos$sexo &lt;- as.factor(Titanic_datos$sexo)
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)
+background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80)
 background-size: cover
 
 # ANOVAS
@@ -483,7 +482,7 @@ background-size: cover
 
 [Teoria](https://rpubs.com/Joaquin_AR/219148)
 
-El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.  
+El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.  &lt;br&gt;
 --
 Un análisis de la varianza permite determinar, por ejemplo, si diferentes tratamientos (es decir, un grupo de más de dos tratamientos) muestran diferencias significativas en sus resultados o si por el contrario puede suponerse que sus medias poblacionales no difieren.
 
@@ -537,7 +536,7 @@ Trampas_Fig
 
 ![](Clase8_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
 
-**Nuevo concepto** _scale_fill_manual_ sirve para especificar los colores que queremos usar.
+**Nuevo concepto** _scale_fill_manual_ para especificar los colores a usar.
 
 ---
 
@@ -556,9 +555,8 @@ names(Anova_insectos)
 ```
 
 ```
-##  [1] "coefficients"  "residuals"     "effects"       "rank"         
-##  [5] "fitted.values" "assign"        "qr"            "df.residual"  
-##  [9] "contrasts"     "xlevels"       "call"          "terms"        
+##  [1] "coefficients"  "residuals"     "effects"       "rank"          "fitted.values" "assign"       
+##  [7] "qr"            "df.residual"   "contrasts"     "xlevels"       "call"          "terms"        
 ## [13] "model"
 ```
 
@@ -707,7 +705,7 @@ bartlett.test(Anova_insectos$residuals ~ colores)
 
 ---
 
-## 2.8. Otras anovas
+## 2.8. Anova con dos factores
 
 Crear nueva columna con factor de tamaño.
 
@@ -739,7 +737,7 @@ summary(Anova_insectos_2)
 
 ---
 
-## 2.8. Otras anovas
+## 2.8. Anovas con interaccion
 
 Agregar interacción en el modelo.
 
@@ -755,7 +753,7 @@ Anova_insectos_4&lt;-aov((insectos ~ colores + tamanio + colores : tamanio),data
 
 ---
 
-##  2.8. Otras anovas
+##  2.8. Anovas con interaccion
 
 Mismos resultados.
 
@@ -790,21 +788,24 @@ summary(Anova_insectos_4)
 
 ---
 
-## 2.9. Ejercicios juntos
+class: inverse
+
+
+# Ejercicios &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;
 
 - Generar datos
 - Crear modelo
 - Ver resultados del modelo
 - Verificar algunos supuestos
 - Analisis TukeyHSD
-- Grafico
-- Anova de dos factores
-- Anova con interacción
+- Graficar 
+- Crear anova de dos factores
+- Crear anova con interacción
 
 
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios 
 
 Generar datos y modelo.
 
@@ -826,7 +827,7 @@ summary(Anova_insectos)
 ---
 
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios 
 
 Independencia
 
@@ -855,7 +856,7 @@ bartlett.test(Anova_insectos$residuals ~ colores)
 
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios 
 
 Veamos si los grupos son diferentes y cuales grupos son diferentes.
 
@@ -879,11 +880,9 @@ ggplot(Insectos_df, aes(x=colores,y=insectos)) +
   theme(legend.position = "none")
 ```
 
-Juega con la grafica, cambiando temas.
-
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios
 
 Crear nueva columna con factor de tamaño.
 
@@ -904,7 +903,7 @@ summary(Anova_insectos_2)
 
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios
 
 Interacción:
 
@@ -930,17 +929,33 @@ summary(Anova_insectos_4)
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVtYmxlYmVlfGVufDB8fDB8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)
+background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80)
 background-size: cover
 
 
 # Recapitulando
 
-8.1. Objetos clase factor.  
-8.2. Analisis de varianza.  
+- Esta clase:&lt;br&gt;
+Objetos clase factor.  
+Analisis de varianza.  
 
-Siguiente clase:  
-9.1. Basicos en Rmd
+- Siguiente clase:  
+Rmarkdown
+
+.right[
+### Contacto
+Para dudas, comentarios y sugerencias:&lt;br&gt;
+ Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en &lt;br&gt;
+ mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+]
+
+&lt;h1&gt;
+.right[
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;](https://miriamlerma.netlify.app/materiales.html)
+]&lt;/h1&gt;
 
 
     </textarea>

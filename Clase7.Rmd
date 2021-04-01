@@ -1,6 +1,6 @@
 ---
 title: "Clase 7"
-subtitle: "Exploración y <br> modelo lineal"
+subtitle: "Exploración y<br> modelo lineal"
 author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
@@ -48,10 +48,12 @@ background-size: cover
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-`r rmarkdown::metadata$author`<br>
+## `r rmarkdown::metadata$author`<br>
 `r rmarkdown::metadata$date`
 
 ---
+
+class: inverse
 
 # Intro
 
@@ -84,35 +86,37 @@ Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.
 
 ---
 
+class: inverse
+
 # Créditos & materiales:  
 
-- Ejercicios de estadística con R <br> 
+- `r fa("link", fill = "#f2cc8f")` Ejemplos de regresiones lineales simples <br>
+[Sthda por Alboukadel Kassambara](http://www.sthda.com/english/articles/40-regression-analysis/167-simple-linear-regression-in-r/)
+
+- `r fa("book-open", fill = "#f2cc8f")` Ejercicios de estadística con R <br> 
 [Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
 
-- Ejemplos de regresiones lineales simples <br>
-[Sthda por Alboukadel Kassambara](http://www.sthda.com/english/articles/40-regression-analysis/167-simple-linear-regression-in-r/)`r emo::ji("star")` 
-
-- Libro <br> 
+- `r fa("book-open", fill = "#f2cc8f")` Libro <br> 
 [Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
 
-- Tutoriales diversos <br> 
+- `r fa("link", fill = "#f2cc8f")` Tutoriales diversos <br> 
 [STAT 545](https://stat545.com/)
 
-- Ejercicios practicos <br> 
+- `r fa("link", fill = "#f2cc8f")` Ejercicios practicos <br> 
 [ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
 
-- Outliers <br> 
+- `r fa("github-alt", fill = "#f2cc8f")` Outliers <br> 
 [Rocio Joo](https://github.com/rociojoo)
 
 - Imágenes adicionales <br> 
-[Unsplash](https://unsplash.com/)
-[Portada por Kristine Wook](https://unsplash.com/@kwook)
+`r fa("camera-retro", fill = "#f2cc8f")`Unsplash](https://unsplash.com/)<br>
+`r fa("camera-retro", fill = "#f2cc8f")`[Portada por Kristine Wook](https://unsplash.com/@kwook)
 
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1516478784322-0b77268e6c64?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvdHN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+class: title-slide, inverse, bottom, right
+background-image: url(https://images.unsplash.com/photo-1612343267903-f6c1b17e6e1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80)
 background-size: cover
 
 
@@ -331,16 +335,11 @@ Vamos a ver un ejemplo en los ejercicios.
 
 ---
 
-class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1516478784322-0b77268e6c64?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvdHN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
-background-size: cover
+class: inverse
 
 
-# Ejercicios
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
----
-
-## 1. 6. Ejercicios 
 - Cargar datos de pinguinos
 - Crear dos gráficos de puntos con lineas de regresión
 - Usar facet_wrap
@@ -349,7 +348,8 @@ background-size: cover
 ---
 
 ## 1. 6. Ejercicios 
-Cargarlos desde el paquete, usar read_csv, o import dataset. 
+
+Cargar datos desde el paquete, usar read_csv, o import dataset. 
 ```{r, warning=FALSE, message=FALSE}
 library(datos)
 library(tidyverse)
@@ -428,11 +428,11 @@ ggplotly(Pingus_puntos) #<<
 
 ---
 
-class: bottom
-background-image: url(https://images.unsplash.com/photo-1599599810769-bcde5a160d32?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80)
+class: title-slide, inverse, bottom, right
+background-image: url(https://images.unsplash.com/photo-1612343267903-f6c1b17e6e1c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80)
 background-size: cover
 
-# Modelos lineales
+### Modelos lineales
 
 ---
 
@@ -469,12 +469,10 @@ Cuando hagan preguntas en internet, es muy útil usarlo!
 ## 2.2. Chocolate y felicidad
 
 -  Supongamos que podemos medir felicidad de manera cuantitativa, como una variable continua.  
-- Supongamos, además, que nuestro laboratorio quiere investigar cómo impactan distintas dosis de chocolate a la felicidad de los humanos. 
+- Supongamos, además, que nuestro laboratorio quiere investigar cómo impactan distintas dosis de **chocolate** a la **felicidad** de los humanos. 
 
 .center[
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics("https://images.unsplash.com/photo-1553452118-621e1f860f43?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80")
-```
+<h1> ¿ 🍫 = 😃  ?</h1>
 ]
 
 ---
@@ -571,15 +569,17 @@ p
 ---
 
 ## 2.5. Chocolate y felicidad
-Entre mayor dosis de chocolate más valor de felicidad.  
+
 
 - ¿Cuál es el valor esperado de felicidad para una dada dosis de chocolate?  
 - ¿Cómo podemos estimarlo?  
 
 .center[
-```{r echo=FALSE, out.height=300}
-knitr::include_graphics("https://images.unsplash.com/photo-1553452118-621e1f860f43?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80")
-```
+<h3> ¿ 100 g  🍫 = 😃  ?</h3>
+<br>
+<h2> ¿ 200 g  🍫 = 😃  ?</h2>
+<br>
+<h1> ¿ 300 g  🍫 = 😃  ?</h1>
 ]
 
 ---
@@ -622,13 +622,13 @@ A partir de la columna de estimadores (estimate), vemos que el consumo de chocol
 
 Nuestro modelo puede escribirse como:
 
-**felicidad=2.52∗dosis+8.59**
+**felicidad=2.52∗dosis de chocolate+8.59**
 
 ---
 
 ## 2.8. Recordatorio
 
-**felicidad=2.52∗dosis+8.59**
+**felicidad=2.52∗dosis de chocolate+8.59**
 
 ```{r echo=FALSE, out.height=300}
 knitr::include_graphics("https://datascience.foundation/img/pdf_images/understanding_of_linear_regression_with_python_1.png")
@@ -696,13 +696,19 @@ Cargar e instalar paquetes.
 library(performance)
 ```
 
-Este paquete tiene muchas funciones para checar supuestos del modelo. Se puede usar por separado check_collinearity(), check_normality(), check_heteroscedasticity() o checar todo junto con check_model().
-```{r, message=FALSE, warning=FALSE, eval=FALSE}
-check_model(modelo_chocolate)
-```
+Algunas funciones del paquete:
+- check_collinearity() 
+- check_normality()
+- check_heteroscedasticity() 
+- check_model()
 ]
 
 .pull-right[
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
+check_model(modelo_chocolate)
+```
+
+
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 check_model(modelo_chocolate)
 ```
@@ -797,13 +803,11 @@ Los objetivos de realizar un análisis de regresión pueden resumirse en:
 
 ---
 
-class: title-slide, inverse, bottom
+class: inverse
 
-# Ejercicios
 
----
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
-## 2.13. Ejercicios
 - Generar datos, usando set.seed y rnorm
 - Crear una figura con estos datos
 - Crear un modelo lineal
@@ -904,139 +908,7 @@ ggplot(datos, aes(nueva_dosis, respuesta))+
 
 ---
 
-class: title-slide, inverse, bottom
-
-# Outliers
-
----
-
-## 3. Outliers
-
-Un valor atípico (en inglés outlier) es una observación que es numéricamente distante del resto de los datos.
-- Que hacer con ellos?
-
----
-
-## 3. Outliers
-
-Generemos datos.
-```{r}
-set.seed(42)
-ex_data  = data.frame(x = 1:10,
-                      y = 10:1 + rnorm(n = 10))
-ex_model = lm(y ~ x, data = ex_data)
-```
-
-.pull-left[
-```{r plot21, eval=FALSE}
-ggplot(data = ex_data, 
-       aes(x = x, 
-           y = y)) +
-  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + 
-  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + 
-  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("#56B4E9", "#E69F00")) +
-theme_bw()
-```
-]
-
-.pull-right[
-```{r plot21-out, ref.label='plot21', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
-```
-]
-
----
-
-## 3. Outliers
-
-Añadamos un punto (x, y) y reajustemos una regresión lineal
-```{r}
-point_1 = c(5.4, 11) # nuevo punto
-ex_data_1 = rbind(point_1, ex_data) 
-model_1 = lm(y ~ x, data = ex_data_1) 
-```
-
-
-.pull-left[
-```{r plot22, eval=FALSE}
-ggplot(data = ex_data_1, aes(x = x, 
-                             y = y)) +
-  geom_point(color = "black") + # todos los puntos
-  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # Denotar el nuevo punto
-  geom_smooth(data = ex_data, method = "lm", # línea de regresión del modelo inicial
-              se = FALSE, aes(color = "inicial")) + 
-  geom_smooth(method = "lm", # línea de regresión del nuevo modelos
-              se = FALSE, aes(color = "nuevo"), linetype = 2) + 
-  scale_color_manual(name = "modelos", 
-                     labels = c("inicial", "nuevo"), 
-                     values = c("red", "blue")) +
-theme_bw()
-```
-]
-
-.pull-right[
-```{r plot22-out, ref.label='plot22', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
-```
-]
-
-
----
-
-## 3.2. Otro outlier
-
-Creemos un nuevo punto, agreguemoslo al data frame y creemos un nuevo modelo.
-```{r}
-point_2 = c(18, -5.7) 
-ex_data_2 = rbind(point_2, ex_data) 
-model_2 = lm(y ~ x, data = ex_data_2) 
-```
-
-.pull-left[
-```{r plot23, eval=FALSE}
-ggplot(data = ex_data_2, aes(x = x, y = y)) +
-  geom_point(color = "black") + # plotting all points
-  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + # circunferencia para el nuevo punto
-  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + # línea de regresión del modelo inicial
-  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + # línea de regresión del nuevo modelo
-  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("red", "blue")) +
-theme_bw()
-```
-]
-
-.pull-right[
-```{r plot23-out, ref.label='plot23', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
-```
-]
-
-
----
-
-## 3.3. Un ultimo outlier
-
-Creemos un nuevo punto, agreguemoslo al data frame y creemos un nuevo modelo.
-```{r}
-point_3 = c(14, 5.1) 
-ex_data_3 = rbind(point_3, ex_data) 
-model_3 = lm(y ~ x, data = ex_data_3) 
-```
-
-.pull-left[
-```{r plot24, eval=FALSE}
-ggplot(data = ex_data_3, aes(x = x, y = y)) +
-  geom_point(color = "black") + 
-  geom_point(aes(x = x[1], y = y[1]), cex = 4, shape = 1) + #
-  geom_smooth(data = ex_data, method = "lm", se = FALSE, aes(color = "inicial")) + 
-  geom_smooth(method = "lm", se = FALSE, aes(color = "nuevo"), linetype = 2) + 
-  scale_color_manual(name = "modelos", labels = c("inicial", "nuevo"), values = c("red", "blue")) +
-theme_bw()
-```
-]
-
-.pull-right[
-```{r plot24-out, ref.label='plot24', warning=FALSE,echo=FALSE, message=FALSE, out.width="80%"}
-```
-]
-
----
+class: title-slide, inverse
 
 # Recapitulando
 
@@ -1048,23 +920,18 @@ Siguiente clase:
 - Objetos clase factor.  
 - Analisis de varianza.  
 
+.right[
 ### Contacto
+Para dudas, comentarios y sugerencias:<br>
+ Escríbeme a miriamjlerma@gmail.com
 
-```{r, echo=FALSE}
-library(fontawesome)
-```
-
-Para dudas, comentarios y sugerencias:
-- Escríbeme a miriamjlerma@gmail.com
-
-Este material esta accesible y se encuentra en
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
-
-.center[
-```{r, echo=FALSE}
-library(fontawesome)
-```
-`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible y se encuentra en <br>
+ mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
 ]
+
+<h1>
+.right[
+[`r fa("home", fill = '#f2cc8f')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
 

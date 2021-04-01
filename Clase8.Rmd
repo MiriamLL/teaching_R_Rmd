@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
   xaringan::moon_reader:
-    css: ["default"]
+    css: RZero-themer.css
     seal: false
     nature:
       highlightStyle: github
@@ -25,7 +25,6 @@ meta() %>%
       "Introduccion a RStudio",
       "Curso de R"),
     url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase3Parte1.html",
-    image = "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
     image_alt = paste0(
       "Introduccion a R y RStudio",
       "Curso de R"),
@@ -42,16 +41,18 @@ library(xaringanExtra)
 ```
 
 class: title-slide, inverse, middle, right
-background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)
 background-size: cover
 
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-**`r rmarkdown::metadata$author`**<br>
+## `r rmarkdown::metadata$author`<br>
 `r rmarkdown::metadata$date`
 
 ---
+
+class: inverse
 
 # Intro
 
@@ -71,7 +72,6 @@ library(ggplot2)
 ## Ustedes
 
 - Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y graficos).  
-
 - Quieren saber como transformar a factor y conocer la sintaxis para hacer analisis de varianza en R.  
 
 --
@@ -81,30 +81,24 @@ Ya vieron teoría. <br>
 Recuerden que los modelos dependen de sus preguntas y experimentos o muestreos.  
 
 ---
+class: inverse
 
 # Créditos & materiales:  
 
-- Ejercicios de estadística con R <br> 
-[Matias Andina](https://bookdown.org/matiasandina/R-intro/modelos-lineales.html)
+Materiales <br> 
+[`r fa("link", fill = "#f2cc8f")` Sthda por Alboukadel Kassambara](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)
 
-- Ejemplos de anovas <br>
-[Sthda por Alboukadel Kassambara](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)`r emo::ji("star")` 
+[`r fa("book-open", fill = "#f2cc8f")` Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
 
-- Libro <br> 
-[Handbook of Regression Models in People Analytics](http://peopleanalytics-regression-book.org/)  
+[`r fa("book-open", fill = "#f2cc8f")` Tutoriales STAT 545](https://stat545.com/)
 
-- Tutoriales diversos <br> 
-[STAT 545](https://stat545.com/)
+[`r fa("link", fill = "#f2cc8f")` ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
 
-- Ejercicios practicos <br> 
-[ourcodingclub](https://ourcodingclub.github.io/tutorials/mixed-models/)
+[`r fa("book-open", fill = "#f2cc8f")` Libro por Steve Midway](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)  
 
-- Otros ejemplos:  
-[Libro](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)  
-
-- Imágenes adicionales <br> 
-[Unsplash](https://unsplash.com/)
-
+Imágenes adicionales <br> 
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)<br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada Unsplash por Thomas Millot](https://unsplash.com/@tmillot)
 
 ---
 
@@ -317,7 +311,10 @@ p3
 
 ---
 
-## 1.7. Ejercicios juntos
+class: inverse
+
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
 - Cargar datos de titanic
 - Cargar paqueteria tidyverse
@@ -329,7 +326,7 @@ p3
 
 ---
 
-## 1.7. Ejercicios juntos
+## 1.7. Ejercicios
 
 Cargar datos
 ```{r, warning=FALSE, message=FALSE}
@@ -345,7 +342,7 @@ Titanic_datos<-titanic_train
 
 ---
 
-## 1.7. Ejercicios juntos
+## 1.7. Ejercicios
 
 Renombrar columnas para que estén en español.
 ```{r}
@@ -367,7 +364,8 @@ Titanic_datos$embarcado <- ifelse(Titanic_datos$embarcado == "",
 
 ---
 
-## 1.7. Precio
+## 1.7. Ejercicios
+### Graficar precio
 
 Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
@@ -391,7 +389,8 @@ Titanic_datos$sobrevivio <- as_factor(Titanic_datos$sobrevivio)
 
 ---
 
-## 1.7. Clase y edad
+## 1.7. Ejercicios
+### Graficar clase y edad
 
 Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
@@ -413,7 +412,8 @@ Titanic_datos$clase <- as_factor(Titanic_datos$clase)
 
 ---
 
-## 1.7. Sexo y clase
+## 1.7. Ejercicios
+### Sexo y clase
 
 Gráfica la frecuencia del sexo de los pasajeros.
 
@@ -439,7 +439,7 @@ Titanic_datos$sexo <- as.factor(Titanic_datos$sexo)
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)
 background-size: cover
 
 # ANOVAS
@@ -450,7 +450,7 @@ background-size: cover
 
 [Teoria](https://rpubs.com/Joaquin_AR/219148)
 
-El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.  
+El análisis de la varianza (ANOVA) se utiliza de forma intensiva en el análisis y diseño de experimentos para evaluar el efecto de tratamientos en la variabilidad de la variable respuesta.  <br>
 --
 Un análisis de la varianza permite determinar, por ejemplo, si diferentes tratamientos (es decir, un grupo de más de dos tratamientos) muestran diferencias significativas en sus resultados o si por el contrario puede suponerse que sus medias poblacionales no difieren.
 
@@ -499,7 +499,7 @@ Trampas_Fig<-ggplot(Insectos_df,
 Trampas_Fig
 ```
 
-**Nuevo concepto** _scale_fill_manual_ sirve para especificar los colores que queremos usar.
+**Nuevo concepto** _scale_fill_manual_ para especificar los colores a usar.
 
 ---
 
@@ -596,7 +596,7 @@ bartlett.test(Anova_insectos$residuals ~ colores)
 
 ---
 
-## 2.8. Otras anovas
+## 2.8. Anova con dos factores
 
 Crear nueva columna con factor de tamaño.
 ```{r}
@@ -616,7 +616,7 @@ summary(Anova_insectos_2)
 
 ---
 
-## 2.8. Otras anovas
+## 2.8. Anovas con interaccion
 
 Agregar interacción en el modelo.
 ```{r}
@@ -630,7 +630,7 @@ Anova_insectos_4<-aov((insectos ~ colores + tamanio + colores : tamanio),data=In
 
 ---
 
-##  2.8. Otras anovas
+##  2.8. Anovas con interaccion
 
 Mismos resultados.
 ```{r}
@@ -643,21 +643,24 @@ summary(Anova_insectos_4)
 
 ---
 
-## 2.9. Ejercicios juntos
+class: inverse
+
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
 - Generar datos
 - Crear modelo
 - Ver resultados del modelo
 - Verificar algunos supuestos
 - Analisis TukeyHSD
-- Grafico
-- Anova de dos factores
-- Anova con interacción
+- Graficar 
+- Crear anova de dos factores
+- Crear anova con interacción
 
 
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios 
 
 Generar datos y modelo.
 ```{r, eval=FALSE}
@@ -676,7 +679,7 @@ summary(Anova_insectos)
 ---
 
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios 
 
 Independencia
 ```{r, eval=FALSE}
@@ -701,7 +704,7 @@ bartlett.test(Anova_insectos$residuals ~ colores)
 
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios 
 
 Veamos si los grupos son diferentes y cuales grupos son diferentes.
 ```{r, eval=FALSE}
@@ -722,11 +725,9 @@ ggplot(Insectos_df, aes(x=colores,y=insectos)) +
   theme(legend.position = "none")
 ```
 
-Juega con la grafica, cambiando temas.
-
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios
 
 Crear nueva columna con factor de tamaño.
 ```{r, eval=FALSE}
@@ -744,7 +745,7 @@ summary(Anova_insectos_2)
 
 ---
 
-## 2.9. Ejercicios juntos
+## 2.9. Ejercicios
 
 Interacción:
 ```{r, eval=FALSE}
@@ -766,16 +767,32 @@ summary(Anova_insectos_4)
 ---
 
 class: title-slide, inverse, bottom
-background-image: url(https://images.unsplash.com/photo-1567082534832-01e1a3ac4268?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVtYmxlYmVlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)
+background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)
 background-size: cover
 
 
 # Recapitulando
 
-8.1. Objetos clase factor.  
-8.2. Analisis de varianza.  
+- Esta clase:<br>
+Objetos clase factor.  
+Analisis de varianza.  
 
-Siguiente clase:  
-9.1. Basicos en Rmd
+- Siguiente clase:  
+Rmarkdown
+
+.right[
+### Contacto
+Para dudas, comentarios y sugerencias:<br>
+ Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en <br>
+ mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
+]
+
+<h1>
+.right[
+[`r fa("home", fill = '#f2cc8f')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
 
 

@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Marzo 2021"
 output:
   xaringan::moon_reader:
-    css: RZero2-themer.css
+    css: RZero-themer_darktitle.css
     seal: false
     nature:
       highlightStyle: github
@@ -36,9 +36,11 @@ meta() %>%
     twitter_site = "@MiriamLL")
 ```
 
-```{r include = FALSE}
+```{r include = FALSE, echo=FALSE}
 #Paquetes
 library(xaringanExtra)
+library(emo)
+library(fontawesome)
 ```
 
 class: title-slide, middle, right
@@ -48,36 +50,19 @@ background-size: cover
 ### `r rmarkdown::metadata$title`
 # `r rmarkdown::metadata$subtitle`
 
-**`r rmarkdown::metadata$author`**<br>
+## **`r rmarkdown::metadata$author`**<br>
 `r rmarkdown::metadata$date`
 
 ---
 
+class: inverse
+
 ## 1. Intro
 
 - Funciones del tidyverse.<br>
-
---
-
 - Funciones para unir y manipular data frames.<br> 
-
---
-
-- Ejercicios.<br>
-
---
-
 - Unir data frames.<br>
 - Exportar tus datos.<br>
-
---
-
-- Ejercicios.<br>
-
-```{r, echo=FALSE}
-library(emo)
-library(fontawesome)
-```
 
 --
 
@@ -87,28 +72,31 @@ library(fontawesome)
 - Quieren manipular sus data frames.
 - Quieren exportar su nuevo data frame.
 
-
 ---
+
+class: inverse
 
 ## Créditos
 
 -Material basado en el libro:  
-[R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
+[`r fa("book-open", fill = "#f2cc8f")` R4DS, editado por Riva Quiroga](https://r4ds-en-espaniol.netlify.app/)  
 
 -Y materiales de RLadies   
-[Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
+[`r fa("github-alt", fill = "#f2cc8f")` Zero to Hero](https://github.com/rladies/meetup-presentations_freiburg)  
 
 -Presentaciones de tidyverse:  
-[María Paula Caldas](https://mpaulacaldas.github.io/rrrtidyverse/)`r emo::ji("star")`  
-[RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&t=3605s)
+[`r fa("github-alt", fill = "#f2cc8f")` María Paula Caldas](https://mpaulacaldas.github.io/rrrtidyverse/)  
+[`r fa("youtube", fill = "#f2cc8f")` RLadiesBuenosAires](https://www.youtube.com/watch?v=ycudMihLues&t=3605s)
 
 
 -Imágenes adicionales  
-[Unsplash](https://unsplash.com/)
+[`r fa("camera-retro", fill = "#f2cc8f")` Portada por Jess Bailey](https://unsplash.com/@jessbaileydesigns) <br>
+[`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)
+
 
 ---
 
-class: title-slide, bottom
+class: title-slide, middle, center
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
@@ -136,9 +124,11 @@ library(tidyverse)
 
 Tidyverse engloba varios paquetes, la mayoria para especificamente para inspeccionar y manipular tus datos. 
 
-```{r echo=FALSE, out.height=450}
-knitr::include_graphics('https://hbctraining.github.io/Intro-to-R/img/tidyverse_website.png')
+.center[
+```{r echo=FALSE, out.height=350}
+knitr::include_graphics('https://tidyverse.tidyverse.org/articles/tidyverse-logo.png')
 ```
+]
 
 ---
 
@@ -155,17 +145,17 @@ En su teclado: strg+alt+M
 
 ## 1.3. Funciones
 
-El paquete dplyr nos da una serie de herramientas para *manipular* datos
+El paquete dplyr nos da una serie de herramientas para **manipular** datos
 
-Las principales funciones, o *verbos* de dplyr, son:
+Las principales funciones, o **verbos** de dplyr, son:
 
-- count() para contar
-- select(), para seleccionar columnas
-- filter(), para filtrar filas
-- mutate(), para crear o modificar columnas
-- summarise(), para resumir información de las columnas
+- **count()** para contar
+- **select()**, para seleccionar columnas
+- **filter()**, para filtrar filas
+- **mutate()**, para crear o modificar columnas
+- **summarise()**, para resumir información de las columnas
 
-count y select las vimos las clase pasada[`r fa("external-link-alt", fill = "#52b788")`Operaciones](https://miriamlerma.netlify.app/materiales.html)
+count y select las vimos en **[`r fa("external-link-alt", fill = "#52b788")`la clase pasada](https://miriamlerma.netlify.app/materiales.html)**
 
 ---
 
@@ -351,9 +341,20 @@ Miren que ahora tenemos menos observaciones en pingus sin NAs.
 
 ---
 
-class: title-slide, inverse
+class: inverse
 
-# Ejercicios
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+Usar funciones de tidyverse
+- count 
+- distinct 
+- group_by 
+- drop_na
+- summarise
+- mutate
+- select
+- filter
+
 
 ---
 
@@ -431,7 +432,7 @@ Pingus<-Pingus %>%
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, inverse, middle, center
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
@@ -441,7 +442,7 @@ background-size: cover
 
 # 2.1. left_join()
 
-Datos inventados.
+Datos inventados de 10 individuos, pesos de los individuos y la concentracion de pesticida.
 ```{r}
 ID<-c("ID01","ID02","ID03","ID04","ID05",
       "ID06","ID07","ID08","ID09","ID10")
@@ -470,17 +471,35 @@ head(Libreta)
 
 # 2.1. left_join()
 
-- left_join() me permite unirlos.
+Pero los necesitamos juntos!
+- **left_join()** me permite unirlos.
+Pero es importante tener un ID para poder unir las tablas.
+
 ```{r}
-DatosJuntos<-left_join(Libreta, Laboratorio, 
-                       by = "ID") #<<
+DatosJuntos<-left_join(Libreta, Laboratorio, #<<
+                       by = "ID") 
 DatosJuntos
 ```
 
 ---
 
+
+# 2.1. left_join()
+
+Lo que hace left_join() es usar ese ID para saber como unir la tabla.<br>
+
+```{r, echo=FALSE, out.height=350}
+knitr::include_graphics('https://www.garrickadenbuie.com/project/tidyexplain/images/left-join.gif')
+```
+
+Fuente: [tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
+
+Otras opciones de unión [ilustradas](https://www.garrickadenbuie.com/project/tidyexplain/)
+
+---
+
 # 2.2. pivot_longer
-A veces los datos se toman de manera *"no ordenada"* en el sentido de que las observaciones estan en cada columna y no en cada fila.
+A veces los datos se toman de manera **no ordenada** en el sentido de que las observaciones estan en cada columna y no en cada fila.
 
 Esto es normal, particularmente en campo o en el laboratorio y tenemos una libreta con espacio limitado.
 
@@ -494,7 +513,7 @@ knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as
 
 # 2.2. pivot_longer
 
-Datos inventados de 5 especies y sus riquezas.
+Datos inventados de 5 especies y sus riquezas en tres anios diferentes.
 ```{r}
 Especies<-c('Especie1','Especie2','Especie3','Especie4','Especie5')
 Anio2010<-c(5,4,5,6,7)
@@ -502,12 +521,13 @@ Anio2011<-c(3,2,1,9,4)
 Anio2012<-c(6,2,3,7,8)
 ```
 
-Un nuevo data frame.
+Creamos un nuevo data frame usando esos datos.
 ```{r}
 EspecieAnio<-data.frame(Especie=Especies,
                         Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
 ```
 
+Quedar algo así
 ```{r}
 head(EspecieAnio)
 ```
@@ -516,7 +536,7 @@ head(EspecieAnio)
 
 # 2.2. pivot_longer
 
-Este argumento me permite reorganizarlas.
+El argumento **pivot_longer** te permite reorganizarlas.
 ```{r}
 Especies_largo <- EspecieAnio %>%
   pivot_longer(c(Anio2010, Anio2011, Anio2012),
@@ -529,7 +549,7 @@ Especies_largo
 
 # 2.3. pivot_wider
 
-Pero si por alguna razon quiero tenerlos separados, puedo tambien extraerlos a lo ancho.
+Si por alguna razón quiero tenerlos separados, puedo también extraerlos a lo ancho.
 
 ```{r echo=FALSE, out.height=450}
 knitr::include_graphics('https://r4ds-en-espaniol.netlify.app/diagrams_w_text_as_path/es/tidy-8.svg')
@@ -551,7 +571,7 @@ Especies_ancho
 
 # 2.4. Unite
 
-Para unir informacion de dos columnas en una columna.
+Este argumento sirve para **unir** valores de dos columnas en una columna.
 ```{r}
 (Pingus<-Pingus %>% 
   unite(col = especie_isla,
@@ -563,29 +583,31 @@ Para unir informacion de dos columnas en una columna.
 
 # 2.5. Separate
 
-Separar valores de una columna en dos columnas.
+Este argumento sirve para **separar** valores de una columna en dos columnas.
 ```{r, eval=FALSE}
 Pingus %>% 
   separate(col = especie_isla,
            into = c("especie", "isla"),
            sep = ":")
 ```
-Ojo: borra las columnas originales, si no queremos que las borre debemos agregar remove = FALSE.
+
+Ojo: borra las columnas originales, si no queremos que las borre debemos agregar **remove = FALSE.**
 
 ```{r}
 (Pingus<-Pingus %>% 
   separate(col = especie_isla,
            into = c("especie", "isla"),
            sep = ":",
-           remove = FALSE))
+           remove = FALSE)) #<<
 ```
 
 
 ---
 
 # 2.6. Rename
-Cambiar el nombre de la columna.  
-El nuevo nombre se pone primero y luego se pone el nombre anterior.
+
+Este argumento **cambia** el nombre de la columna.  
+El nuevo nombre se debe poner primero y el nombre anterior después.
 ```{r}
 Pingus %>% 
   rename(peso = masa_corporal_g)
@@ -594,7 +616,8 @@ Pingus %>%
 ---
 
 # 2.6. Rename
-Cambiar el nombre de varias columnas.  
+
+Este argumento sirve para cambiar el nombre de varias columnas.  
 El nuevo nombre se pone primero y luego se pone el nombre anterior.
 
 ```{r}
@@ -607,7 +630,7 @@ Pingus %>%
 
 # 2.7. Relocate
 
-Mover columnas al inicio del data frame.
+Este argumento sirve para mover columnas al inicio del data frame.
 ```{r}
 Pingus %>% 
   relocate(sexo, anio)
@@ -617,7 +640,7 @@ Pingus %>%
 
 # 2.8 ggplot()
 
-Podemos encadenar funciones y crear graficos.
+Noten que se pueden **encadenar** funciones y crear graficos.
 
 ```{r, eval=FALSE}
 Pingus %>%
@@ -629,9 +652,14 @@ Pingus %>%
 
 ---
 
-class: title-slide, inverse
+class: inverse
 
-# Ejercicios
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+Usar funciones de tidyverse
+- left_join() 
+- pivot_longer()
+- pivot_wider()
 
 ---
 
@@ -639,7 +667,7 @@ class: title-slide, inverse
 ### left_join()
 
 Datos inventados.
-```{r}
+```{r, eval=FALSE}
 ID<-c("ID01","ID02","ID03","ID04","ID05",
       "ID06","ID07","ID08","ID09","ID10")
 Pesos<-c(1.5,2.0,3.5,4.1,2.6,3.7,8.9,2.5,6.3,1.0)
@@ -647,17 +675,17 @@ Pesticidas<-c(10,20,35,1,6,3,8,2,3,1)
 ```
 
 Datos del laboratorio.
-```{r}
+```{r, eval=FALSE}
 Laboratorio<-data.frame(ID,Pesticidas)
 ```
 
 Datos de campo.
-```{r}
+```{r, eval=FALSE}
 Libreta <- data.frame(ID,Pesos)
 ```
 
 DatosJuntos.
-```{r}
+```{r, eval=FALSE}
 DatosJuntos<-left_join(Libreta, Laboratorio, 
                        by = "ID") #<<
 ```
@@ -665,10 +693,10 @@ DatosJuntos<-left_join(Libreta, Laboratorio,
 ---
 
 ## 2.9. Ejercicios
-### ggplot()
+### pivot_longer
   
 Datos inventados de 5 especies y sus riquezas.
-```{r}
+```{r, eval=FALSE}
 Especies<-c('Especie1','Especie2','Especie3','Especie4','Especie5')
 Anio2010<-c(5,4,5,6,7)
 Anio2011<-c(3,2,1,9,4)
@@ -676,20 +704,16 @@ Anio2012<-c(6,2,3,7,8)
 ```
 
 Un nuevo data frame.
-```{r}
+```{r, eval=FALSE}
 EspecieAnio<-data.frame(Especie=Especies,Anio2010=Anio2010,Anio2011=Anio2011,Anio2012)
 ```
 
-```{r}
+```{r, eval=FALSE}
 head(EspecieAnio)
 ```
 
----
-
-# 2.9. pivot_longer
-
 Este argumento me permite reorganizarlas.
-```{r}
+```{r, eval=FALSE}
 EspeciesLargo <- EspecieAnio %>%
   pivot_longer(c(Anio2010, Anio2011, Anio2012),
     names_to = "Anio",
@@ -697,20 +721,10 @@ EspeciesLargo <- EspecieAnio %>%
 EspeciesLargo
 ```
 
----
-
-# 2.9. pivot_longer
-Importante el acomodo para poder realizar el grafico.
-
-```{r, eval=FALSE}
-ggplot(EspeciesLargo, aes(x=Especie,y=Riqueza, color=Anio, fill=Anio))+
-         geom_bar(stat='identity')
-```
-
 
 ---
 
-class: title-slide, inverse, bottom
+class: title-slide, middle, center
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
 
@@ -728,9 +742,11 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 
 ---
 
-# 3. Exportar 
+class: inverse
 
-1- Define la carpeta.  
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')
+
+1- Define una carpeta.  
 ```{r, message=FALSE}
 library(here)
 ResultsFolder<-here::here("Clase3 wrangling")
@@ -758,6 +774,8 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
+class: inverse
+
 # Recapitulando
 
 Esta clase:  
@@ -768,24 +786,20 @@ Esta clase:
 
 Siguiente clase:  
 - Trabajar por proyectos  
-- Compartir proyectos  
 
+.right[
 ### Contacto
+Para dudas, comentarios y sugerencias: <br>
+Escríbeme a miriamjlerma@gmail.com
 
-```{r, echo=FALSE}
-library(fontawesome)
-```
-
-Para dudas, comentarios y sugerencias:
-- Escríbeme a miriamjlerma@gmail.com
-
-Este material esta accesible y se encuentra en
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
-
-.center[
-```{r, echo=FALSE}
-library(fontawesome)
-```
-`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible <br> y se encuentra en 
+ mi [`r fa("external-link-alt", fill = "#219ebc")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#219ebc")`página](https://miriamlerma.netlify.app/materiales.html)
 ]
+<h1>
+.right[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+[`r fa("home", fill = '#219ebc')`](https://miriamlerma.netlify.app/materiales.html)
+]</h1>
