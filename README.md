@@ -32,8 +32,8 @@ Presentacion: https://miriamll.github.io/Curso_CIAD/Rmd-Parte1
 Decargar ejemplo: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd  
 Descargar bib: https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib  
 
-
-Clase 8: Presentaciones (usando xaringan).  
+Clase 8: Presentaciones (usando xaringan). 
+Presentacion: https://miriamll.github.io/Curso_CIAD/Xaringan-Parte1  
 
 Clase 9: Intro a git y github.  
 
