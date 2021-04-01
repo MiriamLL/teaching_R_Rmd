@@ -321,9 +321,8 @@ background-position: -10%
 ---
 class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
-background-size: cover
 
-# Sin especificar
+<h1> Sin especificar </h1>
 
 ---
 
@@ -341,9 +340,10 @@ background-size: contain
 <h1> Contain</h1>
 
 ---
+
 class: inverse
 
-# Ejercicios
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 - Cargar el paquete
 - Cambiar el YAML
 - Crea una diapositiva con tu nombre, y titulo de tu proyecto.
@@ -355,18 +355,18 @@ class: inverse
 
 # 1.10. Ejercicios
 
-- Instalar paquete
+Instalar paquete
 ```{r, eval=FALSE}
 devtools::install_github("yihui/xaringan")
 ```
 
-- Cambiar el YAML
+Cambiar el YAML
 ```{r, eval=FALSE}
 output:
   xaringan::moon_reader:
 ```
 
-- Crea una diapositiva con tu nombre, afiliacion, y informacion de contacto.
+Crea una diapositiva con tu nombre, y titulo de tu proyecto.
 ```{r, eval=FALSE}
 ---  
 title: "Clase curso CIAD"
@@ -378,7 +378,7 @@ date: "Abril 2021"
 
 # 1.10. Ejercicios
 
-- Poner imagen de fondo a las diapositiva
+Poner imagen de fondo a las diapositiva
 ```{r, eval=FALSE}
 ---
 class: title-slide, center, middle
@@ -387,12 +387,12 @@ background-size: cover
 ---
 ```
 
-- Colocar texto en el medio
+Agregar texto 
 ```{r, eval=FALSE}
 Esta es mi primera diapositiva
 ```
 
-- Darle knit
+Darle knit
 
 
 ---
@@ -401,11 +401,16 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
 
-# Parte 2
+# Tablas y Figuras
 
 ---
 
-# 2.1. Tablas
+## 2.1. Tablas
+```{r, message=FALSE}
+library(tidyverse)
+library(datos)
+Pingus<-datos::pinguinos
+```
 
 usando knitr::kable
 ```{r, eval=FALSE}
@@ -414,16 +419,23 @@ datos::pinguinos %>%
   knitr::kable(format = "html")
 ```
 
+---
+
+## 2.1. Tablas
 usando paquete DT
 ```{r, eval=FALSE}
-datos::pinguinos %>% 
+Pingus %>% 
   head() %>%
   DT::datatable()
 ```
 
+---
+
+## 2.1. Tablas
+
 usando paquete gt
 ```{r, eval=FALSE}
-datos::pinguinos %>% 
+Pingus %>% 
   head() %>%
   gt::gt() %>%
   gt::tab_spanner(label = "pico", columns = vars(largo_pico_mm, alto_pico_mm))
@@ -431,89 +443,57 @@ datos::pinguinos %>%
 
 ---
 
-# 2.2. Graficos
+## 2.2. Graficos
 
-Con los graficos generados en una presentacion...  <br>
-
-No estan **contenidos** en la presentacion, si no que se crean como archivos asociados. <br>
-
-Esto es importante porque si enviamos solo el html no podran ver los graficos en otra computadora.  <br>
-
-Al hacer knitr les va a crear un folder con el nombre de su presentacion y agregara '_files'  <br> 
-Alli dentro crea 'figure_html' que es donde estan sus graficos generados y les da un nombre generico como 'unnamed-chunk'
-
----
-
-# 2.3. Tamanio Graficos
 Sin ajustar tamanio
-```{r, eval=FALSE}
-datos::pinguinos %>%
+```{r}
+Pingus %>%
   ggplot(aes(x = especie, y = masa_corporal_g)) +
   geom_boxplot(aes(fill = isla))
 ```
 
 Ajustando el tamanio
-```{r, eval=FALSE, fig.height = 5}
-datos::pinguinos %>%
+```{r, fig.height = 5}
+Pingus %>%
   ggplot(aes(x = especie, y = masa_corporal_g)) +
   geom_boxplot(aes(fill = isla))
 ```
 
+---
+
+class: inverse
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+Crear una figura
+Agregar una tabla
 
 ---
 
-# 2.4. Texto
-- Texto
+## 2.3. Ejercicios
+
 ```{r, eval=FALSE}
-# Esta es mi primera diapositiva
----
-
-# Esta es mi segunda diapositiva
-Aqui puedo escribir algo sobre mi introduccion 
-
-- Primer punto
-- Segundo punto
-- Tercer punto
+Adelia<-Pingus%>%filter(especie=='Adelia')
 ```
 
-- Figura
+Figura
 ```{r, eval=FALSE}
-datos::pinguinos %>%
-  ggplot(aes(x = especie, y = masa_corporal_g)) +
-  geom_boxplot(aes(fill = isla))
+Adelia %>%
+  ggplot(aes(x = sexo, y = masa_corporal_g)) +
+  geom_boxplot()
 ```
 
-- Tabla/ANOVA
+Modelo
 ```{r, eval=FALSE}
-datos::pinguinos %>% 
+Pingus_anova<-aov(masa_corporal_g~sexo, data=Adelia)
+```
+
+Tabla
+```{r, eval=FALSE}
+Pingus_anova %>% 
   head() %>%
   knitr::kable(format = "html")
 ```
 
-- Mover texto
-```{r, eval=FALSE}
-.left[]
-.right[]
-.center[]
-```
-
-- Fondos
-```{r, eval=FALSE}
-class: title-slide, inverse, middle, right
-background-image: url(Enlace_de_imagen.jpg)
-background-size: cover
-```
-
----
-
-# Ejercicios
-
-- Dispositiva de intro
-Este es un trabajo con pinguinos de Adelia
-- Incluir tablas
-Resultados de ANOVA
-- Incluir figuras, cambiar el tamanio de las figuras
-Boxplot de peso de pinguinos por hembras y machos
 
 ---
 
@@ -521,11 +501,9 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
 
-# Parte 3
-
+# Estetica
 
 ---
-
 
 # 3.1. Temas
 
@@ -556,7 +534,7 @@ output:
 
 ---
 
-# 3.3 Agregar numero de diapositiva
+# 3.3 Paginacion
 
 Agregar en el YAML countIncrementalSlides: true
 ```{r, eval=FALSE}
@@ -590,21 +568,31 @@ Elijan los que estan gratis.
 
 ---
 
-# Ejercicios
+class: inverse
+
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+Mover texto de lugar
 
 ---
 
-- Crea una portada con el titulo del trabajo
-```{r, eval=FALSE}
+# 3.5. Ejercicios
+
+Crea una portada con el titulo del trabajo <br>
 Son los machos mas grandes que las hembras en el pinguino de Adelia?
+
+Para moverl el texto usa:
+```{r, eval=FALSE}
+.left[]
+.right[]
+.center[]
 ```
 
-- Agrega iconos 
+Agrega iconos 
 ```{r, eval=FALSE}
 `r emo::ji("penguin")`
 ```
 
-- Agregar en el YAML, cuidado con los espacios
+Agregar en el YAML cambios, cuidado con los espacios
 ```{r, eval=FALSE}
 output:
   xaringan::moon_reader:
@@ -620,34 +608,44 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
 
-# Parte 4
+# Pimp my slide
 
 ---
 
-# 4.1. Xaringan extra
+# 4.1. Xaringan themer
 
-Desarrollado por Garrick Aden-Buie.
+```{r,eval=FALSE}
+install.packages("xaringanthemer")
+remotes::install_github("gadenbuie/xaringanthemer")
+```
 
-Incrementa significativamente las cosas que puedes hacer en Xaringan.
-[Pagina](https://github.com/gadenbuie/xaringanExtra#xaringanextra)
-
----
-
-# 4.2. Instalar paquete
-
+Como funciona?
 ```{r, eval=FALSE}
-devtools::install_github("gadenbuie/xaringanExtra")
-library(xaringanExtra)
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
 ```
 
 ---
 
-# 4.3. Como funciona?
+# 4.2. Xaringan themer
 
+Cambiar el YAML
+```{r, eval=FALSE}
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+```
+
+[Enlace](https://www.garrickadenbuie.com/project/xaringanthemer/)
 
 ---
 
-# 4.4. Colores
+# 4.3. Colores
 
 https://coolors.co/contrast-checker
 https://mycolor.space
@@ -656,7 +654,7 @@ https://www.color-hex.com
 
 ---
 
-# 4.5. Letras
+# 4.4. Letras
 
 https://fonts.google.com/
 
@@ -664,3 +662,50 @@ https://fonts.google.com/
 - Serif
 - Sans-serif
 
+---
+
+# 5.1. Xaringan extra
+Desarrollado por Garrick Aden-Buie.
+
+Incrementa significativamente las cosas que puedes hacer en Xaringan.<br>
+[Enlace](https://github.com/gadenbuie/xaringanExtra#xaringanextra)
+
+---
+
+
+## 5.2. Instalar paquete
+
+```{r, eval=FALSE}
+devtools::install_github("gadenbuie/xaringanExtra")
+library(xaringanExtra)
+```
+
+---
+
+# 5.3. Extra styles
+
+
+hover_code_line adds a little floating triangle next to the hovered line in a code chunk
+
+mute_unhighlighted_code modifies the xaringan/remarkjs line highlighting to mute the lines that aren’t highlighted.
+
+```{r,eval=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+---
+
+# 5.4. ermoji
+
+Se puede agregar un addins para agregar iconos
+```{r, eval=FALSE}
+devtools::install_github("gadenbuie/ermoji")
+```
+Hay que reiniciar RStudio
+
+Ahora en Addsin debe aparecer ermoji (Search and copy)
+
+[Enlace](https://www.garrickadenbuie.com/project/ermoji/)
