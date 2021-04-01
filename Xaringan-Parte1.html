@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Xaringan</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <script src="Xaringan-Parte1_files/header-attrs-2.6/header-attrs.js"></script>
+    <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
+    <meta name="twitter:title" content="Xaringan"/>
+    <meta name="twitter:description" content="Introduccion a RmdCurso de R"/>
+    <meta name="twitter:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase9.html"/>
+    <meta name="twitter:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@MiriamLL"/>
+    <meta name="twitter:site" content="@MiriamLL"/>
+    <meta property="og:title" content="Xaringan"/>
+    <meta property="og:description" content="Introduccion a RmdCurso de R"/>
+    <meta property="og:url" content="https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase9.html"/>
+    <meta property="og:image:alt" content="Introduccion a R y RStudioCurso de R"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Miriam Lerma"/>
+    <link rel="stylesheet" href="Xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1548&amp;q=80)
+background-size: cover
+
+
+# Xaringan
+### Parte 1
+
+### Miriam Lerma&lt;br&gt;
+Abril 2021
+
+### Clase en desarrollo
+
+---
+
+# Intro
+
+- Que es Xaringan.
+- Como crear una presentacion usando Xaringan.  
+
+
+
+
+--
+
+## Ustedes
+
+- Tienen conocimientos basicos Rmd o md.   
+- Quieren poder hacer una presentacion desde RStudio.
+
+
+---
+
+# Creditos y recursos
+
+- Desarrolladores&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Xaringan por Yihui Xie](https://github.com/yihui/xaringan)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Xaringan-themer por Garrick Aden-Buie](https://www.garrickadenbuie.com/)&lt;br&gt;
+
+- Tutoriales en espaniol&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Introduccion a Xaringan por Silvia Canelon](https://silvia.rbind.io/talk/2020-12-17-introduccion-xaringan/)&lt;br&gt;
+
+- Tutoriales en ingles&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Xaringan avanzado por Silvia Canelon](https://spcanelon.github.io/xaringan-basics-and-beyond/)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Xaringan por Alison Hill](https://alison.rbind.io/talk/2019-rsc-xaringan/)&lt;br&gt;
+
+- Basicos de &lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Trucos de CSS](https://css-tricks.com/almanac/)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Que es CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+
+---
+
+## 1.1. Xaringan
+
+Xaringan fue desarrollado por [Yihui Xie](https://github.com/yihui/xaringan) &lt;br&gt;
+
+Y el nombre proviene de la caricatura.
+
+&lt;br&gt;
+.center[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg" width="300" /&gt;
+]
+
+---
+
+## 1.2. Ventajas
+
+La principal **ventaja** de usar Xaringan es que podemos hacer presentaciones mostrando codigo.
+
+También que podemos hacer nuestros análisis y presentar nuevos resultados sin tener que salir de RStudio.
+
+---
+
+## 1.3. Instalar el paquete
+
+Desde [Github](https://github.com/yihui/xaringan).
+
+```r
+install.packages('xaringan')
+```
+
+
+```r
+devtools::install_github("yihui/xaringan")
+```
+
+---
+
+## 1.4. Como funciona?
+
+- La primera diapositiva comienza después del YAML
+- Diapositivas se separan una de otra con
+tres guiones (---)
+- Diapositivas increméntales se separan con
+dos guiones (--)
+
+**Nota** &lt;br&gt;
+Es importante no tener espacios despues de los guiones.
+
+---
+
+## 1.5. Texto
+
+Para escribir texto se usa lo mismo que en Rmd.
+
+- Encabezados (#, ##, ###)&lt;br&gt;
+- Negrita y cursiva&lt;br&gt;
+- Enlaces con corchetes [ ] ( ) &lt;br&gt;
+- Listas de puntos que se pueden crear con -, +, o con *&lt;br&gt;
+
+---
+
+## 1.6. Mover contenido
+
+Para seleccionar donde aparecera el contenido se debe escribir **class** antes del contenido y despues de los tres guiones.
+
+Por ejemplo.
+
+```r
+--- 
+class: center, middle
+--- 
+```
+
+Para mover de manera **horizontal** se usa  &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 512 512"&gt;&lt;path d="M377.941 169.941V216H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.568 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296h243.882v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.568 0-33.941l-86.059-86.059c-15.119-15.12-40.971-4.412-40.971 16.97z"/&gt;&lt;/svg&gt;
+
+```r
+- left
+- center
+- right
+```
+
+Para mover de manera **vertical** se usa &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 256 512"&gt;&lt;path d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"/&gt;&lt;/svg&gt;
+
+```r
+- top
+- middle
+- bottom
+```
+
+Estas instrucciones se basan en [CSS: Cascading Style Sheets](https://www.w3.org/Style/CSS/Overview.en.html)
+
+---
+
+## 1.6. Mover texto
+
+Para mover texto se puede usar left, center, right &lt;br&gt;
+Poniendo un punto antes y el contenido entre corchetes [ ].
+
+Por ejemplo
+
+```r
+.left[]
+.right[]
+.center[]
+```
+
+&lt;br&gt;
+.left[El contenido aparece a la izquierda usando **left**...]
+.right[...y a la derecha usando **right**]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+.center[O en el centro cuando el texto esta entre corchetes despues de un punto y la palabra **center**]
+
+
+---
+
+## 1.7. Alinear por columnas
+
+Si queremos que el texto aparezca en la misma linea &lt;br&gt;
+Se puede mover por columnas regulares &lt;br&gt;
+Poniendo un punto antes y el contenido entre corchetes [ ].
+
+
+```r
+.pull-left[]
+.pull-righ[]
+```
+
+&lt;br&gt;
+
+.pull-left[Esto esta dentro de pull **left**]
+
+.pull-right[Y esto dentro de pull **right**]
+
+---
+
+## 1.7. Alinear por columnas
+
+Si queremos que el texto aparezca en la misma linea &lt;br&gt;
+Se puede mover por columnas irregulares &lt;br&gt;
+Poniendo un punto antes y el contenido entre corchetes [ ].
+
+
+```r
+.left-column[]
+.rigth-column[]
+```
+
+&lt;br&gt;
+
+.left-column[Texto esta dentro de **left** column]
+.right-column[Y todo el texto que pondre del lado derecho esta dentro de  **right** column, para ejemplificar en que condiciones podriamos necesitar tener mas espacio del lado derecho]
+
+
+---
+
+## 1.7. Agregar imagenes
+
+
+Paginas que tienen contenido que puede ser usado mientras se de la atribucion.
+- [Unsplash](unsplash.com)
+- [Rawpixel](rawpixel.com)
+- [Pexels](pexels.com)
+
+Pero siempre se puede agregar credito usando:
+
+```r
+.footnote[]
+```
+
+.footnote[Texto dentro de footnote]
+
+---
+
+## 1.7. Agregar imagenes
+
+Para agregar imágenes se puede usar signo de admiración y corchetes, y dentro de paréntesis la ruta de la imagen.
+
+```r
+![](Folder/nombre_de_la_imagen.jpg)
+```
+
+También se puede hacer dentro de un chunk.
+
+```r
+knitr::include_graphics("Folder/nombre_de_la_imagen.jpg")
+```
+
+O usando [html HyperText Markup Lenguage](https://es.wikipedia.org/wiki/HTML)
+
+```r
+&lt;img src="Folder/nombre_de_la_imagen.jpg" width="90%"/&gt;
+```
+
+No necesitan saber css o html para poder hacer presentaciones! &lt;br&gt; .right[...pero conocer un poco les ayudara a hacer mas cosas en Xaringan. ]
+
+---
+
+## 1.8. Tamanio de la imagen
+
+Con knitr usar se puede usar **out.height**.
+
+```r
+{r, out.height=400}
+knitr::include_graphics("img/jacarandas.jpg")
+```
+
+Con html se puede ajustar el porcentaje.
+
+```r
+&lt;img src="imgs/ocrug.jpeg" width="20%" /&gt;
+```
+
+---
+
+## 1.9. Fondos
+
+Se pone despues de los guiones (---) y despues el enlace completo de la imagen
+
+```r
+--- 
+background-image: enlace_a_la_imagen.jpg
+```
+
+Si no ponemos nada utiliza el tamanio de la imagen como fondo, pero el tamanio se puede ajustar usando:
+
+```r
+background-size: cover
+background-size: contain
+```
+
+Para que la imagen aparezca solo la mitad se puede usar
+
+```r
+background-position: -10% 
+```
+
+---
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1548&amp;q=80)
+background-size: cover
+
+# Sin especificar
+
+---
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1548&amp;q=80)
+background-size: cover
+
+&lt;h1&gt; Cover&lt;/h1&gt;
+
+---
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1548&amp;q=80)
+background-size: contain
+
+&lt;h1&gt; Contain&lt;/h1&gt;
+
+---
+class: inverse, center, middle
+
+# Ejercicios
+- Cargar el paquete
+- Cambiar el YAML
+- Crea una diapositiva con tu nombre, y titulo de tu proyecto.
+- Colocar texto en la dispositiva
+- Poner fondo a las diapositiva
+- Darle knit
+
+---
+
+# 1.10. Ejercicios
+
+- Instalar paquete
+
+```r
+devtools::install_github("yihui/xaringan")
+```
+
+- Cambiar el YAML
+
+```r
+output:
+  xaringan::moon_reader:
+```
+
+- Crea una diapositiva con tu nombre, afiliacion, y informacion de contacto.
+
+```r
+---  
+title: "Clase curso CIAD"
+author: "Miriam Lerma"
+date: "Abril 2021"
+```
+
+- Poner imagen de fondo a las diapositiva
+
+```r
+---
+class: title-slide, center, middle
+background-image: url(https://unsplash.com/photos/eWSh-bkaKU8)
+background-size: cover
+---
+```
+
+- Colocar texto en el medio
+
+```r
+Esta es mi primera diapositiva
+```
+
+- Darle knit
+
+
+---
+
+
+# Parte 2
+
+---
+
+# 2.1. Tablas
+
+usando knitr::kable
+
+```r
+datos::pinguinos %&gt;% 
+  head() %&gt;%
+  knitr::kable(format = "html")
+```
+
+usando paquete DT
+
+```r
+datos::pinguinos %&gt;% 
+  head() %&gt;%
+  DT::datatable()
+```
+
+usando paquete gt
+
+```r
+datos::pinguinos %&gt;% 
+  head() %&gt;%
+  gt::gt() %&gt;%
+  gt::tab_spanner(label = "pico", columns = vars(largo_pico_mm, alto_pico_mm))
+```
+
+---
+
+# 2.2. Graficos
+
+Con los graficos generados en una presentacion...  &lt;br&gt;
+
+No estan **contenidos** en la presentacion, si no que se crean como archivos asociados. &lt;br&gt;
+
+Esto es importante porque si enviamos solo el html no podran ver los graficos en otra computadora.  &lt;br&gt;
+
+Al hacer knitr les va a crear un folder con el nombre de su presentacion y agregara '_files'  &lt;br&gt; 
+Alli dentro crea 'figure_html' que es donde estan sus graficos generados y les da un nombre generico como 'unnamed-chunk'
+
+---
+
+# 2.3. Tamanio Graficos
+Sin ajustar tamanio
+
+```r
+datos::pinguinos %&gt;%
+  ggplot(aes(x = especie, y = masa_corporal_g)) +
+  geom_boxplot(aes(fill = isla))
+```
+
+Ajustando el tamanio
+
+```r
+datos::pinguinos %&gt;%
+  ggplot(aes(x = especie, y = masa_corporal_g)) +
+  geom_boxplot(aes(fill = isla))
+```
+
+
+---
+
+# 2.4. Texto
+- Texto
+
+```r
+# Esta es mi primera diapositiva
+---
+
+# Esta es mi segunda diapositiva
+Aqui puedo escribir algo sobre mi introduccion 
+
+- Primer punto
+- Segundo punto
+- Tercer punto
+```
+
+- Figura
+
+```r
+datos::pinguinos %&gt;%
+  ggplot(aes(x = especie, y = masa_corporal_g)) +
+  geom_boxplot(aes(fill = isla))
+```
+
+- Tabla/ANOVA
+
+```r
+datos::pinguinos %&gt;% 
+  head() %&gt;%
+  knitr::kable(format = "html")
+```
+
+- Mover texto
+
+```r
+.left[]
+.right[]
+.center[]
+```
+
+- Fondos
+
+```r
+class: title-slide, inverse, middle, right
+background-image: url(Enlace_de_imagen.jpg)
+background-size: cover
+```
+
+---
+
+# Ejercicios
+
+- Dispositiva de intro
+Este es un trabajo con pinguinos de Adelia
+- Incluir tablas
+Resultados de ANOVA
+- Incluir figuras, cambiar el tamanio de las figuras
+Boxplot de peso de pinguinos por hembras y machos
+
+---
+
+
+# Parte 3
+
+
+---
+
+
+# 3.1. Temas
+
+Cambiar como se ve la presentacion, se pone el en YAML
+
+```r
+---
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+---
+```
+
+Para ver otros opciones:
+
+```r
+names(xaringan:::list_css())
+```
+
+```
+##  [1] "chocolate-fonts"  "chocolate"        "default-fonts"    "default"         
+##  [5] "duke-blue"        "fc-fonts"         "fc"               "hygge-duke"      
+##  [9] "hygge"            "ki-fonts"         "ki"               "kunoichi"        
+## [13] "lucy-fonts"       "lucy"             "metropolis-fonts" "metropolis"      
+## [17] "middlebury-fonts" "middlebury"       "nhsr-fonts"       "nhsr"            
+## [21] "ninjutsu"         "rladies-fonts"    "rladies"          "robot-fonts"     
+## [25] "robot"            "rutgers-fonts"    "rutgers"          "shinobi"         
+## [29] "tamu-fonts"       "tamu"             "uio-fonts"        "uio"             
+## [33] "uo-fonts"         "uo"               "uol-fonts"        "uol"             
+## [37] "useR-fonts"       "useR"
+```
+
+---
+
+# 3.2 Portada
+
+Agregar en el YAML seal: false
+
+```r
+output:
+  xaringan::moon_reader:
+    seal: false
+```
+
+---
+
+# 3.3 Agregar numero de diapositiva
+
+Agregar en el YAML countIncrementalSlides: true
+
+```r
+output:
+  xaringan::moon_reader:
+    nature:
+      countIncrementalSlides: true
+```
+
+---
+
+# 3.4. Iconos
+
+Para incluir iconos se usa la sintaxis de _inline coding_.
+
+```r
+#install.package(fontawesome)
+#install.packages(emo)
+library(fontawesome) 
+library(emo)
+```
+
+
+```r
+`r fa("external-link-alt", fill = "#52b788")`
+`r emo::ji("star")`
+```
+
+Elijan los que estan gratis.
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Fontawesome](https://fontawesome.com/icons?d=gallery&amp;p=2)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Emojipedia](https://emojipedia.org/)
+
+
+---
+
+# Ejercicios
+
+---
+
+- Crea una portada con el titulo del trabajo
+
+```r
+Son los machos mas grandes que las hembras en el pinguino de Adelia?
+```
+
+- Agrega iconos 
+
+```r
+`r emo::ji("penguin")`
+```
+
+- Agregar en el YAML, cuidado con los espacios
+
+```r
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    seal: false
+    nature:
+      countIncrementalSlides: true
+```
+
+---
+
+# Parte 4
+
+---
+
+# 4.1. Xaringan extra
+
+Desarrollado por Garrick Aden-Buie.
+
+Incrementa significativamente las cosas que puedes hacer en Xaringan.
+[Pagina](https://github.com/gadenbuie/xaringanExtra#xaringanextra)
+
+Hoy veremos XaringanExtra para cambiar nuestras diapositivas
+
+---
+
+# 4.2. Instalar paquete
+
+
+```r
+devtools::install_github("gadenbuie/xaringanExtra")
+library(xaringanExtra)
+```
+
+---
+
+# 4.3. Como funciona?
+
+
+
+
+---
+
+# 4.4. Colores
+
+
+https://coolors.co/contrast-checker
+https://mycolor.space
+https://www.w3schools.com
+https://www.color-hex.com
+
+---
+
+# 4.5. Letras
+
+https://fonts.google.com/
+
+- Monospace
+- Serif
+- Sans-serif
+
+
+---
+
+.my-hot-pink { background-color: #ff69b4 }
+
+.my-hot-pink[**Party time! 🥳**]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
