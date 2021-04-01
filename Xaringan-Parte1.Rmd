@@ -505,7 +505,7 @@ background-size: cover
 
 ---
 
-# 3.1. Temas
+## 3.1. Temas
 
 Cambiar como se ve la presentacion, se pone el en YAML
 ```{r, eval=FALSE}
@@ -523,7 +523,7 @@ names(xaringan:::list_css())
 
 ---
 
-# 3.2 Portada
+## 3.2 Portada
 
 Agregar en el YAML seal: false
 ```{r, eval=FALSE}
@@ -534,7 +534,7 @@ output:
 
 ---
 
-# 3.3 Paginacion
+## 3.3 Paginacion
 
 Agregar en el YAML countIncrementalSlides: true
 ```{r, eval=FALSE}
@@ -546,7 +546,7 @@ output:
 
 ---
 
-# 3.4. Iconos
+## 3.4. Iconos
 
 Para incluir iconos se usa la sintaxis de _inline coding_.
 ```{r}
@@ -575,7 +575,7 @@ Mover texto de lugar
 
 ---
 
-# 3.5. Ejercicios
+## 3.5. Ejercicios
 
 Crea una portada con el titulo del trabajo <br>
 Son los machos mas grandes que las hembras en el pinguino de Adelia?
@@ -612,7 +612,7 @@ background-size: cover
 
 ---
 
-# 4.1. Xaringan themer
+## 4.1. Xaringan themer
 
 ```{r,eval=FALSE}
 install.packages("xaringanthemer")
@@ -632,7 +632,7 @@ style_mono_accent(
 
 ---
 
-# 4.2. Xaringan themer
+## 4.2. Xaringan themer
 
 Cambiar el YAML
 ```{r, eval=FALSE}
@@ -645,7 +645,7 @@ output:
 
 ---
 
-# 4.3. Colores
+## 4.3. Colores
 
 https://coolors.co/contrast-checker
 https://mycolor.space
@@ -654,7 +654,7 @@ https://www.color-hex.com
 
 ---
 
-# 4.4. Letras
+## 4.4. Letras
 
 https://fonts.google.com/
 
@@ -664,7 +664,7 @@ https://fonts.google.com/
 
 ---
 
-# 5.1. Xaringan extra
+## 5.1. Xaringan extra
 Desarrollado por Garrick Aden-Buie.
 
 Incrementa significativamente las cosas que puedes hacer en Xaringan.<br>
@@ -682,7 +682,7 @@ library(xaringanExtra)
 
 ---
 
-# 5.3. Extra styles
+## 5.3. Extra styles
 
 
 hover_code_line adds a little floating triangle next to the hovered line in a code chunk
@@ -698,7 +698,7 @@ xaringanExtra::use_extra_styles(
 
 ---
 
-# 5.4. ermoji
+## 5.4. ermoji
 
 Se puede agregar un addins para agregar iconos
 ```{r, eval=FALSE}
