@@ -1,0 +1,119 @@
+---
+title: "Pingüinos de Adelia"
+author: "Miriam Lerma"
+date: "Abril 2021"
+output:
+  #xaringan::moon_reader
+  xaringan::moon_reader:
+    #css: [default, metropolis-fonts]
+    css: Xaringan-themer.css
+    seal: false
+    nature:
+      countIncrementalSlides: true
+    
+---
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/flagged/photo-1569491256135-fc0dc118333c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1248&q=80)
+background-size: cover
+
+```{r Instrucciones, echo=FALSE}
+# Ejercicio 1
+# Instalar y cargar el paquete Xaringan
+# devtools::install_github("yihui/xaringan")
+# Cambiar el YAML
+# Crea una diapositiva con tu nombre, y titulo de tu proyecto
+# Colocar texto en la dispositiva
+# Poner fondo a la diapositiva
+# Darle knit
+```
+
+# ¿Son los machos más pesados que las hembras en pingüinos de Adelia?
+
+---
+
+```{r, echo=FALSE}
+# Ejercicio 2
+# Agregar una tabla 
+# Crear una figura
+```
+
+# Pesos
+
+Estos son los pesos promedio de los pingüinos de Adelia por sexo
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(datos)
+Pingus<-datos::pinguinos
+```
+
+.pull-left[
+```{r, echo=FALSE}
+Peso_sexo_Adelia<-Pingus%>%
+  filter(especie=='Adelia')%>%
+  group_by(sexo)%>%
+  summarise(peso=mean(masa_corporal_g))%>%
+  drop_na()
+Peso_sexo_Adelia %>% 
+  head()%>%
+  knitr::kable(format = "html")
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, fig.height=5, warning=FALSE}
+Pingus%>%
+  filter(especie=='Adelia')%>%
+  ggplot(aes(x = sexo, y = masa_corporal_g)) +
+  geom_boxplot(aes(fill = sexo))+
+  theme_classic()
+```
+]
+
+---
+
+# Resultados
+
+```{r, echo=FALSE}
+# Ejercicio 3
+# Cambiar estéticas de las dispositivas en el YAML
+# Agregar paginación
+
+#output:
+#  xaringan::moon_reader:
+#    css: [default, metropolis-fonts]
+#    seal: false
+#    nature:
+#      countIncrementalSlides: true
+
+# Agregar iconos
+```
+
+```{r, echo=FALSE}
+library(emo)
+```
+
+En estos pingüinos los machos parecen ser más pesados que las hembras `r emo::ji("penguin")` 
+
+```{r, echo=FALSE}
+# Ejercicio 4
+# Cambiar estilo de nuestra dispositiva
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+output:
+  xaringan::moon_reader:
+    css: Xaringan-themer.css
+```
+
