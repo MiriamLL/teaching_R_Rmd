@@ -16,6 +16,7 @@ output:
 ```{r include = FALSE}
 #Paquetes
 library(xaringanExtra)
+xaringanExtra::use_clipboard()
 ```
 
 class: title-slide, center, middle
