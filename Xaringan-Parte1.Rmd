@@ -66,6 +66,7 @@ ColorEnlace<-'#2a9d8f'
 ColorEnlaceInverso<-"#0FA5A6"
 
 #CincoColores InverseFondo#020A0C, InverseText #D9D3D3, InverseLink #0FA5A6
+xaringanExtra::use_clipboard()
 ```
 
 --
@@ -871,9 +872,8 @@ En Google Fonts es tan fácil como:
 1. Entrar a la página [`r fa("external-link-alt", fill = ColorEnlace)` Google Fonts](https://fonts.google.com/) 
 2. Darle click sobre el estilo de letra que queramos  
 3. Dale click sobre **+ Select this style**
-4. Elegir el simbolo 
-5. Seleccionar **@import** y copiar 
-6. Pegar en nuestro archivo css  
+4. Seleccionar **@import** y copiar 
+5. Pegar en nuestro archivo css  
 Ejemplo: @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 
 ---
