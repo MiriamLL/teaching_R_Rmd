@@ -43,10 +43,12 @@ background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d8
 background-size: cover
 
 
-# `r rmarkdown::metadata$title`
+# Xaringan
 
-## `r rmarkdown::metadata$author`<br>
-`r rmarkdown::metadata$date`
+<h2>Miriam Lerma<br>
+<br>
+Abril 2021</h2>
+
 
 
 ---

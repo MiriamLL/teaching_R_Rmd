@@ -25,7 +25,8 @@ background-size: cover
 # Rmarkdown
 
 <h2>Miriam Lerma<br>
-Abril-2021</h2>
+<br>
+Abril 2021</h2>
 
 
 
