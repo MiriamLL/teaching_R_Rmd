@@ -61,6 +61,7 @@ background-size: cover
 
 ```{r, echo=FALSE}
 library(emo)
+library(fontawesome)
 ```
 
 --
@@ -730,11 +731,12 @@ y mi [`r fa("external-link-alt", fill = "#ffd166")`página](https://miriamlerma.
 ]
 <h1>
 .right[
-```{r, echo=FALSE}
-library(fontawesome)
-```
 [`r fa("home", fill = '#ffd166')`](https://miriamlerma.netlify.app/materiales.html)
-]</h1>
+         ]</h1>
 
+
+
+<br>
+<br>
 
 

@@ -264,7 +264,7 @@ Poniendo un punto antes y el contenido entre corchetes [ ].
 
 ## 1.6. Fondos
 
-Para agregar imágenes que **no** estén en su computadora existen paginas web que tienen contenido que puede ser sin fines de lucro.
+Para agregar imágenes que **no** estén en su computadora existen paginas web que tienen contenido que puede ser usado sin atribucion y sin fines de lucro.
 
 Algunas son:
 - [`r fa("external-link-alt", fill = ColorEnlace)` Unsplash](unsplash.com)

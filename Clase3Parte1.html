@@ -470,14 +470,15 @@ head(Pingus)
 
 ```
 ## # A tibble: 6 x 8
-##   especie isla      largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo    anio
-##   &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;  &lt;int&gt;
-## 1 Adelia  Torgersen          39.1         18.7            181            3750 macho   2007
-## 2 Adelia  Torgersen          39.5         17.4            186            3800 hembra  2007
-## 3 Adelia  Torgersen          40.3         18              195            3250 hembra  2007
-## 4 Adelia  Torgersen          NA           NA               NA              NA &lt;NA&gt;    2007
-## 5 Adelia  Torgersen          36.7         19.3            193            3450 hembra  2007
-## 6 Adelia  Torgersen          39.3         20.6            190            3650 macho   2007
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
+## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
+## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
+## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
 
@@ -487,14 +488,15 @@ tail(Pingus)
 
 ```
 ## # A tibble: 6 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo    anio
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;  &lt;int&gt;
-## 1 Barbijo Dream          45.7         17              195            3650 hembra  2009
-## 2 Barbijo Dream          55.8         19.8            207            4000 macho   2009
-## 3 Barbijo Dream          43.5         18.1            202            3400 hembra  2009
-## 4 Barbijo Dream          49.6         18.2            193            3775 macho   2009
-## 5 Barbijo Dream          50.8         19              210            4100 macho   2009
-## 6 Barbijo Dream          50.2         18.7            198            3775 hembra  2009
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Barbijo Dream          45.7         17              195            3650 hemb~
+## 2 Barbijo Dream          55.8         19.8            207            4000 macho
+## 3 Barbijo Dream          43.5         18.1            202            3400 hemb~
+## 4 Barbijo Dream          49.6         18.2            193            3775 macho
+## 5 Barbijo Dream          50.8         19              210            4100 macho
+## 6 Barbijo Dream          50.2         18.7            198            3775 hemb~
+## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
 ---
@@ -509,9 +511,10 @@ Las filas se pone entre corchetes en la **primera** posición.
 
 ```
 ## # A tibble: 1 x 8
-##   especie isla      largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo   anio
-##   &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt; &lt;int&gt;
-## 1 Adelia  Torgersen          39.1         18.7            181            3750 macho  2007
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
 Muéstrame las primeras 3 filas. &lt;br&gt;
@@ -523,11 +526,12 @@ El signo de **:** es como decir "de aquí hasta acá".
 
 ```
 ## # A tibble: 3 x 8
-##   especie isla      largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo    anio
-##   &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;  &lt;int&gt;
-## 1 Adelia  Torgersen          39.1         18.7            181            3750 macho   2007
-## 2 Adelia  Torgersen          39.5         17.4            186            3800 hembra  2007
-## 3 Adelia  Torgersen          40.3         18              195            3250 hembra  2007
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
 ---
@@ -636,7 +640,7 @@ MiMejorAcomodo&lt;-c('Miriam','Mujer')
 ```
 
 Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
-Si no el proceso de ordenarlos puede ser tardado 🕐.
+Si no el proceso de ordenarlos puede ser tardado 🕚.
 
 ---
 
@@ -790,14 +794,14 @@ Pingus %&gt;%
 
 ```
 ## # A tibble: 6 x 7
-##   especie isla      largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
-##   &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
-## 1 Adelia  Torgersen          39.1         18.7            181            3750  2007
-## 2 Adelia  Torgersen          39.5         17.4            186            3800  2007
-## 3 Adelia  Torgersen          40.3         18              195            3250  2007
-## 4 Adelia  Torgersen          NA           NA               NA              NA  2007
-## 5 Adelia  Torgersen          36.7         19.3            193            3450  2007
-## 6 Adelia  Torgersen          39.3         20.6            190            3650  2007
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750  2007
+## 2 Adelia  Torge~          39.5         17.4            186            3800  2007
+## 3 Adelia  Torge~          40.3         18              195            3250  2007
+## 4 Adelia  Torge~          NA           NA               NA              NA  2007
+## 5 Adelia  Torge~          36.7         19.3            193            3450  2007
+## 6 Adelia  Torge~          39.3         20.6            190            3650  2007
 ```
 
 ---
@@ -814,14 +818,14 @@ Pingus %&gt;%
 
 ```
 ## # A tibble: 6 x 7
-##   especie isla      largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
-##   &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
-## 1 Adelia  Torgersen          39.1         18.7            181            3750  2007
-## 2 Adelia  Torgersen          39.5         17.4            186            3800  2007
-## 3 Adelia  Torgersen          40.3         18              195            3250  2007
-## 4 Adelia  Torgersen          NA           NA               NA              NA  2007
-## 5 Adelia  Torgersen          36.7         19.3            193            3450  2007
-## 6 Adelia  Torgersen          39.3         20.6            190            3650  2007
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g  anio
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;int&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750  2007
+## 2 Adelia  Torge~          39.5         17.4            186            3800  2007
+## 3 Adelia  Torge~          40.3         18              195            3250  2007
+## 4 Adelia  Torge~          NA           NA               NA              NA  2007
+## 5 Adelia  Torge~          36.7         19.3            193            3450  2007
+## 6 Adelia  Torge~          39.3         20.6            190            3650  2007
 ```
 
 ---
@@ -978,10 +982,13 @@ y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" vie
 ]
 &lt;h1&gt;
 .right[
-
 [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;](https://miriamlerma.netlify.app/materiales.html)
-]&lt;/h1&gt;
+         ]&lt;/h1&gt;
 
+
+
+&lt;br&gt;
+&lt;br&gt;
 
 
     </textarea>
