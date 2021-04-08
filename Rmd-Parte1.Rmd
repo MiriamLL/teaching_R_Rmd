@@ -23,7 +23,7 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
 
-# Básicos de Rmarkdown
+# Rmarkdown<br>Básicos
 
 <h2>Miriam Lerma<br>
 <br>
