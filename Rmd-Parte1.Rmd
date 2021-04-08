@@ -369,10 +369,10 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 # 7. Chunks
 
 En la parte de los chunks podemos agregar:
-- **echo==TRUE** para mostrar el codigo en el output.  
-- **eval==TRUE** para ejecuta el codigo, **eval==TRUE** para no ejecutar el codigo.  
-- **warning==FALSE** para evitar que aparezcan las advertencias.  
-- **message==FALSE** para evitar que aparezcan mensajes, por ejemplo cuando cargamos librerías.  
+- **echo=TRUE** para mostrar el codigo en el output.  
+- **eval=TRUE** para ejecuta el codigo, **eval==TRUE** para no ejecutar el codigo.  
+- **warning=FALSE** para evitar que aparezcan las advertencias.  
+- **message=FALSE** para evitar que aparezcan mensajes, por ejemplo cuando cargamos librerías.  
 
 Otras opciones: [`r fa("external-link-alt", fill = "#52b788")` chunk options](https://rmarkdown.rstudio.com/lesson-3.html)
 
