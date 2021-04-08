@@ -1,0 +1,438 @@
+---
+title: "Clase 9"
+subtitle: "Rmarkdown"
+author: "Miriam Lerma"
+date: "Abril 2021"
+output:
+  xaringan::moon_reader:
+    css: Rmd-themer.css
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+xaringanExtra::use_clipboard()
+```
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
+background-size: cover
+
+# Rmarkdown para <br> escribir articulos
+
+<h2>Miriam Lerma<br>
+<br>
+Abril 2021</h2>
+
+
+
+---
+
+# Intro
+
+- Tablas 
+- Figuras
+- Resultados en el texto
+- Ortografia
+- Citar
+
+```{r, echo=FALSE}
+library(emo)
+library(fontawesome)
+ColorLink<-"#52b788"
+```
+
+--
+
+## Ustedes
+
+- Conocimientos básicos de R
+- Quieren compartir sus avances con otros
+- Quieren tener un buen seguimiento de lo que hicieron y poder re-hacer sus análisis con otros datos en el futuro  
+
+---
+
+## Créditos & Recursos
+
+- Material de Rmarkdown.  
+[`r fa("external-link-alt", fill = ColorLink)`RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
+[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
+[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Allison Horst](https://github.com/allisonhorst/rladies-bangalore-rmarkdown)
+
+- Tutoriales en español:  
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+
+- Tutoriales en ingles:    
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+
+- Imagen de portada
+[Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
+
+---
+
+class: center, middle, inverse
+
+# 1. Rmarkdown
+
+---
+
+# 1.2. Editor de texto
+
+Al darle click al compás nos permite editar el texto usando botones.<br>
+Cuando le den click les va a aparecer un mensaje, pueden decirle ok. <br>
+Listo! Se puede editar similar a libre office.... y ademas te permite agregar imágenes. 
+
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Compas.png')
+```
+
+
+---
+
+# 1.3. Inline code
+
+Para los ejercicio necesitamos datos.
+
+Instalar paquete
+```{r, eval=FALSE}
+remotes::install_github("cienciadedatos/datos")
+#Si usan install packages no descarga los datos de Pinguinos
+```
+
+Cargar datos
+```{r, message=FALSE, warning=FALSE}
+library(datos)
+library(tidyverse)
+Pingus<-datos::pinguinos
+Adelia<-Pingus%>%filter(especie=='Adelia')
+```
+
+---
+
+# 1.3. Inline code
+
+Algunos resultados de nuestro codigo se pueden incluir en el texto usando los backticks (tildes inversos) antes y despues de {r} (para este caso solo se usa **una** tilde invertida).<br>
+
+Por ejemplo: <br>
+
+Podemos escribir esto en el texto.  
+```{r, eval=FALSE}
+Tenemos un total de `r nrow(Pingus)` muestras, de las cuales 
+`r nrow(Adelia)` corresponden a los pinguinos de Adelia.
+```
+
+Y nos aparece esto: <br>    
+Tenemos un total de `r nrow(Pingus)` muestras, de las cuales `r nrow(Adelia)` corresponden a los pinguinos de Adelia.
+
+---
+
+# 1.4. Idioma
+
+Para cambiar el idioma se puede ir a:
+Tools>Project Options>Spelling>Main language **cambiar a Spanish**
+
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Lenguage.JPG')
+```
+
+---
+
+# 1.5. Ortografia
+
+Se puede activar corrector de ortografia usando:  
+Edit>Spellchecking>F7  
+
+Sin embargo, el corrector no es muy bueno `r emo::ji("unamused_face")`
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Ortografia.JPG')
+```
+
+---
+
+# 1.6. Bibliografia
+<h4> Como citar? </h4>
+Para citar se usa el arroba (@) y el nombre que le demos a la cita<br>
+
+<h4>  Para formatear las referencias </h4>
+Generalmente las revistas tienen un .csl (citation style language) que se puede descargar. <br>
+Y lo unico que necesitas hacer es agregar el csl a tu YAML.<br>
+Ejemplo: **csl: biomed-central.csl**<br>
+
+- [`r fa("external-link-alt", fill = ColorLink)`Leer sobre csl](https://docs.citationstyles.org/en/1.0.1/primer.html)<br>
+- [`r fa("external-link-alt", fill = ColorLink)`Descargar csl](https://github.com/citation-style-language/styles)<br>
+
+---
+
+## 1.6.1. Bibliografia
+<h4> Para crear las referencias.</h4>
+Para agregar bibliografia tenemos que crear un archivo *.bib<br>
+Que se debe agregar al YAML. <br>
+
+Ejemplo:
+```{r, eval=FALSE}
+---
+title: "EjercicioPrueba"
+author: "MiriamL"
+date: "29/3/2021"
+output: word_document
+bibliography: El_nombre_de_tu_archivo.bib
+---
+```
+
+---
+
+## 1.6.1. Bibliografia
+Para crear el archivo bib dentro de RStudio puedes ir a <br>
+
+File>NewFile>Text File  
+
+Y guardarlo como Bibliografia.bib <br>
+En el **mismo lugar** donde guardaste tu Rmd <br>
+
+La bibliografía regularmente aparece al final de tu documento <br>
+Por esto, te recomiendo agregar un titulo al final que diga: **Referencias**
+
+---
+
+## 1.6.2. Mendeley
+
+Para obtener las referencias en formato bib.<br>
+Desde Mendeley<br>
+Click derecho>Copy as>BibTex Entry
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/MendeleyBib.png')
+```
+
+---
+
+## 1.6.3. Zotero
+
+Para obtener las referencias en formato bib.<br>
+Desde Zotero<br>
+File>Export Library<br>
+
+_Otra opción_ es cambiar Preferences>Export>Defatult>Bibtek y se puede arrastrar la bibliografia directo a tu documento bib en RStudio<br>
+
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ZoteroBib.png')
+```
+
+
+---
+
+## 1.6.4. GoogleScholar
+Desde Googlescholar<br>
+Dale click primero a las comillas y luego elige BibTeX.
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/GoogleSchoolarBib.png')
+```
+
+---
+
+# 1.7. Tablas de contenido
+
+Para agregar tablas de contenido, se escribe en el YAML:
+- **toc: true:** agrega tablas de contenidos
+- **toc_float:** true: en htmls te permite tener una tabla de contenido flotante (es decir se adapta al espacio del documento)
+- **number_sections: true:** agrega numeros a las secciones
+
+Ejemplo:
+```{r,eval=FALSE}
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+```
+
+**Importante**: tiene que ir indentado (por lo menos dos espacios vacios), y tenemos que agregar dos puntos después de html_document.<br>
+
+Ademas tenemos que tener en nuestro texto los títulos con el numeral y un espacio el numeral y el titulo.
+
+
+
+---
+
+# 1.8. Otras opciones.
+
+Help>Markdown Quick Reference
+
+[`r fa("external-link-alt", fill = ColorLink)`Cheatsheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.240247812.66492107.1614708075-36514926.1579182721)
+
+Acceso rápido desde RStudio al cheatsheet.
+```{r echo=FALSE, out.height=400}
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/46ba24a18406d82a43000fe7a11546f7f145374d/c5692/lesson-images/cheatsheets-2-path.png')
+```
+
+
+---
+
+# 1.9. Compartir
+
+- Opción 1: Compartir todo.  
+Enviar documento Rmd, tal cual y la otra persona puede darle click a las partes grises en el botón verde (siempre y cuando tenga la base de datos)  
+
+- Opción 2: Compartir instrucciones.  
+Mando el documento Rmd en html y pueden copiar las instrucciones con sus propios datos.  
+
+- Opción 3:  Escribir reportes o artículos.  
+Exportar documentos sin código.  
+
+-  Opción 4: <br>
+En el YAML agregar code_folding: hide y esconde el codigo pero te agrega un boton para ver el codigo se ser necesario.
+
+---
+
+class: inverse, center, middle
+# 2. Ejercicios
+
+---
+
+## 2.1. Ejercicios
+
+- Crear una tabla de contenido
+- Crear un archivo bib
+
+---
+
+## 2.2. Ejercicios
+
+Crear una tabla de contenido.  
+En el YAML:  
+```{r, eval=FALSE}
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+```
+
+---
+
+## 2.3. Ejercicios
+
+Crear un archivo bib
+- File>NewFile>Text File
+- Buscar en [googlescholar](https://scholar.google.com/): Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis) <br>
+```{r, eval=FALSE}
+@article{gorman2014ecological,
+  title={Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)},
+  author={Gorman, Kristen B and Williams, Tony D and Fraser, William R},
+  journal={PloS one},
+  volume={9},
+  number={3},
+  pages={e90081},
+  year={2014},
+  publisher={Public Library of Science}
+}
+```
+Copiar y pegar texto, guardar como Bibliografia.bib.
+
+Agrega en el YAML
+```{r,eval=FALSE}
+bibliography: Bibliografia.bib  
+```
+
+Agregar un titulo de primer nivel en el apartado final que diga 'Referencias'
+
+---
+
+## 2.4. Ejercicios
+
+
+- Descarga Rmd que contiene ejemplos de las partes vistas durante este curso [`r fa("external-link-alt", fill = ColorLink)`Rmd](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd)
+- Descarga el archivo bib [`r fa("external-link-alt", fill = ColorLink)`bib](https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib)
+- Dale knitr
+
+---
+
+class: center, middle, inverse
+
+# 3. Templates
+
+---
+
+## 3.1. Paquete rticles
+
+Para instalar rticles hay dos opciones
+```{r, eval=FALSE}
+install.packages("rticles")
+remotes::install_github("rstudio/rticles")
+```
+
+Aqui la pagina para ver todas las opciones [Click aqui](https://github.com/rstudio/rticles)
+
+---
+
+## 3.2. Paquete rticles
+
+Para usarlo.
+- Tener instalado la version mas reciente de RStudio
+- Tener instalado el paquete
+- Usar un nuevo R Markdown para crear el template
+
+File>NewFile>RMarkdown <br>
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://camo.githubusercontent.com/1965e9461fb6bd1274c9e65f79e025e8dc8ec6268987b685a56e56ed2c30d3d9/68747470733a2f2f726d61726b646f776e2e7273747564696f2e636f6d2f696d616765732f6e65775f725f6d61726b646f776e2e706e67')
+```
+
+---
+
+## 4.1. Paquete Papaja
+
+Para instalar
+```{r, eval=FALSE}
+devtools::install_github("crsh/papaja")
+```
+
+Para usar <br>
+```{r, echo=FALSE, out.height=400}
+knitr::include_graphics('https://raw.githubusercontent.com/crsh/papaja/master/inst/images/template_selection.png')
+```
+
+---
+
+class: inverse, center, middle
+# 5. Ejercicios
+
+---
+
+## 5.1. Ejercicios
+- Abrir los diferentes templates
+- Explorar opciones para escribir articulos
+- Escribir un articulo sobre pinguinos de Adelia
+(materiales en el drive o en github)
+
+---
+
+class: left, inverse
+
+# Contacto
+
+Te recomiendo seguir con [`r fa("external-link-alt", fill = ColorLink)`Xaringan](https://miriamlerma.netlify.app/materiales.html).
+
+Para dudas, comentarios y sugerencias:  
+- Escríbeme a miriamjlerma@gmail.com
+
+Este material esta accesible y se encuentra en 
+- mi [`r fa("external-link-alt", fill = ColorLink)`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = ColorLink)`página](https://miriamlerma.netlify.app/materiales.html)
+
+<br>
+<br>
+
+
+.center[
+```{r, echo=FALSE}
+library(fontawesome)
+```
+<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]

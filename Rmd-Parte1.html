@@ -23,7 +23,7 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1548&amp;q=80)
 background-size: cover
 
-# Rmarkdown
+# Básicos de Rmarkdown
 
 &lt;h2&gt;Miriam Lerma&lt;br&gt;
 &lt;br&gt;
@@ -42,9 +42,6 @@ Abril 2021&lt;/h2&gt;
 - Cambiar Outputs  
 - Tablas 
 - Figuras
-- Resultados en el texto
-- Ortografia
-- Citar
 
 
 
@@ -81,8 +78,8 @@ Abril 2021&lt;/h2&gt;
 
 Rmarkdown es muy conveniente porque podemos exportar lo que hicimos en Rstudio a html o documentos word.
 
-Tambien podemos crear presentaciones...
-...de hecho esta es una presentación en Rmd.
+Tambien podemos crear presentaciones... &lt;br&gt;
+.right[...de hecho esta es una presentación en Rmd.]
 
 --
 
@@ -93,7 +90,7 @@ Hay **muchas** maneras de trabajar en Rmd. Solo cubriré algunas.
 ## 1.1. Teoría
 
 Markdown es texto plano...  
-...algo así como lo que escriben en un block de notas.
+.right[...algo así como lo que escriben en un block de notas.]
 
 La ventaja de Rmd es que puedes incluir mucho texto e incluso se pueden escribir tesis, libros, árticulos, páginas web y presentaciones dentro de **RStudio**.
 
@@ -139,7 +136,7 @@ nrow(Pingus)
 ## [1] 344
 ```
 
-y ver los resultados.
+.right[y ver los resultados.]
 
 ---
 
@@ -281,7 +278,7 @@ class: inverse, center, middle
 
 1. Abrir RStudio
 2. Abrir un archivo Rmd (File&gt;NewFile&gt;Rmd)
-3. Darle un nombre al archivo
+3. Darle un nombre al archivo y escribir tu nombre
 4. Borrar todo menos el YAML
 5. Agregar código en un chunk
 6. Crear una gráfica en un chunk
@@ -354,7 +351,7 @@ Deben aparecer los títulos para navegar en nuestro lado derecho.
 
 En la parte de los chunks podemos agregar:
 - **echo=TRUE** para mostrar el codigo en el output.  
-- **eval=TRUE** para ejecuta el codigo, **eval==TRUE** para no ejecutar el codigo.  
+- **eval=TRUE** para ejecuta el codigo, **eval=FALSE** para no ejecutar el codigo.  
 - **warning=FALSE** para evitar que aparezcan las advertencias.  
 - **message=FALSE** para evitar que aparezcan mensajes, por ejemplo cuando cargamos librerías.  
 
@@ -407,6 +404,14 @@ class: inverse, center, middle
 - Crear outputs en word, pdf y html
 - Cambiar opciones en los chunks
 
+**Nota**&lt;br&gt;
+Puede que necesiten instalar tinytex&lt;br&gt;
+
+```r
+tinytex::install_tinytex()
+```
+
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Que es tiny tex?](https://yihui.org/tinytex/)
 
 ---
 
@@ -426,6 +431,8 @@ Resultados
 Aquí escribiré mis resultados  
 Discusión  
 Aquí escribiré mi discusión 
+
+**Nota** Hay que agregar un espacio entre los títulos
 
 ---
 
@@ -450,18 +457,18 @@ Agrega eval=FALSE en tu segundo chunk&lt;br&gt;
 
 class: center, middle, inverse
 
-# 10. Figuras y Tablas  
+# 10. Imágenes, Graficas y Tablas  
 
 ---
 
-## 10.1. Imagenes
+## 10.1. Imágenes
 
 - Para agregar imágenes desde **tu computadora** se usa signo de admiración, corchetes, y dentro la dirección de la imagen.  
 Por ejemplo:  
-![ pie de foto ] (Imagenes/Foto.jpg)
+![ pie de foto ] (Imágenes/Foto.jpg)
 
-- Desde **internet** se puede usar:  
-knitr::include_graphics('') con el enlace de la imagen entre parentesis.  
+- Desde **Internet** se puede usar:  
+knitr::include_graphics('') con el enlace de la imagen entre paréntesis.  
 Por ejemplo:&lt;br&gt;
 
 
@@ -475,7 +482,7 @@ knitr::include_graphics('https://images.unsplash.com/photo-1523224339316-5e4ae73
 
 ---
 
-## 10.2. Figuras
+## 10.2. Graficas
 
 Si creamos un plot con ggplot en un chunk y queremos ajustar el tamaño, el tamaño se puede definir  dentro de los corchetes { } y usando: 
 - fig.height  
@@ -669,7 +676,7 @@ class: inverse, center, middle
 
 # 11. Ejercicios
 
-- Importa una figura de Internet usando [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Unsplash](https://unsplash.com/) o desde tu computadora
+- Importa una imagen desde Internet usando [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Unsplash](https://unsplash.com/) o desde tu computadora
 - Crea una tabla
 - Cambia el tamaño de tu gráfico
 
@@ -705,263 +712,11 @@ ggplot(Pingus, aes(x=largo_pico_mm, y=alto_pico_mm))+
 
 ---
 
-class: center, middle, inverse
-
-# 12. Tips
-
----
-
-# 12. Editor de texto
-
-Al darle click al compás nos permite editar el texto usando botones.&lt;br&gt;
-Cuando le den click les va a aparecer un mensaje, pueden decirle ok. &lt;br&gt;
-Listo! Se puede editar similar a libre office.... y ademas te permite agregar imágenes. 
-
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Compas.png" height="400" /&gt;
-
-
----
-
-# 13. Inline code
-
-Algunos resultados de nuestro codigo se pueden incluir en el texto usando los backticks (tildes inversos) antes y despues de {r} (para este caso solo se usa **una** tilde invertida).
-
-Por ejemplo: &lt;br&gt;
-Podemos escribir esto en el texto.  
-
-```r
-Tenemos un total de `r nrow(Pingus)` muestras, de las cuales 
-`r nrow(Adelia)` corresponden a los pinguinos de Adelia.
-```
-
-Y nos aparece esto: &lt;br&gt;    
-Tenemos un total de 344 muestras, de las cuales 152 corresponden a los pinguinos de Adelia.
-
----
-
-# 14. Idioma
-
-Para cambiar el idioma se puede ir a:
-Tools&gt;Project Options&gt;Spelling&gt;Main language **cambiar a Spanish**
-
-
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Lenguage.JPG" height="400" /&gt;
-
----
-
-# 15. Ortografia
-
-Se puede activar corrector de ortografia usando:  
-Edit&gt;Spellchecking&gt;F7  
-
-Sin embargo, el corrector no es muy bueno 😒
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Ortografia.JPG" height="400" /&gt;
-
----
-
-# 16. Bibliografia
-&lt;h4&gt; Como citar? &lt;/h4&gt;
-Para citar se usa el arroba (@) y el nombre que le demos a la cita&lt;br&gt;
-
-&lt;h4&gt;  Para formatear las referencias &lt;/h4&gt;
-Generalmente las revistas tienen un .csl (citation style language) que se puede descargar. &lt;br&gt;
-Y lo unico que necesitas hacer es agregar el csl a tu YAML.&lt;br&gt;
-Ejemplo: **csl: biomed-central.csl**&lt;br&gt;
-
-- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Leer sobre csl](https://docs.citationstyles.org/en/1.0.1/primer.html)&lt;br&gt;
-- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Descargar csl](https://github.com/citation-style-language/styles)&lt;br&gt;
-
----
-
-## 16.1. Bibliografia
-&lt;h4&gt; Para crear las referencias.&lt;/h4&gt;
-Para agregar bibliografia tenemos que crear un archivo *.bib&lt;br&gt;
-Que se debe agregar al YAML. &lt;br&gt;
-
-Ejemplo:
-
-```r
----
-title: "EjercicioPrueba"
-author: "MiriamL"
-date: "29/3/2021"
-output: word_document
-bibliography: El_nombre_de_tu_archivo.bib
----
-```
-
----
-
-## 16.1. Bibliografia
-Para crear el archivo bib dentro de RStudio puedes ir a &lt;br&gt;
-
-File&gt;NewFile&gt;Text File  
-
-Y guardarlo como Bibliografia.bib &lt;br&gt;
-En el **mismo lugar** donde guardaste tu Rmd &lt;br&gt;
-
-La bibliografía regularmente aparece al final de tu documento &lt;br&gt;
-Por esto, te recomiendo agregar un titulo al final que diga: **Referencias**
-
----
-
-## 16.2. Mendeley
-
-Para obtener las referencias en formato bib.&lt;br&gt;
-Desde Mendeley&lt;br&gt;
-Click derecho&gt;Copy as&gt;BibTex Entry
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/MendeleyBib.png" height="400" /&gt;
-
----
-
-## 16.3. Zotero
-
-Para obtener las referencias en formato bib.&lt;br&gt;
-Desde Zotero&lt;br&gt;
-File&gt;Export Library&lt;br&gt;
-
-_Otra opción_ es cambiar Preferences&gt;Export&gt;Defatult&gt;Bibtek y se puede arrastrar la bibliografia directo a tu documento bib en RStudio&lt;br&gt;
-
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ZoteroBib.png" height="400" /&gt;
-
-
----
-
-## 16.4. GoogleScholar
-Desde Googlescholar&lt;br&gt;
-Dale click primero a las comillas y luego elige BibTeX.
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/GoogleSchoolarBib.png" height="400" /&gt;
-
----
-
-# 17. Tablas de contenido
-
-Se escribe en el YAML:
-- **toc: true:** agrega tablas de contenidos
-- **toc_float:** true: en htmls te permite tener una tabla de contenido flotante (es decir se adapta al espacio del documento)
-- **number_sections: true:** agrega numeros a las secciones
-
-Ejemplo:
-
-```r
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    number_sections: true
-```
-
-**Importante**: tiene que ir indentado (por lo menos dos espacios vacios), y tenemos que agregar dos puntos después de html_document.&lt;br&gt;
-
-Ademas tenemos que tener en nuestro texto los títulos con el numeral y un espacio el numeral y el titulo.
-
-
-
----
-
-## 18. Otras opciones.
-
-Help&gt;Markdown Quick Reference
-
-[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Cheatsheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.240247812.66492107.1614708075-36514926.1579182721)
-
-Acceso rápido desde RStudio al cheatsheet.
-&lt;img src="https://d33wubrfki0l68.cloudfront.net/46ba24a18406d82a43000fe7a11546f7f145374d/c5692/lesson-images/cheatsheets-2-path.png" height="400" /&gt;
-
-
----
-
-## 19. Compartir
-
-- Opción 1: Compartir todo.  
-Enviar documento Rmd, tal cual y la otra persona puede darle click a las partes grises en el botón verde (siempre y cuando tenga la base de datos)  
-
-- Opción 2: Compartir instrucciones.  
-Mando el documento Rmd en html y pueden copiar las instrucciones con sus propios datos.  
-
-- Opción 3:  Escribir reportes o artículos.  
-Exportar documentos sin código.  
-
--  Opción 4: &lt;br&gt;
-En el YAML agregar code_folding: hide y esconde el codigo pero te agrega un boton para ver el codigo se ser necesario.
-
----
-
-class: inverse, center, middle
-# 20. Ejercicios
-
----
-
-## 20. Ejercicios
-
-- Crear una tabla de contenido
-- Crear un archivo bib
-
----
-
-## 20. Ejercicios
-
-Crear una tabla de contenido.  
-En el YAML:  
-
-```r
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    number_sections: true
-```
-
----
-
-## 20. Ejercicios
-
-Crear un archivo bib
-- File&gt;NewFile&gt;Text File
-- Buscar en [googlescholar](https://scholar.google.com/): Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis) &lt;br&gt;
-
-```r
-@article{gorman2014ecological,
-  title={Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)},
-  author={Gorman, Kristen B and Williams, Tony D and Fraser, William R},
-  journal={PloS one},
-  volume={9},
-  number={3},
-  pages={e90081},
-  year={2014},
-  publisher={Public Library of Science}
-}
-```
-Copiar y pegar texto, guardar como Bibliografia.bib.
-
-Agrega en el YAML
-
-```r
-bibliography: Bibliografia.bib  
-```
-
-Agregar un titulo de primer nivel en el apartado final que diga 'Referencias'
-
----
-
-# 20. Ejercicios
-
-
-- Descarga Rmd que contiene ejemplos de las partes vistas durante este curso [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Rmd](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd)
-- Descarga el archivo bib [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;bib](https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib)
-- Dale knitr
-
-
-
-
-
----
-
-class: left
+class: left, inverse
 
 # Contacto
 
-Te recomiendo seguir con [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Xaringan](https://miriamlerma.netlify.app/materiales.html) para hacer presentaciones usando Rmd.
+Te recomiendo seguir con [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#52b788;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Rmd-Parte2](https://miriamlerma.netlify.app/materiales.html).
 
 Para dudas, comentarios y sugerencias:  
 - Escríbeme a miriamjlerma@gmail.com
@@ -976,7 +731,7 @@ Este material esta accesible y se encuentra en
 
 .center[
 
-&lt;h3&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#2a9d8f;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
+&lt;h3&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
 ]
 
 

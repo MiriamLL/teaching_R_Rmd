@@ -23,7 +23,7 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
 
-# Rmarkdown
+# Básicos de Rmarkdown
 
 <h2>Miriam Lerma<br>
 <br>
@@ -42,13 +42,11 @@ Abril 2021</h2>
 - Cambiar Outputs  
 - Tablas 
 - Figuras
-- Resultados en el texto
-- Ortografia
-- Citar
 
 ```{r, echo=FALSE}
 library(emo)
 library(fontawesome)
+ColorLink<-"#52b788"
 ```
 
 --
@@ -64,17 +62,17 @@ library(fontawesome)
 ## Créditos & Recursos
 
 - Material de Rmarkdown.  
-[`r fa("external-link-alt", fill = "#52b788")`RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
-[`r fa("external-link-alt", fill = "#52b788")`Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
-[`r fa("external-link-alt", fill = "#52b788")`Rmarkdown por Allison Horst](https://github.com/allisonhorst/rladies-bangalore-rmarkdown)
+[`r fa("external-link-alt", fill = ColorLink)`RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
+[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
+[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Allison Horst](https://github.com/allisonhorst/rladies-bangalore-rmarkdown)
 
 - Tutoriales en español:  
-[`r fa("external-link-alt", fill = "#52b788")`RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
 
 - Tutoriales en ingles:    
-[`r fa("external-link-alt", fill = "#52b788")`RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
-[`r fa("external-link-alt", fill = "#52b788")`RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
-[`r fa("external-link-alt", fill = "#52b788")`RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
+[`r fa("external-link-alt", fill = ColorLink)`RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
 
 - Imagen de portada
 [Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
@@ -84,8 +82,8 @@ library(fontawesome)
 
 Rmarkdown es muy conveniente porque podemos exportar lo que hicimos en Rstudio a html o documentos word.
 
-Tambien podemos crear presentaciones...
-...de hecho esta es una presentación en Rmd.
+Tambien podemos crear presentaciones... <br>
+.right[...de hecho esta es una presentación en Rmd.]
 
 --
 
@@ -96,7 +94,7 @@ Hay **muchas** maneras de trabajar en Rmd. Solo cubriré algunas.
 ## 1.1. Teoría
 
 Markdown es texto plano...  
-...algo así como lo que escriben en un block de notas.
+.right[...algo así como lo que escriben en un block de notas.]
 
 La ventaja de Rmd es que puedes incluir mucho texto e incluso se pueden escribir tesis, libros, árticulos, páginas web y presentaciones dentro de **RStudio**.
 
@@ -139,7 +137,7 @@ Pingus<-pinguinos
 nrow(Pingus) 
 ```
 
-y ver los resultados.
+.right[y ver los resultados.]
 
 ---
 
@@ -198,7 +196,7 @@ Solo que para utilizar formatos especiales como:
 - **negritas** con dos asteriscos antes y uno después.  
 - ***cursiva y negritas*** con tres asteriscos antes y uno después.   
 
-Otras opciones: [`r fa("external-link-alt", fill = "#52b788")`Texto en Rmd](https://rmarkdown.rstudio.com/lesson-8.html)
+Otras opciones: [`r fa("external-link-alt", fill = ColorLink)`Texto en Rmd](https://rmarkdown.rstudio.com/lesson-8.html)
 
 ---
 
@@ -211,7 +209,7 @@ class: inverse, center, middle
 
 Las partes grises son los chunks.  
 - Se escribe código dentro de tres tildes invertidas al inicio y al final y {r} entre corchetes.  
-- Podemos correr la linea del código usando la flechita verde `r fa("play", fill = "#52b788")`, el boton **Run** en la parte de arriba del editor de codigo o **ctrl+enter**.
+- Podemos correr la linea del código usando la flechita verde `r fa("play", fill = ColorLink)`, el boton **Run** en la parte de arriba del editor de codigo o **ctrl+enter**.
 - El resultado va a aparecer en el documento en lugar de en la consola.
 
 ```{r echo=FALSE, out.height=400}
@@ -295,7 +293,7 @@ class: inverse, center, middle
 
 1. Abrir RStudio
 2. Abrir un archivo Rmd (File>NewFile>Rmd)
-3. Darle un nombre al archivo
+3. Darle un nombre al archivo y escribir tu nombre
 4. Borrar todo menos el YAML
 5. Agregar código en un chunk
 6. Crear una gráfica en un chunk
@@ -329,7 +327,7 @@ ggplot(Pingus, aes(x=largo_pico_mm, y=alto_pico_mm))+
 ```
 
 Dale click a knit. Te va a pedir que le des un nombre y te van a aparecer muchas cosas en lo que era antes tu terminal (ahora esta en la pestaña R Markdown).
-Espera a que aparezca tu html `r fa("clock", fill = "#52b788")`
+Espera a que aparezca tu html `r fa("clock", fill = ColorLink)`
 
 ---
 
@@ -370,11 +368,11 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 En la parte de los chunks podemos agregar:
 - **echo=TRUE** para mostrar el codigo en el output.  
-- **eval=TRUE** para ejecuta el codigo, **eval==TRUE** para no ejecutar el codigo.  
+- **eval=TRUE** para ejecuta el codigo, **eval=FALSE** para no ejecutar el codigo.  
 - **warning=FALSE** para evitar que aparezcan las advertencias.  
 - **message=FALSE** para evitar que aparezcan mensajes, por ejemplo cuando cargamos librerías.  
 
-Otras opciones: [`r fa("external-link-alt", fill = "#52b788")` chunk options](https://rmarkdown.rstudio.com/lesson-3.html)
+Otras opciones: [`r fa("external-link-alt", fill = ColorLink)` chunk options](https://rmarkdown.rstudio.com/lesson-3.html)
 
 ```{r echo=FALSE, out.height=400}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/echo.jpg')
@@ -409,7 +407,7 @@ Pros y contras de usar uno o el otro.
 
 ## 8.1. Outputs  
 
-Para cambiar el output, hay que especificarlo en el YAML, o darle click a la flechita `r fa("sort-down", fill = "#52b788")` de Knit y seleccionar la opcion deseada.  
+Para cambiar el output, hay que especificarlo en el YAML, o darle click a la flechita `r fa("sort-down", fill = ColorLink)` de Knit y seleccionar la opcion deseada.  
 
 ```{r echo=FALSE, out.height=400}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Outputs.JPG')
@@ -429,6 +427,13 @@ class: inverse, center, middle
 - Crear outputs en word, pdf y html
 - Cambiar opciones en los chunks
 
+**Nota**<br>
+Puede que necesiten instalar tinytex<br>
+```{r, eval=FALSE}
+tinytex::install_tinytex()
+```
+
+- [`r fa("external-link-alt", fill = ColorLink)`Que es tiny tex?](https://yihui.org/tinytex/)
 
 ---
 
@@ -448,6 +453,8 @@ Resultados
 Aquí escribiré mis resultados  
 Discusión  
 Aquí escribiré mi discusión 
+
+**Nota** Hay que agregar un espacio entre los títulos
 
 ---
 
@@ -472,18 +479,18 @@ Agrega eval=FALSE en tu segundo chunk<br>
 
 class: center, middle, inverse
 
-# 10. Figuras y Tablas  
+# 10. Imágenes, Graficas y Tablas  
 
 ---
 
-## 10.1. Imagenes
+## 10.1. Imágenes
 
 - Para agregar imágenes desde **tu computadora** se usa signo de admiración, corchetes, y dentro la dirección de la imagen.  
 Por ejemplo:  
-![ pie de foto ] (Imagenes/Foto.jpg)
+![ pie de foto ] (Imágenes/Foto.jpg)
 
-- Desde **internet** se puede usar:  
-knitr::include_graphics('') con el enlace de la imagen entre parentesis.  
+- Desde **Internet** se puede usar:  
+knitr::include_graphics('') con el enlace de la imagen entre paréntesis.  
 Por ejemplo:<br>
 
 ```{r, eval=FALSE, out.height=200}
@@ -498,7 +505,7 @@ knitr::include_graphics('https://images.unsplash.com/photo-1523224339316-5e4ae73
 
 ---
 
-## 10.2. Figuras
+## 10.2. Graficas
 
 Si creamos un plot con ggplot en un chunk y queremos ajustar el tamaño, el tamaño se puede definir  dentro de los corchetes { } y usando: 
 - fig.height  
@@ -572,7 +579,7 @@ lm_Adelia<-lm(data=Adelia,largo_pico_mm ~ alto_pico_mm) #crea el modelo
 TablaResultados<-broom::tidy(lm_Adelia)#crea la tabla
 ```
 
-Si no recuerdan el código es de la clase de [`r fa("external-link-alt", fill = "#52b788")`modelo lineal](https://miriamll.github.io/Curso_CIAD/Clase7)  
+Si no recuerdan el código es de la clase de [`r fa("external-link-alt", fill = ColorLink)`modelo lineal](https://miriamll.github.io/Curso_CIAD/Clase7)  
 
 ---
 
@@ -592,7 +599,7 @@ class: inverse, center, middle
 
 # 11. Ejercicios
 
-- Importa una figura de Internet usando [`r fa("external-link-alt", fill = "#52b788")`Unsplash](https://unsplash.com/) o desde tu computadora
+- Importa una imagen desde Internet usando [`r fa("external-link-alt", fill = ColorLink)`Unsplash](https://unsplash.com/) o desde tu computadora
 - Crea una tabla
 - Cambia el tamaño de tu gráfico
 
@@ -626,278 +633,18 @@ ggplot(Pingus, aes(x=largo_pico_mm, y=alto_pico_mm))+
 
 ---
 
-class: center, middle, inverse
-
-# 12. Tips
-
----
-
-# 12. Editor de texto
-
-Al darle click al compás nos permite editar el texto usando botones.<br>
-Cuando le den click les va a aparecer un mensaje, pueden decirle ok. <br>
-Listo! Se puede editar similar a libre office.... y ademas te permite agregar imágenes. 
-
-```{r echo=FALSE, out.height=400}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Compas.png')
-```
-
-
----
-
-# 13. Inline code
-
-Algunos resultados de nuestro codigo se pueden incluir en el texto usando los backticks (tildes inversos) antes y despues de {r} (para este caso solo se usa **una** tilde invertida).
-
-Por ejemplo: <br>
-Podemos escribir esto en el texto.  
-```{r, eval=FALSE}
-Tenemos un total de `r nrow(Pingus)` muestras, de las cuales 
-`r nrow(Adelia)` corresponden a los pinguinos de Adelia.
-```
-
-Y nos aparece esto: <br>    
-Tenemos un total de `r nrow(Pingus)` muestras, de las cuales `r nrow(Adelia)` corresponden a los pinguinos de Adelia.
-
----
-
-# 14. Idioma
-
-Para cambiar el idioma se puede ir a:
-Tools>Project Options>Spelling>Main language **cambiar a Spanish**
-
-
-```{r, echo=FALSE, out.height=400}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Lenguage.JPG')
-```
-
----
-
-# 15. Ortografia
-
-Se puede activar corrector de ortografia usando:  
-Edit>Spellchecking>F7  
-
-Sin embargo, el corrector no es muy bueno `r emo::ji("unamused_face")`
-```{r, echo=FALSE, out.height=400}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Ortografia.JPG')
-```
-
----
-
-# 16. Bibliografia
-<h4> Como citar? </h4>
-Para citar se usa el arroba (@) y el nombre que le demos a la cita<br>
-
-<h4>  Para formatear las referencias </h4>
-Generalmente las revistas tienen un .csl (citation style language) que se puede descargar. <br>
-Y lo unico que necesitas hacer es agregar el csl a tu YAML.<br>
-Ejemplo: **csl: biomed-central.csl**<br>
-
-- [`r fa("external-link-alt", fill = "#52b788")`Leer sobre csl](https://docs.citationstyles.org/en/1.0.1/primer.html)<br>
-- [`r fa("external-link-alt", fill = "#52b788")`Descargar csl](https://github.com/citation-style-language/styles)<br>
-
----
-
-## 16.1. Bibliografia
-<h4> Para crear las referencias.</h4>
-Para agregar bibliografia tenemos que crear un archivo *.bib<br>
-Que se debe agregar al YAML. <br>
-
-Ejemplo:
-```{r, eval=FALSE}
----
-title: "EjercicioPrueba"
-author: "MiriamL"
-date: "29/3/2021"
-output: word_document
-bibliography: El_nombre_de_tu_archivo.bib
----
-```
-
----
-
-## 16.1. Bibliografia
-Para crear el archivo bib dentro de RStudio puedes ir a <br>
-
-File>NewFile>Text File  
-
-Y guardarlo como Bibliografia.bib <br>
-En el **mismo lugar** donde guardaste tu Rmd <br>
-
-La bibliografía regularmente aparece al final de tu documento <br>
-Por esto, te recomiendo agregar un titulo al final que diga: **Referencias**
-
----
-
-## 16.2. Mendeley
-
-Para obtener las referencias en formato bib.<br>
-Desde Mendeley<br>
-Click derecho>Copy as>BibTex Entry
-```{r, echo=FALSE, out.height=400}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/MendeleyBib.png')
-```
-
----
-
-## 16.3. Zotero
-
-Para obtener las referencias en formato bib.<br>
-Desde Zotero<br>
-File>Export Library<br>
-
-_Otra opción_ es cambiar Preferences>Export>Defatult>Bibtek y se puede arrastrar la bibliografia directo a tu documento bib en RStudio<br>
-
-```{r, echo=FALSE, out.height=400}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ZoteroBib.png')
-```
-
-
----
-
-## 16.4. GoogleScholar
-Desde Googlescholar<br>
-Dale click primero a las comillas y luego elige BibTeX.
-```{r, echo=FALSE, out.height=400}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/GoogleSchoolarBib.png')
-```
-
----
-
-# 17. Tablas de contenido
-
-Se escribe en el YAML:
-- **toc: true:** agrega tablas de contenidos
-- **toc_float:** true: en htmls te permite tener una tabla de contenido flotante (es decir se adapta al espacio del documento)
-- **number_sections: true:** agrega numeros a las secciones
-
-Ejemplo:
-```{r,eval=FALSE}
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    number_sections: true
-```
-
-**Importante**: tiene que ir indentado (por lo menos dos espacios vacios), y tenemos que agregar dos puntos después de html_document.<br>
-
-Ademas tenemos que tener en nuestro texto los títulos con el numeral y un espacio el numeral y el titulo.
-
-
-
----
-
-## 18. Otras opciones.
-
-Help>Markdown Quick Reference
-
-[`r fa("external-link-alt", fill = "#52b788")`Cheatsheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.240247812.66492107.1614708075-36514926.1579182721)
-
-Acceso rápido desde RStudio al cheatsheet.
-```{r echo=FALSE, out.height=400}
-knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/46ba24a18406d82a43000fe7a11546f7f145374d/c5692/lesson-images/cheatsheets-2-path.png')
-```
-
-
----
-
-## 19. Compartir
-
-- Opción 1: Compartir todo.  
-Enviar documento Rmd, tal cual y la otra persona puede darle click a las partes grises en el botón verde (siempre y cuando tenga la base de datos)  
-
-- Opción 2: Compartir instrucciones.  
-Mando el documento Rmd en html y pueden copiar las instrucciones con sus propios datos.  
-
-- Opción 3:  Escribir reportes o artículos.  
-Exportar documentos sin código.  
-
--  Opción 4: <br>
-En el YAML agregar code_folding: hide y esconde el codigo pero te agrega un boton para ver el codigo se ser necesario.
-
----
-
-class: inverse, center, middle
-# 20. Ejercicios
-
----
-
-## 20. Ejercicios
-
-- Crear una tabla de contenido
-- Crear un archivo bib
-
----
-
-## 20. Ejercicios
-
-Crear una tabla de contenido.  
-En el YAML:  
-```{r, eval=FALSE}
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    number_sections: true
-```
-
----
-
-## 20. Ejercicios
-
-Crear un archivo bib
-- File>NewFile>Text File
-- Buscar en [googlescholar](https://scholar.google.com/): Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis) <br>
-```{r, eval=FALSE}
-@article{gorman2014ecological,
-  title={Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)},
-  author={Gorman, Kristen B and Williams, Tony D and Fraser, William R},
-  journal={PloS one},
-  volume={9},
-  number={3},
-  pages={e90081},
-  year={2014},
-  publisher={Public Library of Science}
-}
-```
-Copiar y pegar texto, guardar como Bibliografia.bib.
-
-Agrega en el YAML
-```{r,eval=FALSE}
-bibliography: Bibliografia.bib  
-```
-
-Agregar un titulo de primer nivel en el apartado final que diga 'Referencias'
-
----
-
-# 20. Ejercicios
-
-
-- Descarga Rmd que contiene ejemplos de las partes vistas durante este curso [`r fa("external-link-alt", fill = "#52b788")`Rmd](https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd)
-- Descarga el archivo bib [`r fa("external-link-alt", fill = "#52b788")`bib](https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib)
-- Dale knitr
-
-
-
-
-
----
-
-class: left
+class: left, inverse
 
 # Contacto
 
-Te recomiendo seguir con [`r fa("external-link-alt", fill = "#52b788")`Xaringan](https://miriamlerma.netlify.app/materiales.html) para hacer presentaciones usando Rmd.
+Te recomiendo seguir con [`r fa("external-link-alt", fill = ColorLink)`Rmd-Parte2](https://miriamlerma.netlify.app/materiales.html).
 
 Para dudas, comentarios y sugerencias:  
 - Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible y se encuentra en 
-- mi [`r fa("external-link-alt", fill = "#52b788")`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = "#52b788")`página](https://miriamlerma.netlify.app/materiales.html)
+- mi [`r fa("external-link-alt", fill = ColorLink)`github](https://github.com/MiriamLL/Curso_CIAD/)
+- mi [`r fa("external-link-alt", fill = ColorLink)`página](https://miriamlerma.netlify.app/materiales.html)
 
 <br>
 <br>
@@ -907,7 +654,7 @@ Este material esta accesible y se encuentra en
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-<h3>`r fa("home", fill = "#2a9d8f")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
 ]
 
 

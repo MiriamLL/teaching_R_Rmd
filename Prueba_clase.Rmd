@@ -1,0 +1,54 @@
+---
+title: "Analizar datos de autos"
+author: "Miriam Lerma Lizarraga"
+date: "2021-04-08"
+output: html_document
+---
+
+# Introducción
+Aquí escribiré mi introducción
+```{r,fig.width=1,fig.height=1}
+knitr::include_graphics('https://images.unsplash.com/photo-1516771317026-14d76f5396e5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80')
+```
+
+# Métodos
+Aquí escribiré mis métodos
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(datos)
+Autos<-mtautos
+TablaAutos<-Autos %>% 
+  group_by(cambios) %>% 
+  drop_na(peso)%>% 
+  summarise(mean = mean(peso), n = n())
+```
+
+```{r}
+knitr::kable(TablaAutos)
+```
+
+## Análisis preliminares
+Aquí escribiré mis análisis
+
+# Resultados
+Aquí escribiré mis resultados
+
+# Discusión
+Aquí escribiré mi discusión
+
+
+
+Voy a ***cargar*** *datos* de **autos**
+
+```{r, echo=FALSE, message=FALSE}
+library(datos)
+Autos<-mtautos 
+nrow(Autos) #numero de observaciones
+```
+
+Para el gráfico:
+```{r, eval=TRUE, fig.width=1,fig.height=1}
+library(ggplot2)
+ggplot(Autos, aes(x=velocidad, y=caballos))+
+  geom_point()
+```
