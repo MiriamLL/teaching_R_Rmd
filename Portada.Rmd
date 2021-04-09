@@ -1,0 +1,50 @@
+---
+title: "Xaringan"
+author: "Miriam Lerma"
+date: "Abril 2021"
+output:
+  xaringan::moon_reader:
+    css: Mi_Xaringan.css
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+```{r metathis, include = FALSE}
+#Con esta libreria puedo poner informacion que saldra en el titulo, en los buscadores y demas, como de titulo y fechas. Asi como elegir la imagen que saldra de inicio.
+
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "MiriamLL/Curso_CIAD") %>%
+  meta_social(
+    title = "Xaringan",
+    description = paste0(
+      "Introduccion a Rmd",
+      "Curso de R"),
+    url = "https://github.com/MiriamLL/Curso_CIAD/blob/main/Clase11.html",
+    image_alt = paste0(
+      "Introduccion a R y RStudio",
+      "Curso de R"),
+    og_type = "website",
+    og_author = "Miriam Lerma",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@MiriamLL",
+    twitter_site = "@MiriamLL")
+```
+
+```{r include = FALSE}
+#Paquetes
+library(xaringanExtra)
+```
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1549490316-686f9b5d359f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80)
+background-size: cover
+
+
+<h1> Xaringan </h1>
+
+<h2>Miriam Lerma<br>
+<br>
+Abril 2021</h2>
