@@ -31,8 +31,8 @@ Clase 7: Que es Rmd.
 Presentacion: https://miriamll.github.io/Curso_CIAD/Rmd-Parte1 
 
 Clase 8: Escribir en Rmd.  
-Presentacion: https://miriamll.github.io/Curso_CIAD/Rmd-Parte1 
-Decargar ejemplo: https://github.com/MiriamLL/Curso_CIAD/blob/main/PruebaRmd.Rmd  
+Presentacion: https://miriamll.github.io/Curso_CIAD/Rmd-Parte1  
+Descargar ejemplo: https://github.com/MiriamLL/Curso_CIAD/blob/main/PinguinosRmd.Rmd  
 Descargar bib: https://github.com/MiriamLL/Curso_CIAD/blob/main/Bibliografia.bib  
 
 Clase 9: Presentaciones (usando xaringan).  
