@@ -721,7 +721,7 @@ Siguiente clase:
 - Exportar dataframes (write_csv)  
 
 .right[
-### Contacto
+#### Contacto
 Para dudas, comentarios y sugerencias: <br>
 Escríbeme a miriamjlerma@gmail.com
 

@@ -744,7 +744,7 @@ Igual que los argumentos para importar tus datos (read_csv), cada uno tiene su c
 
 class: inverse
 
-# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')
+# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
 1- Define una carpeta.  
 ```{r, message=FALSE}
@@ -781,25 +781,24 @@ class: inverse
 Esta clase:  
 - Funciones de filter, mutate, summarise, unique, drop_na.  
 - Unir data frames.  
-- Renombrar columnas.  
 - Exportar data frames.  
 
 Siguiente clase:  
 - Trabajar por proyectos  
 
 .right[
-### Contacto
+#### Contacto
 Para dudas, comentarios y sugerencias: <br>
 Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible <br> y se encuentra en 
- mi [`r fa("external-link-alt", fill = "#219ebc")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#219ebc")`página](https://miriamlerma.netlify.app/materiales.html)
+ mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
 ]
 <h1>
 .right[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = '#219ebc')`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = '#f2cc8f')`](https://miriamlerma.netlify.app/materiales.html)
 ]</h1>

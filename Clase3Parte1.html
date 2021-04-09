@@ -470,14 +470,14 @@ head(Pingus)
 
 ```
 ## # A tibble: 6 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
-## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
-## 4 Adelia  Torg~          NA           NA               NA              NA &lt;NA&gt; 
-## 5 Adelia  Torg~          36.7         19.3            193            3450 hemb~
-## 6 Adelia  Torg~          39.3         20.6            190            3650 macho
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torge~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torge~          40.3         18              195            3250 hemb~
+## 4 Adelia  Torge~          NA           NA               NA              NA &lt;NA&gt; 
+## 5 Adelia  Torge~          36.7         19.3            193            3450 hemb~
+## 6 Adelia  Torge~          39.3         20.6            190            3650 macho
 ## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
@@ -488,14 +488,14 @@ tail(Pingus)
 
 ```
 ## # A tibble: 6 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Barbijo Dream          45.7         17              195            3650 hemb~
-## 2 Barbijo Dream          55.8         19.8            207            4000 macho
-## 3 Barbijo Dream          43.5         18.1            202            3400 hemb~
-## 4 Barbijo Dream          49.6         18.2            193            3775 macho
-## 5 Barbijo Dream          50.8         19              210            4100 macho
-## 6 Barbijo Dream          50.2         18.7            198            3775 hemb~
+##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo  
+##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt; 
+## 1 Barbijo Dream          45.7         17              195            3650 hembra
+## 2 Barbijo Dream          55.8         19.8            207            4000 macho 
+## 3 Barbijo Dream          43.5         18.1            202            3400 hembra
+## 4 Barbijo Dream          49.6         18.2            193            3775 macho 
+## 5 Barbijo Dream          50.8         19              210            4100 macho 
+## 6 Barbijo Dream          50.2         18.7            198            3775 hembra
 ## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
@@ -511,9 +511,9 @@ Las filas se pone entre corchetes en la **primera** posición.
 
 ```
 ## # A tibble: 1 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750 macho
 ## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
@@ -526,11 +526,11 @@ El signo de **:** es como decir "de aquí hasta acá".
 
 ```
 ## # A tibble: 3 x 8
-##   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
-##   &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
-## 1 Adelia  Torg~          39.1         18.7            181            3750 macho
-## 2 Adelia  Torg~          39.5         17.4            186            3800 hemb~
-## 3 Adelia  Torg~          40.3         18              195            3250 hemb~
+##   especie isla   largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+##   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;        &lt;dbl&gt;          &lt;int&gt;           &lt;int&gt; &lt;fct&gt;
+## 1 Adelia  Torge~          39.1         18.7            181            3750 macho
+## 2 Adelia  Torge~          39.5         17.4            186            3800 hemb~
+## 3 Adelia  Torge~          40.3         18              195            3250 hemb~
 ## # ... with 1 more variable: anio &lt;int&gt;
 ```
 
@@ -640,7 +640,7 @@ MiMejorAcomodo&lt;-c('Miriam','Mujer')
 ```
 
 Es importante que cuando recolecten datos por primera vez piensen en como van a estructurarlos.  
-Si no el proceso de ordenarlos puede ser tardado 🕚.
+Si no el proceso de ordenarlos puede ser tardado 🕥.
 
 ---
 
@@ -653,6 +653,14 @@ Hay muchas maneras de hacer las mismas operaciones. Hoy usaremos el paquete **ti
 
 ```r
 library(tidyverse)
+```
+
+```
+## Warning: package 'tibble' was built under R version 4.0.4
+```
+
+```
+## Warning: package 'dplyr' was built under R version 4.0.4
 ```
 
 &lt;h1&gt;&lt;h1&gt;
@@ -972,7 +980,7 @@ Siguiente clase:
 - Exportar dataframes (write_csv)  
 
 .right[
-### Contacto
+#### Contacto
 Para dudas, comentarios y sugerencias: &lt;br&gt;
 Escríbeme a miriamjlerma@gmail.com
 
