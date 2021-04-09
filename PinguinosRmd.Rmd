@@ -1,0 +1,79 @@
+---
+title: "Pingüinos de Adelia"
+author: "Miriam Lerma"
+date: "29/3/2021"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_float: true
+    number_sections: true
+bibliography: Bibliografia.bib  
+---
+
+# Introducción  
+Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no sabemos si están perdiendo peso conforme se calienta el océano y se reduce la disponibilidad de alimento para ésta especie. <br>
+Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la longitud de aleta.  
+
+- El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para predecir el peso de los pingüinos. <br>
+
+# Métodos  
+Se usaron datos de pingüinos de Adelia (*Pygoscelis adeliae*) para explorar la relación entre peso y largo de la aleta obtenidos de un estudio con pinguinos en la Antarctica [@gorman2014ecological].  
+La limpieza de los datos se hizo usando funciones de tidyverse @tidyverse_2019  
+```{r,message=FALSE, warning=FALSE}
+#Asi cargo mis datos de pinguinos
+#remotes::install_github("cienciadedatos/datos")
+library(datos)
+Pingus<-pinguinos
+library(tidyverse)
+Adelia<-Pingus%>%
+  filter(especie=='Adelia')%>%
+  drop_na() 
+```
+
+Se colectaron un total de `r nrow(Adelia)` muestras correspondientes a pingüinos de Adelia.
+
+Se creo un modelo linear para ver la relacion entre el peso y el largo de la aleta.
+```{r, message=FALSE}
+lm_Adelia<-lm(data=Adelia,masa_corporal_g ~ largo_aleta_mm) #crea el modelo
+TablaResultados<-broom::tidy(lm_Adelia)#crea la tabla
+```
+
+
+# Resultados  
+El rango de peso de los pingüinos de Adelia es entre `r min(Adelia$masa_corporal_g, na.rm=TRUE)` y `r max(Adelia$masa_corporal_g,na.rm=TRUE)` gramos. El rango de la longitud de aleta de los pingüinos de Adelia es entre `r min(Adelia$largo_aleta_mm, na.rm=TRUE)` y `r max(Adelia$largo_aleta_mm,na.rm=TRUE)` gramos.
+
+Encontramos una relación positiva entre la masa corporal y el largo de la aleta en los pingüinos de Adelia (Tabla 2, Fig. 2).
+
+```{r, message=FALSE, warning=FALSE}
+library(kableExtra)
+kbl(TablaResultados, 
+    booktabs = T, caption = "Tabla 2. Resultado del modelo de regresion") %>% #Titulo
+    kable_styling(latex_options = c("striped", "hold_position"),
+                full_width = F)
+```
+
+
+**Fig 2**. Masa corporal y largo de aleta en pingüinos de Adelia. 
+```{r, message=FALSE, warning=FALSE, fig.height=3, fig.width=3}
+ggplot(Adelia, aes(x=masa_corporal_g, y=largo_aleta_mm))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  theme_classic()
+```
+
+```{r, echo=FALSE, include=FALSE}
+#Prueba 
+Largo<-200
+Masa<-(TablaResultados[1,2])+(TablaResultados[2,2]*Largo)
+Masa
+```
+
+# Discusión  
+Se puede predecir el peso de los pingüinos de Adelia al medirles la aleta usando la formula (Masa corporal = `r TablaResultados[2,2]` x Largo de aleta `r TablaResultados[1,2]`). 
+
+# Conclusión
+Las camaras pueden ser utiles para evaluar cambios en el peso de los pingüinos de Adelia.
+
+# Referencias
+

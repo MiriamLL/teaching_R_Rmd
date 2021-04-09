@@ -16,7 +16,7 @@ Se usaron datos de pinguinos de Adelia (*Pygoscelis adeliae*) para explorar la r
 
 # Métodos  
 La limpieza de los datos se hizo usando funciones de tidyverse @tidyverse_2019  
-```{r,message=FALSE}
+```{r,message=FALSE, warning=FALSE}
 #Asi cargo mis datos de pinguinos
 #remotes::install_github("cienciadedatos/datos")
 library(datos)
@@ -39,20 +39,7 @@ TablaResultados<-broom::tidy(lm_Adelia)#crea la tabla
 # Resultados  
 El rango de peso de los pingunos de Adelia es entre `r min(Adelia$masa_corporal_g, na.rm=TRUE)` y `r max(Adelia$masa_corporal_g,na.rm=TRUE)` gramos (Tabla 1).
 
-```{r}
-#Primero hay que crear la tabla
-TablaPinguinos<-Adelia %>% 
-  drop_na(masa_corporal_g)%>% 
-  summarise(promedio_pesos = mean(masa_corporal_g), 
-            promedio_aletas=mean(largo_aleta_mm),
-            n = n())
-```
-
-```{r}
-knitr::kable(TablaPinguinos, caption = "Tabla 1. Masa corporal (g) de pinguinos de Adelia")
-```
-
-Hay una relacion entre la masa corporal y el largo de la aleta en los Pinguinos de Adelia (Masa corporal = `r TablaResultados[2,2]` x Largo de aleta `r TablaResultados[1,2]`,Tabla 2, Fig. 2).
+Encontramos una relacion entre la masa corporal y el largo de la aleta en los Pinguinos de Adelia (Tabla 2, Fig. 2).
 
 ```{r, message=FALSE, warning=FALSE}
 library(kableExtra)
@@ -64,7 +51,7 @@ kbl(TablaResultados,
 
 
 **Fig 2**. Masa corporal y largo de aleta en Pinguinos de Adelia. 
-```{r, message=FALSE, warning=FALSE, fig.height=5, fig.width=5}
+```{r, message=FALSE, warning=FALSE, fig.height=3, fig.width=3}
 ggplot(Adelia, aes(x=masa_corporal_g, y=largo_aleta_mm))+
   geom_point()+
   geom_smooth(method="lm")+
@@ -80,8 +67,7 @@ Masa
 ```
 
 # Discusión  
-Se puede predecir el peso de los pinguinos al medirles la aleta.
-
+Se puede predecir el peso de los pinguinos al medirles la aleta usando la formula (Masa corporal = `r TablaResultados[2,2]` x Largo de aleta `r TablaResultados[1,2]`).
 
 # Referencias
 

@@ -466,7 +466,7 @@ Pingus<-datos::pinguinos
 ## 2.1. Tablas
 
 Para crear una la tabla con los pesos de pinguinos de Adelia por sexo
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 Peso_sexo_Adelia<-Pingus%>%
   filter(especie=='Adelia')%>%
@@ -621,12 +621,6 @@ Peso_sexo_Adelia %>%
   head()%>%
   knitr::kable(format = "html")
 ```
-
-**Nota** puedes agregar echo=FALSE en el chunk para que no muestre el código
-Si quieres que los contenidos aparezcan lado a lado 
-1. Pon el codigo para la tabla dentro de . pull - left  entre los corchetes 
-2. Pon el codigo de la figura dentro de .pull - right entre los corchetes 
-
 
 ---
 
