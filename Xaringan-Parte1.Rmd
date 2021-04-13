@@ -4,7 +4,7 @@ author: "Miriam Lerma"
 date: "Abril 2021"
 output:
   xaringan::moon_reader:
-    css: Mi_Xaringan.css
+    css: Rmd-themer-darker.css
     seal: false
     nature:
       highlightStyle: github
@@ -36,18 +36,19 @@ meta() %>%
 ```{r include = FALSE}
 #Paquetes
 library(xaringanExtra)
+library(kableExtra)
+options(knitr.table.format = "latex")
 ```
 
 class: title-slide, center, middle
-background-image: url(https://images.unsplash.com/photo-1615096962549-f35ac603bf31?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
+background-image: url(https://images.unsplash.com/photo-1484291470158-b8f8d608850d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
 background-size: cover
 
-# Presentaciones en R <br> usando Xaringan
+# `r text_spec("Presentaciones en R usando Xaringan", background = "#1d3557", color = "white", bold = T)`
 
-<h3>Miriam Lerma</h3>
+<h2>`r text_spec("Miriam Lerma", background = "#264653", color = "white", bold = T)`</h2>
 
-<h4>Abril 2021</h4>
-
+<h3>`r text_spec("Abril 2021", background = "#0A121F", color = "white", bold = T)`</h3>
 
 
 ---
@@ -62,11 +63,15 @@ class: inverse
 ```{r, echo=FALSE}
 library(emo)
 library(fontawesome)
-ColorEnlace<-'#2a9d8f'
-ColorEnlaceInverso<-"#9DFBF4"
+ColorEnlace<-'#4cc9f0'
+ColorEnlaceInverso<-"#74c69d"
 
 #CincoColores InverseFondo#020A0C, InverseText #D9D3D3, InverseLink #0FA5A6
 xaringanExtra::use_clipboard()
+```
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
 ```
 
 --
@@ -100,7 +105,7 @@ class: inverse
 
 - El paquete [datos](https://cienciadedatos.github.io/datos/) por [Riva Quiroga](https://twitter.com/rivaquiroga)
 
-- Portada por [sotti](https://unsplash.com/@sotti)
+- Portada de [unsplash](https://unsplash.com/)
 
 ---
 
@@ -379,31 +384,38 @@ Con html se puede ajustar el **porcentaje**
 
 ---
 
-class: inverse
+class: center, middle, inverse
 
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+
+---
+
+## 1.9. Ejercicios
+
 - Instalar y cargar el paquete Xaringan
 - Cambiar el YAML
-- Crea una diapositiva con tu nombre, y titulo de tu proyecto
+- Cambia tu nombre, y titulo de tu proyecto
 - Colocar texto en la dispositiva
 - Poner fondo a la diapositiva
 - Darle knit
 
----
-
-# 1.10. Ejercicios
-
+.panelset[
+.panel[.panel-name[Instalar]
 Instalar paquete
 ```{r, eval=FALSE}
 devtools::install_github("yihui/xaringan")
 ```
+]
 
+.panel[.panel-name[YAML]
 Cambiar el YAML
 ```{r, eval=FALSE}
 output:
   xaringan::moon_reader
 ```
+]
 
+.panel[.panel-name[Nombre]
 Crea una diapositiva con tu nombre y titulo de tu proyecto.
 ```{r, eval=FALSE}
 ---  
@@ -411,28 +423,28 @@ title: "Pingüinos de Adelia"
 author: "Miriam Lerma"
 date: "Abril 2021"
 ```
+]
 
----
+.panel[.panel-name[Texto]
+Agregar texto 
+```{r, eval=FALSE}
+# ¿Son los machos más pesados que las hembras en pingüinos de Adelia?
+```
+]
 
-# 1.10. Ejercicios
-
+.panel[.panel-name[Fondo]
 Poner imagen de fondo a las diapositiva<br>
 [`r fa("external-link-alt", fill = ColorEnlace)` Unsplash](unsplash.com)<br>
 [`r fa("external-link-alt", fill = ColorEnlace)` Imagen pingüino de Adelia](https://images.unsplash.com/flagged/photo-1569491256135-fc0dc118333c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1248&q=80)
+
 ```{r, eval=FALSE}
 ---
 class: title-slide, center, middle
 background-image: url(Elige una imagen)
 background-size: cover
 ```
-
-Agregar texto 
-```{r, eval=FALSE}
-# ¿Son los machos más pesados que las hembras en pingüinos de Adelia?
-```
-
-Darle knit
-
+]
+]
 
 ---
 
@@ -589,23 +601,28 @@ Pingus %>%
 
 ---
 
-class: inverse
+class: center, middle, inverse
 
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
-Agregar una tabla <br>
-Crear una figura
 
 ---
 
-## 2.3. Ejercicios
+## 2.3 Ejercicios 
 
+- Agregar una tabla <br>
+- Crear una figura
+
+.panelset[
+.panel[.panel-name[Cargar datos]
 No te olvides de cargar primero las librerias
 ```{r, eval=FALSE}
 library(tidyverse)
 library(datos)
 Pingus<-datos::pinguinos
 ```
+]
 
+.panel[.panel-name[Crear tabla]
 Para crear una tabla
 ```{r, eval=FALSE}
 Peso_sexo_Adelia<-Pingus%>%
@@ -614,20 +631,19 @@ Peso_sexo_Adelia<-Pingus%>%
   summarise(peso=mean(masa_corporal_g))%>%
   drop_na()
 ```
+]
 
+.panel[.panel-name[Agregar tabla]
 Agregar tabla
 ```{r, eval=FALSE}
 Peso_sexo_Adelia %>% 
   head()%>%
   knitr::kable(format = "html")
 ```
+]
 
----
-
-## 2.3. Ejercicios
-
-Realizar una figura con estos datos y agregala en las dispositivas.
-
+.panel[.panel-name[Figura]
+Realizar una figura con estos datos y agregala en las dispositivas.  
 Ejemplo de figura
 ```{r, eval=FALSE}
 Pingus%>%
@@ -636,7 +652,9 @@ Pingus%>%
   geom_boxplot(aes(fill = sexo))+
   theme_classic()
 ```
+]
 
+.panel[.panel-name[Notas]
 **Nota** 
 - Puedes agregar echo=FALSE en el chunk para que no muestre el código
 - Puedes agregar warning=FALSE en el chunk para que no muestre los warnings
@@ -644,7 +662,9 @@ Pingus%>%
 
 Si quieres que los contenidos aparezcan lado a lado 
 1. Pon el codigo para la tabla dentro de . pull - left  entre los corchetes 
-2. Pon el codigo de la figura dentro de .pull - right entre los corchetes 
+2. Pon el codigo de la figura dentro de .pull - right entre los corchetes
+]
+]
 
 ---
 
@@ -701,7 +721,7 @@ output:
 ## 3.4. Iconos
 
 Hay varios paquetes para agregar iconos
-```{r}
+```{r, eval=FALSE}
 library(fontawesome) 
 library(emo)
 ```
@@ -871,18 +891,27 @@ Ejemplo: @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;3
 
 ---
 
-class: inverse
+class: center, middle, inverse
 
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
-- Cambiar estilo de nuestra dispositiva
 
 ---
 
 ## 4.5. Ejercicios
 
-Ejemplo 
+- Cambiar estilo de nuestra dispositiva
+
+.panelset[
+.panel[.panel-name[Cargar]
+Cargar paquete
 ```{r, eval=FALSE}
 library(xaringanthemer)
+```
+]
+
+.panel[.panel-name[Colores-Letras]
+Ejemplo 
+```{r, eval=FALSE}
 style_mono_accent(
   base_color = "#1c5253",
   header_font_google = google_font("Josefin Sans"),
@@ -890,16 +919,67 @@ style_mono_accent(
   code_font_google   = google_font("Fira Mono")
 )
 ```
+- [`r fa("external-link-alt", fill = ColorEnlace)` Coolors](https://coolors.co/contrast-checker)
+- [`r fa("external-link-alt", fill = ColorEnlace)` Google Fonts](https://fonts.google.com/)
+]
 
-- [`r fa("external-link-alt", fill = ColorEnlace)`Coolors](https://coolors.co/contrast-checker)
-
+.panel[.panel-name[YAML]
 Cambiar YAML
 ```{r, eval=FALSE}
 output:
   xaringan::moon_reader:
     css: Xaringan-themer.css
 ```
+]
+]
 
+---
+
+# 5. Compartir
+
+- Crear **repositorio** en github
+- **Cargar** archivos (Rmd, html y css)
+- **Publicar** pagina github
+- Ver presentación en línea usando **enlace**
+
+.panelset[
+.panel[.panel-name[Repositorio]
+Crear un nuevo repositorio
+
+```{r, echo=FALSE, out.height=200, fig.align='center'}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github3.png')
+```
+]
+
+.panel[.panel-name[Cargar]
+Se pueden subir materiales de manera manual usando **uploading an existing file**
+
+```{r, echo=FALSE, out.height=100, fig.align='center'}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github6.png')
+```
+]
+
+.panel[.panel-name[Publicar]
+Ir a settings e ir a la pestaña pages.
+```{r, echo=FALSE, out.height=300, fig.align='center'}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github8.png')
+```
+]
+
+.panel[.panel-name[Enlace]
+Para ver su presentacion les aparecera   
+**Your site is ready to be published at ...**
+```{r, eval=FALSE}
+https://TUNOMBRE.github.io/TUREPOSITORIO/
+```
+
+Error 404?
+Debes agregar al final el nombre del html de tu presentacion
+```{r, eval=FALSE}
+https://TUNOMBRE.github.io/TUREPOSITORIO/TUPRESENTACION
+```
+]
+]
 
 
 ---
@@ -912,7 +992,7 @@ Esta clase:
 - Que es Xaringan   
 - Como funciona  
 - Que es XaringanThemer
-- Como funciona  
+- Compartir nuestra presentacion  
 
 .right[
 ### Contacto
