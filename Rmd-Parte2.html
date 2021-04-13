@@ -45,9 +45,9 @@ Abril 2021&lt;/h2&gt;
 
 ## Ustedes
 
-- Conocimientos básicos de R
-- Quieren compartir sus avances con otros
-- Quieren tener un buen seguimiento de lo que hicieron y poder re-hacer sus análisis con otros datos en el futuro  
+- Conocimientos básicos de Rmd
+- Quieren escribir su tesis o articulos en Rmd
+- Quieren incluir datos y analisis en sus publicaciones en formato Rmd
 
 ---
 
@@ -95,7 +95,8 @@ Se pueden crear contenidos accesibles a cualquiera con computadora o con interne
 
 # 1.2. Editor de texto
 
-No tienen que extrañar su editor de texto...
+La clase pasada vimos como escribir y editar texto en [Rmd](https://miriamll.github.io/Curso_CIAD/Rmd-Parte1)&lt;br&gt;
+Pero no tienen que extrañar su editor de texto...
 
 Al darle click al compás nos permite editar el texto usando botones.&lt;br&gt;
 Cuando le den click les va a aparecer un mensaje, pueden decirle ok. &lt;br&gt;
@@ -130,7 +131,7 @@ Adelia&lt;-Pingus%&gt;%filter(especie=='Adelia')
 
 # 1.3. Inline code
 
-Algunos resultados de nuestro codigo se pueden incluir en el texto usando los backticks (tildes inversos) antes y despues de {r} (para este caso solo se usa **una** tilde invertida).&lt;br&gt;
+Algunos resultados de nuestro código se puede incluir en el texto usando los backticks (tildes inversos) antes y después de {r} (para este caso solo se usa **una** tilde invertida).&lt;br&gt;
 
 Por ejemplo: &lt;br&gt;
 
@@ -172,7 +173,7 @@ Para citar se usa el arroba (@) y el nombre que le demos a la cita&lt;br&gt;
 
 &lt;h4&gt;  Para formatear las referencias &lt;/h4&gt;
 Generalmente las revistas tienen un .csl (citation style language) que se puede descargar. &lt;br&gt;
-Y lo unico que necesitas hacer es agregar el csl a tu YAML.&lt;br&gt;
+Lo único que necesitas hacer es agregar el csl a tu YAML.&lt;br&gt;
 Ejemplo: **csl: biomed-central.csl**&lt;br&gt;
 
 - [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e76f51;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Leer sobre csl](https://docs.citationstyles.org/en/1.0.1/primer.html)&lt;br&gt;
@@ -388,24 +389,24 @@ $E = mc^{2}$
 ```
 
 - Los sobreindice se escriben con el texto entre (virgulilla)  
-CO~2~ 
+`\(CO~2~\)`
 
 ```r
-CO~2~
+$CO~2~$
 ```
  
 - Los superindices se escriben con ^ (acento circunflejo)  
- R^2^
- 
+`\(R^{2}\)` 
+
 
 ```r
-R^2^
+$R^{2}$ 
 ```
 
 
 ---
 
-## 3.5. Otras opciones.
+## 3.5. Otras opciones
 
 Help&gt;Markdown Quick Reference
 
@@ -413,22 +414,6 @@ Help&gt;Markdown Quick Reference
 
 Acceso rápido desde RStudio al cheatsheet.
 &lt;img src="https://d33wubrfki0l68.cloudfront.net/46ba24a18406d82a43000fe7a11546f7f145374d/c5692/lesson-images/cheatsheets-2-path.png" height="400" /&gt;
-
----
-
-## 3.6. Compartir
-
-- Opción 1: Compartir todo.  
-Enviar documento Rmd, tal cual y la otra persona puede darle click a las partes grises en el botón verde (siempre y cuando tenga la base de datos)
-
-- Opción 2: Compartir instrucciones.  
-Mando el documento Rmd en html y pueden copiar las instrucciones con sus propios datos.  
-
-- Opción 3:  Escribir reportes o artículos.  
-Exportar documentos sin código.  
-
--  Opción 4: &lt;br&gt;
-En el YAML agregar code_folding: hide y esconde el codigo pero te agrega un boton para ver el codigo se ser necesario.
 
 ---
 
@@ -487,20 +472,23 @@ code_folding: hide
 
 class: center, middle, inverse
 
-# 5. Templates
+# 5. Plantillas
 
 ---
 
 ## 5.1. Paquete rticles
 
-Para instalar rticles hay dos opciones
+Exiten varios paquetes con plantillas.
+
+Uno de ellos es **rticles**.  
+Para instalar el paquete rticles hay dos opciones
 
 ```r
 install.packages("rticles")
 remotes::install_github("rstudio/rticles")
 ```
 
-Aqui la pagina para ver todas las opciones [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e76f51;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Click aqui](https://github.com/rstudio/rticles)
+Aqui la pagina para ver plantillas de varias revistas [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e76f51;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Click aqui](https://github.com/rstudio/rticles)
 
 ---
 
@@ -518,6 +506,8 @@ File&gt;NewFile&gt;RMarkdown &lt;br&gt;
 
 ## 5.3. Paquete Papaja
 
+El paquete papaja tambien tiene plantillas para escribir articulos.
+
 Para instalar
 
 ```r
@@ -527,6 +517,7 @@ devtools::install_github("crsh/papaja")
 Para usar &lt;br&gt;
 &lt;img src="https://raw.githubusercontent.com/crsh/papaja/master/inst/images/template_selection.png" height="400" /&gt;
 
+
 ---
 
 class: inverse, center, middle
@@ -534,13 +525,260 @@ class: inverse, center, middle
 
 ---
 
-## 5.1. Ejercicios
-- Abrir los diferentes templates
+## 6.1. Ejercicios
+- Abrir los diferentes plantillas
 - Explorar opciones para escribir artículos
 
-Ejercicio en grupo
-- Escribir un artículo sobre pingüinos de Papúa
-- Ejemplo con pingüinos de Adelia [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e76f51;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;Descargar](https://github.com/MiriamLL/Curso_CIAD/blob/main/PinguinosRmd.html)
+---
+
+class: inverse, center, middle
+# 7. Compartir
+
+---
+
+# 7. Compartir
+
+- Opción 1: Compartir todo.  
+Enviar documento Rmd, tal cual y la otra persona puede darle click a las partes grises en el botón verde (siempre y cuando tenga la base de datos)
+
+- Opción 2: Compartir instrucciones.  
+Mando el documento Rmd en html y pueden copiar las instrucciones con sus propios datos.  
+
+- Opción 3:  Escribir reportes o artículos.  
+Exportar documentos sin código.  
+
+-  Opción 4: &lt;br&gt;
+En el YAML agregar code_folding: hide y esconde el codigo pero te agrega un boton para ver el codigo se ser necesario. 
+
+---
+
+class: inverse, center, middle
+
+# 8. Ejercicios
+
+---
+
+## 8.1. Ejercicios
+- Escribir pasos tipo bitácora de análisis de pingüinos. 
+- Compartir el documento en formato html.
+- Escribir articulo sobre pingüinos de Adelia.
+
+En equipo o individual.
+- Escribir articulo sobre pingüinos de Papúa.
+
+---
+
+## 8.2. Compartir todo 
+
+Instrucciones a incluir en el Rmd:
+- Como cargar datos de pinguinos y filtrar con solo datos de Adelia
+- Como crear un modelo lineal con masa corporal y longitud de la aleta
+- Agregar tabla con resultados del modelo
+- Agregar gráfica de masa corporal por longitud de la aleta
+
+---
+
+## 8.3. Compartir html
+
+Instrucciones:
+- Enviar el documento en html y que otra persona/equipo replique sus analisis.
+Subir su html al drive.
+
+---
+
+## 8.4. Escribir articulo
+Escribir articulo y exportar documento sin código.
+
+Instrucciones:
+- Agregar introducción, métodos, resultados, discusión y referencias.
+
+Ejemplo:
+
+```r
+Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no sabemos si están perdiendo peso conforme se calienta el océano y se reduce la disponibilidad de alimento para ésta especie. &lt;br&gt;
+Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la forma del pinguino pero necesitamos corregir las medidas por la longitud de aleta  
+- El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. &lt;br&gt;
+```
+
+---
+
+## 8.5. Code folding
+- Usar el documento anterior y en el YAML agregar code_folding: hide
+
+---
+
+class: inverse, center, middle
+
+# 9. GitHub &amp; Zenodo
+
+---
+
+## 9.1. Git &amp; GitHub
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/200px-Git-logo.svg.png" height="50" style="display: block; margin: auto;" /&gt;
+
+[Git](https://git-scm.com/): es un software de **control de versiones**. El proposito es registrar cambios en los archivos y tambien permite que varias personas trabajen sobre un archivo compartido.
+
+--- 
+
+&lt;img src="https://avatars.githubusercontent.com/u/583231?v=4" height="80" style="display: block; margin: auto;" /&gt;
+
+[Github](https://github.com/): es una plataforma para alojar proyectos utilizando el sistema de control de versiones. &lt;br&gt;
+
+--- 
+
+**Nota** En 2018 Microsoft compro la plataforma github, por lo que muchas personas dejaron de utilizarla.
+Hay muchas otras opciones como gitlab para alojar repositorios.&lt;br&gt;
+Por ejemplo: [gitlab](https://about.gitlab.com/)
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/245px-GitLab_Logo.svg.png" height="80" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 9.2. Registrarse
+
+Para usar github hay que ingresar a la pagina [Github](https://github.com/) &lt;br&gt;
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github1.png" height="400" /&gt;
+
+---
+
+## 9.3. Usuario
+
+Github es gratis, pero para usar github hay que registrarse &lt;br&gt;
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github2.png" height="300" style="display: block; margin: auto;" /&gt;
+
+**Recomendaciones**
+- Usa tu nombre de las publicaciones, sera más fácil que las personas encuentren o confíen en tu repositorio.
+- Elije un nombre con el que te sientas cómodo de trabajar en el futuro
+- Nombres cortos son mejores que nombres largos
+- Se recomienda que utilices todas las letras en minúsculas y para separar usa _ o -
+[Más recomendaciones](https://happygitwithr.com/github-acct.html)
+
+
+---
+
+## 9.4. Repositorio
+
+Hay varias maneras de crear un repositorio, una de ellas usar el símbolo de **+** junto a nuestra foto. 
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github3.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 9.5. Repositorio
+
+Hay que darle un nombre de nuestro repositorio, una descripción, si es público o privado y otras opciones. Por ahora podemos usar **Prueba** como nombre del repositorio y **Publico**
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github4.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 9.6. Repositorio
+
+- Les va a aparecer una serie de instrucciones, que por el momento puede que no les sean útiles. Las dejaremos para más tarde.
+
+- Por ahora pueden subir materiales de manera manual usando **uploading an existing file**
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github6.png" height="100" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 9.6. Repositorio
+
+Ya pueden subir archivos desde su computadora.  
+Hay que llenar los espacios de **commit changes**. Por ahora podrían poner algo como **Prueba de repositorio** y **Agregue mi primer archivo Rmd**.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github7.png" height="400" style="display: block; margin: auto;" /&gt;
+
+**Listo** ya creaste tu primer repositorio!
+
+---
+
+# 10. Zenodo
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Zenodo_logo.jpg" height="50" style="display: block; margin: auto;" /&gt;
+
+[Zenodo](https://zenodo.org/) es un repositorio de acceso abierto operado por CERN (Organización Europea para la Investigación Nuclear).
+Permite que se depositen allí artículos de investigación, datos, software, informes y otro tipo de objeto digital relacionado con la investigación. La ventaja frente a github es que asigna un **DOI**.
+
+--
+
+&lt;img src="https://www.doi.org/img/banner-413.gif" height="50" style="display: block; margin: auto;" /&gt;
+
+Un DOI es un identificador de objeto digital y es un enlace permanente en forma de código alfanumérico que identifica de forma única el contenido electrónico. Por lo que te permite **proteger el contenido intelectual**
+
+--
+
+Zenodo recienmente se asocio con [Dryad](https://datadryad.org/stash/) (otro repositorio que asigna DOI)
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/DryadLogo2019.png/220px-DryadLogo2019.png" height="100" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 10.1. Ingresar
+
+Para usar zenodo, hay que ingresar a la pagina [Zenodo](https://zenodo.org/) 
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 10.2. Registrarse
+
+Esta plataforma es gratuita. Para registrarse, si tienen github es bastante sencillo, solo hace falta ingresar su cuenta.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo2.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+# 10.3. En Zenodo
+
+Para asignar un **DOI** a su repositorio.
+
+- Darle click a tu nombre
+- En la parte de settings elegir GitHub
+- Los repositorios de github aparecen con un **switch** para elegir el repositorio que nos interesa . Mover de **off** a **on** para elegir el repositorio de interés.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo3.png" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 10.4. En Github
+
+Para asignar un **DOI** a su repositorio.
+
+- Abrir el repositorio
+- Elegir el engrane donde dice settings
+- Elegir new release
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo6.png" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 10.5. En Zenodo
+
+Al volver a zenodo.
+
+Ahora aparecera un identificador DOI: 
+[![DOI](https://zenodo.org/badge/354821022.svg)](https://zenodo.org/badge/latestdoi/354821022)
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo5.png" height="200" style="display: block; margin: auto;" /&gt;
+--- 
+Esto lo podemos incluir ahora en nuestra publicación.  
+
+**Para citarlo**  
+Lerma, M (2021). Paquete sula (Version v1.0). Zenodo. 
+https://doi.org/10.5281/zenodo.4682898
+
+**Data accesibility**  
+Dataset to reproduce the analyses and scripts are freely available at zenodo (https://doi.org/10.5281/zenodo.4682898).
+
+---
+
+# 11. Ejercicios
+
+- Crear usuario en github
+- Crear repositorio
+- Subir materiales a github
 
 ---
 
