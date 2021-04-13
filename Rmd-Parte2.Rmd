@@ -1,5 +1,5 @@
 ---
-title: "Clase 9"
+title: "Clase 10"
 subtitle: "Rmarkdown"
 author: "Miriam Lerma"
 date: "Abril 2021"
@@ -19,6 +19,10 @@ library(xaringanExtra)
 xaringanExtra::use_clipboard()
 ```
 
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
 class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
@@ -35,16 +39,18 @@ Abril 2021</h2>
 
 # Intro
 
-- Tablas 
-- Figuras
 - Resultados en el texto
-- Ortografia
-- Citar
+- Bibliografía
+- Tablas de contenido
+- Enlaces
+- Ecuaciones
+- Plantillas
+- Github & Zenodo
 
 ```{r, echo=FALSE}
 library(emo)
 library(fontawesome)
-ColorLink<-"#e76f51"
+ColorLink<-"#4cc9f0"
 ```
 
 --
@@ -60,17 +66,22 @@ ColorLink<-"#e76f51"
 ## Créditos & Recursos
 
 - Material de Rmarkdown.  
-[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Resul Umit](https://resulumit.com/teaching/rmd_workshop#1)  
-[`r fa("external-link-alt", fill = ColorLink)`RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
-[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
+[`r fa("book-open", fill = ColorLink)` Rmarkdown por Resul Umit](https://resulumit.com/teaching/rmd_workshop#1)  
+[`r fa("book-open", fill = ColorLink)` RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
+[`r fa("book-open", fill = ColorLink)` Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
 
 - Tutoriales en español:  
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+[`r fa("youtube", fill = ColorLink)` RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
 
 - Tutoriales en ingles:    
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+[`r fa("youtube", fill = ColorLink)` RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
+[`r fa("youtube", fill = ColorLink)` RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
+[`r fa("youtube", fill = ColorLink)` RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+
+- Git:    
+[`r fa("book-open", fill = ColorLink)` Happy Git by Jennifer Bryan](https://happygitwithr.com/)<br>
+[`r fa("youtube", fill = ColorLink)` RLadiesChile](https://vimeo.com/rladieschile)<br>
+[`r fa("youtube", fill = ColorLink)` RLadiesBuenosAires](https://www.youtube.com/watch?v=33pZ9dtc-Co)<br>
 
 - Imagen de portada
 [Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
@@ -170,6 +181,7 @@ Se puede activar corrector de ortografía usando:
 Edit>Spellchecking>F7  
 
 Sin embargo, el corrector no es muy bueno `r emo::ji("unamused_face")`
+
 ```{r, echo=FALSE, out.height=400}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Ortografia.JPG')
 ```
@@ -259,6 +271,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 class: inverse, center, middle
 # 2. Ejercicios
+<h1>`r fa("pencil-alt", fill = '#FFFFFF')`</h1>
 
 ---
 
@@ -268,22 +281,24 @@ class: inverse, center, middle
 - Crear un archivo bib
 - Agregar texto con referencia
 
----
-
-## 2.2. Ejercicios
+.panelset[
+.panel[.panel-name[Texto]
 
 Agregar texto con inline coding
-```{r, eval=FALSE}
+```{r panel-chunk, eval=FALSE, fig.show='hide'}
 Tenemos un total de `r nrow(Pingus)` muestras.
 ```
+]
 
----
-
-## 2.3. Ejercicios
-
+.panel[.panel-name[GoogleScholar]
 Crear un archivo bib
 - File>NewFile>Text File
-- Buscar en [googlescholar](https://scholar.google.com/): Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis) <br>
+- Buscar en [googlescholar](https://scholar.google.com/): Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins (Genus Pygoscelis) 
+- Copiar y pegar texto, guardar como Bibliografia.bib
+]
+
+
+.panel[.panel-name[bib]
 ```{r, eval=FALSE}
 @article{gorman2014ecological,
   title={Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)},
@@ -296,17 +311,16 @@ Crear un archivo bib
   publisher={Public Library of Science}
 }
 ```
-Copiar y pegar texto, guardar como Bibliografia.bib.
+]
 
+.panel[.panel-name[YAML]
 Agrega en el YAML
 ```{r,eval=FALSE}
 bibliography: Bibliografia.bib  
 ```
+]
 
----
-
-## 2.3. Ejercicios
-
+.panel[.panel-name[Citar]
 - Agregar texto
 ```{r, eval=FALSE}
 Se usaron datos de pinguinos de Adelia (*Pygoscelis adeliae*) 
@@ -318,6 +332,9 @@ obtenidos de un estudio con pinguinos en la Antarctica
 - Agregar un titulo de primer nivel en el apartado final que diga **Referencias**
 
 - Dale knitr
+]
+]
+
 
 ---
 
@@ -424,7 +441,8 @@ knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/46ba24a18406d82a4
 
 class: inverse, center, middle
 
-# 4. Ejercicios
+# 4. Ejercicios 
+<h1>`r fa("pencil-alt", fill = '#FFFFFF')`</h1>
 
 ---
 
@@ -434,28 +452,25 @@ class: inverse, center, middle
 - Agrega un enlace
 - Agrega una tabla de contenido
 
----
-
-## 4.1. Ejercicios
-
-- Lista
+.panelset[
+.panel[.panel-name[Lista]
+Agregar en el texto:
 ```{r, eval=FALSE}
 Objetivos
 - Evaluar si la aleta de los pingüinos ayuda a predecir su peso
 - Evaluar si hay diferencias en los pesos entre hembras y machos
 ```
+]
 
-- Enlace
+.panel[.panel-name[Enlace]
+Agregar en el texto:
 ```{r, eval=FALSE}
 [Enlace](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
 ```
+]
 
----
-
-## 4.1. Ejercicios
-
-- Tabla de contenido
-En el YAML:  
+.panel[.panel-name[Tabla de contenido]
+Agregar en el YAML:  
 ```{r, eval=FALSE}
 output: 
   html_document:
@@ -463,11 +478,9 @@ output:
     toc_float: true
     number_sections: true
 ```
+]
+]
 
-- Code folding
-```{r, eval=FALSE}
-code_folding: hide
-```
 
 ---
 
@@ -488,7 +501,7 @@ install.packages("rticles")
 remotes::install_github("rstudio/rticles")
 ```
 
-Aqui la pagina para ver plantillas de varias revistas [`r fa("external-link-alt", fill = ColorLink)`Click aqui](https://github.com/rstudio/rticles)
+Para ver plantillas de varias revistas [`r fa("external-link-alt", fill = ColorLink)`Click aqui](https://github.com/rstudio/rticles)
 
 ---
 
@@ -523,23 +536,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/crsh/papaja/master/in
 
 ---
 
-class: inverse, center, middle
-# 6. Ejercicios
-
----
-
-## 6.1. Ejercicios
-- Abrir los diferentes plantillas
-- Explorar opciones para escribir artículos
-
----
-
-class: inverse, center, middle
-# 7. Compartir
-
----
-
-# 7. Compartir
+# 6. Compartir
 
 - Opción 1: Compartir todo.  
 Enviar documento Rmd, tal cual y la otra persona puede darle click a las partes grises en el botón verde (siempre y cuando tenga la base de datos)
@@ -557,40 +554,36 @@ En el YAML agregar code_folding: hide y esconde el codigo pero te agrega un boto
 
 class: inverse, center, middle
 
-# 8. Ejercicios
+# 7. Ejercicios 
+<h1>`r fa("pencil-alt", fill = '#FFFFFF')`</h1>
 
 ---
 
-## 8.1. Ejercicios
+## 7.1. Ejercicios
 - Escribir pasos tipo bitácora de análisis de pingüinos. 
 - Compartir el documento en formato html.
-- Escribir articulo sobre pingüinos de Adelia.
+- Escribir esqueleto de artículo sobre pingüinos de Adelia.
 
 En equipo o individual.
-- Escribir articulo sobre pingüinos de Papúa.
+- Escribir esqueleto de artículo sobre pingüinos de Papúa.
 
----
-
-## 8.2. Compartir todo 
-
+.panelset[
+.panel[.panel-name[Bitácora]
 Instrucciones a incluir en el Rmd:
 - Como cargar datos de pinguinos y filtrar con solo datos de Adelia
 - Como crear un modelo lineal con masa corporal y longitud de la aleta
 - Agregar tabla con resultados del modelo
 - Agregar gráfica de masa corporal por longitud de la aleta
+]
 
----
-
-## 8.3. Compartir html
-
+.panel[.panel-name[html]
 Instrucciones:
 - Enviar el documento en html y que otra persona/equipo replique sus analisis.
 Subir su html al drive.
+]
 
----
-
-## 8.4. Escribir articulo
-Escribir articulo y exportar documento sin código.
+.panel[.panel-name[Artículo]
+Escribir artículo y exportar documento sin código.
 
 Instrucciones:
 - Agregar introducción, métodos, resultados, discusión y referencias.
@@ -601,21 +594,22 @@ Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no s
 Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la forma del pinguino pero necesitamos corregir las medidas por la longitud de aleta  
 - El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. <br>
 ```
+]
 
----
-
-## 8.5. Code folding
-- Usar el documento anterior y en el YAML agregar code_folding: hide
+.panel[.panel-name[Code folding]
+Agregar en el YAML:  
+- Usar el documento anterior y en el YAML agregar code_folding: hide]
+]
 
 ---
 
 class: inverse, center, middle
 
-# 9. GitHub & Zenodo
+# 8. GitHub & Zenodo
 
 ---
 
-## 9.1. Git & GitHub
+## 8.1. Git & GitHub
 
 ```{r, echo=FALSE, out.height=50, fig.align='center'}
 knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/200px-Git-logo.svg.png')
@@ -634,7 +628,7 @@ knitr::include_graphics('https://avatars.githubusercontent.com/u/583231?v=4')
 --- 
 
 **Nota** En 2018 Microsoft compro la plataforma github, por lo que muchas personas dejaron de utilizarla.
-Hay muchas otras opciones como gitlab para alojar repositorios.<br>
+Hay muchas otras opciones para alojar repositorios.<br>
 Por ejemplo: [gitlab](https://about.gitlab.com/)
 ```{r, echo=FALSE, out.height=80, fig.align='center'}
 knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/245px-GitLab_Logo.svg.png')
@@ -642,7 +636,7 @@ knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/thumb/1/
 
 ---
 
-## 9.2. Registrarse
+## 8.2. Registrarse
 
 Para usar github hay que ingresar a la pagina [Github](https://github.com/) <br>
 
@@ -652,7 +646,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 9.3. Usuario
+## 8.3. Usuario
 
 Github es gratis, pero para usar github hay que registrarse <br>
 ```{r, echo=FALSE, out.height=300, fig.align='center'}
@@ -669,7 +663,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 9.4. Repositorio
+## 8.4. Repositorio
 
 Hay varias maneras de crear un repositorio, una de ellas usar el símbolo de **+** junto a nuestra foto. 
 
@@ -679,7 +673,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 9.5. Repositorio
+## 8.5. Repositorio
 
 Hay que darle un nombre de nuestro repositorio, una descripción, si es público o privado y otras opciones. Por ahora podemos usar **Prueba** como nombre del repositorio y **Publico**
 
@@ -689,7 +683,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 9.6. Repositorio
+## 8.6. Repositorio
 
 - Les va a aparecer una serie de instrucciones, que por el momento puede que no les sean útiles. Las dejaremos para más tarde.
 
@@ -701,7 +695,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 9.6. Repositorio
+## 8.6. Repositorio
 
 Ya pueden subir archivos desde su computadora.  
 Hay que llenar los espacios de **commit changes**. Por ahora podrían poner algo como **Prueba de repositorio** y **Agregue mi primer archivo Rmd**.
@@ -714,7 +708,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-# 10. Zenodo
+# 9. Zenodo
 
 ```{r, echo=FALSE, out.height=50, fig.align='center'}
 knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/0/0f/Zenodo_logo.jpg')
@@ -733,14 +727,15 @@ Un DOI es un identificador de objeto digital y es un enlace permanente en forma 
 
 --
 
-Zenodo recienmente se asocio con [Dryad](https://datadryad.org/stash/) (otro repositorio que asigna DOI)
 ```{r, echo=FALSE, out.height=100, fig.align='center'}
 knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/DryadLogo2019.png/220px-DryadLogo2019.png')
 ```
 
+Zenodo recienmente se asocio con [Dryad](https://datadryad.org/stash/) (otro repositorio que asigna DOI)
+
 ---
 
-## 10.1. Ingresar
+## 9.1. Ingresar
 
 Para usar zenodo, hay que ingresar a la pagina [Zenodo](https://zenodo.org/) 
 
@@ -750,7 +745,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 10.2. Registrarse
+## 9.2. Registrarse
 
 Esta plataforma es gratuita. Para registrarse, si tienen github es bastante sencillo, solo hace falta ingresar su cuenta.
 
@@ -760,13 +755,13 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-# 10.3. En Zenodo
+## 9.3. En Zenodo
 
 Para asignar un **DOI** a su repositorio.
 
 - Darle click a tu nombre
 - En la parte de settings elegir GitHub
-- Los repositorios de github aparecen con un **switch** para elegir el repositorio que nos interesa . Mover de **off** a **on** para elegir el repositorio de interés.
+- Los repositorios de github aparecen con un **switch** para elegir el repositorio que nos interesa. Mover de **off** a **on** para elegir el repositorio de interés.
 
 ```{r, echo=FALSE, out.height=300, fig.align='center'}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo3.png')
@@ -774,7 +769,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 10.4. En Github
+## 9.4. En Github
 
 Para asignar un **DOI** a su repositorio.
 
@@ -788,7 +783,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 10.5. En Zenodo
+## 9.5. En Zenodo
 
 Al volver a zenodo.
 
@@ -798,19 +793,20 @@ Ahora aparecera un identificador DOI:
 ```{r, echo=FALSE, out.height=200, fig.align='center'}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo5.png')
 ```
---- 
-Esto lo podemos incluir ahora en nuestra publicación.  
 
+--- 
 **Para citarlo**  
 Lerma, M (2021). Paquete sula (Version v1.0). Zenodo. 
 https://doi.org/10.5281/zenodo.4682898
 
-**Data accesibility**  
-Dataset to reproduce the analyses and scripts are freely available at zenodo (https://doi.org/10.5281/zenodo.4682898).
+**Para agregarlo al articulo**  
+Data accesibility: Dataset to reproduce the analyses and scripts are freely available at zenodo (https://doi.org/10.5281/zenodo.4682898).
 
 ---
 
-# 11. Ejercicios
+class: inverse
+
+# 11. Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
 - Crear usuario en github
 - Crear repositorio
