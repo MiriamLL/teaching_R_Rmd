@@ -765,24 +765,30 @@ knitr::include_graphics('https://www.garrickadenbuie.com/images/project/ermoji/a
 
 ---
 
-class: inverse
+class: center, middle, inverse
 
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
-- Cambiar estéticas de las dispositivas en el YAML
-- Agregar paginación
-- Agregar iconos
 
 ---
 
 ## 3.5. Ejercicios
 
+Cambiar estilo de nuestra dispositiva
+- Cambiar estéticas de las dispositivas en el **YAML**
+- Agregar **paginación**
+- Agregar **iconos**
+
+.panelset[
+.panel[.panel-name[YAML]
 Para cambiar la estética de las diapositivas
 ```{r, eval=FALSE}
 output:
   xaringan::moon_reader:
     css: [default, metropolis-fonts]
 ```
+]
 
+.panel[.panel-name[Paginación]
 Para que la primera diapositiva sea la portada y aparezca paginación de la presentación agregar
 ```{r, eval=FALSE}
 output:
@@ -791,12 +797,16 @@ output:
     nature:
       countIncrementalSlides: true
 ```
+]
 
+.panel[.panel-name[Iconos]
 Para agregar iconos puedes usar
 ```{r, eval=FALSE}
 library(emo)
 `r emo::ji("penguin")`
 ```
+]
+]
 
 
 ---
