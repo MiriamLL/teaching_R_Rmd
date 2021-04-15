@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 11</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <script src="GitGithubZenodo_files/header-attrs-2.6/header-attrs.js"></script>
+    <script src="GitGithubZenodo_files/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="GitGithubZenodo_files/xaringanExtra-clipboard-0.2.4/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="GitGithubZenodo_files/xaringanExtra-clipboard-0.2.4/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="GitGithubZenodo_files/panelset-0.2.4/panelset.css" rel="stylesheet" />
+    <script src="GitGithubZenodo_files/panelset-0.2.4/panelset.js"></script>
+    <link rel="stylesheet" href="Rmd-themer-darker.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1485254767195-60704c46702e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80)
+background-size: cover
+
+# &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #1d3557 !important;font-size: 80px;" &gt;GitHub, Zenodo y Git&lt;/span&gt;
+
+&lt;br&gt;
+&lt;h2&gt;&lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #264653 !important;" &gt;Miriam Lerma&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3&gt;&lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #0A121F !important;" &gt;Abril 2021&lt;/span&gt;&lt;/h3&gt;
+
+
+---
+
+class: inverse
+
+# Intro
+
+- Github
+- Zenodo
+- Compartir bitacora y artículo
+- Git
+
+
+
+--
+
+## Ustedes
+
+- Quieren subir sus materiales a github
+- Quieren agregarle un doi a sus materiales
+- Quieren usar sistema de control de versiones
+
+---
+
+class: inverse
+
+## Créditos &amp; Recursos
+
+- Happy git:    
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Happy Git by Jennifer Bryan](https://happygitwithr.com/)&lt;br&gt;
+
+- Tutoriales en español  
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesChile](https://vimeo.com/rladieschile)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesBuenosAires](https://www.youtube.com/watch?v=33pZ9dtc-Co)&lt;br&gt;
+
+- Tutoriales en ingles  
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesFreiburg](https://www.youtube.com/watch?v=tSse0KPgSoQ&amp;t=1s)
+- Imagen de portada
+[Unsplash by Joel Filip](https://unsplash.com/@joelfilip)
+
+---
+
+class: center, middle, inverse
+
+# 1. Github
+
+---
+
+## 1.1. Git &amp; GitHub
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/200px-Git-logo.svg.png" height="50" style="display: block; margin: auto;" /&gt;
+
+[Git](https://git-scm.com/): es un software de **control de versiones**. El proposito es registrar cambios en los archivos y tambien permite que varias personas trabajen sobre un archivo compartido.
+
+--- 
+
+&lt;img src="https://avatars.githubusercontent.com/u/583231?v=4" height="80" style="display: block; margin: auto;" /&gt;
+
+[Github](https://github.com/): es una plataforma para alojar proyectos utilizando el sistema de control de versiones. &lt;br&gt;
+
+--- 
+
+**Nota** En 2018 Microsoft compro la plataforma github, por lo que muchas personas dejaron de utilizarla.
+Hay muchas otras opciones para alojar repositorios.&lt;br&gt;
+Por ejemplo: [gitlab](https://about.gitlab.com/)
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/245px-GitLab_Logo.svg.png" height="80" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.2. Registrarse
+
+¿Cuantos ya se registraron?
+
+Para usar github hay que ingresar a la página [Github](https://github.com/) &lt;br&gt;
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github1.png" height="400" /&gt;
+
+---
+
+## 1.3. Usuario
+
+Github es gratis, pero para usar github hay que registrarse &lt;br&gt;
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github2.png" height="300" style="display: block; margin: auto;" /&gt;
+
+**Recomendaciones**
+- Usa tu nombre de las publicaciones, sera más fácil que las personas encuentren o confíen en tu repositorio.
+- Elije un nombre con el que te sientas cómodo de trabajar en el futuro
+- Nombres cortos son mejores que nombres largos
+- Se recomienda que utilices todas las letras en minúsculas y para separar usa _ o -
+[Más recomendaciones](https://happygitwithr.com/github-acct.html)
+
+---
+
+## 1.4. Repositorio
+
+Hay varias maneras de crear un repositorio, una de ellas usar el símbolo de **+** junto a nuestra foto. 
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github3.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.5. Repositorio
+
+Hay que darle un nombre de nuestro repositorio, una descripción, si es público o privado y otras opciones. Por ahora podemos usar **Prueba** como nombre del repositorio y **Publico**
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github4.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.6. Repositorio
+
+- Les va a aparecer una serie de instrucciones, que por el momento puede que no les sean útiles. Las dejaremos para más tarde.
+
+- Por ahora pueden subir materiales de manera manual usando **uploading an existing file**
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github6.png" height="100" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.6. Repositorio
+
+Ya pueden subir archivos desde su computadora.  
+Hay que llenar los espacios de **commit changes**. Por ahora podrían poner algo como **Prueba de repositorio** y **Agregue mi primer archivo Rmd**.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github7.png" height="400" style="display: block; margin: auto;" /&gt;
+
+**Listo** ya creaste tu primer repositorio!
+
+---
+
+class: center, middle, inverse
+
+# 2. Zenodo
+
+---
+
+## 2.1. Zenodo
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Zenodo_logo.jpg" height="50" style="display: block; margin: auto;" /&gt;
+
+[Zenodo](https://zenodo.org/) es un repositorio de acceso abierto operado por CERN (Organización Europea para la Investigación Nuclear).
+Permite que se depositen allí artículos de investigación, datos, software, informes y otro tipo de objeto digital relacionado con la investigación. La ventaja frente a github es que asigna un **DOI**.
+
+--
+
+&lt;img src="https://www.doi.org/img/banner-413.gif" height="50" style="display: block; margin: auto;" /&gt;
+
+Un DOI es un identificador de objeto digital y es un enlace permanente en forma de código alfanumérico que identifica de forma única el contenido electrónico. Por lo que te permite **proteger el contenido intelectual**
+
+--
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/DryadLogo2019.png/220px-DryadLogo2019.png" height="100" style="display: block; margin: auto;" /&gt;
+
+Zenodo recienmente se asocio con [Dryad](https://datadryad.org/stash/) (otro repositorio que asigna DOI)
+
+---
+
+## 2.1. Ingresar
+
+Para usar zenodo, hay que ingresar a la pagina [Zenodo](https://zenodo.org/) 
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 2.2. Registrarse
+
+Esta plataforma es gratuita. Para registrarse, si tienen github es bastante sencillo, solo hace falta ingresar su cuenta.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo2.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 2.3. En Zenodo
+
+Para asignar un **DOI** a su repositorio.
+
+- Darle click a tu nombre
+- En la parte de settings elegir GitHub
+- Los repositorios de github aparecen con un **switch** para elegir el repositorio que nos interesa. Mover de **off** a **on** para elegir el repositorio de interés.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo3.png" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 2.4. En Github
+
+Para asignar un **DOI** a su repositorio.
+
+- Abrir el repositorio
+- Elegir el engrane donde dice settings
+- Elegir new release
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo6.png" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 2.5. En Zenodo
+
+Al volver a zenodo.
+
+Ahora aparecera un identificador DOI: 
+[![DOI](https://zenodo.org/badge/354821022.svg)](https://zenodo.org/badge/latestdoi/354821022)
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo5.png" height="200" style="display: block; margin: auto;" /&gt;
+
+--- 
+**Para citarlo**  
+Lerma, M (2021). Paquete sula (Version v1.0). Zenodo. 
+https://doi.org/10.5281/zenodo.4682898
+
+**Para agregarlo al articulo**  
+Data accesibility: Dataset to reproduce the analyses and scripts are freely available at zenodo (https://doi.org/10.5281/zenodo.4682898).
+
+---
+
+class: inverse, center, middle
+
+# 3. Ejercicios 
+&lt;h1&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;&lt;/h1&gt;
+
+---
+
+## 3.1. Ejercicios
+
+25 minutos
+
+En equipo o individual 💃🏽👯 
+- Escribir pasos tipo bitácora de análisis de pingüinos. 
+- Escribir esqueleto de artículo sobre pingüinos de Adelia.
+
+.panelset[
+.panel[.panel-name[Bitácora]
+Instrucciones a incluir en el Rmd:
+- Como cargar datos de pingüinos y filtrar con solo datos de Adelia
+- Como crear un modelo lineal con masa corporal y longitud de la aleta
+- Agregar tabla con resultados del modelo
+- Agregar gráfica de masa corporal por longitud de la aleta &lt;br&gt;
+**Nota** Piensen en alguien que no conocen replicando su analisis
+]
+
+.panel[.panel-name[Artículo]
+Escribir esqueleto de artículo y exportar documento sin código.
+
+Instrucciones:
+- Agregar introducción, métodos, resultados, discusión y referencias.
+
+Ejemplo:
+
+```r
+Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no sabemos si están perdiendo peso conforme se calienta el océano y se reduce la disponibilidad de alimento para ésta especie. &lt;br&gt;
+Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la forma del pinguino pero necesitamos corregir las medidas por la longitud de aleta  
+- El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. &lt;br&gt;
+```
+]
+]
+
+
+---
+
+## 3.2. Ejercicios
+
+
+Individual 🧘🏽
+- Crear usuario en github
+- Crear repositorio  
+
+En equipo o individual 👯
+- Subir materiales a github:  
+La bitacora y articulo.
+
+.panelset[.panel[.panel-name[Bitacora]
+Instrucciones:
+- Subir el documento en html o Rmd a github  
+- Compartir en enlace en el chat
+]
+
+.panel[.panel-name[Reproducibilidad]
+En equipo o individual.
+- Reproducir analisis de otro equipo usando la bitacora
+- Al final reflexionar que podrian incluir en sus futuras bitacoras 
+]
+
+.panel[.panel-name[Extra-Papúa]
+Reusar Rmd
+- Escribir esqueleto de artículo sobre pingüinos de Papúa usando el esqueleto de pingüinos de Adelia.
+]
+
+]
+
+---
+
+class: center, middle, inverse
+
+# 4. Git
+
+---
+
+## 4.1. Git
+
+- Descargar [git](https://git-scm.com/)
+- Instalar git
+- [Introduce yourself to git](https://happygitwithr.com/hello-git.html)
+
+
+```r
+git config --global user.name 'Mi nombre'
+git config --global user.email 'micorreo@ejemplo.com'
+git config --global --list
+```
+
+- Copiar code en github
+- File&gt;NewFile&gt;VersionControl
+- Pull
+- Cambiar Readme
+- Commit
+- Push
+
+---
+
+## 4.2. Nuevo proyecto
+
+Abrir nuevo proyecto
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git01.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 4.2. Version control
+
+Elegir version control
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git02.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 4.3. Clonar
+
+Copiar enlace de github
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git03.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 4.4. Repositorio
+
+Pegar el enlace en RStudio
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git04.png" height="400" style="display: block; margin: auto;" /&gt;
+
+Opcion 2:
+
+```r
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+```
+
+---
+
+## 4.5. Pestaña
+
+Para confirmar que todo funciono, deben aparecer nuevas pestañas dentro de su RStudio
+
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git05.png" height="300" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## 4.6. Pull
+
+Podemos jalar todo lo de github usando **pull**
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git07-pestania.png" height="200" style="display: block; margin: auto;" /&gt;
+
+Nos confirma si tenemos todo en nuestro computadora
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git06-pull.png" height="200" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 4.7. Modificar
+
+Opcion 1
+- Abrir y modificar el README 
+- Agregar linea en README 
+
+Opcion 2
+
+```r
+echo "Una linea que escribimos en el README" &gt;&gt; README.md
+git status
+```
+
+---
+
+## 4.8. Stage y Commit
+
+Al hacer commit hay que ponerle un mensaje de los cambios mas importantes que hicimos.
+
+Esto nos servira en el futuro si tenemos que regresar a un punto importante.
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git08-commit.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 4.9. Push
+
+Los cambios estan locales, para que se refleje en github hay que empujarlo (**push**)
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git09-push.png" height="300" style="display: block; margin: auto;" /&gt;
+
+Otra opcion
+
+```r
+git add -A
+git commit -m "Un commit desde mi computadora"
+git push
+```
+
+
+
+---
+
+class: inverse, center, middle
+
+# 5. Ejercicios 
+&lt;h1&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;&lt;/h1&gt;
+
+---
+
+## 5.1. Ejercicios
+
+
+- Clonar repositorio usando RStudioCloud
+- Si no tienen git: instalarlo
+
+---
+
+class: left, inverse
+
+# Contacto
+
+Recapitulando
+
+- [Github](#1 Github)
+- [Zenodo](#2 Zenodo)
+- [Git](#3 Git)
+
+
+&lt;br&gt;
+&lt;br&gt;
+
+Para dudas, comentarios y sugerencias:  
+- Escríbeme a miriamjlerma@gmail.com
+
+&lt;br&gt;
+&lt;br&gt;
+
+.right[Este material esta accesible y se encuentra en &lt;br&gt;
+mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+
+&lt;br&gt;
+&lt;br&gt;
+
+
+.center[
+
+&lt;h3&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
