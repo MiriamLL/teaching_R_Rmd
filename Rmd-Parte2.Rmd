@@ -560,12 +560,10 @@ class: inverse, center, middle
 ---
 
 ## 7.1. Ejercicios
-- Escribir pasos tipo bitácora de análisis de pingüinos. 
-- Compartir el documento en formato html.
-- Escribir esqueleto de artículo sobre pingüinos de Adelia.
 
-En equipo o individual.
-- Escribir esqueleto de artículo sobre pingüinos de Papúa.
+En equipo o individual 💃🏽👯 
+- Escribir pasos tipo bitácora de análisis de pingüinos. 
+- Escribir esqueleto de artículo sobre pingüinos de Adelia.
 
 .panelset[
 .panel[.panel-name[Bitácora]
@@ -573,17 +571,16 @@ Instrucciones a incluir en el Rmd:
 - Como cargar datos de pinguinos y filtrar con solo datos de Adelia
 - Como crear un modelo lineal con masa corporal y longitud de la aleta
 - Agregar tabla con resultados del modelo
-- Agregar gráfica de masa corporal por longitud de la aleta
+- Agregar gráfica de masa corporal por longitud de la aleta <br>
+**Nota** Piensen en alguien que no conocen replicando su analisis
 ]
 
-.panel[.panel-name[html]
-Instrucciones:
-- Enviar el documento en html y que otra persona/equipo replique sus analisis.
-Subir su html al drive.
-]
+.panel[.panel-name[Code folding]
+Agregar en el YAML:  
+- Usar el documento anterior y en el YAML agregar code_folding: hide]
 
 .panel[.panel-name[Artículo]
-Escribir artículo y exportar documento sin código.
+Escribir esuqleto de artículo y exportar documento sin código.
 
 Instrucciones:
 - Agregar introducción, métodos, resultados, discusión y referencias.
@@ -595,10 +592,6 @@ Se pueden instalar cámaras en las colonias para tomarles fotos de manera regula
 - El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. <br>
 ```
 ]
-
-.panel[.panel-name[Code folding]
-Agregar en el YAML:  
-- Usar el documento anterior y en el YAML agregar code_folding: hide]
 ]
 
 ---
@@ -804,13 +797,44 @@ Data accesibility: Dataset to reproduce the analyses and scripts are freely avai
 
 ---
 
-class: inverse
+class: inverse, center, middle
 
-# 11. Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+# 10. Ejercicios 
+<h1>`r fa("pencil-alt", fill = '#FFFFFF')`</h1>
 
+---
+
+## 10.1. Ejercicios
+
+Individual 🧘🏽
 - Crear usuario en github
-- Crear repositorio
-- Subir materiales a github
+- Crear repositorio  
+
+En equipo o individual 👯
+- Subir materiales a github:  
+La bitacora y articulo.
+
+
+
+.panelset[.panel[.panel-name[Bitacora]
+Instrucciones:
+- Subir el documento en html o Rmd a github  
+- Compartir en enlace en el chat
+]
+
+.panel[.panel-name[Reproducibilidad]
+En equipo o individual.
+- Reproducir analisis de otro equipo usando la bitacora
+- Al final reflexionar que podrian incluir en sus futuras bitacoras 
+]
+
+.panel[.panel-name[Extra-Papúa]
+Reusar Rmd
+- Escribir esqueleto de artículo sobre pingüinos de Papúa usando el esqueleto de pingüinos de Adelia.
+]
+
+]
+
 
 ---
 
@@ -820,12 +844,18 @@ class: left, inverse
 
 Te recomiendo seguir con [`r fa("external-link-alt", fill = '#74c69d')`Xaringan](https://miriamlerma.netlify.app/materiales.html).
 
+<br>
+<br>
+
 Para dudas, comentarios y sugerencias:  
 - Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible y se encuentra en 
-- mi [`r fa("external-link-alt", fill = '#74c69d')`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://miriamlerma.netlify.app/materiales.html)
+<br>
+<br>
+
+.right[Este material esta accesible y se encuentra en <br>
+mi [`r fa("external-link-alt", fill = '#74c69d')`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://miriamlerma.netlify.app/materiales.html)
 
 <br>
 <br>
@@ -836,4 +866,4 @@ Este material esta accesible y se encuentra en
 library(fontawesome)
 ```
 <h3>`r fa("home", fill = "#74c69d")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
-]
+]]
