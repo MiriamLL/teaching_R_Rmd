@@ -245,7 +245,7 @@ File>Export Library<br>
 
 _Otra opción_ es cambiar Preferences>Export>Defatult>Bibtek y se puede arrastrar la bibliografia directo a tu documento bib en RStudio<br>
 
-```{r, echo=FALSE, out.height=400}
+```{r, echo=FALSE, out.height=350}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ZoteroBib.png')
 ```
 
@@ -256,9 +256,26 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 Desde Googlescholar<br>
 
 Dale click primero a las comillas y luego elige BibTeX.
+
 ```{r, echo=FALSE, out.height=400}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/GoogleSchoolarBib.png')
 ```
+
+---
+
+## 1.6.5. Citr
+
+Para agregar **Addins** se puede instalar el paquete **citr**
+```{r, eval=FALSE}
+devtools::install_github("crsh/citr")
+```
+
+Este paquete te permite insertar citas de manera dinamica
+
+```{r, echo=FALSE, out.height=300}
+knitr::include_graphics('https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif')
+```
+
 
 ---
 
