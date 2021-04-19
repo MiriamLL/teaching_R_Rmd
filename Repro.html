@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Clase 13</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Miriam Lerma" />
+    <script src="Repro_files/header-attrs-2.6/header-attrs.js"></script>
+    <script src="Repro_files/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="Repro_files/xaringanExtra-clipboard-0.2.4/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="Repro_files/xaringanExtra-clipboard-0.2.4/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="Repro_files/panelset-0.2.4/panelset.css" rel="stylesheet" />
+    <script src="Repro_files/panelset-0.2.4/panelset.js"></script>
+    <link rel="stylesheet" href="Repro-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: title-slide, center, middle
+background-image: url(https://images.unsplash.com/photo-1485254767195-60704c46702e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80)
+background-size: cover
+
+# &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #1d3557 !important;font-size: 60px;" &gt;Reproducibilidad&lt;/span&gt;
+
+&lt;br&gt;
+&lt;h2&gt;&lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #264653 !important;" &gt;Miriam Lerma&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3&gt;&lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #0A121F !important;" &gt;Mayo 2021&lt;/span&gt;&lt;/h3&gt;
+
+
+---
+
+class: inverse
+
+# Intro
+- Que es reproducibilidad
+- Como es un manuscrito reproducible
+
+
+
+## Ustedes
+- Quieren crear proyectos reproducibles
+- Mejorar su seguimiento de proyectos
+- Mejorar el ciclo de trabajo en su laboratorio
+
+## Preguntas
+Responder en el chat 💬
+- Han querido replicar análisis de algún articulo ya publicado  y se preguntaron como lo hicieron?
+- Les ha pasado que a seguir los pasos de alguna tesis o articulo se dieron cuenta que no todos los métodos estaban descritos?
+
+---
+
+class: inverse
+
+## Créditos &amp; Recursos
+
+Lecturas
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; ReproHack](https://reprohack.github.io/reprohack-hq/)&lt;br&gt;
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; rOpenScience](https://ropensci.org/)&lt;br&gt;
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; The turing way](https://the-turing-way.netlify.app/welcome)&lt;br&gt;
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Articulos reproducibles](https://frodriguezsanchez.net/publication/rodriguez-sanchez-ecosistemas-2016/)&lt;br&gt;
+
+LatinR2020 
+- Daniela Ballari
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; ReproHack](https://www.youtube.com/watch?v=Hvrb2b7v93w&amp;t=732s)&lt;br&gt;
+- Francisco Rodríguez-Sánchez
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; ReproHack](https://www.youtube.com/watch?v=TKhV3w467RI)&lt;br&gt;
+
+En ingles  
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI)  
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; Ted: crisis reproducibilidad](https://www.youtube.com/watch?v=FpCrY7x5nEE)
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt;Matt Dray](https://www.rostrum.blog/2020/01/22/repro-three-things/)
+
+Imagenes
+- Portada
+[Unsplash by Joel Filip](https://unsplash.com/@joelfilip)  
+- Imagenes de The turing test creadas por Scriberia para la comunidad The Turing Way y se usa bajo una licencia CC-BY.
+
+---
+
+class: center, middle, inverse
+
+# 1. Reproducibilidad
+
+---
+ 
+## 1.1. Reproducibilidad
+
+**Reproducibilidad computacional** es que otra persona pueda ejecutar el código que hemos creado y tenga los mismos resultados
+
+Esto incluye a:
+- Científicos de otras instituciones
+- Colaboradores
+- Nosotros mismos
+
+&lt;img src="https://the-turing-way.netlify.app/_images/welcome.jpg" height="400" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## 1.2. Reproducibilidad
+
+La reproducibilidad tiene varias dimensiones, de acuerdo a 
+- si usamos los mismos datos o datos diferentes,
+- si usamos el mismo codigo o lo adaptamos.
+
+&lt;img src="https://the-turing-way.netlify.app/_images/ReproducibleMatrix.jpg" height="200" /&gt;
+
+- **Reproducible**: mismos datos deben dar el mismo resultado.
+- **Replicable**: mismos analisis pero con diferentes datos dan resultados cualitativamente similares.
+- **Robusto**: los mismos datos pero diferente analisis, dan resultados similares.
+- **Generalizable**: diferentes datos ya nalisis para entender que los resultados no son dependientes de ese set de datos en particular y de ese analisis en particular. 
+
+Fuente: [The turing way](https://the-turing-way.netlify.app/_images/ReproducibleMatrix.jpg)
+
+---
+
+## 1.3. Reproducibilidad
+
+Recordemos que: &lt;br&gt;
+El método científico esta sustentado en dos pilares **reproducibilidad** y refutabilidad &lt;br&gt;
+La reproducibilidad implica que se pueda repetir el experimento, en cualquier lugar y persona para verificar que los resultados obtenidos sean verídicos.&lt;br&gt;
+
+Desafortunadamente, por muchos años se ha perdido el acceso a datos y métodos&lt;br&gt;
+
+No obstante, estamos en una época de cambio de paradigmas&lt;br&gt;
+
+&lt;img src="https://the-turing-way.netlify.app/_images/reproducibility.jpg" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.4. Credibilidad
+
+Al hacer nuestro trabajo reproducible.&lt;br&gt;
+Podemos: 
+- Evitar desastres al permitir detección de errores
+- Escribir mas fluido
+- Asegurar la continuidad
+- Mejorar la credibilidad/transparencia
+
+&lt;img src="https://the-turing-way.netlify.app/_images/reasons_reproducibility.png" height="300" style="display: block; margin: auto;" /&gt;
+
+Por ejemplo, evitando que [revistas retiran articulos sobre COVID debido a falta de integridad en los datos](https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions)
+
+---
+
+## 1.5. Recomendaciones
+
+Para crear un proyecto reproducible hay que: 
+- Agregar comentarios y escribir código en forma ordenada. &lt;br&gt; Ver [programacion literaria, un concepto de 1984](http://www.literateprogramming.com/knuthweb.pdf)
+- Usar código legible
+- Usar directorios relativos
+- Usar control de versiones &lt;br&gt;
+Esto evita redundancias: no intentes lo mismo muchas veces
+
+&lt;img src="https://the-turing-way.netlify.app/_images/reproducibility.jpg" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.6. Supervisores
+
+Al tener proyectos reproducibles, se puede:
+- Evaluar como se procesaron los datos
+- Detectar errores
+- Facilitar la escritura y edición
+- Facilitar el ciclo de investigación
+
+Tener un flujo de trabajo reproducible en un laboratorio ahorra tiempo para los investigadores, estudiantes y colaboradores. Aunque hay que invertir tiempo en generar proyectos reproducibles a la larga, esto mejora la productividad
+
+&lt;img src="https://the-turing-way.netlify.app/_images/communication.jpg" height="300" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## 1.7. Tesistas
+
+Un laboratorio que tenga proyectos reproducibles, permite que:
+- Inicien con análisis base
+- Complementen y mejoren el código
+- No se pierdan en el universo de analisis y paquetes
+- Tengan más confianza en los resultados
+
+Trabajar en un laboratorio con flujos de trabajo reproducible, ahorra tiempo y permite invertir esfuerzos en mejorar el código
+
+&lt;img src="https://genr.eu/wp/wp-content/uploads/2020/07/Contributing-1733x2048.jpg" height="300" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 2. Reproducibilidad en ecologia
+
+Hay poca reproducibilidad en ecologia ([Culina 2020](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000763))
+
+- 73% de los artículos publicados no proveen código
+- 5% no todo el código
+- 1% no proveen datos
+- 21% casi reproducible (dentro de los cuales 26% no usa software libre, 56% no provee todos los datos, y 46% no reportan la version del software)
+
+&lt;img src="https://media.eurekalert.org/multimedia_prod/pub/web/238857_web.jpg" height="350" style="display: block; margin: auto;" /&gt;
+.right[ Fuente: [@Culina](https://twitter.com/antica_c/status/1288382890636709888)]
+
+---
+
+## 2.6. Barreras
+
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e63946;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Tenemos la tecnologia, depende de nosotros implementarlo ](https://blog.scielo.org/es/2017/09/27/tenemos-la-tecnologia-para-salvar-la-revision-por-pares-ahora-depende-de-nuestras-comunidades-en-implementarlo-publicado-originalmente-en-el-blog-lse-impact-of-social-sciences-en-septiembre/#.YH1h-j-xWUk)
+
+Barreras:
+- Desinformación
+- Tradición
+- Falta de entrenamiento
+- Falta de reconocimiento
+
+Miedo a:
+- Robo de ideas
+- No ser acreditado
+- Errores que lleven a humillación
+
+---
+
+class: center, middle, inverse
+
+# 2. Manuscritos reproducibles
+
+---
+
+
+## 2.1. Manuscritos reproducibles
+
+.center[&lt;h4&gt;Texto + Datos + Código&lt;/h4&gt;]
+
+Pero existe un gradiente...
+&lt;img src="https://raw.githubusercontent.com/Pakillo/writing-reproducible-manuscripts/master/images/Fig1.jpg" height="300" style="display: block; margin: auto;" /&gt;
+
+.right[ Fuente: [Pakillo](https://github.com/Pakillo/writing-reproducible-manuscripts) ]
+
+---
+
+## 3.2. Básica
+
+Texto + Datos + Código
+
+Almacenados y accesibles en **archivos permanentes**
+- ✔️ Zenodo, dryad
+- ❌ Github
+
+---
+
+## 3.3. Datos  
+
+- En formato abierto:&lt;br&gt;
+✔️csv, txt  &lt;br&gt;
+❌  excel&lt;br&gt;
+
+--
+
+- Identificador permanente (DOI)
+
+- Código de depuración (limpieza)
+
+- README (explicando: quien, como, cuando, donde se colectaron los datos).  
+Evita: **variables no localizadas**
+
+--
+
+- Licencias&lt;br&gt;
+Las más comunes son:&lt;br&gt;
+**CCO** Creative Commons: no condiciones&lt;br&gt;
+**CC-BY** Uso con atribución&lt;br&gt;
+**MIT** para software&lt;br&gt;
+
+Leer más: [Tierney &amp; Ram 2020](https://arxiv.org/abs/2002.11626)
+
+---
+
+## 3.4. Código
+
+- En formato abierto:&lt;br&gt;
+✔️ Script en R o Rmd
+
+- Identificador permanente (DOI)&lt;br&gt;
+
+- Licencias (CCO, CC-BY)&lt;br&gt;
+
+- README (incluir sessionInfo()). &lt;br&gt;
+Evita problemas con actualización de **librerías**
+
+[Leer más: Eglen et al 2016](https://doi.org/10.1038/nn.4550)
+
+---
+
+## 3.7. Ejercicios
+
+En equipo 🏽👯 
+- Escribir esqueleto de articulo incluyendo algunos análisis (40 minutos)
+- Subir repositorio a github, agregar enlace en el chat
+- Otro equipo replicara el manuscrito usando datos similares (25 minutos)
+
+.panelset[
+.panel[.panel-name[Articulo]
+Escribir esqueleto de artículo y exportar documento sin código.
+
+Debe incluir:
+- Introducción, métodos, resultados, discusión y referencias.
+
+Ejemplo:
+
+```r
+Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no sabemos si están perdiendo peso conforme se calienta el océano y se reduce la disponibilidad de alimento para ésta especie. &lt;br&gt;
+Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la forma del pinguino pero necesitamos corregir las medidas por la longitud de aleta  
+- El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. &lt;br&gt;
+```
+]
+
+.panel[.panel-name[Reproducir articulo]
+Reusar Rmd
+- Escribir esqueleto de artículo sobre pingüinos de Papúa usando el esqueleto de pingüinos de Adelia.
+- Al final reflexionar que podrian incluir en sus futuras instrucciones para facilitar reproducibilidad
+]
+]
+
+---
+
+# 4. Paquetes
+
+.pull-left[**Rmarkdown**
+- Todo esta contenido por lo que permite tener continuidad en los análisis
+
+**Fertile**
+- Revisa continuamente que el articulo sea reproducible
+Por ejemplo, si usas una ruta absoluta te va a sugerir que uses una ruta relativa
+
+**Checkpoint**
+- Permite regresar a algún punto de tu análisis]
+
+.pull.right[
+
+&lt;img src="https://the-turing-way.netlify.app/_images/file-collection.jpg" height="300" style="display: block; margin: auto;" /&gt;
+
+.right[ Fuente: [The Turing way](https://the-turing-way.netlify.app/afterword/afterword.html) ]
+]
+
+---
+
+class: left, inverse
+
+# Contacto
+
+Recapitulando
+
+- [Reproducibilidad](1. Reproducibilidad)
+- [Manuscritos reproducibles](2. Manuscritos reproducibles)
+
+&lt;br&gt;
+&lt;br&gt;
+
+Para dudas, comentarios y sugerencias:  
+- Escríbeme a miriamjlerma@gmail.com
+
+&lt;br&gt;
+&lt;br&gt;
+
+.right[Este material esta accesible y se encuentra en &lt;br&gt;
+mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+
+
+.center[
+
+&lt;h3&gt;&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/&gt;&lt;/svg&gt;[Volver ](https://miriamlerma.netlify.app/materiales.html)
+]]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
