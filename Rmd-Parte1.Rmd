@@ -17,17 +17,20 @@ output:
 #Paquetes
 library(xaringanExtra)
 xaringanExtra::use_clipboard()
+library(kableExtra)
+options(knitr.table.format = "latex")
 ```
 
 class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1548&q=80)
 background-size: cover
 
-# Rmarkdown <br> Básicos
-
-<h2>Miriam Lerma<br>
+# `r text_spec("Rmarkdown", background = "#FFFFFF", color = "#264653", bold = T, font_size=60)`
+# `r text_spec("Básicos", background = "#FFFFFF", color = "#264653", bold = T, font_size=60)`
 <br>
-Abril 2021</h2>
+<h2>`r text_spec("Miriam Lerma", background = "#FFFFFF", color = "#264653", bold = T)`</h2>
+
+<h3>`r text_spec("Abril 2021", background = "#FFFFFF", color = "#264653", bold = T)`</h3>
 
 
 

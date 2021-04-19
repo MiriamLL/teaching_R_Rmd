@@ -23,11 +23,12 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1587533042502-1209d3f2d891?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1548&amp;q=80)
 background-size: cover
 
-# Rmarkdown &lt;br&gt; Básicos
-
-&lt;h2&gt;Miriam Lerma&lt;br&gt;
+# &lt;span style=" font-weight: bold;    color: #264653 !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FFFFFF !important;font-size: 60px;" &gt;Rmarkdown&lt;/span&gt;
+# &lt;span style=" font-weight: bold;    color: #264653 !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FFFFFF !important;font-size: 60px;" &gt;Básicos&lt;/span&gt;
 &lt;br&gt;
-Abril 2021&lt;/h2&gt;
+&lt;h2&gt;&lt;span style=" font-weight: bold;    color: #264653 !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FFFFFF !important;" &gt;Miriam Lerma&lt;/span&gt;&lt;/h2&gt;
+
+&lt;h3&gt;&lt;span style=" font-weight: bold;    color: #264653 !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FFFFFF !important;" &gt;Abril 2021&lt;/span&gt;&lt;/h3&gt;
 
 
 
@@ -506,17 +507,27 @@ knitr::kable(TablaPinguinos)
 ```
 
 
-
-|especie |sexo   |     mean|  n|
-|:-------|:------|--------:|--:|
-|Adelia  |hembra | 3368.836| 73|
-|Adelia  |macho  | 4043.493| 73|
-|Adelia  |NA     | 3540.000|  5|
-|Barbijo |hembra | 3527.206| 34|
-|Barbijo |macho  | 3938.971| 34|
-|Papúa   |hembra | 4679.741| 58|
-|Papúa   |macho  | 5484.836| 61|
-|Papúa   |NA     | 4587.500|  4|
+\begin{tabular}{l|l|r|r}
+\hline
+especie &amp; sexo &amp; mean &amp; n\\
+\hline
+Adelia &amp; hembra &amp; 3368.836 &amp; 73\\
+\hline
+Adelia &amp; macho &amp; 4043.493 &amp; 73\\
+\hline
+Adelia &amp; NA &amp; 3540.000 &amp; 5\\
+\hline
+Barbijo &amp; hembra &amp; 3527.206 &amp; 34\\
+\hline
+Barbijo &amp; macho &amp; 3938.971 &amp; 34\\
+\hline
+Papúa &amp; hembra &amp; 4679.741 &amp; 58\\
+\hline
+Papúa &amp; macho &amp; 5484.836 &amp; 61\\
+\hline
+Papúa &amp; NA &amp; 4587.500 &amp; 4\\
+\hline
+\end{tabular}`
 
 ---
 
@@ -605,67 +616,32 @@ Finalmente, para agregar descripción a la tabla se puede agregar **caption**
 knitr::kable(TablaPinguinos, caption = "Tabla 1. Ejemplo.")
 ```
 
-&lt;table&gt;
-&lt;caption&gt;Tabla 1. Ejemplo.&lt;/caption&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; especie &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; sexo &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; mean &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelia &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; hembra &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3368.836 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 73 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelia &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; macho &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4043.493 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 73 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelia &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3540.000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Barbijo &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; hembra &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3527.206 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Barbijo &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; macho &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3938.971 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Papúa &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; hembra &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4679.741 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Papúa &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; macho &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 5484.836 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 61 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Papúa &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4587.500 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+`\begin{table}
+
+\caption{\label{tab:unnamed-chunk-30}Tabla 1. Ejemplo.}
+\centering
+\begin{tabular}[t]{l|l|r|r}
+\hline
+especie &amp; sexo &amp; mean &amp; n\\
+\hline
+Adelia &amp; hembra &amp; 3368.836 &amp; 73\\
+\hline
+Adelia &amp; macho &amp; 4043.493 &amp; 73\\
+\hline
+Adelia &amp; NA &amp; 3540.000 &amp; 5\\
+\hline
+Barbijo &amp; hembra &amp; 3527.206 &amp; 34\\
+\hline
+Barbijo &amp; macho &amp; 3938.971 &amp; 34\\
+\hline
+Papúa &amp; hembra &amp; 4679.741 &amp; 58\\
+\hline
+Papúa &amp; macho &amp; 5484.836 &amp; 61\\
+\hline
+Papúa &amp; NA &amp; 4587.500 &amp; 4\\
+\hline
+\end{tabular}`
+\end{table}`
 
 ---
 
