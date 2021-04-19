@@ -76,13 +76,16 @@ xaringanExtra::use_clipboard()
 xaringanExtra::use_panelset()
 ```
 
---
-
 ## Ustedes
 
 - Tienen conocimientos básicos Rmd o md.   
 - Quieren poder hacer una presentación desde RStudio.
 
+## Preguntas
+Responder en el chat 💬
+- En que programa realizan sus presentaciones?
+- Han escuchado de Xaringan?
+- A que les suena Xaringan?
 
 ---
 
