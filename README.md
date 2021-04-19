@@ -38,4 +38,7 @@ Clase 9: Presentaciones (usando xaringan).
 Presentacion: https://miriamll.github.io/Curso_CIAD/Xaringan-Parte1  
 
 Clase 10: Intro a git y github.  
-Presentacion: https://miriamll.github.io/Curso_CIAD/GitGithubZenodo 
+Presentacion: https://miriamll.github.io/Curso_CIAD/GitGithubZenodo  
+
+Clase 11: Reproducibilidad.  
+Presentacion: https://miriamll.github.io/Curso_CIAD/Repro 
