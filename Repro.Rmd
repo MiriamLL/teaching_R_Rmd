@@ -82,7 +82,7 @@ LatinR2020
 En ingles  
 - [`r fa("youtube", fill = ColorLink)` RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI)  
 - [`r fa("youtube", fill = ColorLink)` Ted: crisis reproducibilidad](https://www.youtube.com/watch?v=FpCrY7x5nEE)
-- [`r fa("book-open", fill = ColorLink)`Matt Dray](https://www.rostrum.blog/2020/01/22/repro-three-things/)
+- [`r fa("book-open", fill = ColorLink)` Matt Dray](https://www.rostrum.blog/2020/01/22/repro-three-things/)
 
 Imagenes
 - Portada
@@ -124,9 +124,9 @@ knitr::include_graphics('https://the-turing-way.netlify.app/_images/Reproducible
 ```
 
 - **Reproducible**: mismos datos deben dar el mismo resultado.
-- **Replicable**: mismos analisis pero con diferentes datos dan resultados cualitativamente similares.
-- **Robusto**: los mismos datos pero diferente analisis, dan resultados similares.
-- **Generalizable**: diferentes datos ya nalisis para entender que los resultados no son dependientes de ese set de datos en particular y de ese analisis en particular. 
+- **Replicable**: mismos análisis pero con diferentes datos dan resultados cualitativamente similares.
+- **Robusto**: los mismos datos pero diferente análisis, dan resultados similares.
+- **Generalizable**: diferentes datos y análisis para entender que los resultados no son dependientes de ese set de datos en particular y de ese análisis en particular. 
 
 Fuente: [The turing way](https://the-turing-way.netlify.app/_images/ReproducibleMatrix.jpg)
 
@@ -135,12 +135,12 @@ Fuente: [The turing way](https://the-turing-way.netlify.app/_images/Reproducible
 ## 1.3. Reproducibilidad
 
 Recordemos que: <br>
-El método científico esta sustentado en dos pilares **reproducibilidad** y refutabilidad <br>
+El método científico esta sustentado en dos pilares: **reproducibilidad** y refutabilidad <br>
+
 La reproducibilidad implica que se pueda repetir el experimento, en cualquier lugar y persona para verificar que los resultados obtenidos sean verídicos.<br>
 
-Desafortunadamente, por muchos años se ha perdido el acceso a datos y métodos<br>
-
-Afortunadamente, estamos en una época de cambio de paradigmas<br>
+**Desafortunadamente**, por muchos años se ha perdido el acceso a datos y métodos<br>
+**Afortunadamente**, estamos en una época de cambio de paradigmas<br>
 
 ```{r, echo=FALSE, out.height=300, fig.align='center'}
 knitr::include_graphics('https://www.turing.ac.uk/sites/default/files/inline-images/Fair%20principles.jpg')
@@ -161,7 +161,7 @@ Podemos:
 knitr::include_graphics('https://the-turing-way.netlify.app/_images/reasons_reproducibility.png')
 ```
 
-Por ejemplo, evitando que [revistas retiran articulos sobre COVID debido a falta de integridad en los datos](https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions)
+Por ejemplo, evitando casos como: [revistas retiran articulos sobre COVID debido a falta de integridad en los datos](https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions)
 
 ---
 
@@ -182,7 +182,7 @@ knitr::include_graphics('https://the-turing-way.netlify.app/_images/reproducibil
 
 ## 1.6. Supervisores
 
-Al tener proyectos reproducibles, se puede:
+Como **supervisor** al tener proyectos reproducibles, se puede:
 - Evaluar como se procesaron los datos
 - Detectar errores
 - Facilitar la escritura y edición
@@ -198,7 +198,7 @@ knitr::include_graphics('https://the-turing-way.netlify.app/_images/communicatio
 
 ## 1.7. Tesistas
 
-Un laboratorio que tenga proyectos reproducibles, permite que:
+Como **tesista** entrar a un laboratorio que tenga proyectos reproducibles, permite que:
 - Inicien con análisis base
 - Complementen, actualicen y mejoren el código
 - No se pierdan en el universo de analisis y paquetes
@@ -207,7 +207,7 @@ Un laboratorio que tenga proyectos reproducibles, permite que:
 Trabajar en un laboratorio con flujos de trabajo reproducible, ahorra tiempo y permite invertir esfuerzos en mejorar el código
 
 ```{r, echo=FALSE, out.height=300, fig.align='center'}
-knitr::include_graphics('https://genr.eu/wp/wp-content/uploads/2020/07/Contributing-1733x2048.jpg')
+knitr::include_graphics('https://ekaroune.github.io/The-Open-Archaeobotanist/asset/img/evolving_science_pic.jpg')
 ```
 
 ---
@@ -223,7 +223,7 @@ class: title-slide, center, middle, inverse
 .pull-left[
 De 1500 investigadores que intentaron reproducir experimentos publicados, 70% fallaron.
 
-Por lo que la mayoría concluyo que existe una **crisis en la reproducibilidad**
+Por lo que la mayoría concluyó que existe una **crisis en la reproducibilidad**
 ]
 
 .pull-right[
@@ -254,7 +254,7 @@ knitr::include_graphics('https://www.nature.com/news/polopoly_fs/7.36717.1464174
 .pull-left[
 Curiosamente, la poca reproducibilidad no solo aplicaba para resultados de otros científicos si no también incluía **sus propios resultados**. 
 
-Falta de documentacion y programas obsoletos mostraron que era muy dificil reproducir incluso sus propios resultados de hace **10 años**.
+Falta de documentación y programas obsoletos mostraron que era muy difícil reproducir incluso sus propios resultados de hace **10 años**.
 ]
 .pull-right[
 - [Ten years reproducibility challenge](https://rescience.github.io/ten-years/)
@@ -269,14 +269,15 @@ Fuente: [nature](https://www.nature.com/articles/d41586-020-02462-7)
 ---
 
 ## 2.4. Reproducibilidad en ecología
-Hay poca reproducibilidad en ecologia ([Culina 2020](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000763))
+
+Hay poca reproducibilidad en ecología ([Culina 2020](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000763))
 
 - **73%** de los artículos publicados no proveen código
 - **5%** no todo el código
 - **1%** no proveen datos
 - **21%** casi reproducible (dentro de los cuales 26% no usa software libre, 56% no provee todos los datos, y 46% no reportan la version del software)
 
-```{r, echo=FALSE, out.height=350, fig.align='center'}
+```{r, echo=FALSE, out.height=340, fig.align='center'}
 knitr::include_graphics('https://media.eurekalert.org/multimedia_prod/pub/web/238857_web.jpg')
 ```
 .right[ Fuente: [@Culina](https://twitter.com/antica_c/status/1288382890636709888)]
@@ -285,9 +286,7 @@ knitr::include_graphics('https://media.eurekalert.org/multimedia_prod/pub/web/23
 
 ## 2.5. Barreras
 
-[`r fa("external-link-alt", fill = '#e63946')` Tenemos la tecnologia, depende de nosotros implementarlo ](https://blog.scielo.org/es/2017/09/27/tenemos-la-tecnologia-para-salvar-la-revision-por-pares-ahora-depende-de-nuestras-comunidades-en-implementarlo-publicado-originalmente-en-el-blog-lse-impact-of-social-sciences-en-septiembre/#.YH1h-j-xWUk)
-
-Barreras:
+.pull-left[Barreras:
 - Desinformación
 - Tradición
 - Falta de entrenamiento
@@ -297,7 +296,15 @@ Miedo a:
 - Robo de ideas
 - No ser acreditado
 - Errores que lleven a humillación
+]
 
+.pull-right[
+```{r, echo=FALSE, out.height=250}
+knitr::include_graphics('https://pbs.twimg.com/media/EjQ5HsYXkAAqXmj.jpg')
+```
+]
+
+[`r fa("external-link-alt", fill = '#e63946')` Tenemos la tecnologia, depende de nosotros implementarlo ](https://blog.scielo.org/es/2017/09/27/tenemos-la-tecnologia-para-salvar-la-revision-por-pares-ahora-depende-de-nuestras-comunidades-en-implementarlo-publicado-originalmente-en-el-blog-lse-impact-of-social-sciences-en-septiembre/#.YH1h-j-xWUk)
 
 ---
 
@@ -378,13 +385,11 @@ Evita problemas con actualización de **librerías**
 
 En equipo 🏽👯 
 - Escribir esqueleto de articulo incluyendo algunos análisis (40 minutos)
-- Subir repositorio a github, agregar enlace en el chat
+- Subir repositorio a github
 - Otro equipo replicara el manuscrito usando datos similares (25 minutos)
 
 .panelset[
 .panel[.panel-name[Articulo]
-Escribir esqueleto de artículo y exportar documento sin código.
-
 Debe incluir:
 - Introducción, métodos, resultados, discusión y referencias.
 
@@ -411,7 +416,7 @@ Reusar Rmd
 - Todo esta contenido por lo que permite tener continuidad en los análisis
 
 **Fertile**
-- Revisa continuamente que el articulo sea reproducible
+- Revisa continuamente que el articulo sea reproducible. 
 Por ejemplo, si usas una ruta absoluta te va a sugerir que uses una ruta relativa
 
 **Checkpoint**
@@ -419,11 +424,11 @@ Por ejemplo, si usas una ruta absoluta te va a sugerir que uses una ruta relativ
 
 .pull.right[
 
-```{r, echo=FALSE, out.height=300, fig.align='center'}
+```{r, echo=FALSE, out.height=400, fig.align='center'}
 knitr::include_graphics('https://the-turing-way.netlify.app/_images/file-collection.jpg')
 ```
 
-.right[ Fuente: [The Turing way](https://the-turing-way.netlify.app/afterword/afterword.html) ]
+Fuente de la imagen [The Turing way](https://the-turing-way.netlify.app/afterword/afterword.html)
 ]
 
 ---
