@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 11</title>
+    <title>Clase 13</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
     <script src="GitGithubZenodo_files/header-attrs-2.6/header-attrs.js"></script>
@@ -25,7 +25,7 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1485254767195-60704c46702e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80)
 background-size: cover
 
-# &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #1d3557 !important;font-size: 80px;" &gt;GitHub, Zenodo y Git&lt;/span&gt;
+# &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #1d3557 !important;font-size: 60px;" &gt;Git, GitHub y Zenodo&lt;/span&gt;
 
 &lt;br&gt;
 &lt;h2&gt;&lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #264653 !important;" &gt;Miriam Lerma&lt;/span&gt;&lt;/h2&gt;
@@ -39,20 +39,25 @@ class: inverse
 
 # Intro
 
-- Github
-- Zenodo
-- Compartir bitacora y artículo
-- Git
+- [Git](# 1. Git)
+- [Github](# 2. Github)
+- [Zenodo](# 3. Zenodo)
+- [Git+Github](# 4. Git+Github)
 
 
 
---
-
-## Ustedes
-
-- Quieren subir sus materiales a github
-- Quieren agregarle un doi a sus materiales
+### Ustedes
 - Quieren usar sistema de control de versiones
+- Quieren subir su repositorio a github
+- Quieren agregarle un doi a sus materiales
+
+### Preguntas
+Responder en el chat 💬
+- Han escuchado que es un sistema de control de versiones?
+- Como mantienen controles de cambios en sus documentos?
+- Cuantos tienen cuenta de usuario en github?
+- Alguien ha usado zenodo?
+- Alguien tiene git ya instalado en su computadora?
 
 ---
 
@@ -61,14 +66,14 @@ class: inverse
 ## Créditos &amp; Recursos
 
 - Happy git:    
-[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Happy Git by Jennifer Bryan](https://happygitwithr.com/)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"/&gt;&lt;/svg&gt; Happy Git by Jennifer Bryan](https://happygitwithr.com/)&lt;br&gt;
 
 - Tutoriales en español  
-[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesChile](https://vimeo.com/rladieschile)&lt;br&gt;
-[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesBuenosAires](https://www.youtube.com/watch?v=33pZ9dtc-Co)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesChile](https://vimeo.com/rladieschile)&lt;br&gt;
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesBuenosAires](https://www.youtube.com/watch?v=33pZ9dtc-Co)&lt;br&gt;
 
 - Tutoriales en ingles  
-[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#4cc9f0;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesFreiburg](https://www.youtube.com/watch?v=tSse0KPgSoQ&amp;t=1s)
+[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; RLadiesFreiburg](https://www.youtube.com/watch?v=tSse0KPgSoQ&amp;t=1s)
 - Imagen de portada
 [Unsplash by Joel Filip](https://unsplash.com/@joelfilip)
 
@@ -76,23 +81,113 @@ class: inverse
 
 class: center, middle, inverse
 
-# 1. Github
+# 1. Git
 
 ---
 
-## 1.1. Git &amp; GitHub
+## 1.2. Porque usar Git
 
 &lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/200px-Git-logo.svg.png" height="50" style="display: block; margin: auto;" /&gt;
 
-[Git](https://git-scm.com/): es un software de **control de versiones**. El proposito es registrar cambios en los archivos y tambien permite que varias personas trabajen sobre un archivo compartido.
+**Git** es un software de **control de versiones** (VCS-Version control system). 
+
+- Usar **control de versiones** te permite modificar tu codigo teniendo un respaldo en una red segura.
+
+- Esto te permite tender un historial de los cambios que has hecho en tu **repositorio** y poder volver a archivos antiguos.
+
+
+---
+
+## 1.2. Repositorio
+
+Un **repositorio** es un lugar donde se almacenan los datos actualizados.
+
+En un repositorio puede tener seguimiento de todos los cambios hechos a tu proyecto atraves del tiempo
+
+Generalmente se guarda como **.git/** dentro de tu proyecto.
+
+Lo que significa que si borras este **.git/** borras todo el historial de tu proyecto.
+
+Tu repositorio puede estar solamente de manera local.
+
+---
+
+## 1.3. Repositorio
+
+Existe la posibilidad de que ya tengan **Git** instalado (aunque es probablemente que deban actualizarlo)
+
+Para revisar si ya lo tienen tienen que ir a la [**shell**](https://happygitwithr.com/shell.html#shell) y escribir
+
+```r
+which git
+git --version
+```
+
+Hay que instalarlo si les aparece
+
+```r
+git: command not found
+```
+
+&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git10.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+## 1.3. Instalacion
+
+- Git fue desarrollado para programadores, no para investigadores por lo que puede ser poco intuitivo
+- Una desventaja es que instalacion varia mucho entre computadoras
+- La ventaja es que solo se debe instalar una vez
 
 --- 
+- Para descargar:&lt;br&gt;
+Pagina [git](https://git-scm.com/)
 
-&lt;img src="https://avatars.githubusercontent.com/u/583231?v=4" height="80" style="display: block; margin: auto;" /&gt;
+- Para instalar git:&lt;br&gt;
+[Windows](https://happygitwithr.com/install-git.html#install-git-windows)&lt;br&gt;
+[macOS](https://happygitwithr.com/install-git.html#macos)&lt;br&gt;
+[Linux](https://happygitwithr.com/install-git.html#linux)
+
+---
+
+## 1.4. Ejercicios 
+
+1 Revisar ✏️
+
+- Abrir Tool&gt;Shell
+- Escribir
+
+
+```r
+which git
+git --version
+```
+
+2 Responder en el chat 💬
+- Quien ya tiene instalado git?
+- Que version tienen instalada?
+
+---
+
+class: center, middle, inverse
+
+# 2. Github
+
+---
+
+## 2.1. Porque usar Github
+
+- Te permite tener un respaldo de tu proyecto
+- Te permite colaborar con diferentes personas
+- Facilita el trabajo remoto
+
+---
+
+## 2.1. Que es GitHub
+
+&lt;img src="https://avatars.githubusercontent.com/u/583231?v=4" height="200" style="display: block; margin: auto;" /&gt;
 
 [Github](https://github.com/): es una plataforma para alojar proyectos utilizando el sistema de control de versiones. &lt;br&gt;
-
---- 
 
 **Nota** En 2018 Microsoft compro la plataforma github, por lo que muchas personas dejaron de utilizarla.
 Hay muchas otras opciones para alojar repositorios.&lt;br&gt;
@@ -101,9 +196,7 @@ Por ejemplo: [gitlab](https://about.gitlab.com/)
 
 ---
 
-## 1.2. Registrarse
-
-¿Cuantos ya se registraron?
+## 2.2. Registrarse
 
 Para usar github hay que ingresar a la página [Github](https://github.com/) &lt;br&gt;
 
@@ -111,9 +204,9 @@ Para usar github hay que ingresar a la página [Github](https://github.com/) &lt
 
 ---
 
-## 1.3. Usuario
+## 2.3. Usuario
 
-Github es gratis, pero para usar github hay que registrarse &lt;br&gt;
+Para usar github hay que registrarse &lt;br&gt;
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github2.png" height="300" style="display: block; margin: auto;" /&gt;
 
 **Recomendaciones**
@@ -125,7 +218,7 @@ Github es gratis, pero para usar github hay que registrarse &lt;br&gt;
 
 ---
 
-## 1.4. Repositorio
+## 2.4. Repositorio
 
 Hay varias maneras de crear un repositorio, una de ellas usar el símbolo de **+** junto a nuestra foto. 
 
@@ -133,7 +226,7 @@ Hay varias maneras de crear un repositorio, una de ellas usar el símbolo de **+
 
 ---
 
-## 1.5. Repositorio
+## 2.5. Repositorio
 
 Hay que darle un nombre de nuestro repositorio, una descripción, si es público o privado y otras opciones. Por ahora podemos usar **Prueba** como nombre del repositorio y **Publico**
 
@@ -141,7 +234,7 @@ Hay que darle un nombre de nuestro repositorio, una descripción, si es público
 
 ---
 
-## 1.6. Repositorio
+## 2.6. Repositorio
 
 - Les va a aparecer una serie de instrucciones, que por el momento puede que no les sean útiles. Las dejaremos para más tarde.
 
@@ -151,7 +244,7 @@ Hay que darle un nombre de nuestro repositorio, una descripción, si es público
 
 ---
 
-## 1.6. Repositorio
+## 2.7. Repositorio
 
 Ya pueden subir archivos desde su computadora.  
 Hay que llenar los espacios de **commit changes**. Por ahora podrían poner algo como **Prueba de repositorio** y **Agregue mi primer archivo Rmd**.
@@ -162,13 +255,40 @@ Hay que llenar los espacios de **commit changes**. Por ahora podrían poner algo
 
 ---
 
-class: center, middle, inverse
+## 2.8. Ejercicios 
 
-# 2. Zenodo
+Github ✏️
+- Inscribirse a github
+- Crear primer repositorio
+
+Preguntas 💬
+- Quien ya tiene usuario de github?
+- Quien ya tiene su primer repositorio?
 
 ---
 
-## 2.1. Zenodo
+class: center, middle, inverse
+
+# 3. Zenodo
+
+---
+
+## 3. Zenodo
+
+Muchas revistas solicitan incluir datos o codigo en las publicaciones.
+
+Por ejemplo: 
+- [**Frontiers**](https://www.frontiersin.org/about/policies-and-publication-ethics) requiere que los autores tengan disponibles todos los datos relevantes para las conclusiones del manuscrito. &lt;br&gt;
+Todos los datos deben estar publicamente disponibles y ser citados de acuerdo a sus reglamentos. 
+
+- [**PLOS ONE**](https://journals.plos.org/plosone/s/submission-guidelines#loc-data-reporting) requiere que los autores agreguen una seccion que rediriga al repositorio publico donde estan accesibles los datos, o que los datos sean parte del articulo. &lt;br&gt;
+
+**Recomendacion** No incluyan los datos en la publicacion (por motivos de licencia), es mejor tenerlos en un repositorio.
+
+
+---
+
+## 3.1. Zenodo
 &lt;img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Zenodo_logo.jpg" height="50" style="display: block; margin: auto;" /&gt;
 
 [Zenodo](https://zenodo.org/) es un repositorio de acceso abierto operado por CERN (Organización Europea para la Investigación Nuclear).
@@ -188,7 +308,7 @@ Zenodo recienmente se asocio con [Dryad](https://datadryad.org/stash/) (otro rep
 
 ---
 
-## 2.1. Ingresar
+## 3.2. Ingresar
 
 Para usar zenodo, hay que ingresar a la pagina [Zenodo](https://zenodo.org/) 
 
@@ -196,7 +316,7 @@ Para usar zenodo, hay que ingresar a la pagina [Zenodo](https://zenodo.org/)
 
 ---
 
-## 2.2. Registrarse
+## 3.3. Registrarse
 
 Esta plataforma es gratuita. Para registrarse, si tienen github es bastante sencillo, solo hace falta ingresar su cuenta.
 
@@ -204,7 +324,7 @@ Esta plataforma es gratuita. Para registrarse, si tienen github es bastante senc
 
 ---
 
-## 2.3. En Zenodo
+## 3.4. En Zenodo
 
 Para asignar un **DOI** a su repositorio.
 
@@ -216,7 +336,7 @@ Para asignar un **DOI** a su repositorio.
 
 ---
 
-## 2.4. En Github
+## 3.5. En Github
 
 Para asignar un **DOI** a su repositorio.
 
@@ -228,7 +348,7 @@ Para asignar un **DOI** a su repositorio.
 
 ---
 
-## 2.5. En Zenodo
+## 3.6. En Zenodo
 
 Al volver a zenodo.
 
@@ -258,80 +378,30 @@ class: inverse, center, middle
 
 25 minutos
 
-En equipo o individual 💃🏽👯 
-- Escribir pasos tipo bitácora de análisis de pingüinos. 
-- Escribir esqueleto de artículo sobre pingüinos de Adelia.
+En equipo 💃🏽👯 
+- Escribir codigo en Rmd para analizar datos de pingüinos. 
+- Subir Rmd a github, compartir enlace en drive
 
-.panelset[
-.panel[.panel-name[Bitácora]
+--- 
+
 Instrucciones a incluir en el Rmd:
 - Como cargar datos de pingüinos y filtrar con solo datos de Adelia
 - Como crear un modelo lineal con masa corporal y longitud de la aleta
 - Agregar tabla con resultados del modelo
 - Agregar gráfica de masa corporal por longitud de la aleta &lt;br&gt;
+
 **Nota** Piensen en alguien que no conocen replicando su analisis
-]
-
-.panel[.panel-name[Artículo]
-Escribir esqueleto de artículo y exportar documento sin código.
-
-Instrucciones:
-- Agregar introducción, métodos, resultados, discusión y referencias.
-
-Ejemplo:
-
-```r
-Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no sabemos si están perdiendo peso conforme se calienta el océano y se reduce la disponibilidad de alimento para ésta especie. &lt;br&gt;
-Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la forma del pinguino pero necesitamos corregir las medidas por la longitud de aleta  
-- El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. &lt;br&gt;
-```
-]
-]
-
-
----
-
-## 3.2. Ejercicios
-
-
-Individual 🧘🏽
-- Crear usuario en github
-- Crear repositorio  
-
-En equipo o individual 👯
-- Subir materiales a github:  
-La bitacora y articulo.
-
-.panelset[.panel[.panel-name[Bitacora]
-Instrucciones:
-- Subir el documento en html o Rmd a github  
-- Compartir en enlace en el chat
-]
-
-.panel[.panel-name[Reproducibilidad]
-En equipo o individual.
-- Reproducir analisis de otro equipo usando la bitacora
-- Al final reflexionar que podrian incluir en sus futuras bitacoras 
-]
-
-.panel[.panel-name[Extra-Papúa]
-Reusar Rmd
-- Escribir esqueleto de artículo sobre pingüinos de Papúa usando el esqueleto de pingüinos de Adelia.
-]
-
-]
 
 ---
 
 class: center, middle, inverse
 
-# 4. Git
+# 4. Git+Github
 
 ---
 
 ## 4.1. Git
 
-- Descargar [git](https://git-scm.com/)
 - Instalar git
 - [Introduce yourself to git](https://happygitwithr.com/hello-git.html)
 
@@ -341,7 +411,6 @@ git config --global user.name 'Mi nombre'
 git config --global user.email 'micorreo@ejemplo.com'
 git config --global --list
 ```
-
 - Copiar code en github
 - File&gt;NewFile&gt;VersionControl
 - Pull
@@ -362,6 +431,7 @@ Abrir nuevo proyecto
 ## 4.2. Version control
 
 Elegir version control
+
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git02.png" height="400" style="display: block; margin: auto;" /&gt;
 
 ---
@@ -369,6 +439,7 @@ Elegir version control
 ## 4.3. Clonar
 
 Copiar enlace de github
+
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git03.png" height="400" style="display: block; margin: auto;" /&gt;
 
 ---
@@ -378,21 +449,13 @@ Copiar enlace de github
 Pegar el enlace en RStudio
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git04.png" height="400" style="display: block; margin: auto;" /&gt;
 
-Opcion 2:
-
-```r
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-```
-
 ---
 
 ## 4.5. Pestaña
 
 Para confirmar que todo funciono, deben aparecer nuevas pestañas dentro de su RStudio
 
-
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git05.png" height="300" style="display: block; margin: auto;" /&gt;
-
 
 ---
 
@@ -409,16 +472,9 @@ Nos confirma si tenemos todo en nuestro computadora
 
 ## 4.7. Modificar
 
-Opcion 1
 - Abrir y modificar el README 
 - Agregar linea en README 
 
-Opcion 2
-
-```r
-echo "Una linea que escribimos en el README" &gt;&gt; README.md
-git status
-```
 
 ---
 
@@ -437,16 +493,6 @@ Esto nos servira en el futuro si tenemos que regresar a un punto importante.
 Los cambios estan locales, para que se refleje en github hay que empujarlo (**push**)
 &lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git09-push.png" height="300" style="display: block; margin: auto;" /&gt;
 
-Otra opcion
-
-```r
-git add -A
-git commit -m "Un commit desde mi computadora"
-git push
-```
-
-
-
 ---
 
 class: inverse, center, middle
@@ -460,7 +506,6 @@ class: inverse, center, middle
 
 
 - Clonar repositorio usando RStudioCloud
-- Si no tienen git: instalarlo
 
 ---
 
@@ -469,11 +514,10 @@ class: left, inverse
 # Contacto
 
 Recapitulando
-
-- [Github](#1 Github)
-- [Zenodo](#2 Zenodo)
-- [Git](#3 Git)
-
+- [Git](# 1. Git)
+- [Github](# 2. Github)
+- [Zenodo](# 3. Zenodo)
+- [Git+Github](# 4. Git+Github)
 
 &lt;br&gt;
 &lt;br&gt;
@@ -487,9 +531,6 @@ Para dudas, comentarios y sugerencias:
 .right[Este material esta accesible y se encuentra en &lt;br&gt;
 mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
 y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#74c69d;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
-
-&lt;br&gt;
-&lt;br&gt;
 
 
 .center[
