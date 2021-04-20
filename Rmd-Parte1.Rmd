@@ -38,13 +38,14 @@ background-size: cover
 
 # Intro
 
-- Que es Rmd
-- Texto, Chunks, YAML & Knit
-- Titulos  
-- Cambiar parametros del chunk
-- Cambiar Outputs  
-- Tablas 
-- Figuras
+- [Que es Rmd](#rmd)
+- [Texto, Chunks, YAML & Knit](#texto)
+- [Titulos](#titulos) 
+- [Cambiar parametros del chunk](#chunks)
+- [Cambiar Outputs](#outputs)
+- [Figuras](#figuras)
+- [Tablas](#tablas) 
+
 
 ```{r, echo=FALSE}
 library(emo)
@@ -79,7 +80,9 @@ ColorLink<-"#52b788"
 
 - Imagen de portada
 [Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
+
 ---
+name: rmd
 
 ## 1. RMarkdown 
 
@@ -168,6 +171,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ```
 
 ---
+name: texto
 
 ## 1.5. Diferencias entre R y Rmd
 
@@ -339,6 +343,7 @@ class: inverse, center, middle
 # Más funcionalidades
 
 ---
+name: titulos
 
 # 6.1. Titulos
 
@@ -366,6 +371,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ```
 
 ---
+name: chunks
 
 # 7. Chunks
 
@@ -407,14 +413,18 @@ Pros y contras de usar uno o el otro.
 - **html**: se puede incluir toda clase de contenidos`r emo::ji("star")`, pero resulta poco familiar.   
 
 ---
+name: outputs
 
 ## 8.1. Outputs  
 
-Para cambiar el output, hay que especificarlo en el YAML, o darle click a la flechita `r fa("sort-down", fill = ColorLink)` de Knit y seleccionar la opcion deseada.  
+Para cambiar el output, hay que especificarlo en el YAML, o darle click a la flechita `r fa("sort-down", fill = ColorLink)` de Knit y seleccionar la opción deseada.  
 
 ```{r echo=FALSE, out.height=400}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Outputs.JPG')
 ```
+
+Para modificar el formato de word [ve aquí](https://rfortherestofus.com/2020/07/word-reference-documents-rmarkdown/)
+
 
 ---
 
@@ -485,6 +495,7 @@ class: center, middle, inverse
 # 10. Imágenes, Graficas y Tablas  
 
 ---
+name: figuras
 
 ## 10.1. Imágenes
 
@@ -522,6 +533,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 
 ---
+name: tablas
 
 ## 10.3. Tablas
 
@@ -640,7 +652,14 @@ class: left, inverse
 
 # Contacto
 
-Te recomiendo seguir con [`r fa("external-link-alt", fill = ColorLink)`Rmd-Parte2](https://miriamlerma.netlify.app/materiales.html).
+Recapitulando
+- [Que es Rmd](#rmd)
+- [Texto, Chunks, YAML & Knit](#texto)
+- [Titulos](#titulos) 
+- [Cambiar parametros del chunk](#chunks)
+- [Cambiar Outputs](#outputs)
+- [Figuras](#figuras)
+- [Tablas](#tablas) 
 
 Para dudas, comentarios y sugerencias:  
 - Escríbeme a miriamjlerma@gmail.com
