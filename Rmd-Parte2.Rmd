@@ -40,6 +40,8 @@ background-size: cover
 
 ---
 
+class: inverse
+
 # Intro
 - [Resultados en el texto](#inline)
 - [Bibliografía](#csl)
@@ -51,7 +53,8 @@ background-size: cover
 ```{r, echo=FALSE}
 library(emo)
 library(fontawesome)
-ColorLink<-"#4cc9f0"
+ColorLink<-"#f77f00"
+ColorLinkInverse<-'#74c69d'
 ```
 
 --
@@ -63,20 +66,21 @@ ColorLink<-"#4cc9f0"
 
 ---
 
-## Créditos & Recursos
+class: inverse
 
+## Créditos & Recursos
 - Material de Rmarkdown.  
-[`r fa("book-open", fill = ColorLink)` Rmarkdown por Resul Umit](https://resulumit.com/teaching/rmd_workshop#1)  
-[`r fa("book-open", fill = ColorLink)` RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
-[`r fa("book-open", fill = ColorLink)` Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
+[`r fa("book-open", fill = ColorLinkInverse)` Rmarkdown por Resul Umit](https://resulumit.com/teaching/rmd_workshop#1)  
+[`r fa("book-open", fill = ColorLinkInverse)` RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
+[`r fa("book-open", fill = ColorLinkInverse)` Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
 
 - Tutoriales en español:  
-[`r fa("youtube", fill = ColorLink)` RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+[`r fa("youtube", fill = ColorLinkInverse)` RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
 
 - Tutoriales en ingles:    
-[`r fa("youtube", fill = ColorLink)` RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
-[`r fa("youtube", fill = ColorLink)` RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
-[`r fa("youtube", fill = ColorLink)` RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+[`r fa("youtube", fill = ColorLinkInverse)` RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
+[`r fa("youtube", fill = ColorLinkInverse)` RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
+[`r fa("youtube", fill = ColorLinkInverse)` RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
 
 - Imagen de portada
 [Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
@@ -114,7 +118,7 @@ Al darle click al compás nos permite editar el texto usando botones.<br>
 Cuando le den click les va a aparecer un mensaje, pueden decirle ok. <br>
 Listo! Se puede editar similar a office.... y ademas te permite agregar imágenes. 
 
-```{r echo=FALSE, out.height=400}
+```{r echo=FALSE, out.height=380}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Compas.png')
 ```
 
@@ -195,8 +199,29 @@ Lo único que necesitas hacer es agregar el csl a tu YAML.<br>
 Ejemplo: **csl: biomed-central.csl**<br>
 
 - [`r fa("external-link-alt", fill = ColorLink)`Leer sobre csl](https://docs.citationstyles.org/en/1.0.1/primer.html)<br>
-- [`r fa("external-link-alt", fill = ColorLink)`Descargar csl](https://github.com/citation-style-language/styles)<br>
-- [`r fa("external-link-alt", fill = ColorLink)`Descargar csl](https://www.zotero.org/styles )<br>
+- [`r fa("external-link-alt", fill = ColorLink)`Estilos](https://github.com/citation-style-language/styles)<br>
+- [`r fa("external-link-alt", fill = ColorLink)`Descargar desde zotero](https://www.zotero.org/styles )<br>
+- [`r fa("external-link-alt", fill = ColorLink)`Desde ScienceDirect](https://rpubs.com/med11/referencias_rmarkdown)<br>
+
+
+---
+
+# 1.6. Bibliografia
+
+Para editar formato de las referencias: 
+
+- Para agregar italicas
+```{r,eval=FALSE}
+{\it Especie sp.}
+```
+
+- Para agregar acentos
+```{r,eval=FALSE}
+ó se escribe como {\'{o}}
+```
+
+Recursos:
+- [`r fa("external-link-alt", fill = ColorLink)`Excluir referencias](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)<br>
 
 ---
 
@@ -234,7 +259,7 @@ Por esto, te recomiendo agregar un titulo al final que diga: **Referencias**
 ## 1.6.2. Mendeley
 
 Para obtener las referencias en formato bib.<br>
-Desde Mendeley<br>
+Desde Mendeley software<br>
 Click derecho>Copy as>BibTex Entry
 ```{r, echo=FALSE, out.height=400}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/MendeleyBib.png')
@@ -280,6 +305,25 @@ Este paquete te permite insertar citas de manera dinamica
 ```{r, echo=FALSE, out.height=300}
 knitr::include_graphics('https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif')
 ```
+
+---
+
+## 1.6.6. Apendices
+
+La bibliografía aparece al final del documento.  
+Pero agregar apendices o figuras al final del documento es una práctica usual.
+
+
+Para solucionar esto hay que usar
+```{r, eval=FALSE}
+# Referencias
+
+<div id="refs"></div>
+
+# Appendice/Figuras
+```
+
+[`r fa("external-link-alt", fill = ColorLink)` Ver otras opciones](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html)
 
 
 ---
@@ -583,14 +627,15 @@ Recapitulando
 - [Enlaces](#enlaces)
 - [Ecuaciones](#ecuaciones)
 - [Plantillas](#plantillas)
+<br>
+<br>
 
+.right[
 Para dudas, comentarios y sugerencias:  
-- Escríbeme a miriamjlerma@gmail.com
+Escríbeme a miriamjlerma@gmail.com
 
-<br>
-<br>
 
-.right[Este material esta accesible y se encuentra en <br>
+Este material esta accesible y se encuentra en <br>
 mi [`r fa("external-link-alt", fill = '#74c69d')`github](https://github.com/MiriamLL/Curso_CIAD/)
 y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://miriamlerma.netlify.app/materiales.html)
 

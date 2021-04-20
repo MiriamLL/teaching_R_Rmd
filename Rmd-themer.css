@@ -43,16 +43,16 @@
   --header-h3-font-size: 1.75rem;
 
   /* Colors */
-  --text-color: #40916c;
-  --header-color: #2a9d8f;
+  --text-color: #1d3557;
+  --header-color: #457b9d;
   --background-color: #faf9f9;
-  --link-color: #4cc9f0;
+  --link-color: #f77f00;
   --text-bold-color: #2a9d8f;
   --code-highlight-color: rgba(255,255,0,0.5);
   --inverse-text-color: #FFFFFF;
   --inverse-background-color: #2a9d8f;
   --inverse-header-color: #FFFFFF;
-  --inverse-link-color: #74c69d;
+  --inverse-link-color: #b7e4c7;
   --title-slide-background-color: #2a9d8f;
   --title-slide-text-color: #edf6f9;
   --header-background-color: #2a9d8f;
