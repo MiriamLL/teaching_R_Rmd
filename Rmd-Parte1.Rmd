@@ -36,6 +36,8 @@ background-size: cover
 
 ---
 
+class:inverse
+
 # Intro
 
 - [Que es Rmd](#rmd)
@@ -50,7 +52,7 @@ background-size: cover
 ```{r, echo=FALSE}
 library(emo)
 library(fontawesome)
-ColorLink<-"#52b788"
+ColorLink<-"#f77f00"
 ```
 
 --
@@ -62,6 +64,7 @@ ColorLink<-"#52b788"
 - Quieren tener un buen seguimiento de lo que hicieron y poder re-hacer sus análisis con otros datos en el futuro  
 
 ---
+class: inverse
 
 ## Créditos & Recursos
 
@@ -537,20 +540,21 @@ name: tablas
 
 ## 10.3. Tablas
 
-Hay muchos paquetes para incluir tablas.  El básico es knitr::kable dentro de un **chunk**. 
+Hay muchos paquetes para incluir tablas.  El básico es knitr + kable dentro de un **chunk**. 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
+library(knitr)
 TablaPinguinos<-Pingus %>% group_by(especie,sexo) %>% 
   drop_na(masa_corporal_g)%>% summarise(mean = mean(masa_corporal_g), n = n())
 ```
 
-```{r}
+```{r, eval=FALSE}
 knitr::kable(TablaPinguinos)
 ```
 
 ---
 
-## 10.3. Tablas
+## 10.4. Tablas
 
 Para recrear la tabla anterior el codigo es:
 ```{r, eval=FALSE}
@@ -561,7 +565,7 @@ TablaPinguinos<-Pingus %>% group_by(especie,sexo) %>%
 
 ---
 
-## 10.3. Tablas
+## 10.4. Tablas
 
 Otra opción es usando la librería {kableExtra} 
 ```{r, warning=FALSE, message=FALSE}
@@ -584,7 +588,7 @@ kbl(TablaResultados,
 
 ---
 
-## 10.3. Tablas
+## 10.4. Tablas
 
 Para recrear la tabla el codigo es:  
 
@@ -598,10 +602,10 @@ Si no recuerdan el código es de la clase de [`r fa("external-link-alt", fill = 
 
 ---
 
-## 10.3. Tablas
+## 10.4. Tablas
 
 Finalmente, para agregar descripción a la tabla se puede agregar **caption**
-```{r}
+```{r, eval=FALSE}
 knitr::kable(TablaPinguinos, caption = "Tabla 1. Ejemplo.")
 ```
 
