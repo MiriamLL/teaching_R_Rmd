@@ -53,6 +53,7 @@ class:inverse
 library(emo)
 library(fontawesome)
 ColorLink<-"#f77f00"
+ColorLinkInverso<-"#b7e4c7"
 ```
 
 --
@@ -69,17 +70,17 @@ class: inverse
 ## Créditos & Recursos
 
 - Material de Rmarkdown.  
-[`r fa("external-link-alt", fill = ColorLink)`RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
-[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
-[`r fa("external-link-alt", fill = ColorLink)`Rmarkdown por Allison Horst](https://github.com/allisonhorst/rladies-bangalore-rmarkdown)
+[`r fa("external-link-alt", fill = ColorLinkInverso)`RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
+[`r fa("external-link-alt", fill = ColorLinkInverso)`Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
+[`r fa("external-link-alt", fill = ColorLinkInverso)`Rmarkdown por Allison Horst](https://github.com/allisonhorst/rladies-bangalore-rmarkdown)
 
 - Tutoriales en español:  
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
+[`r fa("external-link-alt", fill = ColorLinkInverso)`RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
 
 - Tutoriales en ingles:    
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
-[`r fa("external-link-alt", fill = ColorLink)`RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
+[`r fa("external-link-alt", fill = ColorLinkInverso)`RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
+[`r fa("external-link-alt", fill = ColorLinkInverso)`RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
+[`r fa("external-link-alt", fill = ColorLinkInverso)`RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
 
 - Imagen de portada
 [Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
@@ -665,16 +666,16 @@ Recapitulando
 - [Figuras](#figuras)
 - [Tablas](#tablas) 
 
+.right[
 Para dudas, comentarios y sugerencias:  
-- Escríbeme a miriamjlerma@gmail.com
+Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible y se encuentra en 
-- mi [`r fa("external-link-alt", fill = ColorLink)`github](https://github.com/MiriamLL/Curso_CIAD/)
-- mi [`r fa("external-link-alt", fill = ColorLink)`página](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible y se encuentra en  
+mi [`r fa("external-link-alt", fill = ColorLinkInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = ColorLinkInverso)`página](https://miriamlerma.netlify.app/materiales.html)
+]
 
 <br>
-<br>
-
 
 .center[
 ```{r, echo=FALSE}
