@@ -43,10 +43,10 @@ class: inverse
 
 # Intro
 
-- [Git](# 1. Git)
-- [Github](# 2. Github)
-- [Zenodo](# 3. Zenodo)
-- [Git+Github](# 4. Git+Github)
+- [Git](#git)
+- [Github](#github)
+- [Zenodo](#zenodo)
+- [Git+Github](#git_github)
 
 ```{r, echo=FALSE}
 library(emo)
@@ -57,7 +57,7 @@ ColorLink<-"#74c69d"
 ### Ustedes
 - Quieren usar sistema de control de versiones
 - Quieren subir su repositorio a github
-- Quieren agregarle un doi a sus materiales
+- Quieren saber como agregarle un doi a sus materiales
 
 ### Preguntas
 Responder en el chat 💬
@@ -65,7 +65,6 @@ Responder en el chat 💬
 - Como mantienen controles de cambios en sus documentos?
 - Cuantos tienen cuenta de usuario en github?
 - Alguien ha usado zenodo?
-- Alguien tiene git ya instalado en su computadora?
 
 ---
 
@@ -86,7 +85,7 @@ class: inverse
 [Unsplash by Joel Filip](https://unsplash.com/@joelfilip)
 
 ---
-
+name: git
 class: center, middle, inverse
 
 # 1. Git
@@ -137,19 +136,21 @@ Hay que instalarlo si les aparece
 git: command not found
 ```
 
-```{r, echo=FALSE, out.height=400, fig.align='center'}
+```{r, echo=FALSE, out.height=200, fig.align='center'}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git10.png')
 ```
 
 ---
 
-## 1.3. Instalacion
+## 1.3. Instalación
 
 - Git fue desarrollado para programadores, no para investigadores por lo que puede ser poco intuitivo
-- Una desventaja es que instalacion varia mucho entre computadoras
-- La ventaja es que solo se debe instalar una vez
+
+- Una **desventaja** es que instalación varía mucho entre computadoras
+- La **ventaja** es que solo se debe instalar una vez
 
 --- 
+
 - Para descargar:<br>
 Pagina [git](https://git-scm.com/)
 
@@ -177,7 +178,7 @@ git --version
 - Que version tienen instalada?
 
 ---
-
+name: github
 class: center, middle, inverse
 
 # 2. Github
@@ -291,7 +292,7 @@ Preguntas 💬
 - Quien ya tiene su primer repositorio?
 
 ---
-
+name: zenodo
 class: center, middle, inverse
 
 # 3. Zenodo
@@ -300,15 +301,15 @@ class: center, middle, inverse
 
 ## 3. Zenodo
 
-Muchas revistas solicitan incluir datos o codigo en las publicaciones.
+Muchas revistas solicitan incluir datos o código en las publicaciones.
 
 Por ejemplo: 
 - [**Frontiers**](https://www.frontiersin.org/about/policies-and-publication-ethics) requiere que los autores tengan disponibles todos los datos relevantes para las conclusiones del manuscrito. <br>
-Todos los datos deben estar publicamente disponibles y ser citados de acuerdo a sus reglamentos. 
+Todos los datos deben estar públicamente disponibles y ser citados de acuerdo a sus reglamentos. 
 
-- [**PLOS ONE**](https://journals.plos.org/plosone/s/submission-guidelines#loc-data-reporting) requiere que los autores agreguen una seccion que rediriga al repositorio publico donde estan accesibles los datos, o que los datos sean parte del articulo. <br>
+- [**PLOS ONE**](https://journals.plos.org/plosone/s/submission-guidelines#loc-data-reporting) requiere que los autores agreguen una sección que redirija al repositorio publico donde están accesibles los datos, o que los datos sean parte del articulo. <br>
 
-**Recomendacion** No incluyan los datos en la publicacion (por motivos de licencia), es mejor tenerlos en un repositorio.
+**Recomendación** No incluyan los datos en la publicación (por motivos de licencia), es mejor tenerlos en un repositorio.
 
 
 ---
@@ -421,11 +422,10 @@ class: inverse, center, middle
 
 En equipo 💃🏽👯 
 - Escribir codigo en Rmd para analizar datos de pingüinos. 
-- Subir Rmd a github, compartir enlace en drive
+- Subir Rmd a github
 
---- 
 
-Instrucciones a incluir en el Rmd:
+**Instrucciones** a incluir en el Rmd:
 - Como cargar datos de pingüinos y filtrar con solo datos de Adelia
 - Como crear un modelo lineal con masa corporal y longitud de la aleta
 - Agregar tabla con resultados del modelo
@@ -435,6 +435,7 @@ Instrucciones a incluir en el Rmd:
 
 ---
 
+name: git_github
 class: center, middle, inverse
 
 # 4. Git+Github
@@ -563,7 +564,19 @@ class: inverse, center, middle
 ## 5.1. Ejercicios
 
 
-- Clonar repositorio usando RStudioCloud
+- Clonar repositorio 
+
+---
+
+# 6. Control de versiones
+
+Les recomiendo aprender más de como manejar repositorios.  
+[Enlace](https://levelup.gitconnected.com/understanding-git-a-beginners-guide-containing-cheat-sheets-resources-b50c9c01a107)
+
+```{r, echo=FALSE, out.height=400, fig.align='center'}
+knitr::include_graphics('https://miro.medium.com/max/700/0*68fyM5AI85U_I3vo.jpg')
+```
+
 
 ---
 
@@ -572,10 +585,10 @@ class: left, inverse
 # Contacto
 
 Recapitulando
-- [Git](# 1. Git)
-- [Github](# 2. Github)
-- [Zenodo](# 3. Zenodo)
-- [Git+Github](# 4. Git+Github)
+- [Git](#git)
+- [Github](#github)
+- [Zenodo](#zenodo)
+- [Git+Github](#git_github)
 
 <br>
 <br>

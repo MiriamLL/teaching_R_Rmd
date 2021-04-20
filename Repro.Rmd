@@ -42,8 +42,9 @@ background-size: cover
 class: inverse
 
 # Intro
-- Que es reproducibilidad
-- Como es un manuscrito reproducible
+- [Reproducibilidad](#repro)
+- [Publicaciones reproducibles](#pub)
+- [Manuscritos reproducibles](#MS)
 
 ```{r, echo=FALSE}
 library(emo)
@@ -83,6 +84,8 @@ En ingles
 - [`r fa("youtube", fill = ColorLink)` RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI)  
 - [`r fa("youtube", fill = ColorLink)` Ted: crisis reproducibilidad](https://www.youtube.com/watch?v=FpCrY7x5nEE)
 - [`r fa("book-open", fill = ColorLink)` Matt Dray](https://www.rostrum.blog/2020/01/22/repro-three-things/)
+- [`r fa("book-open", fill = ColorLink)` Experimenting with reproducibility](https://academic.oup.com/gigascience/article/7/7/giy077/5046609)
+- [`r fa("book-open", fill = ColorLink)` r3 course](https://r-cubed.rostools.org/lecture-slides.html#collaboration-and-teamwork)  
 
 Imagenes
 - Portada
@@ -91,6 +94,7 @@ Imagenes
 
 ---
 
+name: repro
 class: center, middle, inverse
 
 # 1. Reproducibilidad
@@ -119,7 +123,7 @@ La reproducibilidad tiene varias dimensiones, de acuerdo a
 - si usamos los mismos datos o datos diferentes,
 - si usamos el mismo codigo o lo adaptamos.
 
-```{r, echo=FALSE, out.height=200}
+```{r, echo=FALSE, out.height=200, fig.align='center'}
 knitr::include_graphics('https://the-turing-way.netlify.app/_images/ReproducibleMatrix.jpg')
 ```
 
@@ -211,7 +215,7 @@ knitr::include_graphics('https://ekaroune.github.io/The-Open-Archaeobotanist/ass
 ```
 
 ---
-
+name: pub
 class: title-slide, center, middle, inverse
 
 # 2. Publicaciones reproducibles
@@ -307,7 +311,7 @@ knitr::include_graphics('https://pbs.twimg.com/media/EjQ5HsYXkAAqXmj.jpg')
 [`r fa("external-link-alt", fill = '#e63946')` Tenemos la tecnologia, depende de nosotros implementarlo ](https://blog.scielo.org/es/2017/09/27/tenemos-la-tecnologia-para-salvar-la-revision-por-pares-ahora-depende-de-nuestras-comunidades-en-implementarlo-publicado-originalmente-en-el-blog-lse-impact-of-social-sciences-en-septiembre/#.YH1h-j-xWUk)
 
 ---
-
+name: MS
 class: center, middle, inverse
 
 # 3. Manuscritos reproducibles
@@ -383,7 +387,7 @@ Evita problemas con actualización de **librerías**
 
 ## 3.5. Ejercicios
 
-En equipo 🏽👯 
+En equipo 👯 
 - Escribir esqueleto de articulo incluyendo algunos análisis (40 minutos)
 - Subir repositorio a github
 - Otro equipo replicara el manuscrito usando datos similares (25 minutos)
@@ -410,6 +414,7 @@ Reusar Rmd
 
 ---
 
+name: paquete
 # 4. Paquetes
 
 .pull-left[**Rmarkdown**
@@ -439,8 +444,9 @@ class: left, inverse
 
 Recapitulando
 
-- [Reproducibilidad](1. Reproducibilidad)
-- [Manuscritos reproducibles](2. Manuscritos reproducibles)
+- [Reproducibilidad](#repro)
+- [Publicaciones reproducibles](#pub)
+- [Manuscritos reproducibles](#MS)
 
 <br>
 <br>
