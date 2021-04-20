@@ -41,13 +41,12 @@ background-size: cover
 ---
 
 # Intro
-
-- Resultados en el texto
-- Bibliografía
-- Tablas de contenido
-- Enlaces
-- Ecuaciones
-- Plantillas
+- [Resultados en el texto](#inline)
+- [Bibliografía](#csl)
+- [Tablas de contenido](#tablas)
+- [Enlaces](#enlaces)
+- [Ecuaciones](#ecuaciones)
+- [Plantillas](#plantillas)
 
 ```{r, echo=FALSE}
 library(emo)
@@ -121,6 +120,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 
 ---
+name: inline
 
 # 1.3. Inline code
 
@@ -183,6 +183,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ```
 
 ---
+name: csl
 
 # 1.6. Bibliografia
 <h4> Como citar? </h4>
@@ -195,6 +196,7 @@ Ejemplo: **csl: biomed-central.csl**<br>
 
 - [`r fa("external-link-alt", fill = ColorLink)`Leer sobre csl](https://docs.citationstyles.org/en/1.0.1/primer.html)<br>
 - [`r fa("external-link-alt", fill = ColorLink)`Descargar csl](https://github.com/citation-style-language/styles)<br>
+- [`r fa("external-link-alt", fill = ColorLink)`Descargar csl](https://www.zotero.org/styles )<br>
 
 ---
 
@@ -356,6 +358,7 @@ class: inverse, center, middle
 # Más funcionalidades
 
 ---
+name: tablas
 
 ## 3.1. Tablas de contenido
 
@@ -396,6 +399,7 @@ Se convierte en esto:
 - Tercer elemento de la lista
 
 ---
+name: enlaces
 
 ## 3.3. Enlaces
 
@@ -413,6 +417,7 @@ Para crear enlaces se usa [ ] ( )
 [Pagina web](www.miriam-lerma.com)
 
 ---
+name: ecuaciones
 
 ## 3.4. Ecuaciones
 
@@ -497,7 +502,7 @@ output:
 
 
 ---
-
+name: plantillas
 class: center, middle, inverse
 
 # 5. Plantillas
@@ -570,10 +575,14 @@ class: left, inverse
 
 # Contacto
 
-Te recomiendo seguir con [`r fa("external-link-alt", fill = '#74c69d')`Xaringan](https://miriamlerma.netlify.app/materiales.html).
+Recapitulando
 
-<br>
-<br>
+- [Resultados en el texto](#inline)
+- [Bibliografía](#csl)
+- [Tablas de contenido](#tablas)
+- [Enlaces](#enlaces)
+- [Ecuaciones](#ecuaciones)
+- [Plantillas](#plantillas)
 
 Para dudas, comentarios y sugerencias:  
 - Escríbeme a miriamjlerma@gmail.com
