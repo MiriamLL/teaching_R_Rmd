@@ -56,9 +56,12 @@ class: inverse
 
 # Intro
 
-- Factores  
-- Analisis de varianza (ANOVA)
+- [Factores](#factores)  
+- [Analisis de varianza](#anova)
 
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+``` 
 
 ```{r, echo=FALSE,include=FALSE, message=FALSE}
 library(emo)
@@ -102,6 +105,7 @@ Imágenes adicionales <br>
 
 ---
 
+name: factores
 class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1551415923-31d2072bc248?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80)
 background-size: cover
@@ -311,38 +315,25 @@ p3
 
 ---
 
-class: inverse
-
-
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
+- Cargar **paquetes** de titanic y tidyverse
+- **Renombrar** objeto, columnas y transformar espacios vacíos a NA
+- Crear tres **gráficos** y cambiar clase de columnas a factor
 
-- Cargar datos de titanic
-- Cargar paqueteria tidyverse
-- Renombrar objeto
-- Renombrar columnas
-- Transformar espacios vacíos a NA
-- Crear tres gráficos usando precio, clase y edad, y sexo.
-- Cambiar clase de columnas a factor
-
----
-
-## 1.7. Ejercicios
-
-Cargar datos
+.panelset[
+.panel[.panel-name[Paquetes]
 ```{r, warning=FALSE, message=FALSE}
 #install.packages('titanic')
 library(titanic)
 library(tidyverse)
 ```
+]
 
+.panel[.panel-name[Renombrar]
 Renombremos el dataframe que vamos a usar y agreguemoslo a nuestro environment.
 ```{r}
 Titanic_datos<-titanic_train
 ```
-
----
-
-## 1.7. Ejercicios
 
 Renombrar columnas para que estén en español.
 ```{r}
@@ -354,24 +345,22 @@ Titanic_datos <- Titanic_datos %>%
          embarcado=Embarked,
          precio=Fare)
 ```
+]
 
+.panel[.panel-name[NAs]
 Transformamos los espacios vacíos ("") a NA
 ```{r}
 Titanic_datos$embarcado <- ifelse(Titanic_datos$embarcado == "",
                                  NA,
                                  Titanic_datos$embarcado)
 ```
+]
 
----
 
-## 1.7. Ejercicios
-### Graficar precio
-
+.panel[.panel-name[Precio]
 Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
-ggplot(Titanic_datos, 
-             aes(x=sobrevivio, 
-                 y=precio)) +
+ggplot(Titanic_datos,aes(x=sobrevivio,y=precio)) +
   geom_boxplot()+
   xlab("sobrevivencia")+
   ylab("Precio del boleto")+
@@ -386,16 +375,12 @@ Para transformar a factor.
 ```{r}
 Titanic_datos$sobrevivio <- as_factor(Titanic_datos$sobrevivio)
 ```
+]
 
----
-
-## 1.7. Ejercicios
-### Graficar clase y edad
-
+.panel[.panel-name[Clase y edad]
 Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
-ggplot(Titanic_datos,
-       aes(x= as_factor(clase), edad,
+ggplot(Titanic_datos,aes(x= as_factor(clase), edad,
            fill=sobrevivio))+
   geom_violin()+
   xlab("Clase")+
@@ -409,18 +394,13 @@ Para transformar a factor.
 ```{r}
 Titanic_datos$clase <- as_factor(Titanic_datos$clase)
 ```
+]
 
----
 
-## 1.7. Ejercicios
-### Sexo y clase
-
-Gráfica la frecuencia del sexo de los pasajeros.
-
+.panel[.panel-name[Clase y sexo]
 Prueba con y sin cambiar a factor.
 ```{r, eval=FALSE}
-ggplot(Titanic_datos, 
-       aes(sexo, sobrevivio))+
+ggplot(Titanic_datos,aes(sexo, sobrevivio))+
   geom_jitter(aes(color=interaction(as_factor(sexo), 
                                     sobrevivio)))+
   facet_wrap(~clase)+
@@ -435,9 +415,12 @@ Para transformar a factor.
 ```{r}
 Titanic_datos$sexo <- as.factor(Titanic_datos$sexo)
 ```
+]
+]
+
 
 ---
-
+name: anovas
 class: title-slide, inverse, bottom
 background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)
 background-size: cover
@@ -643,25 +626,16 @@ summary(Anova_insectos_4)
 
 ---
 
-class: inverse
-
-
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
-- Generar datos
-- Crear modelo
-- Ver resultados del modelo
-- Verificar algunos supuestos
-- Analisis TukeyHSD
-- Graficar 
-- Crear anova de dos factores
-- Crear anova con interacción
+- Generar **datos y modelo**
+- Verificar algunos **supuestos**
+- Analisis **post-hoc**
+- Crear anova de **dos factores**
+- Crear anova con **interacción**
 
-
----
-
-## 2.9. Ejercicios 
-
+.panelset[
+.panel[.panel-name[Datos y modelo]
 Generar datos y modelo.
 ```{r, eval=FALSE}
 insectos <- c(16,11,20,21,14,7,37,32,15,25,39,41,21,12,14,17,13,17,45,59,48,46,38,47)
@@ -675,18 +649,14 @@ Anova_insectos<-aov(lm(insectos ~ colores))
 ```{r, eval=FALSE}
 summary(Anova_insectos)
 ```
+]
 
----
 
-
-## 2.9. Ejercicios 
-
-Independencia
+.panel[.panel-name[Supuestos]
 ```{r, eval=FALSE}
 plot(Anova_insectos$residuals)
 ```
 
-Normalidad
 ```{r, eval=FALSE}
 hist(Anova_insectos$residuals)
 qqnorm(Anova_insectos$residuals) 
@@ -697,25 +667,20 @@ qqline(Anova_insectos$residuals)
 shapiro.test(Anova_insectos$residuals)
 ```
 
-Homoscedasticidad
 ```{r, eval=FALSE}
 bartlett.test(Anova_insectos$residuals ~ colores)
 ```
+]
 
----
-
-## 2.9. Ejercicios 
+.panel[.panel-name[Post-hoc]
 
 Veamos si los grupos son diferentes y cuales grupos son diferentes.
 ```{r, eval=FALSE}
 TukeyHSD(Anova_insectos)
 ```
 
-```{r}
-Insectos_df<-data.frame(insectos=insectos,colores=colores)
-```
-
 ```{r, eval=FALSE}
+Insectos_df<-data.frame(insectos=insectos,colores=colores)
 ggplot(Insectos_df, aes(x=colores,y=insectos)) +
   geom_boxplot(aes(fill=colores))+
   xlab("Color de la trampa")+
@@ -724,11 +689,9 @@ ggplot(Insectos_df, aes(x=colores,y=insectos)) +
   theme_classic()+
   theme(legend.position = "none")
 ```
+]
 
----
-
-## 2.9. Ejercicios
-
+.panel[.panel-name[Dos factores]
 Crear nueva columna con factor de tamaño.
 ```{r, eval=FALSE}
 Insectos_df$tamanio <- as.factor(c(rep(c("grande", "mediana", "chica"), 
@@ -742,11 +705,9 @@ Anova_insectos_2<-aov((insectos ~ colores + tamanio),data=Insectos_df)
 ```{r, eval=FALSE}
 summary(Anova_insectos_2)
 ```
+]
 
----
-
-## 2.9. Ejercicios
-
+.panel[.panel-name[Interacciones]
 Interacción:
 ```{r, eval=FALSE}
 Anova_insectos_3<-aov((insectos ~ colores * tamanio),data=Insectos_df)
@@ -763,31 +724,27 @@ summary(Anova_insectos_3)
 ```{r, eval=FALSE}
 summary(Anova_insectos_4)
 ```
+]
+]
 
 ---
-
-class: title-slide, inverse, bottom
+class: title-slide, inverse
 background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)
 background-size: cover
 
+# Contacto
 
-# Recapitulando
+- [Factores](#factores)  
+- [Analisis de varianza](#anova)
 
-- Esta clase:<br>
-Objetos clase factor.  
-Analisis de varianza.  
-
-- Siguiente clase:  
-Rmarkdown
 
 .right[
-### Contacto
 Para dudas, comentarios y sugerencias:<br>
  Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html)
 ]
 
 <h1>
