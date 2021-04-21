@@ -58,8 +58,13 @@ class: inverse
 
 # Intro
 
-- Que es Xaringan.
-- Como crear una presentación usando Xaringan.  
+- [Que es Xaringan](#intro)  
+- [Como agregar fondos](#fondos)
+- [Como agregar imagenes](#imagenes)
+- [Como agregar tablas](#tablas)
+- [Como agregar graficas](#graficas)  
+- [Como cambiar colores](#colores)
+- [Como cambiar estilo de letras](#letras)
 
 
 ```{r, echo=FALSE}
@@ -81,11 +86,9 @@ xaringanExtra::use_panelset()
 - Tienen conocimientos básicos Rmd o md.   
 - Quieren poder hacer una presentación desde RStudio.
 
-## Preguntas
-Responder en el chat 💬
+## Responder en el chat 💬
 - En que programa realizan sus presentaciones?
-- Han escuchado de Xaringan?
-- A que les suena Xaringan?
+- Han escuchado de Xaringan? A que les suena ?
 
 ---
 
@@ -113,6 +116,7 @@ class: inverse
 - Portada de [unsplash](https://unsplash.com/)
 
 ---
+name: intro
 
 ## 1.1. Xaringan
 
@@ -272,6 +276,8 @@ Poniendo un punto antes y el contenido entre corchetes [ ].
 
 
 ---
+
+name: fondos
 
 ## 1.6. Fondos
 
@@ -459,6 +465,7 @@ class: title-slide, inverse, center, middle
 <h1>👩🏽‍🏫📈</h1>
 
 ---
+name: tablas
 
 ## 2.1. Tablas
 
@@ -500,6 +507,8 @@ Peso_sexo_Adelia %>%
 ```
 
 ---
+
+name: graficas
 
 ## 2.2. Gráficas
 
@@ -865,6 +874,7 @@ output:
 ```
 
 ---
+name: colores
 
 ## 4.3. Colores
 
@@ -884,6 +894,7 @@ En coolors es tan fácil como:
 Ejemplo: " # FFFFFF "
 
 ---
+name: letras
 
 ## 4.4. Letras
 
@@ -1004,10 +1015,13 @@ class: inverse
 # Recapitulando
 
 Esta clase:  
-- Que es Xaringan   
-- Como funciona  
-- Que es XaringanThemer
-- Compartir nuestra presentacion  
+- [Que es Xaringan](#intro)  
+- [Como agregar fondos](#fondos)
+- [Como agregar imagenes](#imagenes)
+- [Como agregar tablas](#tablas)
+- [Como agregar graficas](#graficas)  
+- [Como cambiar colores](#colores)
+- [Como cambiar estilo de letras](#letras)
 
 .right[
 ### Contacto
@@ -1021,11 +1035,11 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html) 
 ]
 
 <h1>
-.right[
+.center[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```

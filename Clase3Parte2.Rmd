@@ -59,10 +59,15 @@ class: inverse
 
 ## 1. Intro
 
-- Funciones del tidyverse.<br>
-- Funciones para unir y manipular data frames.<br> 
-- Unir data frames.<br>
-- Exportar tus datos.<br>
+Funciones del tidyverse.<br>
+Para manipular data frames: 
+- [filter](#filt) 
+- [mutate](#muta)
+- [summarise](#suma) 
+- [unique](#unique) 
+- [drop_na](#drop)  
+- [Unir data frames](#join) 
+- [Exportar data frames](#exportar) 
 
 --
 
@@ -158,7 +163,7 @@ Las principales funciones, o **verbos** de dplyr, son:
 count y select las vimos en **[`r fa("external-link-alt", fill = "#52b788")`la clase pasada](https://miriamlerma.netlify.app/materiales.html)**
 
 ---
-
+name: filt
 ## 1.4. filter()
 Podemos filtrar columnas de acuerdo a valores que nos interesen.
 
@@ -224,7 +229,7 @@ Pingus %>%
 ```
 
 ---
-
+name: muta
 ## 1.5. mutate()
 
 Es para crear o modificar columnas.  
@@ -274,6 +279,7 @@ Horas %>%
 ```
 
 ---
+name: suma
 
 ## 1.7. group_by() y summarise()
 
@@ -296,7 +302,7 @@ Pingus %>%
 ```
 
 ---
-
+name: unique
 ## 1.9. unique() o distinct()
 Valores únicos en esa columna.
 
@@ -321,7 +327,7 @@ Pingus %>%
 ```
 
 ---
-
+name: drop
 ## 1.10. drop_na 
 
 Hay que tener cuidado con las nas para varias operaciones.
@@ -431,7 +437,7 @@ Pingus<-Pingus %>%
 
 
 ---
-
+name: join
 class: title-slide, inverse, middle, center
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
@@ -723,7 +729,7 @@ EspeciesLargo
 
 
 ---
-
+name: export
 class: title-slide, middle, center
 background-image: url(https://images.unsplash.com/photo-1527402858-36f052d83df4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80)
 background-size: cover
@@ -779,9 +785,9 @@ class: inverse
 # Recapitulando
 
 Esta clase:  
-- Funciones de filter, mutate, summarise, unique, drop_na.  
-- Unir data frames.  
-- Exportar data frames.  
+- Funciones de [filter](#filt), [mutate](#muta), [summarise](#suma), [unique](#unique), [drop_na](#drop).  
+- [Unir data frames](#join).  
+- [Exportar data frames](#exportar)  
 
 Siguiente clase:  
 - Trabajar por proyectos  
@@ -792,8 +798,8 @@ Para dudas, comentarios y sugerencias: <br>
 Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible <br> y se encuentra en 
- mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
+ mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)<br>
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html)
 ]
 <h1>
 .right[
