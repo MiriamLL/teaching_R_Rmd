@@ -39,8 +39,13 @@ meta() %>%
 
 ```{r include = FALSE}
 #Paquetes
+library(emo)
 library(xaringanExtra)
 library(fontawesome)
+```
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
 ```
 
 class: title-slide, middle, right
@@ -59,10 +64,19 @@ class: inverse
 
 # 1. Intro
 
-- Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
-- Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.  
-- Como cambiar la estética de mis gráficos.    
-- Van a cambiar la estética de su gráfico.  
+Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos. <br> 
+
+[Uso de ggplot](#intro)<br>
+
+Tipos de grafico:
+- [puntos](#puntos) 
+- [lineas](#lineas) 
+- [barras](#barras) 
+- [boxplot](#boxplot) 
+- [trayectorias](#trayectorias)
+- [mapas](#mapas) <br>
+
+[Cambiar estetica](#theme)
 
 --
 
@@ -70,11 +84,6 @@ class: inverse
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).  
 - Quieren hacer gráficos con sus datos usando R.  
-
-
-### Objetivo de hoy
-
-- Crear sus primeros gráficos.  
 
 ---
 
@@ -99,6 +108,7 @@ class: inverse
 [`r fa("camera-retro", fill = "#f2cc8f")` Unsplash](https://unsplash.com/)
 
 ---
+
 
 # 1.1. Teoría
 
@@ -163,6 +173,8 @@ knitr::include_graphics("https://paldhous.github.io/ucb/2016/dataviz/img/class2_
 
 ---
 
+name: intro
+
 # 1.2. Intro a ggplot
 
 Hay muchos paquetes para hacer gráficos ademas de **ggplot2**. 
@@ -188,8 +200,6 @@ knitr::include_graphics("https://englelab.gatech.edu/useRguide/images/dataviz/ge
   
 
 Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-overview.html)
-
-
 
 ---
 
@@ -241,12 +251,12 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ggplot(data=Prueba,mapping=aes(x=humedad,y=visibilidad))
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE}
 ggplot(data=Prueba, 
        mapping=aes(x=humedad,y=visibilidad))
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-13-1.png')
 ```
 
@@ -268,7 +278,7 @@ ggplot(data=Prueba,
        geom_point() #<<
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-15-1.png')
 ```
 
@@ -295,6 +305,7 @@ knitr::include_graphics("http://www.typesofgraphs.com/wp-content/uploads/2015/12
 ]
 
 ---
+name: puntos
 
 # 1.4. Gráfico de puntos
 
@@ -316,16 +327,17 @@ ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
   geom_point() #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE}
 ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
   geom_point() #<<
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-19-1.png')
 ```
 
 ---
+name: lineas
 
 # 1.4. Gráfico de lineas
 
@@ -347,16 +359,18 @@ ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
   geom_line() #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE}
 ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
   geom_line() #<<
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-22-1.png')
 ```
 
 ---
+
+name: barras
 
 # 1.4. Gráfico de barras
 
@@ -391,17 +405,19 @@ ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
   geom_bar(stat='identity') #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE}
 ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
   geom_bar(stat='identity') #<<
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-26-1.png')
 ```
 
 
 ---
+
+name: boxplot
 
 # 1.4. Boxplot
 
@@ -425,17 +441,19 @@ ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
   geom_boxplot() #<<
 ```
 
-```{r, fig.height =3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height =3, echo=FALSE, include=TRUE}
 ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
   geom_boxplot()
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-29-1.png')
 ```
 
 
 ---
+
+name: trayectorias
 
 # 1.4. Trayectorias
 
@@ -457,16 +475,18 @@ ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
   geom_path() #<<
 ```
 
-```{r, fig.height=4, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=4, echo=FALSE, include=TRUE}
 ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
   geom_path()
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-31-1.png')
 ```
 
 ---
+
+name: mapas
 
 # 1.4. Mapas
 
@@ -490,13 +510,13 @@ ggplot()+
     coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE) #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE}
 ggplot()+
     geom_sf(data = world) + #<<
     coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE)
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-36-1.png')
 ```
 
@@ -506,51 +526,45 @@ class: inverse
 
 # Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
 
-Crea un grafico de puntos usando datos de pingüinos
-
----
-
-# 1.5. Ejercicios
-
-```{r, echo=FALSE}
-library(emo)
-```
-
-
 Crea un gráfico de puntos con los datos de Pingüinos `r emo::ji("penguin")`
 
+.panelset[
+.panel[.panel-name[Datos]
 - Carga los datos
 ```{r}
 library(datos)
 Pingus<-datos::pinguinos
 ```
+]
 
+.panel[.panel-name[Rellenar]
 - Rellena los espacios (*****) para crear un gráfico de puntos el largo del pico y el largo de la aleta.
 ```{r}
 #ggplot(data=***, mapping=aes(x=***,y=***))+
 #  geom_***()
 ```
+]
 
----
-
-# 1.5. Ejercicios
-
-## Respuesta
+.panel[.panel-name[Respuesta]
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
   geom_point()
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
   geom_point()
 ```
-
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-41-1.png')
 ```
+]
+]
+
 
 ---
+
+name: aes
 
 class: title-slide, inverse, right, middle
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
@@ -568,13 +582,13 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm,
   geom_point()
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, 
                                 color=especie))+
   geom_point()
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-43-1.png')
 ```
 
@@ -588,13 +602,13 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme_bw() #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-50-1.png')
 ```
 
@@ -609,14 +623,14 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme(panel.background = element_rect(fill = 'darkblue'))#<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   theme(panel.background = element_rect(fill = 'darkblue'))
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-47-1.png')
 ```
 
@@ -631,14 +645,14 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   xlab('Largo Pico')+ylab('Largo Aleta')#<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   xlab('Largo Pico')+ylab('Largo Aleta')
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-50-1.png')
 ```
 
@@ -654,14 +668,14 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme(axis.title = element_text(size=20)) #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   theme(axis.title = element_text(size=20))
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-52-1.png')
 ```
 
@@ -676,14 +690,14 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
   theme(legend.position = "top") #<<
 ```
 
-```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE, eval=FALSE}
+```{r, fig.height=3, echo=FALSE, include=TRUE, warning=FALSE}
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie))+
   geom_point()+
   theme_bw()+
   theme(legend.position = "top")
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-54-1.png')
 ```
 
@@ -783,15 +797,14 @@ class: inverse
 - Cambiar el color de lo puntos de acuerdo al *corte* 
 - Cambiar el nombre en el eje x por 'Precio en dolares' y el eje y por 'kt'.
 
----
-
-## 2.11. Ejercicios
-
+.panelset[
+.panel[.panel-name[Datos]
 - Crear un gráfico de puntos con los datos de diamantes
 ```{r}
 Diamantes<-datos::diamantes
 ```
-
+]
+.panel[.panel-name[Rellenar]
 Graficar el *precio* por el *quilate* y cambiar el color de lo puntos de acuerdo al *corte* y cambiar el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
 ```{r}
 #ggplot(data=***,mapping=aes(x=***, y=***, color=****))+
@@ -799,12 +812,9 @@ Graficar el *precio* por el *quilate* y cambiar el color de lo puntos de acuerdo
 #  theme_bw()+
 #  xlab("**")+ylab("***")
 ```
+]
 
----
-
-##  2.11. Respuesta
-
-Código  
+.panel[.panel-name[Respuesta]
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
   geom_point()+
@@ -813,16 +823,18 @@ ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
 ```
 
 Gráfico  
-```{r, fig.height=3, echo=FALSE, include=TRUE, eval=FALSE}
+```{r, fig.height=2, echo=FALSE, include=TRUE}
 ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
   geom_point()+
   theme_bw()+
   xlab("Precio en pesos")+ylab("kt")
 ```
 
-```{r echo=FALSE, out.height=300}
+```{r echo=FALSE, out.height=300, eval=FALSE}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png')
 ```
+]
+]
 
 ---
 
@@ -862,14 +874,14 @@ Explorar:
 class: inverse
 
 # Recapitulando
-
-Esta clase:  
-- Visualizacion de datos<br>
-- Usar ggplot2 <br>
-
-Siguiente clase:  
-- Realizar operaciones en R <br>
-- Inspeccionar y manipular dataframes <br>
+- [Uso de ggplot](#intro)<br>
+- Grafico de [puntos](#puntos) 
+- Grafico de [lineas](#lineas) 
+- Grafico de [barras](#barras) 
+- Grafico de [caja](#boxplot) 
+- [Trayectorias](#trayectorias)
+- [Mapas](#mapas) <br>
+- [Estetica](#theme)
 
 .right[
 ### Contacto
@@ -877,9 +889,8 @@ Siguiente clase:
 Para dudas, comentarios y sugerencias: <br>
 Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible <br> y se encuentra en 
- mi [`r fa("external-link-alt", fill = "#ffd166")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#ffd166")`página](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible <br> y se encuentra en mi [`r fa("external-link-alt", fill = "#ffd166")`github](https://github.com/MiriamLL/Curso_CIAD/)<br>
+y mi [`r fa("external-link-alt", fill = "#ffd166")`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html)
 
 ]
 

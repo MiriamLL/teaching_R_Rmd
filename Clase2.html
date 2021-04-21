@@ -22,10 +22,14 @@
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Miriam Lerma"/>
+    <link href="Clase2_files/panelset-0.2.4/panelset.css" rel="stylesheet" />
+    <script src="Clase2_files/panelset-0.2.4/panelset.js"></script>
     <link rel="stylesheet" href="RZero-themer_darktitle.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
+
+
 
 
 
@@ -48,10 +52,19 @@ class: inverse
 
 # 1. Intro
 
-- Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos.  
-- Van a abrir R, crear un gráfico básico y no guarden su script o no cierren R.  
-- Como cambiar la estética de mis gráficos.    
-- Van a cambiar la estética de su gráfico.  
+Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos. &lt;br&gt; 
+
+[Uso de ggplot](#intro)&lt;br&gt;
+
+Tipos de grafico:
+- [puntos](#puntos) 
+- [lineas](#lineas) 
+- [barras](#barras) 
+- [boxplot](#boxplot) 
+- [trayectorias](#trayectorias)
+- [mapas](#mapas) &lt;br&gt;
+
+[Cambiar estetica](#theme)
 
 --
 
@@ -59,11 +72,6 @@ class: inverse
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).  
 - Quieren hacer gráficos con sus datos usando R.  
-
-
-### Objetivo de hoy
-
-- Crear sus primeros gráficos.  
 
 ---
 
@@ -88,6 +96,7 @@ class: inverse
 [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#f2cc8f;" viewBox="0 0 512 512"&gt;&lt;path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z"/&gt;&lt;/svg&gt; Unsplash](https://unsplash.com/)
 
 ---
+
 
 # 1.1. Teoría
 
@@ -142,6 +151,8 @@ Experimentar diferentes gráficas y elegir la que cuente mejor la historia.
 
 ---
 
+name: intro
+
 # 1.2. Intro a ggplot
 
 Hay muchos paquetes para hacer gráficos ademas de **ggplot2**. 
@@ -165,8 +176,6 @@ El paquete **ggplot** funciona por **capas**, si han usado SIG (sistema de infor
   
 
 Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-overview.html)
-
-
 
 ---
 
@@ -219,9 +228,9 @@ ggplot(data=Prueba)
 ggplot(data=Prueba,mapping=aes(x=humedad,y=visibilidad))
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-13-1.png" height="300" /&gt;
 
 Noten que sus ejes tienen que ser columnas en su tabla.
 
@@ -238,7 +247,7 @@ ggplot(data=Prueba,
   
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-15-1.png" height="300" /&gt;
+
 
 Nota: te salio un warning?
 Que dice el warning?
@@ -261,6 +270,7 @@ Hoy veremos:
 ]
 
 ---
+name: puntos
 
 # 1.4. Gráfico de puntos
 
@@ -284,11 +294,12 @@ ggplot(data=Camarones,mapping=aes(x=Tamanio, y=Densidad))+
 * geom_point()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-19-1.png" height="300" /&gt;
 
 ---
+name: lineas
 
 # 1.4. Gráfico de lineas
 
@@ -312,11 +323,13 @@ ggplot(data=MareaRoja,mapping=aes(x=Tiempo, y=Cantidad))+
 * geom_line()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-22-1.png" height="300" /&gt;
 
 ---
+
+name: barras
 
 # 1.4. Gráfico de barras
 
@@ -354,12 +367,14 @@ ggplot(data=Microbiota,mapping=aes(x=Edad, y=Cantidad))+
 * geom_bar(stat='identity')
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-26-1.png" height="300" /&gt;
 
 
 ---
+
+name: boxplot
 
 # 1.4. Boxplot
 
@@ -385,12 +400,14 @@ ggplot(data = BSM, aes(x=Estacion, y = Salinidad, group=Estacion)) +
 * geom_boxplot()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-29-1.png" height="300" /&gt;
 
 
 ---
+
+name: trayectorias
 
 # 1.4. Trayectorias
 
@@ -414,11 +431,13 @@ ggplot(data = Bobos, aes(x = Latitud, y = Longitud)) +
 * geom_path()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-31-1.png" height="300" /&gt;
 
 ---
+
+name: mapas
 
 # 1.4. Mapas
 
@@ -445,9 +464,9 @@ ggplot()+
 *   coord_sf(xlim = c(-110, -105), ylim = c(20, 25), expand = FALSE)
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-45-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-36-1.png" height="300" /&gt;
 
 ---
 
@@ -455,47 +474,43 @@ class: inverse
 
 # Ejercicios &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#FFFFFF;" viewBox="0 0 512 512"&gt;&lt;path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/&gt;&lt;/svg&gt;
 
-Crea un grafico de puntos usando datos de pingüinos
-
----
-
-# 1.5. Ejercicios
-
-
-
-
 Crea un gráfico de puntos con los datos de Pingüinos 🐧
 
+.panelset[
+.panel[.panel-name[Datos]
 - Carga los datos
 
 ```r
 library(datos)
 Pingus&lt;-datos::pinguinos
 ```
+]
 
+.panel[.panel-name[Rellenar]
 - Rellena los espacios (*****) para crear un gráfico de puntos el largo del pico y el largo de la aleta.
 
 ```r
 #ggplot(data=***, mapping=aes(x=***,y=***))+
 #  geom_***()
 ```
+]
 
----
-
-# 1.5. Ejercicios
-
-## Respuesta
+.panel[.panel-name[Respuesta]
 
 ```r
 ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm))+
   geom_point()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-50-1.png)&lt;!-- --&gt;
 
+]
+]
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-41-1.png" height="300" /&gt;
 
 ---
+
+name: aes
 
 class: title-slide, inverse, right, middle
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=675&amp;q=80)
@@ -514,9 +529,9 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm,
   geom_point()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-53-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-43-1.png" height="300" /&gt;
 
 ---
 
@@ -529,9 +544,9 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme_bw()
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-56-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-50-1.png" height="300" /&gt;
 
 ---
 
@@ -545,9 +560,9 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme(panel.background = element_rect(fill = 'darkblue'))
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-59-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-47-1.png" height="300" /&gt;
 
 ---
 
@@ -561,9 +576,9 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * xlab('Largo Pico')+ylab('Largo Aleta')
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-62-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-50-1.png" height="300" /&gt;
 
 
 ---
@@ -578,9 +593,9 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme(axis.title = element_text(size=20))
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-65-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-52-1.png" height="300" /&gt;
 
 ---
 
@@ -594,9 +609,9 @@ ggplot(data=Pingus, mapping=aes(x=largo_pico_mm,y=largo_aleta_mm, color=especie)
 * theme(legend.position = "top")
 ```
 
+![](Clase2_files/figure-html/unnamed-chunk-68-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-54-1.png" height="300" /&gt;
 
 ---
 
@@ -682,7 +697,7 @@ MiGrafico&lt;-ggplot(Pingus,
 MiGrafico
 ```
 
-![](Clase2_files/figure-html/unnamed-chunk-78-1.png)&lt;!-- --&gt;
+![](Clase2_files/figure-html/unnamed-chunk-77-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -695,16 +710,15 @@ class: inverse
 - Cambiar el color de lo puntos de acuerdo al *corte* 
 - Cambiar el nombre en el eje x por 'Precio en dolares' y el eje y por 'kt'.
 
----
-
-## 2.11. Ejercicios
-
+.panelset[
+.panel[.panel-name[Datos]
 - Crear un gráfico de puntos con los datos de diamantes
 
 ```r
 Diamantes&lt;-datos::diamantes
 ```
-
+]
+.panel[.panel-name[Rellenar]
 Graficar el *precio* por el *quilate* y cambiar el color de lo puntos de acuerdo al *corte* y cambiar el nombre en el eje x por *Precio en dolares* y el eje y por *kt*.
 
 ```r
@@ -713,12 +727,9 @@ Graficar el *precio* por el *quilate* y cambiar el color de lo puntos de acuerdo
 #  theme_bw()+
 #  xlab("**")+ylab("***")
 ```
+]
 
----
-
-##  2.11. Respuesta
-
-Código  
+.panel[.panel-name[Respuesta]
 
 ```r
 ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
@@ -728,9 +739,11 @@ ggplot(data=Diamantes,mapping=aes(x=precio, y=quilate, color=corte))+
 ```
 
 Gráfico  
+![](Clase2_files/figure-html/unnamed-chunk-81-1.png)&lt;!-- --&gt;
 
 
-&lt;img src="https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/unnamed-chunk-66-1.png" height="300" /&gt;
+]
+]
 
 ---
 
@@ -769,14 +782,14 @@ Explorar:
 class: inverse
 
 # Recapitulando
-
-Esta clase:  
-- Visualizacion de datos&lt;br&gt;
-- Usar ggplot2 &lt;br&gt;
-
-Siguiente clase:  
-- Realizar operaciones en R &lt;br&gt;
-- Inspeccionar y manipular dataframes &lt;br&gt;
+- [Uso de ggplot](#intro)&lt;br&gt;
+- Grafico de [puntos](#puntos) 
+- Grafico de [lineas](#lineas) 
+- Grafico de [barras](#barras) 
+- Grafico de [caja](#boxplot) 
+- [Trayectorias](#trayectorias)
+- [Mapas](#mapas) &lt;br&gt;
+- [Estetica](#theme)
 
 .right[
 ### Contacto
@@ -784,9 +797,8 @@ Siguiente clase:
 Para dudas, comentarios y sugerencias: &lt;br&gt;
 Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible &lt;br&gt; y se encuentra en 
- mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible &lt;br&gt; y se encuentra en mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;github](https://github.com/MiriamLL/Curso_CIAD/)&lt;br&gt;
+y mi [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#ffd166;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt;página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html)
 
 ]
 
