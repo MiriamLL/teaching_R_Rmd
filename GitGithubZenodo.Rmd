@@ -386,6 +386,8 @@ Para asignar un **DOI** a su repositorio.
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/zenodo6.png')
 ```
 
+[semantic versioning](https://semver.org/)
+
 ---
 
 ## 3.6. En Zenodo
