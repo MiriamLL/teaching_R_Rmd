@@ -44,7 +44,7 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1484291470158-b8f8d608850d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
 background-size: cover
 
-### `r text_spec("Presentaciones en R usando", background = "#1d3557", color = "white", bold = T)`
+### `r text_spec("Presentar tus resultados usando", background = "#1d3557", color = "white", bold = T)`
 # `r text_spec("Xaringan", background = "#1d3557", color = "white", bold = T, font_size=120)`
 
 <br>
@@ -63,8 +63,6 @@ class: inverse
 - [Como agregar imagenes](#imagenes)
 - [Como agregar tablas](#tablas)
 - [Como agregar graficas](#graficas)  
-- [Como cambiar colores](#colores)
-- [Como cambiar estilo de letras](#letras)
 
 
 ```{r, echo=FALSE}
@@ -284,9 +282,9 @@ name: fondos
 Para agregar imágenes que **no** estén en su computadora existen paginas web que tienen contenido que puede ser usado sin atribucion y sin fines de lucro.
 
 Algunas son:
-- [`r fa("external-link-alt", fill = ColorEnlace)` Unsplash](unsplash.com)
-- [`r fa("external-link-alt", fill = ColorEnlace)` Rawpixel](rawpixel.com)
-- [`r fa("external-link-alt", fill = ColorEnlace)` Pexels](pexels.com)
+- [`r fa("external-link-alt", fill = ColorEnlace)` Unsplash](www.unsplash.com)
+- [`r fa("external-link-alt", fill = ColorEnlace)` Rawpixel](www.rawpixel.com)
+- [`r fa("external-link-alt", fill = ColorEnlace)` Pexels](www.pexels.com)
 
 ---
 
@@ -445,7 +443,7 @@ Agregar texto
 
 .panel[.panel-name[Fondo]
 Poner imagen de fondo a las diapositiva<br>
-[`r fa("external-link-alt", fill = ColorEnlace)` Unsplash](unsplash.com)<br>
+[`r fa("external-link-alt", fill = ColorEnlace)` Unsplash](www.unsplash.com)<br>
 [`r fa("external-link-alt", fill = ColorEnlace)` Imagen pingüino de Adelia](https://images.unsplash.com/flagged/photo-1569491256135-fc0dc118333c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1248&q=80)
 
 ```{r, eval=FALSE}
@@ -682,334 +680,6 @@ Si quieres que los contenidos aparezcan lado a lado
 
 ---
 
-class: title-slide, center, middle
-
-# Estética
-<h1>👩🏽‍💻🖍️</h1>
-
----
-
-## 3.1. Temas
-
-Para cambiar como se ve la presentación, se puede especificar varias opciones en el **css** del YAML.<br>
-
-Por ejemplo: <br>
-```{r, eval=FALSE}
----
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts]
----
-```
-
-Para usar las opciones que vienen con el paquete Xaringan.<br>
-```{r}
-names(xaringan:::list_css())
-```
-
----
-
-## 3.2 Portada
-
-Para que nuestra primera diapositiva sea la portada de la presentación, hay que agregar en el YAML **seal: false**
-```{r, eval=FALSE}
-output:
-  xaringan::moon_reader:
-    seal: false
-```
-
----
-
-## 3.3 Paginación
-
-Para agregar número de páginas, hay que agregar en el YAML **countIncrementalSlides: true**
-```{r, eval=FALSE}
-output:
-  xaringan::moon_reader:
-    nature:
-      countIncrementalSlides: true
-```
-
----
-
-## 3.4. Iconos
-
-Hay varios paquetes para agregar iconos
-```{r, eval=FALSE}
-library(fontawesome) 
-library(emo)
-```
-
-Para incluir iconos se usa la sintaxis de _inline coding_.<br>
-Para recordar como se escribe inline coding ir a [`r fa("external-link-alt", fill = ColorEnlace)`Rmd](https://miriamll.github.io/Curso_CIAD/Rmd-Parte1) <br>
-```{r, eval=FALSE}
-`r fa("external-link-alt", fill = "#52b788")`
-`r emo::ji("star")`
-```
-
-Para referencias de **iconos** existe la página <br>
-- [`r fa("external-link-alt", fill = ColorEnlace)` Fontawesome](https://fontawesome.com/icons?d=gallery&p=2)<br>
-**Nota** elijan los que estan gratis.
-
-Para referencias de **emojis**, existe la página<br>
-- [`r fa("external-link-alt", fill = ColorEnlace)` Emojipedia](https://emojipedia.org/)<br>
-
----
-
-## 3.4. Iconos
-
-Otra opcion es agregar en **Addins** en R.<br>
-Instalando el paquete **ermoji** [`r fa("external-link-alt", fill = ColorEnlace)` creado por Garrick Aden-Buie](https://www.garrickadenbuie.com/project/ermoji/) <br>
-
-Para instalar el paquete  
-```{r, eval=FALSE}
-devtools::install_github("gadenbuie/ermoji")
-```
-Una vez se instala el paquete, hay que reiniciar RStudio
-
-<br>
-Una vez reiniciado RStudio, debe aparecer ermoji en Addsin  
-Elije **Search and copy**
-
-```{r echo=FALSE, out.width=300}
-knitr::include_graphics('https://www.garrickadenbuie.com/images/project/ermoji/addins-list.png')
-```
-
----
-
-class: center, middle, inverse
-
-# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
-
----
-
-## 3.5. Ejercicios
-
-Cambiar estilo de nuestra dispositiva
-- Cambiar estéticas de las dispositivas en el **YAML**
-- Agregar **paginación**
-- Agregar **iconos**
-
-.panelset[
-.panel[.panel-name[YAML]
-Para cambiar la estética de las diapositivas
-```{r, eval=FALSE}
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis-fonts]
-```
-]
-
-.panel[.panel-name[Paginación]
-Para que la primera diapositiva sea la portada y aparezca paginación de la presentación agregar
-```{r, eval=FALSE}
-output:
-  xaringan::moon_reader:
-    seal: false
-    nature:
-      countIncrementalSlides: true
-```
-]
-
-.panel[.panel-name[Iconos]
-Para agregar iconos puedes usar
-```{r, eval=FALSE}
-library(emo)
-`r emo::ji("penguin")`
-```
-]
-]
-
-
----
-
-class: title-slide, center, middle
-
-# Colores y letras
-<h1>👩🏽‍🎨🖌️</h1>
-
----
-
-## 4.1. Xaringan themer
-
-Para poder cambiar como se ve nuestra presentacion existe el paquete **Xaringan themer** desarrollado por **[`r fa("external-link-alt", fill = ColorEnlace)`  Garrick Aden-Buie](https://www.garrickadenbuie.com/project/xaringanthemer/)**
-
-Para instalar el paquete elige una de las siguientes opciones:
-```{r,eval=FALSE}
-install.packages("xaringanthemer")
-remotes::install_github("gadenbuie/xaringanthemer")
-```
-
----
-
-## 4.1. Xaringan themer
-
-Para cambiar las esteticas, se puede copiar el siguiente codigo en la consola  o en un chunk
-
-Dentro se puede cambiar 
-- los colores **base_color** 
-- los tipos de letra **fonts**
-
-Por ejemplo: 
-```{r, eval=FALSE}
-library(xaringanthemer)
-style_mono_accent(
-  base_color = "#1c5253",
-  header_font_google = google_font("Josefin Sans"),
-  text_font_google   = google_font("Montserrat", "300", "300i"),
-  code_font_google   = google_font("Fira Mono")
-)
-```
-
----
-
-## 4.2. css
-
-Una vez hayamos cambiado los parametros en **style_mono_accent**, hay que especificar nuestro nuevo css en el YAML.
-
-```{r, eval=FALSE}
-output:
-  xaringan::moon_reader:
-    css: xaringan-themer.css
-```
-
----
-name: colores
-
-## 4.3. Colores
-
-Para elegir colores existen las siguientes páginas
-
-- [`r fa("external-link-alt", fill = ColorEnlace)` Coolors](https://coolors.co/contrast-checker)
-- [`r fa("external-link-alt", fill = ColorEnlace)` My color Space](https://mycolor.space)
-- [`r fa("external-link-alt", fill = ColorEnlace)` HTML color picker](https://www.w3schools.com/colors/colors_picker.asp)
-- [`r fa("external-link-alt", fill = ColorEnlace)` Color Hex](https://www.color-hex.com)
-
-En coolors es tan fácil como:
-1. Entrar a la página [`r fa("external-link-alt", fill = ColorEnlace)` Coolors](https://coolors.co/contrast-checker)  
-2. Ir a explore 
-3. Darle click sobre el color que queramos  
-4. Cuando aparezca **Copied!** podemos regresar a RStudio 
-5. Pegar los seis numeros del color, agregando comillas y el numeral  
-Ejemplo: " # FFFFFF "
-
----
-name: letras
-
-## 4.4. Letras
-
-Para elegir tipos de letra existe la siguiente página  
-
-[`r fa("external-link-alt", fill = ColorEnlace)` Google Fonts](https://fonts.google.com/)
-
-Los tipos de letra son:
-- Monospace
-- Serif
-- Sans-serif
-
-En Google Fonts es tan fácil como:
-1. Entrar a la página [`r fa("external-link-alt", fill = ColorEnlace)` Google Fonts](https://fonts.google.com/) 
-2. Darle click sobre el estilo de letra que queramos  
-3. Dale click sobre **+ Select this style**
-4. Seleccionar **@import** y copiar 
-5. Pegar en nuestro archivo css  
-Ejemplo: @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-
----
-
-class: center, middle, inverse
-
-# Ejercicios `r fa("pencil-alt", fill = '#FFFFFF')`
-
----
-
-## 4.5. Ejercicios
-
-- Cambiar estilo de nuestra dispositiva
-
-.panelset[
-.panel[.panel-name[Cargar]
-Cargar paquete
-```{r, eval=FALSE}
-library(xaringanthemer)
-```
-]
-
-.panel[.panel-name[Colores-Letras]
-Ejemplo 
-```{r, eval=FALSE}
-style_mono_accent(
-  base_color = "#1c5253",
-  header_font_google = google_font("Josefin Sans"),
-  text_font_google   = google_font("Montserrat", "300", "300i"),
-  code_font_google   = google_font("Fira Mono")
-)
-```
-- [`r fa("external-link-alt", fill = ColorEnlace)` Coolors](https://coolors.co/contrast-checker)
-- [`r fa("external-link-alt", fill = ColorEnlace)` Google Fonts](https://fonts.google.com/)
-]
-
-.panel[.panel-name[YAML]
-Cambiar YAML
-```{r, eval=FALSE}
-output:
-  xaringan::moon_reader:
-    css: Xaringan-themer.css
-```
-]
-]
-
----
-
-# 5. Compartir
-
-- Crear **repositorio** en github
-- **Cargar** archivos (Rmd, html y css)
-- **Publicar** pagina github
-- Ver presentación en línea usando **enlace**
-
-.panelset[
-.panel[.panel-name[Repositorio]
-Crear un nuevo repositorio
-
-```{r, echo=FALSE, out.height=200, fig.align='center'}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github3.png')
-```
-]
-
-.panel[.panel-name[Cargar]
-Se pueden subir materiales de manera manual usando **uploading an existing file**
-
-```{r, echo=FALSE, out.height=100, fig.align='center'}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github6.png')
-```
-]
-
-.panel[.panel-name[Publicar]
-Ir a settings e ir a la pestaña pages.
-```{r, echo=FALSE, out.height=300, fig.align='center'}
-knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Github8.png')
-```
-]
-
-.panel[.panel-name[Enlace]
-Para ver su presentacion les aparecera   
-**Your site is ready to be published at ...**
-```{r, eval=FALSE}
-https://TUNOMBRE.github.io/TUREPOSITORIO/
-```
-
-Error 404?
-Debes agregar al final el nombre del html de tu presentacion
-```{r, eval=FALSE}
-https://TUNOMBRE.github.io/TUREPOSITORIO/TUPRESENTACION
-```
-]
-]
-
-
----
-
 class: inverse
 
 # Recapitulando
@@ -1020,8 +690,6 @@ Esta clase:
 - [Como agregar imagenes](#imagenes)
 - [Como agregar tablas](#tablas)
 - [Como agregar graficas](#graficas)  
-- [Como cambiar colores](#colores)
-- [Como cambiar estilo de letras](#letras)
 
 .right[
 ### Contacto
