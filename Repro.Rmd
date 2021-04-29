@@ -69,12 +69,10 @@ class: inverse
 ## Créditos & Recursos
 
 Lecturas
-- [`r fa("book-open", fill = ColorLink)` ReproHack](https://reprohack.github.io/reprohack-hq/)<br>
-- [`r fa("book-open", fill = ColorLink)` rOpenScience](https://ropensci.org/)<br>
 - [`r fa("book-open", fill = ColorLink)` The turing way](https://the-turing-way.netlify.app/welcome)<br>
 - [`r fa("book-open", fill = ColorLink)` Articulos reproducibles](https://frodriguezsanchez.net/publication/rodriguez-sanchez-ecosistemas-2016/)<br>
 
-LatinR2020 
+Videos en español
 - Daniela Ballari
 [`r fa("youtube", fill = ColorLink)` ReproHack](https://www.youtube.com/watch?v=Hvrb2b7v93w&t=732s)<br>
 - Francisco Rodríguez-Sánchez
@@ -82,7 +80,6 @@ LatinR2020
 
 En ingles  
 - [`r fa("youtube", fill = ColorLink)` RLadiesJohannesburg](https://www.youtube.com/watch?v=tSrf4n7DFYI)  
-- [`r fa("youtube", fill = ColorLink)` Ted: crisis reproducibilidad](https://www.youtube.com/watch?v=FpCrY7x5nEE)
 - [`r fa("book-open", fill = ColorLink)` Matt Dray](https://www.rostrum.blog/2020/01/22/repro-three-things/)
 - [`r fa("book-open", fill = ColorLink)` Experimenting with reproducibility](https://academic.oup.com/gigascience/article/7/7/giy077/5046609)
 - [`r fa("book-open", fill = ColorLink)` r3 course](https://r-cubed.rostools.org/lecture-slides.html#collaboration-and-teamwork)  
@@ -228,6 +225,8 @@ class: title-slide, center, middle, inverse
 De 1500 investigadores que intentaron reproducir experimentos publicados, 70% fallaron.
 
 Por lo que la mayoría concluyó que existe una **crisis en la reproducibilidad**
+
+- [`r fa("youtube", fill = 'red')` Ted: crisis reproducibilidad](https://www.youtube.com/watch?v=FpCrY7x5nEE)
 ]
 
 .pull-right[
@@ -241,7 +240,16 @@ knitr::include_graphics('https://www.nature.com/news/polopoly_fs/7.36716.1469695
 
 ## 2.2. Disciplinas
 
-.pull-left[¿Que disciplinas son las más reproducibles?]
+.pull-left[¿Que disciplinas son las más reproducibles?
+
+.right[<h1> 😑➡️ </h1>]
+
+.right[<h1> 😍⬇️ </h1>]
+
+**Afortunadamente** existen algunas iniciativas que apoyan y consultan para mejorar la reproducibilidad
+- [`r fa("book-open", fill = 'red')` ReproHack](https://reprohack.github.io/reprohack-hq/)<br>
+- [`r fa("book-open", fill = 'red')` rOpenScience](https://ropensci.org/)<br>
+]
 
 .pull-right[
 ```{r, echo=FALSE, out.height=400, fig.align='center'}
@@ -388,27 +396,24 @@ Evita problemas con actualización de **librerías**
 ## 3.5. Ejercicios
 
 En equipo 👯 
-- Escribir esqueleto de articulo incluyendo algunos análisis (40 minutos)
-- Subir repositorio a github
-- Otro equipo replicara el manuscrito usando datos similares (25 minutos)
+- Replicar análisis de otro equipo: [Equipo 1](https://github.com/xangeldaniel/prueba.git), [Equipo 2](https://github.com/denniselga/Prueba), [Equipo 3](https://github.com/lisshern/Repositorio1).  
+- Modificar para obtener resultados de pingüinos de Papúa.  
+- Subir nuevo repositorio a github.  
+- Al final reflexionar que podrían incluir en sus futuras instrucciones para facilitar reproducibilidad.
 
 .panelset[
-.panel[.panel-name[Articulo]
-Debe incluir:
-- Introducción, métodos, resultados, discusión y referencias.
-
-Ejemplo:
-```{r, eval=FALSE}
-Los pingüinos de Adelia (*Pygoscelis adeliae*) son una especie protegida y no sabemos si están perdiendo peso conforme se calienta el océano y se reduce la disponibilidad de alimento para ésta especie. <br>
-Se pueden instalar cámaras en las colonias para tomarles fotos de manera regular. Las cámaras registran  bien la forma del pinguino pero necesitamos corregir las medidas por la longitud de aleta  
-- El objetivo de este estudio es evaluar si la medida de la aleta se puede usar para evaluar el peso de los pingüinos. <br>
+.panel[.panel-name[Con git]
+Si ya tienen **git** instalado. [Clonar repositorio.](https://miriamll.github.io/Curso_CIAD/GitGithubZenodo#34)
+```{r, echo=FALSE, out.height=200, fig.align='center'}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git03.png')
 ```
 ]
 
-.panel[.panel-name[Reproducir articulo]
-Reusar Rmd
-- Escribir esqueleto de artículo sobre pingüinos de Papúa usando el esqueleto de pingüinos de Adelia.
-- Al final reflexionar que podrian incluir en sus futuras instrucciones para facilitar reproducibilidad
+.panel[.panel-name[Sin git]
+Si no tienen **git** instalado. Descargar zip.
+```{r, echo=FALSE, out.height=200, fig.align='center'}
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git11.png')
+```
 ]
 ]
 
@@ -425,7 +430,10 @@ name: paquete
 Por ejemplo, si usas una ruta absoluta te va a sugerir que uses una ruta relativa
 
 **Checkpoint**
-- Permite regresar a algún punto de tu análisis]
+- Permite regresar a algún punto de tu análisis
+
+.right[... hay muchos más]
+]
 
 .pull.right[
 

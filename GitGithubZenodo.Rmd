@@ -556,21 +556,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-class: inverse, center, middle
-
-# 5. Ejercicios 
-<h1>`r fa("pencil-alt", fill = '#FFFFFF')`</h1>
-
----
-
-## 5.1. Ejercicios
-
-
-- Clonar repositorio 
-
----
-
-# 6. Control de versiones
+# 5. Control de versiones
 
 Les recomiendo aprender más de como manejar repositorios.  
 [Enlace](https://levelup.gitconnected.com/understanding-git-a-beginners-guide-containing-cheat-sheets-resources-b50c9c01a107)
