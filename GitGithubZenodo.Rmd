@@ -420,12 +420,9 @@ class: inverse, center, middle
 
 ## 3.1. Ejercicios
 
-25 minutos
-
 En equipo 💃🏽👯 
-- Escribir codigo en Rmd para analizar datos de pingüinos. 
+- Escribir código en Rmd para analizar datos de pingüinos. 
 - Subir Rmd a github
-
 
 **Instrucciones** a incluir en el Rmd:
 - Como cargar datos de pingüinos y filtrar con solo datos de Adelia
@@ -433,7 +430,7 @@ En equipo 💃🏽👯
 - Agregar tabla con resultados del modelo
 - Agregar gráfica de masa corporal por longitud de la aleta <br>
 
-**Nota** Piensen en alguien que no conocen replicando su analisis
+**Nota** Piensen en alguien que no conocen replicando su análisis
 
 ---
 
@@ -527,19 +524,12 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 4.7. Modificar
+## 4.7. Stage y Commit
 
-- Abrir y modificar el README 
-- Agregar linea en README 
+Hacer algunos cambios.  
+Al hacer commit hay que ponerle un mensaje de los cambios más importantes que hicimos.
 
-
----
-
-## 4.8. Stage y Commit
-
-Al hacer commit hay que ponerle un mensaje de los cambios mas importantes que hicimos.
-
-Esto nos servira en el futuro si tenemos que regresar a un punto importante.
+Esto nos servirá en el futuro si tenemos que regresar a un punto importante.
 
 ```{r, echo=FALSE, out.height=400, fig.align='center'}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git08-commit.png')
@@ -547,9 +537,9 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-## 4.9. Push
+## 4.8. Push
 
-Los cambios estan locales, para que se refleje en github hay que empujarlo (**push**)
+Los cambios están locales, para que se refleje en github hay que empujarlo (**push**)
 ```{r, echo=FALSE, out.height=300, fig.align='center'}
 knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/Git09-push.png')
 ```
