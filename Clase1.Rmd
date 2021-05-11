@@ -555,13 +555,13 @@ Siguiente clase:
 Para dudas, comentarios y sugerencias:  <br>
 Escríbeme a miriamjlerma@gmail.com
 
-Este material esta accesible <br> y se encuentra en: mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/) y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
+Este material esta accesible <br> y se encuentra en: mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/) y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://www.miriam-lerma.com/)
 ]
 
 <h1>
 .right[
 
-[`r fa("home", fill = '#f2cc8f')`</h1>volver](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = '#f2cc8f')`</h1>volver](https://www.miriam-lerma.com/materiales.html)
 ]
 
 

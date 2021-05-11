@@ -73,17 +73,12 @@ class: inverse
 [`r fa("book-open", fill = ColorLinkInverse)` Rmarkdown por Resul Umit](https://resulumit.com/teaching/rmd_workshop#1)  
 [`r fa("book-open", fill = ColorLinkInverse)` RMarkdown por RStudio](https://rmarkdown.rstudio.com/lesson-2.html)  
 [`r fa("book-open", fill = ColorLinkInverse)` Rmarkdown por Yihui Xie](https://bookdown.org/yihui/rmarkdown/)    
+[Dissertation](https://ourcodingclub.github.io/tutorials/rmarkdown-dissertation/)
 
-- Tutoriales en español:  
-[`r fa("youtube", fill = ColorLinkInverse)` RLadiesBuenosAires](https://www.youtube.com/watch?v=zENhUzKfCws)
-
-- Tutoriales en ingles:    
-[`r fa("youtube", fill = ColorLinkInverse)` RLadiesOslo](https://www.youtube.com/watch?v=Xn5AmUf7gDQ&t=6552s)<br>
-[`r fa("youtube", fill = ColorLinkInverse)` RLadiesFreiburg](https://www.youtube.com/watch?v=H91WSwALx1A&t=3777s)<br>
-[`r fa("youtube", fill = ColorLinkInverse)` RLadiesJohannesburgo](https://www.youtube.com/watch?v=tSrf4n7DFYI&t=55s)  
-
-- Imagen de portada
-[Unsplash by Maryna Yazbeck](https://unsplash.com/@yazbeckistan)
+Otros paquetes en Rmarkdown.  
+- [Bookdown](https://bookdown.org/yihui/bookdown/)
+- [Posterdown](https://github.com/brentthorne/posterdown)
+- [Pagedown](https://github.com/brentthorne/pagedown) 
 
 ---
 

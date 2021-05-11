@@ -208,6 +208,8 @@ Por ejemplo: [gitlab](https://about.gitlab.com/)
 knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/245px-GitLab_Logo.svg.png')
 ```
 
+Ver Comparación [Github o Gitlab](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
+
 ---
 
 ## 2.2. Registrarse
@@ -555,6 +557,11 @@ Les recomiendo aprender más de como manejar repositorios.
 knitr::include_graphics('https://miro.medium.com/max/700/0*68fyM5AI85U_I3vo.jpg')
 ```
 
+Más recursos sobre control de versiones:
+- [Que es control de versiones](https://www.atlassian.com/git/tutorials/what-is-version-control)
+- [Rladies BuenosAires](https://github.com/rladies/meetup-presentations_buenosaires/blob/master/2019-09-14-Git_Rstudio/git_rstudio.pdf)
+- [Entender control de versiones](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
+
 
 ---
 
@@ -579,13 +586,13 @@ Para dudas, comentarios y sugerencias:
 
 .right[Este material esta accesible y se encuentra en <br>
 mi [`r fa("external-link-alt", fill = '#74c69d')`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://www.miriam-lerma.com/materiales.html)
 
 
 .center[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://www.miriam-lerma.com/materiales.html)
 ]]
 

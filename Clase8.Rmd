@@ -744,12 +744,12 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página www.miriam-lerma.com](https://www.miriam-lerma.com/materiales.html)
 ]
 
 <h1>
 .right[
-[`r fa("home", fill = '#f2cc8f')`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = '#f2cc8f')`](https://www.miriam-lerma.com/materiales.html)
 ]</h1>
 
 
