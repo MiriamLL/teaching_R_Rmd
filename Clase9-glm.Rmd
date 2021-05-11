@@ -39,7 +39,8 @@ meta() %>%
 ```{r include = FALSE}
 #Paquetes
 library(xaringanExtra)
-ColorLink<-"#f2cc8f"
+ColorLink<-"#219ebc"
+ColorLinkInv<-"#f2cc8f"
 ```
 
 ```{r xaringan-panelset, echo=FALSE}
@@ -79,8 +80,8 @@ class: inverse
 #### Ustedes
 
 - Conocimientos de R (saben abrirlo, cargar paquetes y datos, saben hacer operaciones y gráficos).  
-- Quieren crear modelos mixtos en R y conocer la sintaxis. 
-La clase de hoy esta en el [repositorio](https://github.com/MiriamLL/Prueba)
+- Quieren crear modelos mixtos en R y conocer la sintaxis.  
+La clase de hoy esta en el [repositorio](https://github.com/MiriamLL/Prueba):
 Clonen/Descarguen los materiales.  
 
 #### Preguntas
@@ -94,15 +95,16 @@ class: inverse
 ## Créditos & Recursos
 
 Lecturas
-- [`r fa("book-open", fill = ColorLink)` Intro por Gabriela Hajduk](https://gkhajduk.github.io/2017-03-09-mixed-models/)
-- [`r fa("book-open", fill = ColorLink)` Introduccion](https://athanasiamo.github.io/LME_introduction_workshop/slides/lme_rladies_london.html#1)<br>
+- [`r fa("book-open", fill = ColorLinkInv)` Intro por Gabriela Hajduk](https://gkhajduk.github.io/2017-03-09-mixed-models/)
+- [`r fa("book-open", fill = ColorLinkInv)` Introduccion por Athanasia Mowinckel](https://athanasiamo.github.io/LME_introduction_workshop/slides/lme_rladies_london.html#1)<br>
+- [`r fa("book-open", fill = ColorLinkInv)` Lectura sobre mixed-models with R Michel Clark](https://m-clark.github.io/mixed-models-with-R/#)
 
 Videos en español
-- [`r fa("youtube", fill = ColorLink)` Modelos mixtos por Sara Acevedo](https://vimeo.com/526381086)<br>
+- [`r fa("youtube", fill = ColorLinkInv)` Modelos mixtos por Alejandra Tapia](https://alejandraandrea.github.io/slides-xaringan-mixed-models/#1)<br>
 
 En ingles  
-- [`r fa("youtube", fill = ColorLink)` Video explicando Teoría](https://www.youtube.com/watch?v=sdYKtsmtXmc&list=PLVlVXU7jGfm1seY4xxINrsp23AmrYFYa7&index=4)
-- [`r fa("book-open", fill = ColorLink)` mixed-models with R Michel Clark](https://m-clark.github.io/mixed-models-with-R/#)
+- [`r fa("youtube", fill = ColorLinkInv)` Video explicando TeoríaÑ Kyle Tomlinson](https://www.youtube.com/watch?v=sdYKtsmtXmc&list=PLVlVXU7jGfm1seY4xxINrsp23AmrYFYa7&index=4)
+
 
 Imagenes
 - Portada  
@@ -147,7 +149,7 @@ Modelos lineales mixtos
 ---
 name: lmer
 
-## 2.2. Datos
+## 1.2. Datos
 
 Paquetes a cargar para leer los datos
 ```{r, warning=FALSE, message=FALSE}
@@ -164,13 +166,9 @@ download.file(url, "dragons.tsv")
 dragones <- read_tsv("dragons.tsv") #read_tsv de {readr}
 ```
 
-```{r, message=FALSE}
-here('dragones.csv')
-```
-
 ---
 
-## 2.2. Datos
+## 1.2. Datos
 
 Los datos contienen 480 observaciones contenidos en 4 columnas: testScore, bodyLenght, montainRange, site
 ```{r}
@@ -188,23 +186,28 @@ dragones<-dragones%>%
 
 ---
 
-## 2.3. Preguntas
+## 1.3. Preguntas
 
-Imaginemos que: 
-Se entrenaron a los dragones y se recopilaron datos de cada montaña.
+Imaginemos que:  
+Se entrenaron dragones y se recopilaron datos de diferentes montañas.
+
+.center[<h1>🐉💡</h1>]  
 
 Entre mas rápido aprendieron el entrenamiento mejor calificación, también se midieron y se anoto en que sitio y en que región provienen.
+
+.center[<h1>🐲💯</h1>] 
 
 ¿Afectara el tamaño de los dragones a sus calificaciones?
 
 
-
 ---
 
-## 2.4. Inspeccionar datos
+## 1.4. Inspeccionar datos
 
-```{r, eval=FALSE}
-dragones %>% ggplot(aes(x=tamanio, 
+Creemos un gráfico de puntos
+```{r,out.width="40%"}
+dragones %>% 
+  ggplot(aes(x=tamanio, 
              y=calificacion)) + 
              geom_jitter(alpha=.2)+
              theme_bw()
@@ -213,67 +216,83 @@ dragones %>% ggplot(aes(x=tamanio,
 
 ---
 
-## 2.5 Ajustar modelo lineal
+## 1.5 Ajustar modelo lineal
+
+Cargar paquetes
 ```{r}
 library(broom)
 ```
 
-Primero ajustar un modelo lineal
+Ajustar un modelo lineal
 ```{r}
 ajuste_lm <- lm(calificacion ~ tamanio, data=dragones)
 ```
 
-Estadisticos del modelo
+Mirar estadísticos del modelo
 ```{r}
 broom::tidy(ajuste_lm) %>% tibble::as_tibble()
 ```
-
-Información sobre el modelo
-```{r}
-glance(ajuste_lm) %>% tibble::as_tibble()
-```
+¿Entre más grandes, más inteligentes?
 
 ---
 
-## 2.6. Ajustar modelo lineal
+## 1.5 Ajustar modelo lineal
 
+Información sobre el modelo.
+```{r}
+glance(ajuste_lm) %>% 
+  tibble::as_tibble()
+```
+Información sobre el ajuste del modelo.
 ```{r}
 info_ajuste_lm<-augment_columns(ajuste_lm, dragones)
-```
-
-
-```{r}
-info_ajuste_lm %>% 
-ggplot(aes(x=tamanio,y=calificacion))+ 
-geom_jitter(alpha=.2)+
-geom_line(aes(x=tamanio,y=.fitted))+
-theme_bw()
+info_ajuste_lm
 ```
 
 ---
 
-## 2.7. Supuestos
+## 1.5 Modelo lineal
+
+Gráfica el modelo lineal
+```{r,out.width="40%"}
+info_ajuste_lm %>% 
+  ggplot(aes(x=tamanio,y=calificacion))+ 
+  geom_jitter(alpha=.2)+
+  geom_line(aes(x=tamanio,y=.fitted))+
+  theme_bw()
+```
+
+---
+
+## 1.6. Supuestos
 
 Linealidad
-```{r}
+```{r,out.width="40%"}
 plot(ajuste_lm, which=1)
 ```
 
+---
+
+## 1.6. Supuestos
 Normalidad
-```{r}
+```{r,out.width="40%"}
 plot(ajuste_lm, which=2)
 ```
 
+---
+
+## 1.6. Supuestos
 Homocedasticidad
-```{r}
+```{r,out.width="40%"}
 plot(ajuste_lm, which=3)
 ```
 
 ---
 
-## 2.8. Inspeccionar
+## 1.7. Inspeccionar
 
-```{r}
+Al graficar las montañas por separado. ¿Que notan?
+```{r,out.width="40%"}
 dragones %>%
   ggplot(aes(x=tamanio,y=calificacion, 
         colour=montania)) +
@@ -283,9 +302,10 @@ dragones %>%
 
 ---
 
-## 2.8. Inspeccionar
+## 1.8. Inspeccionar
 
-```{r}
+Separando por montañas. ¿Que notan?
+```{r,out.width="30%"}
 dragones %>% 
   ggplot(aes(tamanio,calificacion,
       colour = montania))+
@@ -295,61 +315,73 @@ dragones %>%
   theme(strip.background=element_rect(fill="white"))
 ```
 
-No se puede omitir la montania, pero como la incluimos?
-
 ---
 name: random_effect
 
-## 2.9. Efectos aleatorios
+## 1.9. Efectos aleatorios
+
+No se puede omitir la montaña , ¿pero como la incluimos?
+
+- Como factor aleatorio.
+- [`r fa("external-link-alt", fill = "#219ebc")` Que es un factor aleatorio y como saber cuando es aleatorio](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/)
 
 Paquetes
-```{r}
-#install.packages('broom.mixed')
-#install.packages('lme4')
+```{r, message=FALSE, warning=FALSE}
 library(broom.mixed)
 library(lme4)
 ```
 
 Sintaxis de los efectos aleatorios (random effects)
 ```{r}
-ajuste_lmer <- lmer(calificacion ~ tamanio + (1|montania), data = dragones)
+ajuste_lmer <- lmer(calificacion ~ tamanio + 
+                      (1|montania), data = dragones)
 ```
 
+---
+
+## 1.9. Efectos aleatorios
+
+Mirar nuestro nuevo modelo.
 ```{r}
 tidy(ajuste_lmer) %>% tibble::as_tibble()
 ```
-
+Mirar los ajustes del modelo.
 ```{r}
 glance(ajuste_lmer) %>% tibble::as_tibble()
 ```
 
-No hay valor p
+**No hay valor p 💔😭**
 
 ---
 
-## 2.9. Valor p
+## 1.9. Valor p
 
-La libreria lmerTest te puede dar un valor p, pero regularmente hay que llevar los modelos mas alla. 
+La libreria lmerTest te puede dar un valor p, pero no es muy útil y además no se reporta. 
 
-```{r}
+```{r,message=FALSE, warning=FALSE}
 library(lmerTest)
-ajuste_lmer <- lmer(calificacion ~ tamanio + (1|montania), data = dragones)
+ajuste_lmer <- lmer(calificacion ~ tamanio + 
+                      (1|montania), data = dragones)
 tidy(ajuste_lmer) %>% tibble::as_tibble()
 ```
 
-Que es un random effect y como saber cuando es [random o fijo](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/)
+---
+
+## 1.10. Efecto de la montaña
+
+Ver información del ajuste: valores ajustados (.fitted), residuales (.resid)
+```{r}
+info_ajuste_lmer<- augment_columns(ajuste_lmer,dragones)
+info_ajuste_lmer
+```
+Las montañas parecen tener un efecto en la calificación.
 
 ---
 
-## 2.10. Inspeccionar
+## 1.10. Efecto de la montaña
 
-Informacion de el ajuste: valores ajustados (.fitted), residuales (.resid)
-```{r}
-info_ajuste_lmer<- augment_columns(ajuste_lmer,dragones)
-```
-
-Las montanias parecen tener un efecto en la calificacion.
-```{r}
+Veamos el efecto de las montañas en la calificación.
+```{r,out.width="30%"}
 info_ajuste_lmer %>% 
  ggplot(aes(x=tamanio,y=calificacion, colour=montania))+ 
  geom_jitter(alpha=2)+ 
@@ -361,23 +393,36 @@ theme_bw()
 
 ---
 
-## 2.11. Supuestos
+## 1.11. Supuestos
 
-```{r}
+```{r,out.width="30%"}
 plot(ajuste_lmer)
 ```
 
-```{r}
+---
+
+## 1.11. Supuestos
+
+```{r,out.width="30%"}
 qqnorm(resid(ajuste_lmer))
 qqline(resid(ajuste_lmer))
 ```
 
-```{r}
+---
+
+## 1.11. Modelo mixto
+
+Ver ajustes del modelo mixto que incluye **montañas**
+```{r,out.width="30%"}
 summary(ajuste_lmer)
 ```
 
-Aqui se ve claramente que la varianza de el sistema montanioso es 339.7.
-Entonces las montanias son claramente importantes porque explican mucha de la variacion. Como saber cuanto explican de la variacion? Se puede tomar la varianza de la montania y dividirla por el total de la varianza. 
+---
+
+## 1.11. Modelo mixto
+
+Se ve que la varianza de el sistema montañoso es 339.7.
+Entonces las montañas son claramente importantes porque explican mucha de la variación. Como saber cuanto explican de la variación? Se puede tomar la varianza de la montaña y dividirla por el total de la varianza. 
 
 ```{r}
 339.7/(339.7 + 223.8)
@@ -386,47 +431,57 @@ Entonces las montanias son claramente importantes porque explican mucha de la va
 
 ---
 name: AIC
+class: title-slide,center, middle, inverse
 
-# 3. AIC
+# 2. AIC
 
 ---
 
-## 3.1. AIC
+## 2.1. AIC
 
-El AIC (Akaike Information criterion) es un modelo matermatico para evaluar que tan bien se ajusta el modelo a los datos generados. En estadistica se usa mucho para comparar dos modelos posibles y determinar cual es el mejor modelo.
+El AIC (Akaike Information criterion) es un modelo matemático para evaluar que tan bien se ajusta el modelo a los datos generados. En estadistica se usa mucho para comparar modelos posibles y determinar cual es el mejor modelo.
 
 AIC se calcula de:
-- el numero de variables independientes que se uso para construir el modelo
-- el estimado de maximum likelihood (que tan bien el modelo reproduce los datos)
+- El numero de variables independientes que se usó para construir el modelo
+- El estimado de máxima verosimilitud (maximum likelihood), (que tan bien el modelo reproduce los datos)
 
 El mejor modelo se identifica a partir de un AIC, que explica la mayor cantidad de variacion usando el menos numero de variables independientes. 
 
+---
 
-----
+## 2.1. AIC
 
-## 3.2. Dragones
+.center[<h1>🐉💡</h1>]  
 
 Usando el ejemplo de dragones, que modelo se ajusta mejor a nuestros datos?
 A lo mejor colectamos variables que no son importantes para nuestro modelo.
 
-Los menos AIC son mejores, y AIC penaliza los modelos que usen mas parámetros.
+Consideren: los AIC menores son mejores, y AIC penaliza los modelos que usen más parámetros.
 
 ---
 name: nested_effects
 
-## 3.1. Efectos aleatorios anidados
+## 2.1. Efectos aleatorios anidados
 
-La variable de sitio es un factor con tres niveles: un sitio a, b y c. Y existe un anidamiento (nesting) del sitio con la montaña. Entonces los sitios no tienen significado si no le asignamos las montañas. Para no tener que estar recordando que esto ocurre, lo mejor es crear una nueva variable anidada (nested)
+En nuestros datos de dragones.
+
+La variable de sitio es un factor con tres niveles: un sitio a, b y c. Y existe un anidamiento (nesting) del sitio con la montaña.  
+Entonces los sitios no tienen significado si no le asignamos las montañas. 
+
+Para no tener que estar recordando que esto ocurre, lo mejor es crear una nueva variable anidada (nested)
 
 ```{r}
-dragones$muestra <- factor(paste0(dragones$montania,dragones$sitio))
+dragones$muestra <- factor(paste0(dragones$montania,
+                                  dragones$sitio))
 ```
 
-Recordando, el factor aleatorio solo aparece en un nivel en particular. Por eso es anidado, cada sitio pertenece a un sistema montañoso en especial y solo en ese sistema. Para efectos cruzados es cuando el factor aparece en mas de un nivel en otros factores, por ejemplo si el mismo dragón aparece en mas de un sistema montañoso. 
+**Recordando** el factor aleatorio solo aparece en un nivel en particular.  
+Por eso es anidado, cada sitio pertenece a un sistema montañoso en especial y solo en ese sistema.  
+Para efectos cruzados es cuando el factor aparece en más de un nivel en otros factores, por ejemplo si el mismo dragón aparece en más de un sistema montañoso.
 
 ---
 
-## 3.2. Factores aleatorios
+## 2.2. Factores aleatorios
 
 De acuerdo a lo que vimos anteriormente, entonces no podemos poner los efectos aleatorios separados.
 ```{r}
@@ -434,13 +489,13 @@ modelo_incorrecto <- lmer(calificacion ~ tamanio +
                       (1|montania) + (1|sitio), data = dragones)  
 ```
 Este modelo trata los efectos aleatorios como cruzados.
-
+**Recuerden** que depende de su modelo y muestreo cual elegir. 
 
 ---
 
-## 3.3. Modelo completo
+## 2.3. Modelo completo
 
-Con los datos de dragones una manera de crear un modelo completo seria la siguiente.
+Con los datos de dragones, una manera de crear un modelo completo sería la siguiente.
 ```{r}
 lmer_completo <- lmer(calificacion ~ tamanio + (1|montania) + (1|muestra), 
 				  data = dragones, REML = FALSE)
@@ -452,43 +507,58 @@ lmer_completo
 
 ---
 
+## 2.4. Reportar el modelo
 
-## 3.4. Como se reporta eso?
+¿Como se reporta eso?
 
 De mejor a peor lo que podemos hacer es usar:
 
 - Z-test de Wald 
 - t-test de Wald (en este modelo los valores tendrian que estar balanceados)
-- Prueba de razón de verosimilitud (en inglés: Likelihood ratio tests). Usando anova() o drop1())
+- **Prueba de razón de verosimilitud** (en inglés: Likelihood ratio tests).  
+Usando anova() o drop1())
 - Markov chain Monte Carlo (MCMC) o un bootstramp parametrico con intervalos de confianza
 
 ---
 
 
-## 3.5. Compara modelos
+## 2.5. Compara modelos
 
 Modelo completo.
 ```{r}
-lmer_completo <- lmer(calificacion ~ tamanio + (1|montania) + (1|muestra), 
-				  data = dragones, REML = FALSE)
+lmer_completo <- lmer(calificacion ~ tamanio + 
+                        (1|montania) + (1|muestra),
+                      data = dragones, REML = FALSE)
 ```
 
-Modelo reducido. **Nota** que no incluye tamaño.
+Modelo reducido. **Nota** que este modelo no incluye tamaño.
 ```{r}
-lmer_reducido <- lmer(calificacion ~ 1 + (1|montania) + (1|muestra), 
-					     data = dragones, REML = FALSE)
+lmer_reducido <- lmer(calificacion ~ 1 + 
+                        (1|montania) + (1|muestra), 
+                      data = dragones, REML = FALSE)
 ```
 
-Comparación de los modelos.
-```{r}
-anova(lmer_reducido, lmer_completo)  # the two models are not significantly different
+Comparación de los modelos. 
+```{r, eval=FALSE}
+anova(lmer_reducido, lmer_completo) 
 ```
 
 ---
 
-# 3.6. mas factores
+## 2.5. Compara modelos
 
-Generar valores aleatorios
+Comparación de los modelos. Los modelos no son significativamente diferentes.   Tamaño no ayuda a explicar la calificación de los dragones.
+```{r}
+anova(lmer_reducido, lmer_completo)  
+```
+
+---
+
+## 2.6. Más factores
+
+Si tuvieramos mayor cantidad de variables, el modelo se crearía de otra forma.
+
+Intentemos incrementar la complejidad, al generar valores aleatorios
 ```{r}
 set.seed(1234)
 edad<-runif(480, min=0, max=100)
@@ -502,30 +572,17 @@ dragones$edad<-edad
 dragones$fuego<-fuego
 ```
 
----
-
-# 3.7. drop1
-
-```{r}
-lmer_completo <- lmer(calificacion ~ tamanio + edad + fuego +
-                        (1|montania) + (1|muestra), 
-				  data = dragones, REML = FALSE)
-```
-
-```{r}
-drop1(lmer_completo, test="F")
-```
-
-
----
-
-### 3.3. Comparar muchos modelos
-
 Cargar paquetes
 ```{r}
 library(lme4)
 library(MuMIn)
 ```
+
+---
+
+## 2.8. Comparar muchos modelos
+
+Una manera de comprar modelos cuando tenemos muchas variables es crear varios modelos.
 
 Primer modelo
 ```{r}
@@ -546,7 +603,28 @@ mod3 <- lmer(calificacion ~ tamanio + fuego + edad + (1|montania) + (1|muestra),
 
 ---
 
-### 3.4. Comparar muchos modelos
+## 2.7. drop1
+
+Otra manera de comparar modelos es usando **drop1**
+
+Hay que crear el modelo completo.
+```{r}
+lmer_completo <- lmer(calificacion ~ tamanio + edad + fuego +
+                        (1|montania) + (1|muestra), 
+				  data = dragones, REML = FALSE)
+```
+
+Esta función te sugiere como reducir tu modelo.
+```{r}
+drop1(lmer_completo, test="F")
+```
+
+---
+
+## 2.9. Comparar muchos modelos
+
+Otra manera es generar un modelo completo y usar la función **dredge**.  
+Esta función sirve para evaluar que factores se pueden sacar del modelo para simplificarlo.
 
 ```{r}
 library(MuMIn)
@@ -556,22 +634,34 @@ options(na.action = "na.fail")
 ```{r}
 lmer_completo <- lmer(calificacion ~ tamanio +
                         (1|montania) + (1|muestra), 
-				  data = dragones, REML = FALSE)
+                      data = dragones, REML = FALSE)
 ```
 
-AICs, delta y pesos (weight)
+```{r, eval=FALSE}
+dredge(lmer_completo)
+```
+
+---
+
+## 2.9. Comparar muchos modelos
+
+- **AICc**: Valores AIC para muestras pequeñas
+- **delta**: diferencia entre modelos. Por convención AIC<2 se consideran modelos posibles.
+-**weight**: Peso del modelo.
+
+Todos estos valores pueden reportarse.
+
 ```{r}
 dredge(lmer_completo)
 ```
 
-
 ---
 
-# 4. Para considerar
+# 3. Para considerar
 
 - [Usar Machine learning](https://github.com/m-clark/introduction-to-machine-learning)
 
-- [Usar Estadistica bayesiana](https://oliviergimenez.github.io/blog/bayesworkshop/)
+- [Usar estadistica bayesiana](https://oliviergimenez.github.io/blog/bayesworkshop/)
 
 Otras lecturas:
 - [El reinado de los valores p se ha terminado, ahora que hacemos?](https://royalsocietypublishing.org/doi/10.1098/rsbl.2019.0174)
@@ -585,10 +675,11 @@ class: left, inverse
 
 Recapitulando
 
-- [Reproducibilidad](#repro)
-- [Publicaciones reproducibles](#pub)
-- [Manuscritos reproducibles](#MS)
-
+- [Modelos mixtos](#lmer)
+- [Incluir efectos aleatorios](#random_effects)
+- [Incluir efectos anidados](#nested_effects)
+- [AIC](#AIC)
+- [Comparar modelos](#comparar)
 <br>
 <br>
 
@@ -599,14 +690,14 @@ Para dudas, comentarios y sugerencias:
 <br>
 
 .right[Este material esta accesible y se encuentra en <br>
-mi [`r fa("external-link-alt", fill = '#74c69d')`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://miriamlerma.netlify.app/materiales.html)
+mi [`r fa("external-link-alt", fill = ColorLinkInv)`github](https://github.com/MiriamLL/Curso_CIAD/)
+y mi [`r fa("external-link-alt", fill = ColorLinkInv)`página](https://www.miriam-lerma.com/posts/2021-03-01-introar/)
 
 
 .center[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+<h3>`r fa("home", fill = ColorLinkInv)`[Volver ](https://www.miriam-lerma.com/posts/2021-03-01-introar/)
 ]]
 

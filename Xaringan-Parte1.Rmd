@@ -553,7 +553,7 @@ Por ejemplo
 #{r,  out.width="40%"}
 ```
 
-Ahora aparece asi.  
+Ahora aparece así.  
 ```{r, echo=FALSE, out.width="40%", warning=FALSE}
 Pingus %>%
   filter(especie=='Adelia')%>%
