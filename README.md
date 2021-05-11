@@ -46,9 +46,6 @@ Presentación: https://miriamll.github.io/Curso_CIAD/GitGithubZenodo
 **Clase 14: Reproducibilidad.**  🤝<br>
 Presentación: https://miriamll.github.io/Curso_CIAD/Repro 
 
-<<<<<<< HEAD
+
 **Clase 15: Modelos mixtos.**  🐲<br>
-=======
-**Clase 15: Modelos mixtos.**  <br>
->>>>>>> 8dace4cd3504e0592d2476bb2018151557e7397f
 Presentación: https://miriamll.github.io/Curso_CIAD/Clase9-glm 
