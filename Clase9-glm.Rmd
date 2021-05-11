@@ -1,5 +1,5 @@
 ---
-title: "Clase 7"
+title: "Clase 9"
 subtitle: "Modelos mixtos"
 author: "Miriam Lerma"
 date: "Mayo 2021"
