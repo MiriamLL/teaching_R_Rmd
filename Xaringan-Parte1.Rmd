@@ -338,6 +338,7 @@ background-position: -5%
 
 
 ---
+name: imagenes
 
 ## 1.7. Imagenes
 
@@ -703,7 +704,7 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html) 
+y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](www.miriam-lerma.com) 
 ]
 
 <h1>
@@ -711,6 +712,6 @@ y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-l
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = ColorEnlaceInverso)`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = ColorEnlaceInverso)` Volver](www.miriam-lerma.com/materiales.html)
 ]</h1>
 
