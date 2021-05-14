@@ -5,7 +5,7 @@ author: "Miriam Lerma"
 date: "Mayo 2021"
 output:
   xaringan::moon_reader:
-    css: RZero-themer.css
+    css: RZero-themer2.css
     seal: false
     nature:
       highlightStyle: github
@@ -39,7 +39,7 @@ meta() %>%
 ```{r include = FALSE}
 #Paquetes
 library(xaringanExtra)
-ColorLink<-"#219ebc"
+ColorLink<-"#e63946"
 ColorLinkInv<-"#f2cc8f"
 ```
 
@@ -52,6 +52,8 @@ library(emo)
 library(here)
 library(fontawesome)
 library(ggplot2)
+#library(countdown)
+#countdown(minutes = 5, seconds = 00, play_sound = TRUE,right = "33%")
 ```
 
 class: title-slide, inverse, middle, right
@@ -127,7 +129,7 @@ class: title-slide, center, middle, inverse
 - Efectos aleatorios y errores aleatorios son independientes 
 
 
-## ¿Porque usarlos?
+** ¿Porque usarlos?**
 
 - Datos pueden presentar heterogeneidad
 - Por ejemplo: pueden estar agrupados por provenir de diferentes áreas, o presentar medidas repetidas
@@ -226,6 +228,7 @@ glance(ajuste_lm) %>%
   tibble::as_tibble()
 ```
 Información sobre el ajuste del modelo. Esta función agrega los valores ajustados, los residuales y otros al data frame.
+
 ```{r}
 info_ajuste_lm<-augment_columns(ajuste_lm, dragones)
 info_ajuste_lm
@@ -314,7 +317,6 @@ dragones %>%
 ```
 ]
 
-
 ---
 name: modelos_mixtos
 
@@ -325,7 +327,7 @@ No se puede omitir la montaña , ¿pero como la incluimos?
 --
 
 - Como factor aleatorio.
-- [`r fa("external-link-alt", fill = "#219ebc")` Que es un factor aleatorio y como saber cuando es aleatorio](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/)
+- [`r fa("external-link-alt", fill = ColorLink)` Que es un factor aleatorio y como saber cuando es aleatorio](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/)
 
 --
 
@@ -366,9 +368,6 @@ glance(ajuste_lmer) %>%
 
 <h3>¿No hay valor p? 💔😭</h3>
 
-
-<br>
-<br>
 <br>
 
 Lecturas sobre valor _p_ :
@@ -383,7 +382,7 @@ Lecturas sobre valor _p_ :
 
 A pesar de que no se recomienda usar valor p, la librería lmerTest te puede dar un valor p. 
 
-*all the F ratios use the *same* denominator* - [Douglas Bates](https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html)
+Considera que: *all the F ratios use the same denominator* - [Douglas Bates](https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html)
 
 ```{r,message=FALSE, warning=FALSE}
 library(lmerTest)
@@ -398,11 +397,12 @@ tidy(ajuste_lmer) %>%
 ## 1.10. Efecto de la montaña
 
 Ver información del ajuste: valores ajustados (.fitted), residuales (.resid)
+**augment_columns** agrega los valores ajustados, los residuales y otros al data frame.
 ```{r}
 info_ajuste_lmer<- augment_columns(ajuste_lmer,dragones)
 info_ajuste_lmer
 ```
-**augment_columns** agrega los valores ajustados, los residuales y otros al data frame.
+
 
 ---
 
@@ -455,16 +455,17 @@ Ver ajustes del modelo mixto que incluye **montañas**
 Se ve que la varianza de el sistema montañoso es 339.7.
 Entonces las montañas son claramente importantes porque explican mucha de la variación. Como saber cuanto explican de la variación? Se puede tomar la varianza de la montaña y dividirla por el total de la varianza. 
 
+```{r,eval=FALSE}
+summary(ajuste_lmer)
+```
+
 ```{r}
 339.7/(339.7 + 223.8)
 ```
 
+Otro valor interesante es el AIC. Hablaremos más adeltante de esto.
 ```{r}
 AIC(ajuste_lmer)
-```
-
-```{r,eval=FALSE}
-summary(ajuste_lmer)
 ```
 
 ---
@@ -608,7 +609,7 @@ Para hacer una buena selección hay que tener claro cual es la **pregunta**.
 
 En lo que respecta a biología, se puede usar la selección de modelos para revisar parámetros que no corresponden al núcleo de la pregunta. 
 
-Se **recomienda** tener 10 veces más datos que parámetros.
+También se **recomienda** tener 10 veces más datos que parámetros.
 
 - [Da click aquí para mirar algunas formulas y explicacion a detalle](https://bookdown.org/egarpor/PM-UC3M/lm-ii-modsel.html)
 
@@ -616,7 +617,7 @@ Se **recomienda** tener 10 veces más datos que parámetros.
 
 ## 3.3. Selección del modelo
 
-De mejor a peor lo que podemos hacer es usar para comparar modelos son:
+De mejor a peor lo que podemos usar para comparar modelos son:
 
 - Z-test de Wald 
 - t-test de Wald (en este modelo los valores tendrían que estar balanceados)
@@ -767,32 +768,30 @@ mod_combinacion <- lm(bmi ~ age + sex + consumption, data = bmi_datos)
 
 ## 3.10. MASS
 
-Otra cosa que podemos hacer es pedirle a R que construya los modelos con base a la información que le damo.  
+Otra cosa que podemos hacer es pedirle a R que construya los modelos con base a la información que le damos.  
 ```{r}
 bmi_mod_comp <- lm(bmi ~., data = bmi_datos)
 ```
-**Nota** tu dataframe solo debe incluir las variables que te interesa incluir.
+**Nota** tu dataframe solo debe incluir las columnas de las variables que te interesa incluir.
 
-
-Otro paquete que permite comparar modelos es **MASS**. 
+Un paquete que tambien te permite comparar modelos es **MASS**. 
 ```{r, warning=FALSE, message=FALSE}
 library(MASS)
 ```
 
-La ventaja de stepAIC es que te permite elegir: direction = c("both", "backward", "forward").
+La ventaja de este paquete es que la función stepAIC te permite elegir: direction = c("both", "backward", "forward"). 
 ```{r}
 step.model <- stepAIC(bmi_mod_comp, direction = "both", 
                       trace = FALSE)
 ```
+
+- [Da click aquí la explicación de Stepwise regression a detalle](http://www.sthda.com/english/articles/37-model-selection-essentials-in-r/154-stepwise-regression-essentials-in-r/)
 
 ---
 
 ## 3.10. MASS
 
 De entrada ya nos dice cual fue el mejor modelo. 
-```{r, eval=FALSE}
-lm(formula = bmi ~ sex + age + consumption, data = bmi_datos)
-```
 
 ```{r}
 summary(step.model)
@@ -815,8 +814,6 @@ drop1(bmi_mod_comp, test="F") # Tambien llamado 'type II' anova
 ---
 
 ## 3.12. Usando dredge
-
-Otra manera es generar un modelo completo y usar la función **dredge**.  
 
 La función **dredge** del paquete MuMIN genera una tabla de selección de modelos usando las combinaciones de los efectos fijos en el modelo global.
 ```{r, warnings=FALSE, message=FALSE}

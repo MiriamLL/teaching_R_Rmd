@@ -22,7 +22,7 @@
     <meta property="article:author" content="Miriam Lerma"/>
     <link href="Clase9-modelosmixtos_files/panelset-0.2.4/panelset.css" rel="stylesheet" />
     <script src="Clase9-modelosmixtos_files/panelset-0.2.4/panelset.js"></script>
-    <link rel="stylesheet" href="RZero-themer.css" type="text/css" />
+    <link rel="stylesheet" href="RZero-themer2.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -109,7 +109,7 @@ class: title-slide, center, middle, inverse
 - Efectos aleatorios y errores aleatorios son independientes 
 
 
-## ¿Porque usarlos?
+** ¿Porque usarlos?**
 
 - Datos pueden presentar heterogeneidad
 - Por ejemplo: pueden estar agrupados por provenir de diferentes áreas, o presentar medidas repetidas
@@ -236,6 +236,7 @@ glance(ajuste_lm) %&gt;%
 ```
 Información sobre el ajuste del modelo. Esta función agrega los valores ajustados, los residuales y otros al data frame.
 
+
 ```r
 info_ajuste_lm&lt;-augment_columns(ajuste_lm, dragones)
 info_ajuste_lm
@@ -353,7 +354,6 @@ dragones %&gt;%
 &lt;img src="Clase9-modelosmixtos_files/figure-html/plotmontania3-1.png" width="80%" /&gt;
 ]
 
-
 ---
 name: modelos_mixtos
 
@@ -364,7 +364,7 @@ No se puede omitir la montaña , ¿pero como la incluimos?
 --
 
 - Como factor aleatorio.
-- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#219ebc;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Que es un factor aleatorio y como saber cuando es aleatorio](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/)
+- [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e63946;" viewBox="0 0 576 512"&gt;&lt;path d="M576 24v127.984c0 21.461-25.96 31.98-40.971 16.971l-35.707-35.709-243.523 243.523c-9.373 9.373-24.568 9.373-33.941 0l-22.627-22.627c-9.373-9.373-9.373-24.569 0-33.941L442.756 76.676l-35.703-35.705C391.982 25.9 402.656 0 424.024 0H552c13.255 0 24 10.745 24 24zM407.029 270.794l-16 16A23.999 23.999 0 0 0 384 303.765V448H64V128h264a24.003 24.003 0 0 0 16.97-7.029l16-16C376.089 89.851 365.381 64 344 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V287.764c0-21.382-25.852-32.09-40.971-16.97z"/&gt;&lt;/svg&gt; Que es un factor aleatorio y como saber cuando es aleatorio](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/)
 
 --
 
@@ -426,9 +426,6 @@ glance(ajuste_lmer) %&gt;%
 
 &lt;h3&gt;¿No hay valor p? 💔😭&lt;/h3&gt;
 
-
-&lt;br&gt;
-&lt;br&gt;
 &lt;br&gt;
 
 Lecturas sobre valor _p_ :
@@ -443,7 +440,7 @@ Lecturas sobre valor _p_ :
 
 A pesar de que no se recomienda usar valor p, la librería lmerTest te puede dar un valor p. 
 
-*all the F ratios use the *same* denominator* - [Douglas Bates](https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html)
+Considera que: *all the F ratios use the same denominator* - [Douglas Bates](https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html)
 
 
 ```r
@@ -469,6 +466,7 @@ tidy(ajuste_lmer) %&gt;%
 ## 1.10. Efecto de la montaña
 
 Ver información del ajuste: valores ajustados (.fitted), residuales (.resid)
+**augment_columns** agrega los valores ajustados, los residuales y otros al data frame.
 
 ```r
 info_ajuste_lmer&lt;- augment_columns(ajuste_lmer,dragones)
@@ -491,7 +489,7 @@ info_ajuste_lmer
 ## 10         7.36    180. Bavarian a        23.4 -16.0  0.0165 0.00980 
 ## # ... with 470 more rows
 ```
-**augment_columns** agrega los valores ajustados, los residuales y otros al data frame.
+
 
 ---
 
@@ -552,6 +550,11 @@ Entonces las montañas son claramente importantes porque explican mucha de la va
 
 
 ```r
+summary(ajuste_lmer)
+```
+
+
+```r
 339.7/(339.7 + 223.8)
 ```
 
@@ -559,6 +562,7 @@ Entonces las montañas son claramente importantes porque explican mucha de la va
 ## [1] 0.6028394
 ```
 
+Otro valor interesante es el AIC. Hablaremos más adeltante de esto.
 
 ```r
 AIC(ajuste_lmer)
@@ -566,11 +570,6 @@ AIC(ajuste_lmer)
 
 ```
 ## [1] 3999.203
-```
-
-
-```r
-summary(ajuste_lmer)
 ```
 
 ---
@@ -715,7 +714,7 @@ Para hacer una buena selección hay que tener claro cual es la **pregunta**.
 
 En lo que respecta a biología, se puede usar la selección de modelos para revisar parámetros que no corresponden al núcleo de la pregunta. 
 
-Se **recomienda** tener 10 veces más datos que parámetros.
+También se **recomienda** tener 10 veces más datos que parámetros.
 
 - [Da click aquí para mirar algunas formulas y explicacion a detalle](https://bookdown.org/egarpor/PM-UC3M/lm-ii-modsel.html)
 
@@ -723,7 +722,7 @@ Se **recomienda** tener 10 veces más datos que parámetros.
 
 ## 3.3. Selección del modelo
 
-De mejor a peor lo que podemos hacer es usar para comparar modelos son:
+De mejor a peor lo que podemos usar para comparar modelos son:
 
 - Z-test de Wald 
 - t-test de Wald (en este modelo los valores tendrían que estar balanceados)
@@ -925,36 +924,33 @@ mod_combinacion &lt;- lm(bmi ~ age + sex + consumption, data = bmi_datos)
 
 ## 3.10. MASS
 
-Otra cosa que podemos hacer es pedirle a R que construya los modelos con base a la información que le damo.  
+Otra cosa que podemos hacer es pedirle a R que construya los modelos con base a la información que le damos.  
 
 ```r
 bmi_mod_comp &lt;- lm(bmi ~., data = bmi_datos)
 ```
-**Nota** tu dataframe solo debe incluir las variables que te interesa incluir.
+**Nota** tu dataframe solo debe incluir las columnas de las variables que te interesa incluir.
 
-
-Otro paquete que permite comparar modelos es **MASS**. 
+Un paquete que tambien te permite comparar modelos es **MASS**. 
 
 ```r
 library(MASS)
 ```
 
-La ventaja de stepAIC es que te permite elegir: direction = c("both", "backward", "forward").
+La ventaja de este paquete es que la función stepAIC te permite elegir: direction = c("both", "backward", "forward"). 
 
 ```r
 step.model &lt;- stepAIC(bmi_mod_comp, direction = "both", 
                       trace = FALSE)
 ```
 
+- [Da click aquí la explicación de Stepwise regression a detalle](http://www.sthda.com/english/articles/37-model-selection-essentials-in-r/154-stepwise-regression-essentials-in-r/)
+
 ---
 
 ## 3.10. MASS
 
 De entrada ya nos dice cual fue el mejor modelo. 
-
-```r
-lm(formula = bmi ~ sex + age + consumption, data = bmi_datos)
-```
 
 
 ```r
@@ -1016,8 +1012,6 @@ drop1(bmi_mod_comp, test="F") # Tambien llamado 'type II' anova
 ---
 
 ## 3.12. Usando dredge
-
-Otra manera es generar un modelo completo y usar la función **dredge**.  
 
 La función **dredge** del paquete MuMIN genera una tabla de selección de modelos usando las combinaciones de los efectos fijos en el modelo global.
 
@@ -1111,11 +1105,11 @@ En la página de [CRAN Task Viewer](https://cran.r-project.org/web/views/Environ
 
 - Base R provee: lm() y glm(). Ya usamos lm en la [clase modelos lineales simples](https://miriamll.github.io/Curso_CIAD/Clase7#38)
 
-- **lme4** provee funciones para realizar modelos generalizados mixtos lineares o no lineares (GLMM). Usamos este paquete en esta clase. Si quieren ver tutoriales de como funciona les recomiendo [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#219ebc;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; Video explicando Teoría: Kyle Tomlinson](https://www.youtube.com/watch?v=sdYKtsmtXmc&amp;list=PLVlVXU7jGfm1seY4xxINrsp23AmrYFYa7&amp;index=4).
+- **lme4** provee funciones para realizar modelos generalizados mixtos lineares o no lineares (GLMM). Usamos este paquete en esta clase. Si quieren ver tutoriales de como funciona les recomiendo [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e63946;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; Video explicando Teoría: Kyle Tomlinson](https://www.youtube.com/watch?v=sdYKtsmtXmc&amp;list=PLVlVXU7jGfm1seY4xxINrsp23AmrYFYa7&amp;index=4).
 
 - **nlme** provee funciones para realizar modelos lineares y no lineares con efectos mixtos (GLM)
 
-- **mgvc** provee funciones para realizar modelos aditivos (Generalized Additive Mixed Models: GAMMS) [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#219ebc;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; gms introduction to generalized additive models with R and mgvc](https://www.youtube.com/watch?v=sgw4cu8hrZM)
+- **mgvc** provee funciones para realizar modelos aditivos (Generalized Additive Mixed Models: GAMMS) [&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#e63946;" viewBox="0 0 576 512"&gt;&lt;path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/&gt;&lt;/svg&gt; gms introduction to generalized additive models with R and mgvc](https://www.youtube.com/watch?v=sgw4cu8hrZM)
 
 
 #### Otros recursos
