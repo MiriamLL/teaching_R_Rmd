@@ -1,0 +1,309 @@
+---
+title: "ClaseModelos"
+author: "MiriamLerma"
+date: "20/5/2021"
+output: 
+  html_document:
+    toc: true
+
+---
+
+# Intro
+Materiales de la clase de modelos mixtos. Nota que los datos son descargados directamente de una URL.
+Tu tarea es escribir tus propios comentarios en el archivo.
+Si no tienes los paquetes, hay que instalarlos escribiendo install.packages() en tu consola o en un *chunk*
+
+# Librerias
+Cargar librerías
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(here)
+library(broom)
+library(broom.mixed)
+library(lme4)
+library(AICcmodavg)
+library(MuMIn)
+```
+
+# Cargar datos
+## dragones
+```{r, message=FALSE}
+url <- "https://raw.githubusercontent.com/MiriamLL/Prueba/master/dragones.csv"
+download.file(url, "dragons.csv")
+dragones <- read_csv("dragons.csv") 
+```
+## bmi
+```{r}
+url <- "https://raw.githubusercontent.com/MiriamLL/Prueba/master/bmi_data.csv"
+download.file(url, "bmi_data.csv")
+bmi_datos <- read_csv("bmi_data.csv") 
+```
+
+# Modelo lineal
+Graficar
+```{r}
+dragones %>% 
+  ggplot(aes(x=tamanio, 
+             y=calificacion)) + 
+             geom_jitter(alpha=.2)+
+             theme_bw()
+```
+
+```{r}
+#install.packages(broom)
+library(broom)
+```
+
+```{r}
+ajuste_lm <- lm(calificacion ~ tamanio, data=dragones)
+```
+
+```{r}
+broom::tidy(ajuste_lm) %>% tibble::as_tibble()
+```
+
+```{r}
+glance(ajuste_lm) %>% 
+  tibble::as_tibble()
+```
+
+```{r,include=FALSE}
+info_ajuste_lm<-augment_columns(ajuste_lm, dragones)
+```
+
+```{r,out.width="40%"}
+info_ajuste_lm %>% 
+  ggplot(aes(x=tamanio,y=calificacion))+ 
+  geom_jitter(alpha=.2)+
+  geom_line(aes(x=tamanio,y=.fitted))+
+  theme_bw()
+```
+
+```{r,out.width="40%"}
+plot(ajuste_lm, which=1)
+```
+
+```{r,out.width="40%"}
+plot(ajuste_lm, which=2)
+```
+
+```{r,out.width="40%"}
+plot(ajuste_lm, which=3)
+```
+
+```{r}
+dragones %>%
+  ggplot(aes(x=tamanio,y=calificacion, 
+        colour=montania)) +
+  geom_jitter(alpha=2) +
+  theme_bw()
+```
+
+```{r,out.width="30%"}
+dragones %>% 
+  ggplot(aes(tamanio,calificacion,
+      colour = montania))+
+  geom_jitter(alpha=2) + 
+  facet_wrap(~ montania) +
+  theme_bw()+
+  theme(strip.background=element_rect(fill="white"))
+```
+
+# Agregar factor aleatorio
+```{r, message=FALSE, warning=FALSE}
+#install.packages(broom.mixed)
+#install.packages(lme4)
+library(broom.mixed)
+library(lme4)
+```
+
+```{r}
+ajuste_lmer <- lmer(calificacion ~ tamanio + 
+                      (1|montania), data = dragones)
+```
+
+```{r}
+tidy(ajuste_lmer) %>% tibble::as_tibble()
+```
+
+```{r}
+glance(ajuste_lmer) %>% tibble::as_tibble()
+```
+
+```{r}
+info_ajuste_lmer<- augment_columns(ajuste_lmer,dragones)
+```
+
+```{r}
+info_ajuste_lmer %>% 
+ ggplot(aes(x=tamanio,y=calificacion, 
+            colour=montania))+ 
+ geom_jitter(alpha=2)+ 
+ facet_wrap(~ montania)+
+ geom_line(aes(x=tamanio,
+               y=.fitted),
+ colour="black")+
+theme_bw()
+```
+
+```{r}
+plot(ajuste_lmer)
+```
+
+```{r}
+qqnorm(resid(ajuste_lmer))
+qqline(resid(ajuste_lmer))
+```
+
+```{r}
+summary(ajuste_lmer)
+```
+
+```{r}
+339.7/(339.7 + 223.8)
+```
+
+# Efectos aleatorios
+```{r}
+dragones$muestra <- factor(paste0(dragones$montania,
+                                  dragones$sitio))
+```
+
+```{r}
+lmer_completo <- lmer(calificacion ~ tamanio + 
+                        (1|montania) + (1|muestra), 
+				  data = dragones)
+```
+
+```{r, eval=FALSE}
+summary(lmer_completo)
+```
+
+```{r}
+ggplot(dragones, aes(x = tamanio, y = calificacion, colour = sitio)) +
+  facet_wrap(~montania, nrow=3) +
+  geom_point() +
+  theme_classic() +
+  geom_line(data = cbind(dragones, pred = predict(lmer_completo)), aes(y = pred)) +
+  theme(legend.position = "none")
+```
+
+# Comparacion de 2 modelos
+```{r}
+lmer_completo <- lmer(calificacion ~ tamanio + #<<
+                        (1|montania) + (1|muestra),
+                      data = dragones, REML = FALSE)
+```
+
+```{r}
+lmer_reducido <- lmer(calificacion ~ 1 + #<<
+                        (1|montania) + (1|muestra), 
+                      data = dragones, REML = FALSE)
+```
+
+```{r}
+anova(lmer_reducido, lmer_completo) 
+```
+
+# Comparación de más de 2 modelos
+```{r, eval=FALSE}
+url <- "https://raw.githubusercontent.com/MiriamLL/Prueba/master/bmi_data.csv"
+download.file(url, "bmi_data.csv")
+bmi_datos <- read_csv("bmi_data.csv") 
+```
+
+Primer modelo
+```{r}
+mod_edad <- lm(bmi ~ age, data = bmi_datos)
+```
+
+Segundo modelo
+```{r}
+mod_sexo <- lm(bmi ~ sex, data = bmi_datos)
+```
+
+Tercer modelo
+```{r}
+mod_consumo <- lm(bmi ~ consumption, data = bmi_datos)
+```
+
+Comparar modelos
+```{r}
+#install.packages(AICcmodavg)
+library(AICcmodavg)
+```
+
+```{r}
+modelos <-list(mod_edad, mod_sexo, mod_consumo)
+modelos_nombres<-c('mod_edad', 'mod_sexo', 'mod_consumo')
+```
+
+```{r}
+aictab(cand.set = modelos, modnames = modelos_nombres)
+```
+
+Incluir la combinación de sexo y edad.
+```{r}
+mod_sexo_edad <- lm(bmi ~ age + sex, data = bmi_datos)
+```
+
+Incluir la combinación de sexo, edad y consumo de bebidas azucaradas en el indice de masa corporal.
+```{r}
+mod_combinacion <- lm(bmi ~ age + sex + consumption, data = bmi_datos)
+```
+
+Finalmente probar la interacción entre estas variables.
+```{r}
+mod_interaccion <- lm(bmi ~ age*sex*consumption, data = bmi_datos)
+```
+
+```{r}
+modelos <-list(mod_edad, mod_sexo, mod_consumo, mod_sexo_edad, mod_combinacion, mod_interaccion)
+modelos_nombres<-c('mod_edad', 'mod_sexo', 'mod_consumo','mod_sexo_edad', 'mod_combinacion', 'mod_interaccion')
+```
+
+```{r}
+aictab(cand.set = modelos, modnames = modelos_nombres)
+```
+
+# MuMIn
+## bmi
+```{r}
+#install.packages(MuMIn)
+library(MuMIn)
+options(na.action = "na.fail")
+```
+
+```{r}
+bmi_mod_comp <- lm(bmi ~., data = bmi_datos)
+```
+
+```{r}
+dredge(bmi_mod_comp)
+```
+
+## dragones
+```{r}
+options(na.action = "na.fail")
+dragones$muestra <- factor(paste0(dragones$montania,
+                                  dragones$sitio))
+lmer_completo <- lmer(calificacion ~ tamanio +
+                        (1|montania) + (1|muestra),
+                      data = dragones,REML=FALSE)#<<
+dredge(lmer_completo)
+```
+
+```{r}
+lmer_completo <- lmer(calificacion ~ tamanio +
+                        (1|montania) + (1|muestra),
+                      data = dragones,REML=TRUE) #<<
+```
+
+```{r}
+summary(lmer_completo)
+```
+
+# Fin del documento
+
