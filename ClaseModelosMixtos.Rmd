@@ -18,12 +18,16 @@ Cargar librerías
 ```{r setup, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(readr)
-library(dplyr)
 library(here)
+#install.packages(broom)
 library(broom)
+#install.packages(broom.mixed)
 library(broom.mixed)
+#install.packages(lme4)
 library(lme4)
+#install.packages(AICcmodavg)
 library(AICcmodavg)
+#install.packages(MuMIn)
 library(MuMIn)
 ```
 
@@ -244,17 +248,14 @@ modelos_nombres<-c('mod_edad', 'mod_sexo', 'mod_consumo')
 aictab(cand.set = modelos, modnames = modelos_nombres)
 ```
 
-Incluir la combinación de sexo y edad.
 ```{r}
 mod_sexo_edad <- lm(bmi ~ age + sex, data = bmi_datos)
 ```
 
-Incluir la combinación de sexo, edad y consumo de bebidas azucaradas en el indice de masa corporal.
 ```{r}
 mod_combinacion <- lm(bmi ~ age + sex + consumption, data = bmi_datos)
 ```
 
-Finalmente probar la interacción entre estas variables.
 ```{r}
 mod_interaccion <- lm(bmi ~ age*sex*consumption, data = bmi_datos)
 ```
