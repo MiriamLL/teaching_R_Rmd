@@ -44,7 +44,7 @@ class: title-slide, center, middle
 background-image: url(https://images.unsplash.com/photo-1484291470158-b8f8d608850d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
 background-size: cover
 
-### `r text_spec("Estilizar mis presentaciones en", background = "#1d3557", color = "white", bold = T)`
+<h3> `r text_spec("Estilizar mis presentaciones en", background = "#1d3557", color = "white", bold = T)`</h3>
 # `r text_spec("Xaringan", background = "#1d3557", color = "white", bold = T, font_size=120)`
 
 <br>
@@ -61,7 +61,7 @@ class: inverse
 - [Como cambiar colores](#colores)
 - [Como cambiar estilo de letras](#letras)
 - [Compartir presentacion en github](#github)
-
+- [Compartir presentacion en otros formatos](#otros)
 
 ```{r, echo=FALSE}
 library(emo)
@@ -435,6 +435,26 @@ https://TUNOMBRE.github.io/TUREPOSITORIO/TUPRESENTACION
 ]
 ]
 
+---
+name: otros
+
+## 3.2. Otras opciones
+
+- [`r fa("youtube", fill = ColorEnlace)` Rmd a Powerpoint](https://youtu.be/uiA3znJb4KM)<br>
+- [`r fa("external-link-alt", fill = ColorEnlace)` Rmd a powerpoint](https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html)<br>
+- [`r fa("external-link-alt", fill = ColorEnlace)` Xaringan a powerpoint](https://github.com/gadenbuie/xaringan2powerpoint)<br>
+- [`r fa("external-link-alt", fill = ColorEnlace)` Xaringan a pdf](https://github.com/jhelvy/xaringanBuilder)<br> 
+
+Ejemplo a pdf:
+```{r, eval=FALSE}
+#remotes::install_github("jhelvy/xaringanBuilder")
+#remotes::install_github('rstudio/chromote')
+library(here)
+library(xaringanBuilder)
+library(beepr)
+build_pdf(here("Xaringan-Parte2.html"))
+beep(sound=1,expr=NULL)
+```
 
 ---
 
@@ -459,7 +479,7 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](https://miriamlerma.netlify.app/materiales.html) 
+y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](https://www.miriam-lerma.com/materiales.html) 
 ]
 
 <h1>
@@ -467,6 +487,6 @@ y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-l
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = ColorEnlaceInverso)`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = ColorEnlaceInverso)`](https://www.miriam-lerma.com/materiales.html)
 ]</h1>
 
