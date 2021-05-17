@@ -452,7 +452,7 @@ Ejemplo a pdf:
 library(here)
 library(xaringanBuilder)
 library(beepr)
-build_pdf(here("Xaringan-Parte2.html"))
+build_pdf(here("MiDocumento.html"))
 beep(sound=1,expr=NULL)
 ```
 
