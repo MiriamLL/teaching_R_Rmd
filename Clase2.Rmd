@@ -52,10 +52,10 @@ class: title-slide, middle, right
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
 background-size: cover
 
-### `r rmarkdown::metadata$title`
+<h3> `r rmarkdown::metadata$title`</h3>
 # `r rmarkdown::metadata$subtitle`
 
-### `r rmarkdown::metadata$author`<br>
+<h3> `r rmarkdown::metadata$author`</h3><br>
 `r rmarkdown::metadata$date`
 
 ---
@@ -67,8 +67,10 @@ class: inverse
 Porque hacer gráficos, que es ggplot y conceptos básicos para crear gráficos. <br> 
 
 [Uso de ggplot](#intro)<br>
+[Cambiar estetica](#estetica)<br>
+[Exportar](#exportar) <br>
 
-Tipos de grafico:
+Tipos de gráfico:
 - [puntos](#puntos) 
 - [lineas](#lineas) 
 - [barras](#barras) 
@@ -76,11 +78,9 @@ Tipos de grafico:
 - [trayectorias](#trayectorias)
 - [mapas](#mapas) <br>
 
-[Cambiar estetica](#theme)
-
 --
 
-### Ustedes
+<h3> Ustedes </h3>
 
 - Conocimientos básicos de R (saben abrirlo, cargar paquetes y datos).  
 - Quieren hacer gráficos con sus datos usando R.  
@@ -110,7 +110,7 @@ class: inverse
 ---
 
 
-# 1.1. Teoría
+## 1.1. Teoría
 
 El objetivo de un gráfico es comunicar. En ciencia, la idea es brindar información de manera sencilla y fácil de entender.
 
@@ -122,7 +122,7 @@ Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
-# 1.1. Teoría
+## 1.1. Teoría
 
 Graficar es transformar datos a visualizaciones que varian en tamaño, forma y colores.  
 
@@ -134,7 +134,7 @@ Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
-# 1.1. Teoría
+## 1.1. Teoría
 
 Hay muchas maneras de graficar datos, pero hay diferentes maneras de percibirlos.  
 
@@ -147,7 +147,7 @@ Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
-# 1.1. Teoría
+## 1.1. Teoría
 
 Cual es más intuitiva?
 
@@ -159,7 +159,7 @@ Fuente:  [VizThinker](https://paldhous.github.io/ucb/2016/dataviz/week2.html)
 
 ---
 
-# 1.1. Teoría
+## 1.1. Teoría
 
 Cual debo de usar?
 
@@ -175,7 +175,7 @@ knitr::include_graphics("https://paldhous.github.io/ucb/2016/dataviz/img/class2_
 
 name: intro
 
-# 1.2. Intro a ggplot
+## 1.2. Intro a ggplot
 
 Hay muchos paquetes para hacer gráficos ademas de **ggplot2**. 
 - Usaremos **ggplot2** ya que es uno de los mas versátiles  
@@ -185,7 +185,7 @@ Hay muchos paquetes para hacer gráficos ademas de **ggplot2**.
 
 ---
 
-# 1.2. Como funciona?
+## 1.2. Como funciona?
 
 Para objetivos prácticos, un gráfico se puede dividir en tres componentes esenciales:  
 - **Datos** (data): conjunto de datos compuesto por variables que mapeamos.  
@@ -203,7 +203,7 @@ Fuente: [ggplot2 book](https://englelab.gatech.edu/useRguide/working-with-data-o
 
 ---
 
-# 1.3. Instalar y cargar
+## 1.3. Instalar y cargar
 
 ```{r, eval=FALSE}
 install.packages("ggplot2")
@@ -218,7 +218,7 @@ library(ggplot2)
 
 ---
 
-# 1.3. Instalar y cargar
+## 1.3. Instalar y cargar
 
 Cargar datos de prueba
 ```{r}
@@ -227,7 +227,7 @@ Prueba<-datos::clima
 
 ---
 
-# 1.3. Agregar datos
+## 1.3. Agregar datos
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Prueba)
@@ -245,7 +245,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-# 1.3. Agregar ejes
+## 1.3. Agregar ejes
 
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(data=Prueba,mapping=aes(x=humedad,y=visibilidad))
@@ -264,7 +264,7 @@ Noten que sus ejes tienen que ser columnas en su tabla.
 
 ---
 
-# 1.3. Agregar geometría
+## 1.3. Agregar geometría
 
 ```{r, echo=TRUE,eval=FALSE}
 ggplot(data=Prueba, 
@@ -287,7 +287,7 @@ Que dice el warning?
 Te avisa que había NAs y que no se incluyeron en el gráfico.
 
 ---
-# 1.4. Tipos de gráficos
+## 1.4. Tipos de gráficos
 
 Hoy veremos:  
 -Puntos  
@@ -307,7 +307,7 @@ knitr::include_graphics("http://www.typesofgraphs.com/wp-content/uploads/2015/12
 ---
 name: puntos
 
-# 1.4. Gráfico de puntos
+## 1.4. Gráfico de puntos
 
 Datos inventados de camarones, tamaño y densidad del cultivo.
 ```{r}
@@ -319,7 +319,7 @@ Camarones$Densidad<-c(100,200,300,400,500)
 
 ---
 
-# 1.4. Gráfico de puntos
+## 1.4. Gráfico de puntos
 
 Gráfico de datos inventados de camarones, tamaño y densidad del cultivo.
 ```{r, echo=TRUE, eval=FALSE}
@@ -339,7 +339,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ---
 name: lineas
 
-# 1.4. Gráfico de lineas
+## 1.4. Gráfico de lineas
 
 Datos inventados de tipo de algas, en meses (tiempo) y densidad (cantidad)
 ```{r}
@@ -351,7 +351,7 @@ MareaRoja$Cantidad<-c(100,200,300,200,200,300,400,500,700,200)
 
 ---
 
-# 1.4. Gráfico de lineas
+## 1.4. Gráfico de lineas
 
 Gráfico de datos inventados de tipo de bacterias, meses (tiempo) y densidad (cantidad)
 ```{r, echo=TRUE, eval=FALSE}
@@ -372,7 +372,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 name: barras
 
-# 1.4. Gráfico de barras
+## 1.4. Gráfico de barras
 
 Datos Inventados de microbiota vaginal en mujeres de diferente edad, y densidad (cantidad)
 ```{r}
@@ -384,7 +384,7 @@ Microbiota$Cantidad<-c(100,200,300,200,200,300,400,500,700,200)
 
 ---
 
-# 1.4. Gráfico de barras
+## 1.4. Gráfico de barras
 
 Gráfico de datos inventados
 ```{r, fig.height=3, echo=TRUE,eval=FALSE}
@@ -397,7 +397,7 @@ Hay que agregar un argumento porque no sabe que quieres en las barras.
 ---
 
 
-# 1.4. Gráfico de barras
+## 1.4. Gráfico de barras
 
 Gráfico de datos inventados de microbiota por edad y cantidades
 ```{r, echo=TRUE, eval=FALSE}
@@ -419,7 +419,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 name: boxplot
 
-# 1.4. Boxplot
+## 1.4. Boxplot
 
 Datos inventados de salinidad en Bahía de Santa María diferencias en las estaciones muestreadas
 ```{r}
@@ -433,7 +433,7 @@ BSM$Estacion<-as.factor(Estacion)
 
 ---
 
-# 1.4. Boxplot
+## 1.4. Boxplot
 
 Gráfico de datos inventados de salinidad en Bahía de Santa María diferencias en las estaciones muestreadas.
 ```{r, fig.height=3, echo=TRUE, eval=FALSE}
@@ -455,7 +455,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 name: trayectorias
 
-# 1.4. Trayectorias
+## 1.4. Trayectorias
 
 Datos inventados de un bobo café que tenemos datos de latitud y longitud.
 ```{r}
@@ -467,7 +467,7 @@ Bobos$Latitud<-Latitud
 
 ---
 
-# 1.4. Trayectorias
+## 1.4. Trayectorias
 
 Gráficos de datos inventados de un bobo café que tenemos datos de latitud y longitud.
 ```{r, fig.height=3, echo=TRUE, eval=FALSE}
@@ -488,7 +488,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 name: mapas
 
-# 1.4. Mapas
+## 1.4. Mapas
 
 ```{r}
 library(rnaturalearth)
@@ -501,7 +501,7 @@ world <- ne_countries(scale = "medium", returnclass = "sf") # en clase sf
 
 ---
 
-# 1.4. Mapas
+## 1.4. Mapas
 
 Coordenadas de Sinaloa approx. 20 grados Norte, 110 grados Oeste (Noroeste)
 ```{r, echo=TRUE, eval=FALSE}
@@ -564,8 +564,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 
 ---
 
-name: aes
-
+name: estetica
 class: title-slide, inverse, right, middle
 background-image: url(https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80)
 background-size:cover
@@ -837,8 +836,23 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 ]
 
 ---
+name: exportar
+# 3. Exportar
 
-# 3. Otras posibilidades
+Para exportar tu figura puedes usar la función **ggsave**
+
+```{r, eval=FALSE}
+ggsave(Figura, 
+       filename = "~/Figura.png",
+       width = 24, 
+       height = 24, 
+       units = "in",
+       dpi = 500)
+```
+
+---
+
+# 4. Otras posibilidades
 
 .pull-left[
 Los gráficos se pueden animar.
@@ -881,7 +895,8 @@ class: inverse
 - Grafico de [caja](#boxplot) 
 - [Trayectorias](#trayectorias)
 - [Mapas](#mapas) <br>
-- [Estetica](#theme)
+- [Cambiar estetica](#estetica)
+- [Exportar](#exportar) <br>
 
 .right[
 ### Contacto
