@@ -52,7 +52,7 @@ library(emo)
 library(here)
 library(fontawesome)
 library(ggplot2)
-#library(countdown)
+library(countdown)
 #countdown(minutes = 5, seconds = 00, play_sound = TRUE,right = "33%")
 ```
 
@@ -273,6 +273,8 @@ Homoscedasticidad
 plot(ajuste_lm, which=3)
 ```
 
+`r countdown(minutes = 3, seconds = 00)`
+
 ---
 
 ## 1.7. Inspeccionar
@@ -468,6 +470,8 @@ Otro valor interesante es el AIC. Hablaremos más adeltante de esto.
 AIC(ajuste_lmer)
 ```
 
+`r countdown(minutes = 3, seconds = 00)`
+
 ---
 
 ## 2.1. Modelo completo
@@ -550,6 +554,7 @@ ggplot(dragones, aes(x = tamanio, y = calificacion, colour = sitio)) +
 ```
 ]
 
+`r countdown(minutes = 3, seconds = 00)`
 
 ---
 
@@ -757,6 +762,8 @@ En base al AIC ¿Cual es el mejor modelo?
 aictab(cand.set = modelos, modnames = modelos_nombres)
 ```
 
+`r countdown(minutes = 3, seconds = 00)`
+
 --
 
 ```{r, eval=FALSE}
@@ -890,6 +897,8 @@ Fixed effects:
 (Intercept) 40.06668   21.86373 90.35454   1.833   0.0702 .
 tamanio      0.05126    0.10368 94.18716   0.494   0.6222  
 ```
+
+`r countdown(minutes = 3, seconds = 00)`
 
 ---
 
