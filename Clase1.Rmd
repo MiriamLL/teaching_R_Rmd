@@ -1,6 +1,5 @@
 ---
-title: "Clase 1"
-subtitle: "Intro a R"
+title: "Intro a R"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:

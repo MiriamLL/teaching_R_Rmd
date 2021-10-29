@@ -38,6 +38,7 @@ url <- "https://raw.githubusercontent.com/MiriamLL/Prueba/master/dragones.csv"
 download.file(url, "dragons.csv")
 dragones <- read_csv("dragons.csv") 
 ```
+
 ## bmi
 ```{r}
 url <- "https://raw.githubusercontent.com/MiriamLL/Prueba/master/bmi_data.csv"
@@ -168,6 +169,9 @@ summary(ajuste_lmer)
 ```{r}
 339.7/(339.7 + 223.8)
 ```
+```{r}
+AIC(ajuste_lmer)
+```
 
 # Efectos aleatorios
 ```{r}
@@ -195,6 +199,7 @@ ggplot(dragones, aes(x = tamanio, y = calificacion, colour = sitio)) +
 ```
 
 # Comparacion de 2 modelos
+
 ```{r}
 lmer_completo <- lmer(calificacion ~ tamanio + #<<
                         (1|montania) + (1|muestra),
@@ -212,6 +217,7 @@ anova(lmer_reducido, lmer_completo)
 ```
 
 # Comparación de más de 2 modelos
+
 ```{r, eval=FALSE}
 url <- "https://raw.githubusercontent.com/MiriamLL/Prueba/master/bmi_data.csv"
 download.file(url, "bmi_data.csv")
@@ -268,6 +274,13 @@ modelos_nombres<-c('mod_edad', 'mod_sexo', 'mod_consumo','mod_sexo_edad', 'mod_c
 ```{r}
 aictab(cand.set = modelos, modnames = modelos_nombres)
 ```
+```{r}
+drop1(bmi_mod_comp, test="F")
+```
+```{r}
+dredge(bmi_mod_comp)
+```
+
 
 # MuMIn
 ## bmi
@@ -279,6 +292,7 @@ options(na.action = "na.fail")
 
 ```{r}
 bmi_mod_comp <- lm(bmi ~., data = bmi_datos)
+class(bmi_mod_comp)
 ```
 
 ```{r}

@@ -1,6 +1,5 @@
 ---
-title: "Clase 4"
-subtitle: "Operaciones en R"
+title: "Operaciones en R"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
@@ -722,8 +721,6 @@ Siguiente clase:
 
 .right[
 #### Contacto
-Para dudas, comentarios y sugerencias: <br>
-Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible <br> y se encuentra en 
  mi [`r fa("external-link-alt", fill = "#ffd166")`github](https://github.com/MiriamLL/Curso_CIAD/)
@@ -733,7 +730,6 @@ y mi [`r fa("external-link-alt", fill = "#ffd166")`página](https://miriamlerma.
 .right[
 [`r fa("home", fill = '#ffd166')`](https://miriamlerma.netlify.app/materiales.html)
          ]</h1>
-
 
 
 <br>

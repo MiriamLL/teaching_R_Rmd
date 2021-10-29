@@ -1,6 +1,5 @@
 ---
-title: "Clase 6"
-subtitle: "Proyectos en R"
+title: "Proyectos en R"
 author: "Miriam Lerma"
 date: "Marzo 2021"
 output:

@@ -1,6 +1,5 @@
 ---
-title: "Clase 2"
-subtitle: "Cargar datos"
+title: "Cargar datos"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Clase 6</title>
+    <title>Proyectos en R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Miriam Lerma" />
-    <script src="Clase4Parte1_files/header-attrs-2.6/header-attrs.js"></script>
+    <script src="Clase4Parte1_files/header-attrs-2.9/header-attrs.js"></script>
     <meta name="github-repo" content="MiriamLL/Curso_CIAD"/>
     <meta name="twitter:title" content="Cargar datps"/>
     <meta name="twitter:description" content="Introduccion a RStudioCurso de R"/>
@@ -35,14 +35,15 @@ class: title-slide, inverse,middle, right
 background-image: url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80)
 background-size: cover
 
-### Clase 6
-# Proyectos en R
+### Proyectos en R
+# 
 
 ## **Miriam Lerma**&lt;br&gt;
 Marzo 2021
 
 ---
 
+class: inverse
 
 # Intro
 
@@ -404,6 +405,21 @@ Revisa con here.
 
 ```r
 library(tidyverse)
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 4.0.5
+```
+
+```
+## Warning: package 'tibble' was built under R version 4.0.5
+```
+
+```
+## Warning: package 'dplyr' was built under R version 4.0.5
+```
+
+```r
 library(datos)
 library(here)
 Pingus&lt;-pinguinos
@@ -467,7 +483,7 @@ Pingus %&gt;%
 ```
 ## # A tibble: 3 x 2
 ##   sexo       n
-## * &lt;fct&gt;  &lt;int&gt;
+##   &lt;fct&gt;  &lt;int&gt;
 ## 1 hembra   165
 ## 2 macho    168
 ## 3 &lt;NA&gt;      11
@@ -484,7 +500,7 @@ Pingus %&gt;%
 ```
 ## # A tibble: 3 x 2
 ##   sexo   promedio
-## * &lt;fct&gt;     &lt;dbl&gt;
+##   &lt;fct&gt;     &lt;dbl&gt;
 ## 1 hembra    3862.
 ## 2 macho     4546.
 ## 3 &lt;NA&gt;        NA

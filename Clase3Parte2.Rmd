@@ -1,6 +1,5 @@
 ---
-title: "Clase 5"
-subtitle: "Ordenar, unir, exportar"
+title: "Ordenar, unir, exportar"
 author: "Miriam Lerma"
 date: "Marzo 2021"
 output:

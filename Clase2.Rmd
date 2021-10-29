@@ -1,6 +1,5 @@
 ---
-title: "Clase 3"
-subtitle: "Gráficos"
+title: "Gráficos"
 author: "Miriam Lerma"
 date: "Febrero 2021"
 output:
