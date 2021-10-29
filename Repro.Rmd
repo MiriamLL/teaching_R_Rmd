@@ -57,8 +57,7 @@ ColorLink<-"#74c69d"
 - Mejorar su seguimiento de proyectos
 - Mejorar el ciclo de trabajo en su laboratorio
 
-## Preguntas
-Responder en el chat 💬
+## Responder en el chat 💬
 - Han querido replicar análisis de algún articulo ya publicado  y se preguntaron como lo hicieron?
 - Les ha pasado que a seguir los pasos de alguna tesis o articulo se dieron cuenta que no todos los métodos estaban descritos?
 
@@ -121,7 +120,7 @@ La reproducibilidad tiene varias dimensiones, de acuerdo a
 - si usamos el mismo codigo o lo adaptamos.
 
 ```{r, echo=FALSE, out.height=200, fig.align='center'}
-knitr::include_graphics('https://the-turing-way.netlify.app/_images/ReproducibleMatrix.jpg')
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ReproducibleMatrix.jpg')
 ```
 
 - **Reproducible**: mismos datos deben dar el mismo resultado.
@@ -159,7 +158,7 @@ Podemos:
 - Mejorar la credibilidad/transparencia
 
 ```{r, echo=FALSE, out.height=250, fig.align='center'}
-knitr::include_graphics('https://the-turing-way.netlify.app/_images/reasons_reproducibility.png')
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/reasons-reproducibility.png')
 ```
 
 Por ejemplo, evitando casos como: [revistas retiran articulos sobre COVID debido a falta de integridad en los datos](https://www.sciencemag.org/news/2020/06/two-elite-medical-journals-retract-coronavirus-papers-over-data-integrity-questions)

@@ -59,8 +59,7 @@ ColorLink<-"#74c69d"
 - Quieren subir su repositorio a github
 - Quieren saber como agregarle un doi a sus materiales
 
-### Preguntas
-Responder en el chat 💬
+### Responder en el chat 💬
 - Han escuchado que es un sistema de control de versiones?
 - Como mantienen controles de cambios en sus documentos?
 - Cuantos tienen cuenta de usuario en github?
@@ -205,7 +204,7 @@ knitr::include_graphics('https://avatars.githubusercontent.com/u/583231?v=4')
 Hay muchas otras opciones para alojar repositorios.<br>
 Por ejemplo: [gitlab](https://about.gitlab.com/)
 ```{r, echo=FALSE, out.height=80, fig.align='center'}
-knitr::include_graphics('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/GitLab_Logo.svg/245px-GitLab_Logo.svg.png')
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/gitlab.png')
 ```
 
 Ver Comparación [Github o Gitlab](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
@@ -553,7 +552,7 @@ knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/m
 Les recomiendo aprender más de como manejar repositorios.  
 [Enlace](https://levelup.gitconnected.com/understanding-git-a-beginners-guide-containing-cheat-sheets-resources-b50c9c01a107)
 
-```{r, echo=FALSE, out.height=400, fig.align='center'}
+```{r, echo=FALSE, out.height=300, fig.align='center'}
 knitr::include_graphics('https://miro.medium.com/max/700/0*68fyM5AI85U_I3vo.jpg')
 ```
 
