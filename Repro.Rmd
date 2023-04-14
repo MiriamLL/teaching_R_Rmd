@@ -107,7 +107,7 @@ Esto incluye a:
 - Nosotros mismos
 
 ```{r, echo=FALSE, out.height=300, fig.align='center'}
-knitr::include_graphics('https://the-turing-way.netlify.app/_images/welcome.jpg')
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/100turingway.svg')
 ```
 
 
@@ -470,13 +470,13 @@ Para dudas, comentarios y sugerencias:
 
 .right[Este material esta accesible y se encuentra en <br>
 mi [`r fa("external-link-alt", fill = '#74c69d')`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://www.miriam-lerma.com/materiales.html)
+y mi [`r fa("external-link-alt", fill = '#74c69d')`página](https://www.miriam-lerma.com)
 
 
 .center[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://www.miriam-lerma.com/materiales.html)
+<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://www.miriam-lerma.com/teaching.html)
 ]]
 
