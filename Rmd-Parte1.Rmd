@@ -672,7 +672,7 @@ Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible y se encuentra en  
 mi [`r fa("external-link-alt", fill = ColorLinkInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorLinkInverso)`página](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = ColorLinkInverso)`página](https://www.miriam-lerma.com)
 ]
 
 <br>
@@ -681,7 +681,7 @@ y mi [`r fa("external-link-alt", fill = ColorLinkInverso)`página](https://miria
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://miriamlerma.netlify.app/materiales.html)
+<h3>`r fa("home", fill = "#74c69d")`[Volver ](https://www.miriam-lerma.com/teaching.html)
 ]
 
 
