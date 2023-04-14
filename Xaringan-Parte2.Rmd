@@ -45,7 +45,7 @@ background-image: url(https://images.unsplash.com/photo-1484291470158-b8f8d60885
 background-size: cover
 
 <h3> `r text_spec("Estilizar mis presentaciones en", background = "#1d3557", color = "white", bold = T)`</h3>
-# `r text_spec("Xaringan", background = "#1d3557", color = "white", bold = T, font_size=120)`
+ `r text_spec("Xaringan", background = "#1d3557", color = "white", bold = T, font_size=120)`
 
 <br>
 <h2>`r text_spec("Miriam Lerma", background = "#264653", color = "white", bold = T)`</h2>
@@ -199,7 +199,7 @@ Una vez reiniciado RStudio, debe aparecer ermoji en Addsin
 Elije **Search and copy**
 
 ```{r echo=FALSE, out.width=300}
-knitr::include_graphics('https://www.garrickadenbuie.com/images/project/ermoji/addins-list.png')
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/ermoji.png')
 ```
 
 ---
@@ -477,7 +477,7 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](https://www.miriam-lerma.com/materiales.html) 
+y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página](https://www.miriam-lerma.com) 
 ]
 
 <h1>
@@ -485,6 +485,6 @@ y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-l
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = ColorEnlaceInverso)`](https://www.miriam-lerma.com/materiales.html)
+[`r fa("home", fill = ColorEnlaceInverso)`](https://www.miriam-lerma.com/teaching.html)
 ]</h1>
 
