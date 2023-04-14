@@ -732,11 +732,23 @@ class: title-slide, inverse
 background-image: url(https://images.unsplash.com/photo-1560806175-2e9e26340b2b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80)
 background-size: cover
 
-# Contacto
+
+# Recapitulando
+
+<br>
+<br>
+<br>
 
 - [Factores](#factores)  
 - [Analisis de varianza](#anova)
 
+  
+    
+
+<br>
+<br>
+<br>
+<br>
 
 .right[
 Para dudas, comentarios y sugerencias:<br>
@@ -744,12 +756,12 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página www.miriam-lerma.com](https://www.miriam-lerma.com/materiales.html)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página ](https://www.miriam-lerma.com)
 ]
 
 <h1>
 .right[
-[`r fa("home", fill = '#f2cc8f')`](https://www.miriam-lerma.com/materiales.html)
+[`r fa("home", fill = '#f2cc8f')`](https://www.miriam-lerma.com/teaching.html)
 ]</h1>
 
 

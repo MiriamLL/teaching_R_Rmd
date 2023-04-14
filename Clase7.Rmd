@@ -57,7 +57,7 @@ class: inverse
 
 # Intro
 
-- [Explorar datos](#explora).  
+- [Explorar datos](#explora)  
 - [Modelo lineal](#lineal)
 
 
@@ -631,7 +631,7 @@ Nuestro modelo puede escribirse como:
 **felicidad=2.52∗dosis de chocolate+8.59**
 
 ```{r echo=FALSE, out.height=300}
-knitr::include_graphics("https://datascience.foundation/img/pdf_images/understanding_of_linear_regression_with_python_1.png")
+knitr::include_graphics("https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/lm.png")
 ```
 
 ---
@@ -927,11 +927,11 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = "#f2cc8f")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = "#f2cc8f")`página](https://www.miriam-lerma.com)
 ]
 
 <h1>
 .right[
-[`r fa("home", fill = '#f2cc8f')`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = '#f2cc8f')`](https://www.miriam-lerma.com/teaching.html)
 ]</h1>
 

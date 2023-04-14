@@ -943,13 +943,13 @@ Para dudas, comentarios y sugerencias:
 
 .right[Este material esta accesible y se encuentra en <br>
 mi [`r fa("external-link-alt", fill = ColorLinkInv)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorLinkInv)`página](https://www.miriam-lerma.com/posts/2021-03-01-introar/)
+y mi [`r fa("external-link-alt", fill = ColorLinkInv)`página](https://www.miriam-lerma.com)
 
 
 .center[
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-<h3>`r fa("home", fill = ColorLinkInv)`[Volver ](https://www.miriam-lerma.com/posts/2021-03-01-introar/)
+<h3>`r fa("home", fill = ColorLinkInv)`[](https://www.miriam-lerma.com/teaching.html)
 ]]
 
