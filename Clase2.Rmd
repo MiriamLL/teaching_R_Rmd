@@ -904,7 +904,7 @@ Para dudas, comentarios y sugerencias: <br>
 Escríbeme a miriamjlerma@gmail.com
 
 Este material esta accesible <br> y se encuentra en mi [`r fa("external-link-alt", fill = "#ffd166")`github](https://github.com/MiriamLL/Curso_CIAD/)<br>
-y mi [`r fa("external-link-alt", fill = "#ffd166")`página www.miriam-lerma.com](https://www.miriam-lerma.com/materiales.html)
+y mi [`r fa("external-link-alt", fill = "#ffd166")`página](https://www.miriam-lerma.com)
 
 ]
 
@@ -913,7 +913,7 @@ y mi [`r fa("external-link-alt", fill = "#ffd166")`página www.miriam-lerma.com]
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = '#ffd166')`](https://www.miriam-lerma.com/materiales.html)
+[`r fa("home", fill = '#ffd166')`](https://www.miriam-lerma.com/teaching.html)
 ]</h1>
 
 

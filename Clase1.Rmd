@@ -560,7 +560,7 @@ Este material esta accesible <br> y se encuentra en: mi [`r fa("external-link-al
 <h1>
 .right[
 
-[`r fa("home", fill = '#f2cc8f')`</h1>volver](https://www.miriam-lerma.com/materiales.html)
+[`r fa("home", fill = '#f2cc8f')`</h1>volver](https://www.miriam-lerma.com/teaching.html)
 ]
 
 

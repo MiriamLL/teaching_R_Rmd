@@ -639,7 +639,7 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = "#219ebc")`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = "#219ebc")`página](https://miriamlerma.netlify.app/materiales.html)
+y mi [`r fa("external-link-alt", fill = "#219ebc")`página](https://www.miriam-lerma.com)
 ]
 
 <h1>
@@ -647,6 +647,6 @@ y mi [`r fa("external-link-alt", fill = "#219ebc")`página](https://miriamlerma.
 ```{r, echo=FALSE}
 library(fontawesome)
 ```
-[`r fa("home", fill = '#219ebc')`](https://miriamlerma.netlify.app/materiales.html)
+[`r fa("home", fill = '#219ebc')`](https://www.miriam-lerma.com/teaching.html)
 ]</h1>
 
