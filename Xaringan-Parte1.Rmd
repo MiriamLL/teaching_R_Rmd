@@ -704,7 +704,7 @@ Para dudas, comentarios y sugerencias:<br>
 
 Este material esta accesible y se encuentra en <br>
  mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`github](https://github.com/MiriamLL/Curso_CIAD/)
-y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página www.miriam-lerma.com](www.miriam-lerma.com) 
+y mi [`r fa("external-link-alt", fill = ColorEnlaceInverso)`página](www.miriam-lerma.com) 
 ]
 
 <h1>
