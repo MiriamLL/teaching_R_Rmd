@@ -494,7 +494,7 @@ DatosJuntos
 Lo que hace left_join() es usar ese ID para saber como unir la tabla.<br>
 
 ```{r, echo=FALSE, out.height=350}
-knitr::include_graphics('https://www.garrickadenbuie.com/project/tidyexplain/images/left-join.gif')
+knitr::include_graphics('https://raw.githubusercontent.com/MiriamLL/Curso_CIAD/main/Figuras/left-join.gif')
 ```
 
 Fuente: [tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
